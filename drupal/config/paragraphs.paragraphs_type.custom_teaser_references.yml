@@ -1,0 +1,10 @@
+uuid: 568a1477-e590-4405-8a73-6a6de5308ca2
+langcode: en
+status: true
+dependencies: {  }
+id: custom_teaser_references
+label: 'Custom Teaser References'
+icon_uuid: null
+icon_default: null
+description: 'Hand-curated references to timely content. Use only if a Listing will not work.'
+behavior_plugins: {  }

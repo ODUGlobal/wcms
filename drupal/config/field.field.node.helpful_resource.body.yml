@@ -1,0 +1,28 @@
+uuid: b1288b15-18b0-40ac-a4b6-6a282b27f6bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - node.type.helpful_resource
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: body
+id: node.helpful_resource.body
+field_name: body
+entity_type: node
+bundle: helpful_resource
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  display_summary: true
+  required_summary: false
+field_type: text_with_summary

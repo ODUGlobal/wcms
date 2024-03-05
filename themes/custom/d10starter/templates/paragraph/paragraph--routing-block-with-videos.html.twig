@@ -1,0 +1,30 @@
+{% set add_cache = content|render %}
+{% set ImageCards = [] %}
+
+{% for item in paragraph.field_mobile_videos %}
+    {% set ImageCard = {} %}
+    
+    {% set collection = item.entity %}
+    {% if collection.field_media is not empty %}
+        {% set ImageCard = ImageCard|merge({'picture' : drupal_entity(collection.field_media.entity, 'teaser')}) %}
+    {% endif %}
+
+    {% if collection.field_link is not empty %}
+        {% set ImageCard = ImageCard|merge({'link' : {'title' : collection.field_link.title, 'url' : collection.field_link.0.url}}) %}
+    {% endif %}
+
+    {% if collection.field_body is not empty %}
+        {% set ImageCard = ImageCard|merge({'editorial' : {'wysiwyg' : {'#type': 'processed_text', '#text':  collection.field_body.value, '#format': collection.field_body.format,}}}) %}
+    {% endif %}
+
+    {% if ImageCard is not empty %}
+        {% set ImageCards = ImageCards|merge([ImageCard]) %}
+    {% endif %}
+{% endfor %}
+
+{% include '@components/Organism/ImageCardCollection/ImageCardCollection.twig' with {
+    heading: {'headline' : paragraph.field_heading.value},
+    imageCards: ImageCards,
+    editorial : paragraph.field_body.value ? {'wysiwyg' : content.field_body} : null,
+    theme : null
+} only %}

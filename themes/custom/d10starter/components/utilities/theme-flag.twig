@@ -1,0 +1,14 @@
+{#
+  component: string (markup)
+  theme?: string (theme-name); if absent, no wrapper-div is added at all
+  extraClasses?: string (Tailwind classes)
+#}
+
+{% set innards %}
+  {% block component %}{{ component }}{% endblock %}
+{% endset %}
+
+<div
+  {% if theme is not empty %}data-tw-theme="{{ theme }}"{% endif %}
+  class="{{ extraClasses|default('') }}"
+>{{ innards }}</div>

@@ -1,0 +1,25 @@
+uuid: 2aa2dd80-b037-4f3a-87f9-e4e8ec2dfd51
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_display_name
+    - taxonomy.vocabulary.licensing_body
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_display_name
+id: taxonomy_term.licensing_body.field_display_name
+field_name: field_display_name
+entity_type: taxonomy_term
+bundle: licensing_body
+label: 'Display name'
+description: 'Name to show for listings (i.e., without the state)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

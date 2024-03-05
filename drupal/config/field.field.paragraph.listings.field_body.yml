@@ -1,0 +1,26 @@
+uuid: 25e3c409-94a3-4bbb-b42e-e445617f65e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.listings
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_body
+id: paragraph.listings.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: listings
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

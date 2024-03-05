@@ -1,0 +1,54 @@
+{
+  // Set up Prettier format-on-save for a few file-types.
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[postcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[mdx]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "mdx"
+  ],
+
+  "tailwindCSS.experimental.classRegex": [
+    // so we can put `/* tw */ ` in front of a JS/TS string and get Tailwind Intellisense in custom spots
+    "/\\* tw \\*/ '([^']*)",
+    "/\\* tw \\*/ `([^`]*)",
+    "/\\* tw \\*/ \"([^\"]*)",
+    // these must go directly before a `{` (w/ space in between) and apply to strings until it hits a semi-colon (good for JS/TS if using semi-colons)
+    ["/\\* tw \\*/ {([^;]*);", "'([^']*)'"],
+    ["/\\* tw \\*/ {([^;]*);", "`([^']*)`"],
+    ["/\\* tw \\*/ {([^;]*);", "\"([^\"]*)\""],
+    // for Twig: these apply to strings until it hits a `}`
+    ["{# tw #} ([^}]*)}", "'([^']*)'"],
+    ["{# tw #} ([^}]*)}", "\"([^\"]*)\""],
+  ],
+  "twigLinkResolver.templatesRootPath": "themes/custom/d10starter",
+}

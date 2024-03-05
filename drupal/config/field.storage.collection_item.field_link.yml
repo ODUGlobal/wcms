@@ -1,0 +1,19 @@
+uuid: 252d0ae3-098f-4dde-bbea-debfdbb74a36
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+    - link
+id: collection_item.field_link
+field_name: field_link
+entity_type: collection_item
+type: link
+settings: {  }
+module: link
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

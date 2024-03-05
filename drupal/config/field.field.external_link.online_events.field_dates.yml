@@ -1,0 +1,21 @@
+uuid: 71ad627f-8e73-4b55-a6cf-f906d3a10138
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.external_link.online_events
+    - field.storage.external_link.field_dates
+  module:
+    - datetime_range
+id: external_link.online_events.field_dates
+field_name: field_dates
+entity_type: external_link
+bundle: online_events
+label: Dates
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: daterange

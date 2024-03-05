@@ -1,0 +1,10 @@
+uuid: e0a2c018-fb5f-47e4-aa60-462f70d300e6
+langcode: en
+status: true
+dependencies: {  }
+id: social_media_callout
+label: 'Social Media Callout'
+icon_uuid: null
+icon_default: null
+description: 'Reference to a social media callout'
+behavior_plugins: {  }

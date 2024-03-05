@@ -1,0 +1,75 @@
+<section>
+  <div class="space-y-5">
+
+    <div class="flex flex-col-reverse space-y-reverse space-y-5">
+      {% set headline %}<a href="{{ link.url }}">{{ link.title }}</a>{% endset %}
+
+      {% include '@components/Atom/Heading/Heading.twig' with {
+        headline: headline,
+        tagLevel: hLevel|default(3),
+        styleLevel: hStyleLevel|default(3),
+        slim: true,
+        superhead: superhead,
+        subhead: subhead
+      } only %}
+
+      {% if picture %}
+        {% set clickablePicture %}
+          <div class="relative">
+            {{ picture|inject_template }}
+            <div class="absolute inset-0 group-hover/linkify:bg-black/10 transition-colors"></div>
+          </div>
+        {% endset %}
+
+        {# tw #} {% set linkifyExtraClasses = 'max-w-max' %}
+        {# tw #} {% set linkifyExtraInteractiveClasses = 'group/linkify' %}
+        <div>
+          {% include '@components/utilities/linkify.twig' with {
+            component: clickablePicture,
+            url: link.url,
+            extraClasses: linkifyExtraClasses,
+            extraInteractiveClasses: linkifyExtraInteractiveClasses
+          } only %}
+        </div>
+      {% endif %}
+    </div>
+
+    {% if iconDescriptionList or editorial or fancyLinkList or buttonLinkList %}
+      <div class="space-y-5">
+
+        {% if iconDescriptionList and iconDescriptionListFirst %}
+          <div>
+            {% include '@components/Molecule/IconDescriptionList/IconDescriptionList.twig' with iconDescriptionList only %}
+          </div>
+        {% endif %}
+
+        {% if editorial %}
+          <div>
+            {% include '@components/Organism/Editorial/Editorial.twig' with editorial only %}
+          </div>
+        {% endif %}
+
+        {% if iconDescriptionList and not iconDescriptionListFirst %}
+          <div>
+            {% include '@components/Molecule/IconDescriptionList/IconDescriptionList.twig' with iconDescriptionList only %}
+          </div>
+        {% endif %}
+
+        {% if fancyLinkList and fancyLinkList.fancyLinks %}
+          <div>
+            {% include '@components/Molecule/LinkList/FancyLinkList/FancyLinkList.twig' with fancyLinkList|merge({
+              inline: true
+            }) only %}
+          </div>
+        {% endif %}
+
+        {% if buttonLinkList %}
+          <div>
+            {% include '@components/Molecule/LinkList/ButtonLinkList/ButtonLinkList.twig' with buttonLinkList only %}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+  </div>
+</section>

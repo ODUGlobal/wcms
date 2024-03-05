@@ -1,0 +1,36 @@
+#!/bin/bash
+# Remove multidev envs that no longer exist as branches in the repo.
+
+if [ $# -lt 1 ]; then
+  echo "Need a Pantheon site name"
+  exit 1
+fi
+
+if [ -z $CI_PROJECT_ID ]; then
+  echo "Not in pipeline context"
+  exit 1
+fi
+
+if [ -z $GITLAB_BOT_API_KEY ]; then
+  echo "Need API key GITLAB_BOT_API_KEY"
+  exit 1
+fi
+
+pantheon_site="$1"
+
+# clean up: remove artifact branches from the artifact that are no longer in the repo
+# get a list of existing repo branches
+curl -s --header "PRIVATE-TOKEN: $GITLAB_BOT_API_KEY" "https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/repository/branches" > /tmp/branches.json
+# self-test by looking for the master branch
+jq -e '.[].name | select(. == "master")' /tmp/branches.json > /dev/null || { echo "No master branch found in repo" && exit 1; }
+
+# generate a list of branches as they'd appear as envs
+repo_envs=$( jq -re '.[].name' /tmp/branches.json | sed 's|^.*/||' | cut -c1-11 | tr -d '\-_')
+
+# get a list of Pantheon branches and compare
+pantheon_envs=$( terminus multidev:list $pantheon_site --format=list --field=id )
+
+for env in $pantheon_envs; do
+  # does branch exist in repo?
+  echo $repo_envs | grep -q $env || { echo "removing $env" && terminus multidev:delete --delete-branch -y $pantheon_site.$env; }
+done

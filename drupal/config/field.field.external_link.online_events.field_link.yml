@@ -1,0 +1,23 @@
+uuid: 5ed081f4-33d8-44a5-9390-7070ff0598d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.external_link.online_events
+    - field.storage.external_link.field_link
+  module:
+    - link
+id: external_link.online_events.field_link
+field_name: field_link
+entity_type: external_link
+bundle: online_events
+label: Link
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 16
+field_type: link

@@ -1,0 +1,10 @@
+<div class="
+  prose md:prose-lg
+  {{ subsup ? 'prose-subsup' }}
+  {{ containerClasses|default(noMaxWidth ? 'max-w-none' : 'max-w-4xl') }}
+  {{ verticalRhythm|default('') }}{# none by default b/c it's typically not its own slab-level piece #}
+  {{ extraClasses|default('') }}
+  {{ hideBr ? '[&_br]:hidden' }}
+">
+  {{ wysiwyg }}
+</div>

@@ -1,0 +1,8 @@
+services:
+    odu_migrate.commands:
+        class: \Drupal\odu_migrate\Commands\OduMigrateCommands
+        arguments:
+            - "@entity_type.manager"
+            - "@file_system"
+        tags:
+            - { name: drush.command }

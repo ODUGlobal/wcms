@@ -1,0 +1,54 @@
+uuid: 8ec6b8f5-d5f6-4a3a-b551-31e9e9b23441
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.pullquote
+    - field.field.collection_item.pullquote.field_body
+    - field.field.collection_item.pullquote.field_citation_job_title
+    - field.field.collection_item.pullquote.field_citation_person
+    - field.field.collection_item.pullquote.field_is_smaller
+    - field.field.collection_item.pullquote.field_media
+    - field.field.collection_item.pullquote.field_theme
+  module:
+    - text
+id: collection_item.pullquote.default
+targetEntityType: collection_item
+bundle: pullquote
+mode: default
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_citation_job_title:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_citation_person:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_media:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: tiny
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  field_is_smaller: true
+  field_theme: true
+  title: true

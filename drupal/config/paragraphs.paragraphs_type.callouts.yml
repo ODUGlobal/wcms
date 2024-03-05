@@ -1,0 +1,10 @@
+uuid: 1cac48f3-0b32-4cbb-8a20-b49fcf8de96a
+langcode: en
+status: true
+dependencies: {  }
+id: callouts
+label: Callouts
+icon_uuid: null
+icon_default: null
+description: '<a href="https://newcity.gitlab.io/odu-online/components/detail/collection--call-to-action-collection.html">Call to Action collection</a>'
+behavior_plugins: {  }

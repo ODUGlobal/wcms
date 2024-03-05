@@ -1,0 +1,28 @@
+uuid: 1c57447a-09d2-4ad1-afea-471effdf28aa
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.tiny
+    - entity_browser.browser.logos
+    - media.type.logo
+  module:
+    - entity_embed
+    - media
+label: Logo
+id: logo
+type_id: entity
+type_settings:
+  entity_type: media
+  bundles:
+    - logo
+  display_plugins:
+    - 'view_mode:media.tiny'
+  entity_browser: logos
+  entity_browser_settings:
+    display_review: false
+  inline_entity_edit_enabled: true
+icon:
+  uri: 'public://embed_buttons/image.svg'
+  data: PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PgogICAgICAgIDwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgCiAgICAgICAgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+ICA8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2IiBmaWxsPSJjdXJyZW50Q29sb3IiIGNsYXNzPSJiaSBiaS1pbWFnZSIgdmlld0JveD0iMCAwIDE2IDE2Ij4gPHBhdGggZD0iTTYuMDAyIDUuNWExLjUgMS41IDAgMSAxLTMgMCAxLjUgMS41IDAgMCAxIDMgMHoiLz4gPHBhdGggZD0iTTIuMDAyIDFhMiAyIDAgMCAwLTIgMnYxMGEyIDIgMCAwIDAgMiAyaDEyYTIgMiAwIDAgMCAyLTJWM2EyIDIgMCAwIDAtMi0yaC0xMnptMTIgMWExIDEgMCAwIDEgMSAxdjYuNWwtMy43NzctMS45NDdhLjUuNSAwIDAgMC0uNTc3LjA5M2wtMy43MSAzLjcxLTIuNjYtMS43NzJhLjUuNSAwIDAgMC0uNjMuMDYyTDEuMDAyIDEyVjNhMSAxIDAgMCAxIDEtMWgxMnoiLz4gPC9zdmc+ICA=
+icon_uuid: null

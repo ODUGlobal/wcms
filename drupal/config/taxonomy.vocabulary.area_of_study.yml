@@ -1,0 +1,8 @@
+uuid: e8319dea-9c0c-4d8b-8cd6-d2706536fd56
+langcode: en
+status: true
+dependencies: {  }
+name: 'Area of Study'
+vid: area_of_study
+description: ''
+weight: 0

@@ -1,0 +1,29 @@
+uuid: b3b11a7f-8d97-42db-ba80-1906de77f182
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_overflow
+    - paragraphs.paragraphs_type.50_50_panel
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_overflow
+id: paragraph.50_50_panel.field_overflow
+field_name: field_overflow
+entity_type: paragraph
+bundle: 50_50_panel
+label: Overflow
+description: 'Use an overflow layout. This will affect the image size and crop at wide device widths.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

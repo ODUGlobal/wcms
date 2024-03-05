@@ -1,0 +1,108 @@
+uuid: f468d5b2-cfe1-4e83-a7f1-9d59e7c5fd09
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.degree_level.field_hide_from_listings
+    - field.field.taxonomy_term.degree_level.field_metatags
+    - field.field.taxonomy_term.degree_level.field_non_credit
+    - field.field.taxonomy_term.degree_level.field_paragraphs
+    - field.field.taxonomy_term.degree_level.field_show_degree_options
+    - taxonomy.vocabulary.degree_level
+  module:
+    - metatag
+    - paragraphs
+    - path
+    - text
+id: taxonomy_term.degree_level.default
+targetEntityType: taxonomy_term
+bundle: degree_level
+mode: default
+content:
+  description:
+    type: text_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_hide_from_listings:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_metatags:
+    type: metatag_firehose
+    weight: 6
+    region: content
+    settings:
+      sidebar: true
+    third_party_settings: {  }
+  field_non_credit:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_paragraphs:
+    type: paragraphs
+    weight: 5
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: _none
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_show_degree_options:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap_index_now:
+    weight: 130
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 8
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden: {  }

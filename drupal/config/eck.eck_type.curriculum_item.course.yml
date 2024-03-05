@@ -1,0 +1,9 @@
+uuid: fee2d3a7-a04a-4814-9484-466997abc721
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.curriculum_item
+name: Course
+type: course
+description: 'A course for a curriculum sheet'

@@ -1,0 +1,25 @@
+uuid: 0cb1c0b3-486b-43bf-beff-30fdb659ad5e
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:footer_call_block:029489ac-ab24-4da2-845a-8e549c8c4014'
+  module:
+    - block_content
+  theme:
+    - d10starter
+id: d10starter_footercallblock
+theme: d10starter
+region: footer_col_3
+weight: -8
+provider: null
+plugin: 'block_content:029489ac-ab24-4da2-845a-8e549c8c4014'
+settings:
+  id: 'block_content:029489ac-ab24-4da2-845a-8e549c8c4014'
+  label: 'Footer Call Block'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

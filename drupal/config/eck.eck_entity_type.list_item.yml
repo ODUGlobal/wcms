@@ -1,0 +1,10 @@
+uuid: dfdfe5dd-2a69-481d-8936-11c3e977d1c2
+langcode: en
+status: true
+dependencies: {  }
+id: list_item
+label: 'List Item'
+uid: false
+created: false
+changed: false
+title: true

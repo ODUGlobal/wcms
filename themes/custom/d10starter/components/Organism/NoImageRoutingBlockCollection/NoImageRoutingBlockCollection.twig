@@ -1,0 +1,43 @@
+{% set component %}
+  {% if routingBlocks|length == 1 %}
+    {% for routingBlock in routingBlocks %}
+      <div>
+        {#
+          NOTE: the object passed to `inject_template()` only works in Storybook.
+          In Drupal, that object will be ignored, and the logic for the `hLevel`
+          needs to be handled elsewhere.
+        #}
+        {{ routingBlock|inject_template({ hLevel: routingBlockHLevel|default(heading ? 3 : 2) }) }}
+      </div>
+    {% endfor %}
+  {% else %}
+    <ul role="list" class="grid grid-cols-1 gap-10 sm:gap-16 {{ withColumns ? 'lg:grid-cols-2' }}">
+      {% for routingBlock in routingBlocks %}
+        <li>
+          {#
+            NOTE: the object passed to `inject_template()` only works in Storybook.
+            In Drupal, that object will be ignored, and the logic for the `hLevel`
+            needs to be handled elsewhere.
+          #}
+          {{ routingBlock|inject_template({ hLevel: routingBlockHLevel|default(heading ? 3 : 2) }) }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endset %}
+
+{% include '@components/GenericSlab/GenericSlab.twig' with {
+  bigSpaceY: true,
+  extraSmallContainer: not withColumns,
+  heading: heading,
+  centeredHeading: true,
+  fancyLinkList: fancyLinkList,
+  centeredFancyLinkList: true,
+  editorial: editorial,
+  centeredEditorial: true,
+  centeredEditorialText: true,
+  component: component,
+  id: id,
+  verticalRhythm: verticalRhythm,
+  theme: theme
+} only %}

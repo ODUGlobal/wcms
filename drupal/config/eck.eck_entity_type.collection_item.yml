@@ -1,0 +1,10 @@
+uuid: b09b1ce9-6e69-4ef8-9159-9b7d6ae648b2
+langcode: en
+status: true
+dependencies: {  }
+id: collection_item
+label: 'Collection Item'
+uid: false
+created: false
+changed: false
+title: true

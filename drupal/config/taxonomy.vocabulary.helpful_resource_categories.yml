@@ -1,0 +1,8 @@
+uuid: efeda824-8870-4e32-b9ab-7e39a04ce275
+langcode: en
+status: true
+dependencies: {  }
+name: 'Helpful Resource Categories'
+vid: helpful_resource_categories
+description: 'A small number of terms that are the main Resource categorization'
+weight: 0

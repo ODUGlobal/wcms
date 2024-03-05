@@ -1,0 +1,11 @@
+{
+  "name": "drupal/odu_course_launchers",
+  "type": "drupal-module",
+  "description": "Importers for course launcher exports",
+  "minimum-stability": "dev",
+  "require": { 
+    "drupal/migrate_source_csv":"^2.0",
+    "drupal/migrate_plus":"^4.0",
+    "drupal/migrate_tools":"^4.0"
+  }
+}

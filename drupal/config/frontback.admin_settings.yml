@@ -1,0 +1,10 @@
+_core:
+  default_config_hash: xcMXLS31tCq0oX2LdlZCS2MGuu-P2_xqRQf4OYGgQIU
+frontback_repo_id: 'https://gitlab.insidenewcity.com/newcity/odu-global-2023'
+frontback_endpoint: 'https://magicyeti.us/frontback2'
+hide_button: false
+show_on_nonadmin_routes: true
+show_on_admin_routes: true
+hide_reporter_options: false
+hide_assignee_options: false
+hide_for_pages: ''

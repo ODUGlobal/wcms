@@ -1,0 +1,27 @@
+uuid: e1193fae-7680-4be3-aea2-1731589dfd23
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_job_title
+    - taxonomy.vocabulary.enrollment_team
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_job_title
+id: taxonomy_term.enrollment_team.field_job_title
+field_name: field_job_title
+entity_type: taxonomy_term
+bundle: enrollment_team
+label: 'Job title'
+description: 'Applied to each person on the team'
+required: false
+translatable: false
+default_value:
+  -
+    value: 'Enrollment Coordinator'
+default_value_callback: ''
+settings: {  }
+field_type: string

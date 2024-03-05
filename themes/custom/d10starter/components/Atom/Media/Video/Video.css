@@ -1,0 +1,18 @@
+/* Tweaks/fixes to 3rd-party Magnific Popup CSS */
+
+body.mfp-active {
+  overflow: hidden;
+
+  .mfp-bg {
+    height: 100% !important;
+    position: fixed !important;
+    overflow: hidden;
+  }
+
+  .mfp-wrap {
+    top: 0 !important;
+    position: fixed !important;
+    overflow: auto;
+    height: 100% !important;
+  }
+}

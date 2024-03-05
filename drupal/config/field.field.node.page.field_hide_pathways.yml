@@ -1,0 +1,29 @@
+uuid: e4af23a8-8f38-4b29-8346-2ee3aae7e8c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hide_pathways
+    - node.type.page
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_hide_pathways
+id: node.page.field_hide_pathways
+field_name: field_hide_pathways
+entity_type: node
+bundle: page
+label: 'Hide pathways'
+description: 'Disable the dots in the page background'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

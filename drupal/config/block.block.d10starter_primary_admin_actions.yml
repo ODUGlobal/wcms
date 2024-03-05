@@ -1,0 +1,20 @@
+uuid: 9b2a1743-544a-4fdd-acfc-7d4c618bffff
+langcode: en
+status: false
+dependencies:
+  theme:
+    - d10starter
+_core:
+  default_config_hash: Q9_2whdOj1YIomfvsIfopROW4FT_X5pY0DjdOiOaQ5U
+id: d10starter_primary_admin_actions
+theme: d10starter
+region: utility_nav
+weight: -1
+provider: null
+plugin: local_actions_block
+settings:
+  id: local_actions_block
+  label: 'Primary admin actions'
+  label_display: '0'
+  provider: core
+visibility: {  }

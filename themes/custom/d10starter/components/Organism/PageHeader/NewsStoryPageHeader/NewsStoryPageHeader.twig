@@ -1,0 +1,23 @@
+<header>
+  <div class="{{ verticalRhythm|default('vertical-rhythm-standard') }}">
+    <div class="container">
+      <div class="mx-auto {{ wider ? 'max-w-4xl' : 'max-w-3xl' }}">
+
+        <div class="space-y-10">
+          <div>
+            {% include '@components/Atom/Heading/Heading.twig' with heading|default({})|merge({
+              tagLevel: 1
+            }) only %}
+          </div>
+
+          {% if figure %}
+            <div>
+              {{ figure|inject_template }}
+            </div>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</header>

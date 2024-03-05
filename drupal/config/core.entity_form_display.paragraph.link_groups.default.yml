@@ -1,0 +1,63 @@
+uuid: d20319b5-742c-425a-8bfd-98a69152f70b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.link_groups.field_body
+    - field.field.paragraph.link_groups.field_collection_items
+    - field.field.paragraph.link_groups.field_heading
+    - field.field.paragraph.link_groups.field_number_of_columns
+    - paragraphs.paragraphs_type.link_groups
+  module:
+    - inline_entity_form
+    - text
+id: paragraph.link_groups.default
+targetEntityType: paragraph
+bundle: link_groups
+mode: default
+content:
+  field_body:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_collection_items:
+    type: inline_entity_form_complex
+    weight: 3
+    region: content
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: 'link group'
+      label_plural: 'link groups'
+      allow_new: true
+      allow_existing: true
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+      removed_reference: optional
+    third_party_settings: {  }
+  field_heading:
+    type: text_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_number_of_columns:
+    type: number
+    weight: 2
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

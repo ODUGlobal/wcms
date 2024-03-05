@@ -1,0 +1,11 @@
+# All action links for this module
+
+odu_emsi.emsi_cache_add:
+  # Which route will be called by the link
+  route_name: odu_emsi.emsi_cache_add
+  title: 'Add EMSI Cache'
+
+  # Where will the link appear, defined by route name.
+  appears_on:
+    - entity.odu_emsi_emsi_cache.collection
+    - entity.odu_emsi_emsi_cache.canonical

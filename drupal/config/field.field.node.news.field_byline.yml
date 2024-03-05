@@ -1,0 +1,26 @@
+uuid: 360c4311-c39f-4d8a-9c05-d8725918ea03
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_byline
+    - node.type.news
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_byline
+id: node.news.field_byline
+field_name: field_byline
+entity_type: node
+bundle: news
+label: Byline
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

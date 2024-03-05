@@ -1,0 +1,33 @@
+{% set useColumns = columns and fancyLinks|length > 3 and not inline %}
+<div class="{{ inline ? 'overflow-hidden p-2 -m-2' }}">
+  <ul
+    role="list"
+    class="
+      {% if inline %}
+        flex flex-wrap children:mx-3 children:my-1.5 -mx-3 -my-1.5 {{ centered ? 'justify-center' }}
+      {% elseif useColumns %}
+        columns-3xs [column-count:2] gap-10 max-w-max
+      {% elseif slim %}
+        flex flex-col space-y-2
+      {% else %}
+        flex flex-col space-y-3.5
+      {% endif %}
+    "
+  >
+    {% for fancyLink in fancyLinks %}
+      <li class="
+        {{ useColumns ? 'break-inside-avoid descendants:break-inside-avoid' }}
+        {{ useColumns and slim ? 'pb-2' }}
+        {{ useColumns and not slim ? 'pb-3.5' }}
+      ">
+        {% set withAfterIcon = fancyLink.withBeforeIcon ? false : true %}
+        {% if 'withAfterIcon' in fancyLink|keys %}
+          {% set withAfterIcon = fancyLink.withAfterIcon %}
+        {% endif %}
+        {% include '@components/Atom/Link/FancyLink/FancyLink.twig' with fancyLink|merge({
+          withAfterIcon: withAfterIcon
+        }) only %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>

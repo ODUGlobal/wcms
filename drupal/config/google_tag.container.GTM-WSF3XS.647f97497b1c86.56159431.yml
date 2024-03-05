@@ -1,0 +1,22 @@
+uuid: f04a226c-11f5-4d59-a1f9-eaf69214e9d2
+langcode: en
+status: true
+dependencies: {  }
+id: GTM-WSF3XS.647f97497b1c86.56159431
+label: GTM-WSF3XS
+weight: 0
+tag_container_ids:
+  - GTM-WSF3XS
+advanced_settings: {  }
+dimensions_metrics: {  }
+conditions: {  }
+events:
+  search: {  }
+  login:
+    method: CMS
+  sign_up:
+    method: CMS
+  generate_lead:
+    value: ''
+    currency: ''
+  custom: {  }

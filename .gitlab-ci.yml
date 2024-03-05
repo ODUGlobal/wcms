@@ -1,0 +1,192 @@
+image: newcity/docker-compose:latest
+
+services:
+  - docker:24.0.5-dind
+
+before_script:
+  - set -a
+  - test -f .env && . .env
+  - set +a
+  - export MULTIDEV_BRANCH=$( echo $CI_COMMIT_REF_SLUG | sed 's|^.*/||' | sed 's/config\-patch\-//' | cut -c1-11 | tr -d '\-_' | sed 's/'$CI_DEFAULT_BRANCH'/test/' )
+  - export MULTIDEV_BASE=$MULTIDEV_BRANCH-$PANTHEON_PROJECT.pantheonsite.io
+  - export TEST_BASE=test-$PANTHEON_PROJECT.pantheonsite.io
+  - pwd && ls -al docker/ci
+  - cp docker/ci/Makefile .
+
+stages:
+  - build-storybook
+  - deploy-storybook
+  - push
+  - test
+  - deploy
+
+build:storybook:
+  stage: build-storybook
+  script:
+    - docker-compose --file docker/ci/storybook-build.yml --project-directory . run storybook
+  artifacts:
+    paths:
+      - storybook-static
+      - dist
+    expire_in: 1 week
+  only:
+    - main
+    - merge_requests
+
+pages:
+  stage: deploy-storybook
+  script:
+    - mv storybook-static public
+  artifacts:
+    paths:
+      - public
+  only:
+    - main
+
+chromatic:
+  stage: deploy-storybook
+  image: node:alpine
+  before_script: []
+  script:
+    - apk update && apk add git
+    - npm init -y
+    - npx chromatic --project-token $CHROMATIC_PROJECT_TOKEN --ci --exit-zero-on-changes -d storybook-static/
+  only:
+    - main
+    - merge_requests
+
+deploy:test:
+  stage: push
+  image: newcity/builder:php81
+  script:
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$PANTHEON_PRIVATE_KEY")
+    - make ci_init
+    - make build_site
+    - make push_test
+    - make create_artifact
+    - make deploy_test
+    - echo "{}" > sitemap.json && flatten_sitemap --randomize --limit 1000 --sitemap https://$MULTIDEV_BASE/sitemap.xml --f $LIVE_BASE --r $MULTIDEV_BASE --config sitemap.json
+  only:
+    - main
+  artifacts:
+    paths:
+      - drupal_build
+      - sitemap.json
+  environment:
+    name: pantheon/test
+    deployment_tier: staging
+    url: https://$TEST_BASE
+
+deploy:branch:
+  stage: push
+  image: newcity/builder:php81
+  script:
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$PANTHEON_PRIVATE_KEY")
+    - make ci_init
+    - make build_site
+    - make push_branch
+    - make deploy_multidev
+    - echo "{}" > sitemap.json && flatten_sitemap --randomize --limit 1000 --sitemap https://$MULTIDEV_BASE/sitemap.xml --f $LIVE_BASE --r $MULTIDEV_BASE --config sitemap.json
+    - echo "MULTIDEV_ENV_URL=https://$MULTIDEV_BASE" >> multidev.env
+    - |
+      # URL for the MultiDev environment:
+      echo $MULTIDEV_ENV_URL
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event" && $CI_COMMIT_MESSAGE !~ /.*^skip[- ]multi-?dev.*/
+  environment:
+    name: multidev/$CI_COMMIT_REF_SLUG
+    deployment_tier: testing
+    url: $MULTIDEV_ENV_URL
+    on_stop: remove_multidev
+  artifacts:
+    paths:
+      - sitemap.json
+    reports:
+      dotenv: multidev.env
+
+remove_multidev:
+  stage: push
+  image: newcity/builder:php81
+  variables:
+    GIT_STRATEGY: none
+  script:
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$PANTHEON_PRIVATE_KEY")
+    - terminus auth:login --machine-token=$PANTHEON_MACHINE_TOKEN
+    - terminus multidev:delete --delete-branch -y -- $PANTHEON_PROJECT.$MULTIDEV_BRANCH
+  only:
+    - merge_requests
+  when: manual
+  environment:
+    name: multidev/$CI_COMMIT_REF_SLUG
+    action: stop
+
+test:sitemap:
+  image: newcity/sitemap-curl
+  stage: test
+  script:
+    - php /app/scan-sitemap.php
+  artifacts:
+    reports:
+      junit:
+        - report.xml
+  only:
+    - main
+    - merge_requests
+  allow_failure: true
+
+pa11y:
+  image: newcity/pa11y-sh:junit
+  stage: test
+  script:
+    - pa11y-ci -c test/pa11y/pa11y.json -s https://$MULTIDEV_BASE/sitemap.xml -f $LIVE_BASE -r $MULTIDEV_BASE -j > output.json || export PA11Y_FAIL=1
+    - pa11yjson2junit output.json > pa11y.xml
+    - test -z $PA11Y_FAIL || exit 1
+  allow_failure: true
+  artifacts:
+    reports:
+      junit:
+        - pa11y.xml
+  dependencies: []
+  when: manual
+  only:
+    - main
+
+backstop:
+  stage: test
+  image:
+    name: backstopjs/backstopjs:5.0.2
+    entrypoint: [""]
+  script:
+    - cd test/backstop/
+    - npm install
+    - ./generate-scenarios.js
+    - backstop reference && backstop test
+  artifacts:
+    paths:
+      - test/backstop/backstop.json
+      - test/backstop/backstop_data
+    reports:
+      junit: test/backstop/backstop_data/ci_report/xunit.xml
+    when: always
+  allow_failure: true
+  only:
+    - main
+    - merge_requests
+
+deploy:live:
+  stage: deploy
+  image: newcity/builder:php81
+  script:
+    - eval $(ssh-agent -s)
+    - ssh-add <(echo "$PANTHEON_PRIVATE_KEY")
+    - make ci_init
+    - make deploy_live
+  environment:
+    name: pantheon/live
+    deployment_tier: production
+    url: $LIVE_BASE
+  only:
+    - main

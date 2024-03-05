@@ -1,0 +1,10 @@
+{% import '@components/Atom/Button/Button.twig' as macros %}
+
+<a
+  href="{{ link ? link.url : url }}"
+  class="
+    {{ ghost ? 'ghost' }}
+    {{ block ? 'block' : 'inline-block' }}
+    {{ macros.baseButtonClasses() }}
+  "
+>{{ link ? link.title : title }}</a>

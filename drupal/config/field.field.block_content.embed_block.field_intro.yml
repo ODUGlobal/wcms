@@ -1,0 +1,26 @@
+uuid: 7996ecb4-da8f-4a6f-952d-01f9847a41ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.embed_block
+    - field.storage.block_content.field_intro
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_intro
+id: block_content.embed_block.field_intro
+field_name: field_intro
+entity_type: block_content
+bundle: embed_block
+label: Intro
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

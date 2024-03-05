@@ -1,0 +1,29 @@
+uuid: 071c8891-2ed6-4ca6-9e54-d3c1eb28c101
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.alerts.page_alerts
+    - field.storage.alerts.field_icon
+    - taxonomy.vocabulary.alert_icons
+id: alerts.page_alerts.field_icon
+field_name: field_icon
+entity_type: alerts
+bundle: page_alerts
+label: Icon
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      alert_icons: alert_icons
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

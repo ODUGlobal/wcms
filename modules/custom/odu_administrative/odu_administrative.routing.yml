@@ -1,0 +1,20 @@
+odu_administrative.dashboard:
+  path: '/admin/odu-dashboard'
+  defaults:
+    _controller: '\Drupal\odu_administrative\Controller\DashboardController::view'
+    _title: 'ODU Admin Dashboard'
+  requirements:
+    _permission: 'view the administration theme'
+  options:
+    _admin_route: TRUE
+
+odu_administrative.settings:
+  path: '/admin/config/system/odu_customizations'
+  defaults:
+    _form: '\Drupal\odu_administrative\Form\Settings'
+    _title: 'ODU Customizations Settings'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE
+

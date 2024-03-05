@@ -1,0 +1,26 @@
+uuid: 6c04dc4f-4801-436f-97dc-d3f09765e392
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_suffix
+    - paragraphs.paragraphs_type.course_table
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_suffix
+id: paragraph.course_table.field_suffix
+field_name: field_suffix
+entity_type: paragraph
+bundle: course_table
+label: Suffix
+description: 'Additional information following the course table'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

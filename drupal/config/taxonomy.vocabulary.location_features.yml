@@ -1,0 +1,8 @@
+uuid: db8b7227-2958-43bf-815c-b29f96b1d52d
+langcode: en
+status: true
+dependencies: {  }
+name: 'Location Features'
+vid: location_features
+description: ''
+weight: 0

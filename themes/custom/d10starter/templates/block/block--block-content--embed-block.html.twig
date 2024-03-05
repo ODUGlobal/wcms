@@ -1,0 +1,20 @@
+{% set label_in_content = true %}
+{% extends "block.html.twig" %}
+{% block content %}
+  {% set content_block = content['#block_content'] %}
+  {% include '@components/GenericSlab/GenericSlab.twig' with {
+      component: content|without('title'),
+      editorial: {
+        wysiwyg: content.field_intro|children|first,
+      },
+      heading: {
+        headline: label,
+        hLevel: 2,
+      },
+      centered: true,
+      centeredHeading: true,
+      centeredEditorial: true,
+      centeredEditorialText: true,
+      theme: content_block.field_theme.value ? content_block.field_theme.entity.label() : null,
+  } only %}
+{% endblock %}

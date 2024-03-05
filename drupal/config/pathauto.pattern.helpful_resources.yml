@@ -1,0 +1,22 @@
+uuid: 5983e129-240b-48dc-b29e-6b00e8e65dc2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: helpful_resources
+label: 'Helpful Resources'
+type: 'canonical_entities:node'
+pattern: '/resources/[node:title]'
+selection_criteria:
+  1be9a67a-e47f-42d0-9be8-5c659af4ca04:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 1be9a67a-e47f-42d0-9be8-5c659af4ca04
+    context_mapping:
+      node: node
+    bundles:
+      helpful_resource: helpful_resource
+selection_logic: and
+weight: -5
+relationships: {  }

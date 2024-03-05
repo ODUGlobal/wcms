@@ -1,0 +1,8 @@
+uuid: 53373697-3320-4c2a-8b6a-75dd14d2641c
+langcode: en
+status: true
+dependencies: {  }
+id: dashboard
+label: Dashboard
+description: 'Helpful content links'
+locked: false

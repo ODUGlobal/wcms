@@ -1,0 +1,114 @@
+{#
+  Use this template to create page-demos by doing
+  `{% extends '@components/page-templates-and-demos/Page.twig' %}` and overriding the appropriate blocks:
+
+  - If there is no sidebar, then just override the entire `content` block.
+  - If there IS a sidebar, then override at least the `main` and `sidebar`
+    blocks, and optionally also the `prefix` and `fullWidth` blocks as
+    needed.
+
+  Also, if there IS a sidebar, use the `sidebarLeft` and `sidebarBottom`
+  booleans to control placement of sidebar on desktop and mobile respectively.
+  (Can either set the booleans in the `.stories.ts` file or do something like
+  `{% set sidebarLeft = true %}` directly in the page-demo Twig file
+  that `extends` this one.)
+
+  If `stretchContent` is set to `true`, then the full page's contents will
+  stretch vertically (if needed) to reach at least the height of the viewport,
+  with the `<main>` getting the `flex-grow` treatment.
+#}
+
+{#
+  A Storybook/Twing detail implementation. Just ensures that an `extends` template
+  gets its `<!-- START: ... -->` HTML comment in the DOM.
+#}
+{% block _startExtends %}{% endblock %}
+
+<div {% if stretchContent %}class="flex flex-col min-h-screen"{% endif %}>
+
+  {% block header %}
+    {{ header|inject_template }}
+  {% endblock %}
+
+  <main class="{{ stretchContent ? 'grow flex flex-col' }}">
+
+    {% block content %}
+
+      {# optional full-width area before main/sidebar (page-header, breadcrumbs...) #}
+      {% block prefix %}
+      {% endblock %}
+
+      {#
+        Should match what we do on `:root` (in TW config).
+        We put it around sidebar-area and also around the against-sidebar area,
+        so that the container-query mechanism can set the vertical-space variables appropriately.
+      #}
+      {# tw #} {% set verticalSpaceVars = '[--vertical-space:theme(spacing.vertical-space-mobile-value)] sm:[--vertical-space:theme(spacing.vertical-space-value)]' %}
+
+      {% set mainBlock %}
+        <div class="with-sidebar__main-inner-wrapper {{ verticalSpaceVars }}">
+          {# in SB, `content` doesn't do anything here #}
+          {# note: main does NOT include its own `.container` wrapper before `lg` #}
+          {% block main %}{{ content }}{% endblock %}
+        </div>
+      {% endset %}
+
+      {% set main %}
+        <div class="
+          with-sidebar__main sidebar-up:col-span-2
+          {{ not sidebarLeft and not sidebarBottom ? 'sidebar-up:order-first' }}
+          {{ sidebarLeft and sidebarBottom ? 'sidebar-up:order-last' }}
+        ">
+          {% include '@components/utilities/container-query.twig' with { component: mainBlock } only %}
+        </div>
+      {% endset %}
+
+      {% set sidebarBlock %}
+        <div class="with-sidebar__sidebar-inner-wrapper {{ verticalSpaceVars }}">
+          {# in SB, `content` doesn't do anything here #}
+          {% block sidebar %}{{ content }}{% endblock %}
+        </div>
+      {% endset %}
+
+      {# if it would be convenient, could set up container-query stuff for the sidebar also #}
+      {% set sidebar %}
+        <aside class="with-sidebar__sidebar sidebar-up:col-span-1">
+          {% include '@components/utilities/container-query.twig' with { component: sidebarBlock } only %}
+        </aside>
+      {% endset %}
+
+      {#
+        Note: The whole main + sidebar region acquires `my-vertical-space` at the lg breakpoint.
+        This is necessary because once main and sidebar are side-by-side, the whole piece
+        is not full-bleed. As a result, however, it will sometimes be necessary to adjust
+        the vertical-rhythm classes on the first/last item in main or sidebar.
+      #}
+      <div class="with-sidebar sidebar-up:my-vertical-space sidebar-up:container sidebar-up:grid sidebar-up:grid-cols-3 sidebar-up:gap-x-16">
+        {% if sidebarBottom %}
+          {{ main }}
+          {{ sidebar }}
+        {% else %}
+          {{ sidebar }}
+          {{ main }}
+        {% endif %}
+      </div>
+
+      {# optional full-width area after main/sidebar #}
+      {% block fullWidth %}
+      {% endblock %}
+
+    {% endblock %}
+
+  </main>
+
+  {% block footer %}
+    {{ footer|inject_template }}
+  {% endblock %}
+
+</div>
+
+{#
+  A Storybook/Twing detail implementation. Just ensures that an `extends` template
+  gets its `<!-- END: ... -->` HTML comment in the DOM.
+#}
+{% block _endExtends %}{% endblock %}

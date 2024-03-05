@@ -1,0 +1,30 @@
+uuid: 8c6e17dd-76e5-4dde-9bd5-5fa8e41bbd99
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.callout
+    - eck.eck_type.collection_item.cost_callout
+    - field.storage.paragraph.field_collection_items
+    - paragraphs.paragraphs_type.callouts
+id: paragraph.callouts.field_collection_items
+field_name: field_collection_items
+entity_type: paragraph
+bundle: callouts
+label: 'Collection Items'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:collection_item'
+  handler_settings:
+    target_bundles:
+      callout: callout
+      cost_callout: cost_callout
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: callout
+field_type: entity_reference

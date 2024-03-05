@@ -1,0 +1,10 @@
+uuid: 946b8fc8-2963-41ff-bb2d-4013150e7d55
+langcode: en
+status: true
+dependencies: {  }
+id: accordion
+label: Accordion
+icon_uuid: null
+icon_default: null
+description: "Collapsible tabs. It's generally not a good idea to hide content on a page, so use with care."
+behavior_plugins: {  }

@@ -1,0 +1,7 @@
+services:
+  odu_administrative.link_utilities:
+    class: Drupal\odu_administrative\LinkUtilities
+  odu_administrative.static_proxy:
+    class: Drupal\odu_administrative\StaticProxy
+  odu_administrative.licensure_utilities:
+    class: Drupal\odu_administrative\LicensureUtilities

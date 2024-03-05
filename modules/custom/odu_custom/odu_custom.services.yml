@@ -1,0 +1,13 @@
+services:
+  odu_custom.twig.CustomTwig:
+    class: Drupal\odu_custom\CustomTwig
+    tags:
+      - { name: twig.extension }
+  odu_custom.theme:
+    class: Drupal\odu_custom\Theme
+    arguments:
+      - '@entity_type.manager'
+      - '@theme.manager'
+  odu_custom.entity_view_builder:
+    class: Drupal\odu_custom\View\EntityViewBuilder
+    arguments: ['@entity_type.manager']

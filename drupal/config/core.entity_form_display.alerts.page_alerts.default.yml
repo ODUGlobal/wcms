@@ -1,0 +1,73 @@
+uuid: c1bea28d-b2d1-4253-af00-63a0e536ce9f
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.alerts.page_alerts
+    - field.field.alerts.page_alerts.field_body
+    - field.field.alerts.page_alerts.field_fancy_link
+    - field.field.alerts.page_alerts.field_icon
+    - field.field.alerts.page_alerts.field_theme
+    - field.field.alerts.page_alerts.field_title
+  module:
+    - linkit
+    - text
+id: alerts.page_alerts.default
+targetEntityType: alerts
+bundle: page_alerts
+mode: default
+content:
+  field_body:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_fancy_link:
+    type: linkit
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: false
+    third_party_settings: {  }
+  field_icon:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_theme:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

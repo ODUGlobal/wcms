@@ -1,0 +1,26 @@
+uuid: 2b031be7-2d43-49fc-be43-867018a273be
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_phone
+    - taxonomy.vocabulary.location
+  module:
+    - datalayer
+    - telephone
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_phone
+id: taxonomy_term.location.field_phone
+field_name: field_phone
+entity_type: taxonomy_term
+bundle: location
+label: Phone
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

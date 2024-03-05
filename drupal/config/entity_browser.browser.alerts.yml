@@ -1,0 +1,42 @@
+uuid: 231645ea-7c35-459e-9570-9e88ef62b5f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.alerts
+  module:
+    - entity_browser_entity_form
+    - views
+name: alerts
+label: Alerts
+display: iframe
+display_configuration:
+  width: '500'
+  height: '500'
+  link_text: 'Select entities'
+  auto_open: true
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  d34c56be-0e80-4864-a0e5-273b856c275a:
+    id: view
+    uuid: d34c56be-0e80-4864-a0e5-273b856c275a
+    label: 'Add existing'
+    weight: -9
+    settings:
+      submit_text: 'Select alert'
+      auto_select: false
+      view: alerts
+      view_display: entity_browser_1
+  0529c448-c113-477e-87fe-74dd04a36342:
+    id: entity_form
+    uuid: 0529c448-c113-477e-87fe-74dd04a36342
+    label: 'Add new'
+    weight: -10
+    settings:
+      submit_text: Add
+      entity_type: alerts
+      bundle: page_alerts
+      form_mode: default

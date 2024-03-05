@@ -1,0 +1,8 @@
+uuid: a27f4d3a-5f03-4d86-8d5a-dc4609518d48
+langcode: en
+status: true
+dependencies: {  }
+name: 'Licensing Body'
+vid: licensing_body
+description: 'An organization responsible for licensure'
+weight: 0

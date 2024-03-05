@@ -1,0 +1,10 @@
+uuid: 609f5696-9489-40b9-ac15-0537d289d2a2
+langcode: en
+status: true
+dependencies: {  }
+id: hero
+label: Hero
+icon_uuid: null
+icon_default: null
+description: 'Big image page header'
+behavior_plugins: {  }

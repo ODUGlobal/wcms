@@ -1,0 +1,19 @@
+uuid: adce4087-e924-40cf-8782-a77457d69f97
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_emsi_title
+    - node.type.program
+id: node.program.field_emsi_title
+field_name: field_emsi_title
+entity_type: node
+bundle: program
+label: 'EMSI title'
+description: 'Optional title override for EMSI block'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

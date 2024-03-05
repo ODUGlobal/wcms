@@ -1,0 +1,8 @@
+uuid: d39b7752-34d8-47b9-889c-cfc602db82b0
+langcode: en
+status: true
+dependencies: {  }
+name: 'Theme Options'
+vid: theme_options
+description: 'i.e., background colors'
+weight: 0

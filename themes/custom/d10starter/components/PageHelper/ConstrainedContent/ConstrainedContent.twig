@@ -1,0 +1,26 @@
+{#
+  If a big chunk of a page should get the left-aligned constrained-width treatment,
+  then put all those pieces in one of these (within the `content` block when
+  `extend`-ing `Page.twig`). There are corresponding Tailwind variants that
+  depend on the `.constrained-content` class here.
+#}
+
+{% set containerQueryComponent %}
+  <div class="px-container">
+    {% block constrainedContent %}
+      {{ constrainedContent }}
+    {% endblock %}
+  </div>
+{% endset %}
+
+<div class="constrained-content container">
+  <div class="max-w-4xl {{ centered ? 'mx-auto' }}">
+    <div class="-mx-container">
+      {% embed '@components/utilities/container-query.twig' %}
+        {% block component %}
+          {{ containerQueryComponent }}
+        {% endblock %}
+      {% endembed %}
+    </div>
+  </div>
+</div>

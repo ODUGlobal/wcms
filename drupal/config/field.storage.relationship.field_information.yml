@@ -1,0 +1,19 @@
+uuid: c9fa4137-f6e5-452b-8a38-c12730365c06
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+    - text
+id: relationship.field_information
+field_name: field_information
+entity_type: relationship
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

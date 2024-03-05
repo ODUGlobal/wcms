@@ -1,0 +1,35 @@
+uuid: 8f849712-5f76-4f8d-b664-2f91cfc24be2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_plus_odu_online_partner
+    - node.type.program
+    - taxonomy.vocabulary.location
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_plus_odu_online_partner
+id: node.program.field_plus_odu_online_partner
+field_name: field_plus_odu_online_partner
+entity_type: node
+bundle: program
+label: '+ODU Online Partner'
+description: 'Choose partners offering this program as an online program through plusODU.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      location: location
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

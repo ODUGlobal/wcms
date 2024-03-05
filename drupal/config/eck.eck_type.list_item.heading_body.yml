@@ -1,0 +1,9 @@
+uuid: 58ad9ef7-f26b-4886-a900-3dce97f6ca27
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.list_item
+name: 'Heading + Body'
+type: heading_body
+description: ''

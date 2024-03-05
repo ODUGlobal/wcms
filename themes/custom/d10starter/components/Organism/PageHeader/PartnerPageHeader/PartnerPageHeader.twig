@@ -1,0 +1,87 @@
+<header>
+  {% set component %}
+    <div class="bg-gradient-to-b from-theme-bg-color to-mid-blue-500 text-theme-text-color py-vertical-space">
+      <div class="container">
+
+        <div class="
+          grid grid-cols-1 gap-10
+          {{ map ? 'xl:grid-cols-2 xl:gap-16' }}
+        ">
+
+          <div class="space-y-5 sm:space-y-8 max-w-5xl">
+            <div class="space-y-4">
+              <div>
+                {% include '@components/Atom/Heading/Heading.twig' with heading|default({})|merge({
+                  tagLevel: 1
+                }) only %}
+              </div>
+
+              {% if address %}
+                <p class="text-lg font-bold">{{ address }}</p>
+              {% endif %}
+            </div>
+
+            {% if h2Headline or emailLink or phoneLink or fancyLink %}
+              <div class="space-y-4">
+                {% if h2Headline %}
+                  <h2 class="font-bold text-[calc(22rem/16)]">{{ h2Headline }}</h2>
+                {% endif %}
+
+                {# tw #} {% set linkClasses = 'hocus:text-theme-fancy-link-color underline' %}
+
+                {% if emailLink or phoneLink or faxLink %}
+                  <dl class="space-y-4">
+
+                    {% if emailLink %}
+                      <div>
+                        <dt class="inline">Email: </dt>
+                        <dd class="inline"><a href="{{ emailLink.url }}" class="{{ linkClasses }}">{{ emailLink.title }}</a></dd>
+                      </div>
+                    {% endif %}
+
+                    {% if phoneLink %}
+                      <div>
+                        <dt class="inline">Phone: </dt>
+                        <dd class="inline"><a href="{{ phoneLink.url }}" class="{{ linkClasses }}">{{ phoneLink.title }}</a></dd>
+                      </div>
+                    {% endif %}
+
+                    {% if faxLink %}
+                      <div>
+                        <dt class="inline">Fax: </dt>
+                        <dd class="inline"><a href="{{ faxLink.url }}" class="{{ linkClasses }}">{{ faxLink.title }}</a></dd>
+                      </div>
+                    {% endif %}
+                  </dl>
+                {% endif %}
+
+                {% if fancyLink %}
+                  <div class="text-xl">
+                    {% set withAfterIcon = fancyLink.withBeforeIcon ? false : true %}
+                    {% if 'withAfterIcon' in fancyLink|keys %}
+                      {% set withAfterIcon = fancyLink.withAfterIcon %}
+                    {% endif %}
+                    {% include '@components/Atom/Link/FancyLink/FancyLink.twig' with fancyLink|merge({
+                      withAfterIcon: withAfterIcon
+                    }) only %}
+                  </div>
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+
+          {# Just a placeholder in SB (for now); in Drupal will be embedded Leaflet / OSM map. #}
+          {% if map %}
+            <div>{{ map }}</div>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+  {% endset %}
+
+  {% include '@components/utilities/theme-flag.twig' with {
+    component: component,
+    theme: 'navy-500'
+  } only %}
+</header>

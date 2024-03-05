@@ -1,0 +1,74 @@
+uuid: ca96ecdf-f166-438a-8956-e54f83c2da9c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.curriculum_sheet.field_additional_information
+    - field.field.node.curriculum_sheet.field_metatags
+    - field.field.node.curriculum_sheet.field_paragraphs
+    - node.type.curriculum_sheet
+  module:
+    - entity_reference_revisions
+    - field_group
+    - metatag
+    - text
+    - user
+third_party_settings:
+  field_group:
+    group_program_information:
+      children:
+        - field_additional_information
+      label: 'Program Information'
+      parent_name: ''
+      region: content
+      weight: 2
+      format_type: html_element
+      format_settings:
+        label: 'Program Information'
+        classes: ''
+        id: ''
+        element: div
+        show_label: true
+        label_element: h2
+        attributes: 'id="program-information"'
+        effect: none
+        speed: fast
+id: node.curriculum_sheet.default
+targetEntityType: node
+bundle: curriculum_sheet
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_additional_information:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

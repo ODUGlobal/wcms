@@ -1,0 +1,15 @@
+uuid: 00cdc866-ea83-4834-a8a5-d1f7610a7da3
+langcode: en
+status: true
+dependencies: {  }
+name: partial_width
+label: 'Partial width'
+effects:
+  8c86e53e-6272-4b0e-8f2b-629f6d41b3d8:
+    uuid: 8c86e53e-6272-4b0e-8f2b-629f6d41b3d8
+    id: image_scale
+    weight: 2
+    data:
+      width: 420
+      height: null
+      upscale: false

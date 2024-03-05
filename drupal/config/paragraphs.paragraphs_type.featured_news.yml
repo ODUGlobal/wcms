@@ -1,0 +1,10 @@
+uuid: ad133f16-691f-4478-a9d5-57506b7eb9c9
+langcode: en
+status: true
+dependencies: {  }
+id: featured_news
+label: 'Featured News'
+icon_uuid: null
+icon_default: null
+description: 'References to highlight featured news'
+behavior_plugins: {  }

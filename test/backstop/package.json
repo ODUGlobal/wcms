@@ -1,0 +1,16 @@
+{
+  "name": "backstop_sitemap",
+  "version": "0.0.1",
+  "description": "Sitemap testing with backstop.js",
+  "main": "generate-backstop-config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "pl2html": "^1.1.3",
+    "url": "^0.11.0"
+  }
+}

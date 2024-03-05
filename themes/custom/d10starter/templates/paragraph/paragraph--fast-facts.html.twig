@@ -1,0 +1,17 @@
+{% set add_cache = content|render %}
+
+{% set facts = [] %}
+
+{% for item in paragraph.field_collection_items %}
+    {% set facts = facts|merge([{
+        'number' : item.entity.field_display_title.value,
+        'editorial' : item.entity.field_body.value ? {'wysiwyg' : {'#type': 'processed_text', '#text':  item.entity.field_body.value, '#format': item.entity.field_body.format}} : null
+    }]) %}
+{% endfor %}
+
+{% include '@components/Organism/FastFacts/FastFacts.twig' with {
+    heading : paragraph.field_heading ? {'headline' : paragraph.field_heading.value} : null,
+    facts : facts,
+    theme : paragraph.field_theme_list.value ? paragraph.field_theme_list.value : 'default',
+    innerTheme : paragraph.field_block_theme.value ? paragraph.field_block_theme.value : 'navy-700'
+} only %}

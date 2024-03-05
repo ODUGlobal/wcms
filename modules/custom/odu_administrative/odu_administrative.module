@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function odu_administrative_theme($existing, $type, $theme, $path) {
+  return [
+    'odu_admin_listing' => [
+      'variables' => [
+        'items' => [],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_embederator_embed_alter().
+ */
+function odu_administrative_embederator_embed_alter(&$markup, $context) {
+  if ($context['embederator_type']->id() == 'formassembly') {
+    if (\Drupal::config('odu_administrative.settings')->get('use_formassembly_static_caching')) {
+      $proxy = \Drupal::service('odu_administrative.static_proxy');
+      $markup = preg_replace_callback('/\"(https\:\/\/olddominion\.tfaforms\.net[^ ]*\.(css|js))(\?v\=([^ ]*)){0,1}\"/Us', function ($matches) use ($proxy) {
+        $url = $matches[1];
+        $version = $matches[4] ?? NULL;
+        return $proxy->getLocalUrl($url, $version);
+      }, $markup);
+      $markup = str_replace('document.addEventListener("DOMContentLoaded",', 'var tfaLoader = function(func) { func(); }; tfaLoader(', $markup);
+      $markup .= <<<EOF
+      <script>
+        if (typeof jQuery === 'function') {
+          (function($) {
+            setTimeout(function() {
+              // Manually trigger all the stuff TFA is using DOMContentReady for.
+              (typeof gCaptchaReadyCallback === 'function') && console.debug('Running captcha callback...') && gCaptchaReadyCallback();
+              (typeof wFORMS.onLoadHandler === 'function') && console.debug('Running form onload callback...') && wFORMS.onLoadHandler();
+            }, 500);
+          })(jQuery);
+        }
+      </script>
+      EOF;
+    }
+  }
+}
+
+/**
+ * Implements hook_embederator_lazyload_alter().
+ */
+function odu_administrative_embederator_lazyload_alter(&$lazyload, $context) {
+  $embed_id = $context['entity']->id();
+
+  // Suppress lazyload for long forms.
+  if ($embed_id == 13 || $embed_id == 4) {
+    $lazyload = FALSE;
+  }
+}
+
+/**
+ * Implements hook_embderator_url_alter().
+ */
+function odu_administrative_embederator_url_alter(&$url, $context) {
+  if (strpos($url, 'tfaform.net')) {
+    if (!isset($_GET['tfa_next'])) {
+      $qs = ' ';
+      if (isset($_SERVER['QUERY_STRING']) && !empty($_SERVER['QUERY_STRING'])) {
+        $qs = '?' . $_SERVER['QUERY_STRING'];
+      };
+      $url .= $qs;
+    }
+    else {
+      $parsed = parse_url($url);
+      $url = $parsed['scheme'] . '://' . $parsed['host'] . '/rest' . $_GET['tfa_next'];
+    }
+  }
+}

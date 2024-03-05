@@ -1,0 +1,34 @@
+uuid: b64e2c4a-da95-4cb3-aaac-17359fdc52ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.curriculum_item.course
+    - field.storage.paragraph.field_courses
+    - paragraphs.paragraphs_type.course_table
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_courses
+id: paragraph.course_table.field_courses
+field_name: field_courses
+entity_type: paragraph
+bundle: course_table
+label: Courses
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:curriculum_item'
+  handler_settings:
+    target_bundles:
+      course: course
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

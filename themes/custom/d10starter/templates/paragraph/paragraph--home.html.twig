@@ -1,0 +1,38 @@
+{# Force caching #}
+{% set add_cache = content|render %}
+{% set headline = [paragraph.field_superhead.value, paragraph.field_heading.value] %}
+{% set body = {
+    '#type': 'processed_text',
+    '#text':  paragraph.field_body.value,
+    '#format': paragraph.field_body.format,
+}%}
+{% if paragraph.field_media %}
+    {% set vimeoId = paragraph.field_media.entity.field_media_oembed_video.value|get_video_id %}
+{% endif %}
+
+{% if paragraph.field_link %}
+    {% set buttonLink = {
+        link: {
+            url: paragraph.field_link[0].url,
+            title: paragraph.field_link.title
+        }
+    }%}
+{% endif %}
+
+{% if paragraph.field_fancy_link %}
+    {% set fancyLink = {
+        link: {
+            url: paragraph.field_fancy_link[0].url,
+            title: paragraph.field_fancy_link.title
+        }
+    }%}
+{% endif %}
+
+{% include '@components/Organism/PageHeader/HomepagePageHeader/HomepagePageHeader.twig' with {
+    headline: headline,
+    wysiwyg: body,
+    buttonLink: buttonLink ? buttonLink : null,
+    fancyLink: fancyLink ? fancyLink : null,
+    vimeoId : vimeoId ? vimeoId : null,
+    picture : content.field_image|children|first,
+} only %}

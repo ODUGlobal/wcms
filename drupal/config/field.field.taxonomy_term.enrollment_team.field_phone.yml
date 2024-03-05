@@ -1,0 +1,26 @@
+uuid: 18255e9e-7f5d-48a0-9a13-9db86976bdf4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_phone
+    - taxonomy.vocabulary.enrollment_team
+  module:
+    - datalayer
+    - telephone
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_phone
+id: taxonomy_term.enrollment_team.field_phone
+field_name: field_phone
+entity_type: taxonomy_term
+bundle: enrollment_team
+label: 'Contact Phone'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

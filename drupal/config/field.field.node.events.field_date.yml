@@ -1,0 +1,26 @@
+uuid: e52cdc35-f383-4cc3-87d0-dc354d56084c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_date
+    - node.type.events
+  module:
+    - datetime_range
+id: node.events.field_date
+field_name: field_date
+entity_type: node
+bundle: events
+label: Date
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    default_date_type: now
+    default_date: now
+    default_end_date_type: ''
+    default_end_date: ''
+default_value_callback: ''
+settings: {  }
+field_type: daterange

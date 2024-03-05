@@ -1,0 +1,22 @@
+uuid: 1d94ebd9-a3dc-46d8-8ecb-f159cfe8a81a
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - d10starter
+_core:
+  default_config_hash: VhBzWb7lMRtIOg9G7VSw_0uopi-7zXeHq4vXqqV1HFE
+id: d10starter_breadcrumbs
+theme: d10starter
+region: utility_nav
+weight: -2
+provider: null
+plugin: system_breadcrumb_block
+settings:
+  id: system_breadcrumb_block
+  label: Breadcrumbs
+  label_display: '0'
+  provider: system
+visibility: {  }

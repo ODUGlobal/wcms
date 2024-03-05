@@ -1,0 +1,7 @@
+{% extends "eck-entity.html.twig" %}
+{% block content %}
+  {% include "@components/Molecule/CostBlock/CostBlock.twig" with {
+    studentType: content.field_display_title|children|first,
+    cost: content.field_description|children|first,
+  } %}
+{% endblock %}

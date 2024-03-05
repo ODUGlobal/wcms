@@ -1,0 +1,10 @@
+uuid: e937daea-5e82-4cb6-9379-0eb5734c2471
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.detail_page
+label: 'Detail Page'
+targetEntityType: media
+cache: true

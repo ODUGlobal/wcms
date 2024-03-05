@@ -1,0 +1,10 @@
+uuid: 7446b01a-a204-410e-a158-314d1ec6a09c
+langcode: en
+status: true
+dependencies: {  }
+id: testimonial
+label: Testimonial
+icon_uuid: null
+icon_default: null
+description: 'A testimonial component with formatted text quote and attribution.'
+behavior_plugins: {  }

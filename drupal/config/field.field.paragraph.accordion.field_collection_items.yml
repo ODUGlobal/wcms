@@ -1,0 +1,34 @@
+uuid: 85610358-692b-4a95-a5f6-4590d14d277d
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.accordion_tab
+    - field.storage.paragraph.field_collection_items
+    - paragraphs.paragraphs_type.accordion
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_collection_items
+id: paragraph.accordion.field_collection_items
+field_name: field_collection_items
+entity_type: paragraph
+bundle: accordion
+label: 'Collection Items'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:collection_item'
+  handler_settings:
+    target_bundles:
+      accordion_tab: accordion_tab
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

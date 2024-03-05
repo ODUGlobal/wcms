@@ -1,0 +1,39 @@
+uuid: 53f6833a-505c-4cef-baa0-886c245cb4ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_media
+    - media.type.image
+    - media.type.remote_video
+    - media.type.video
+    - node.type.program
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_media
+id: node.program.field_media
+field_name: field_media
+entity_type: node
+bundle: program
+label: 'Social Media'
+description: 'If this is populated, Facebook Opengraph and Twitter Cards will use this image.  Otherwise, they will fall back to the header image.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+      remote_video: remote_video
+      video: video
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: image
+field_type: entity_reference

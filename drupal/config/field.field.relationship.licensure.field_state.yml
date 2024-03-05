@@ -1,0 +1,35 @@
+uuid: ca7a6833-82c3-46d6-82db-28d7da15e3c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.relationship.licensure
+    - field.storage.relationship.field_state
+    - taxonomy.vocabulary.licensing_state
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_state
+id: relationship.licensure.field_state
+field_name: field_state
+entity_type: relationship
+bundle: licensure
+label: State
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      licensing_state: licensing_state
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,34 @@
+uuid: 632c9ec2-941e-4dab-b569-fdefc79bec5d
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.restricted_html
+  module:
+    - contact
+    - eck
+    - embederator
+    - filter
+    - media
+    - system
+_core:
+  default_config_hash: 6WavjUYXIegP9AAg2zXGx54MWIVoomC3SZhNiqe-Dyk
+id: anonymous
+label: 'Anonymous user'
+weight: 0
+is_admin: false
+permissions:
+  - 'access content'
+  - 'access site-wide contact form'
+  - 'use text format restricted_html'
+  - 'view any alerts entities'
+  - 'view any collection_item entities'
+  - 'view any curriculum_item entities'
+  - 'view any external_link entities'
+  - 'view any list_item entities'
+  - 'view any relationship entities'
+  - 'view any reusable_block entities'
+  - 'view embederator entity'
+  - 'view media'
+  - 'view own relationship entities'
+  - 'view unpublished eck entities'

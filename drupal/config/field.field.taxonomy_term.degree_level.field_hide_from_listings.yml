@@ -1,0 +1,29 @@
+uuid: 972c4f5c-849f-46cf-a3c3-218a814766ab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_hide_from_listings
+    - taxonomy.vocabulary.degree_level
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_hide_from_listings
+id: taxonomy_term.degree_level.field_hide_from_listings
+field_name: field_hide_from_listings
+entity_type: taxonomy_term
+bundle: degree_level
+label: 'Hide from listings'
+description: 'Do not show a link to this term in an automated listings'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

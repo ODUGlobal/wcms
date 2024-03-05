@@ -1,0 +1,51 @@
+{% set component %}
+  <ul
+    role="list"
+    style="--max-cols: {{ maxCols|default(3) }}"
+    class="
+      {# "flexible" grid, based on: https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/ #}
+      [--item-min-w:10rem] [--gap-x:1.1rem] [--fr:1fr]
+      xs:[--item-min-w:13.5rem] xs:[--gap-x:1.5rem]
+      md:[--item-min-w:16rem] md:[--gap-x:2rem]
+      lg:[--gap-x:3rem]
+      lg:[--fr:.5fr] {# so that if there is only 1 item it takes up only 1/2-width on desktop #}
+      xl:[--gap-x:3.75rem]
+
+      [--max-gap-x-count:calc(var(--max-cols)-1)]
+      [--max-total-gap-x-width:calc(var(--max-gap-x-count)*var(--gap-x))]
+      [--item-max-w:calc((100%-var(--max-total-gap-x-width))/var(--max-cols))]
+
+      grid gap-x-[--gap-x] gap-y-10 lg:gap-y-[--gap-x]
+      grid-cols-[repeat(auto-fit,minmax(max(var(--item-max-w),var(--item-min-w)),var(--fr)))]
+    "
+  >
+    {% for teaser in teasers %}
+      <li>
+        {#
+          NOTE: the object passed to `inject_template()` only works in Storybook.
+          In Drupal, that object will be ignored, and the logic for the `hLevel`
+          and `hStyleLevel` needs to be handled elsewhere.
+        #}
+        {{ teaser|inject_template({
+          hLevel: teaserHLevel|default(heading ? 3 : 2),
+          hStyleLevel: maxCols == 4 ? 4 : 3
+        }) }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endset %}
+
+{% include '@components/GenericSlab/GenericSlab.twig' with {
+  bigSpaceY: true,
+  heading: heading,
+  centeredHeading: true,
+  fancyLinkList: fancyLinkList,
+  centeredFancyLinkList: true,
+  editorial: editorial,
+  centeredEditorial: true,
+  centeredEditorialText: true,
+  component: component,
+  id: id,
+  verticalRhythm: verticalRhythm,
+  theme: theme
+} only %}

@@ -1,0 +1,25 @@
+uuid: 823511fc-f34e-4adf-b46c-fb771c9e4e60
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_slug
+    - taxonomy.vocabulary.area_of_study
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_slug
+id: taxonomy_term.area_of_study.field_slug
+field_name: field_slug
+entity_type: taxonomy_term
+bundle: area_of_study
+label: Slug
+description: 'Very short description, used on linked lists'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

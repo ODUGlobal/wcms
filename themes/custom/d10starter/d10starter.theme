@@ -1,0 +1,93 @@
+<?php
+/**
+ * @file
+ * Functions to support theming.
+ */
+
+/**
+ * Implements hook_preprocess_image_widget().
+ */
+function d10starter_preprocess_image_widget(array &$variables) {
+  $data = &$variables['data'];
+
+  // This prevents image widget templates from rendering preview container HTML
+  // to users that do not have permission to access these previews.
+  // @todo revisit in https://drupal.org/node/953034
+  // @todo revisit in https://drupal.org/node/3114318
+  if (isset($data['preview']['#access']) && $data['preview']['#access'] === FALSE) {
+    unset($data['preview']);
+  }
+}
+
+/*function d10starter_preprocess_entity_embed_container(array &$variables) {
+  $entity = $variables['element']['#entity'];
+
+  if($entity->getEntityTypeId() == 'collection_item') {
+    $apply_default_class = true;
+
+    if(!empty($variables['attributes']['class'])) {
+      $align_classes = ['align-left' => 'tw-align-left', 'align-center' => 'tw-align-center', 'align-right' => 'tw-align-right'];
+
+      foreach($variables['attributes']['class'] as &$class) {
+        if(array_key_exists($class, $align_classes)) {
+          $apply_default_class = false;
+          $class = $align_classes[$class];
+        }
+      }
+    }
+    
+    if($apply_default_class) {
+      $variables['attributes']['class'][] = 'tw-align-none';
+    }
+
+    $variables['attributes']['class'][] = 'wysiwyg-embed';
+    $variables['attributes']['data-container-query-ancestor'] = '';
+  }
+}*/
+
+function d10starter_preprocess_filter_caption(&$variables) {
+  $apply_default_class = true;
+  
+  $align_classes = ['align-left' => 'tw-align-left', 'align-center' => 'tw-align-center', 'align-right' => 'tw-align-right'];
+  
+  foreach($align_classes as $drupal_class => $class) {
+    if(strpos($variables['classes'], $drupal_class) !== false) {
+        $apply_default_class = false;
+        $variables['classes'] = str_replace($drupal_class, $class, $variables['classes']);
+    }
+  }
+
+  if($apply_default_class) {
+    $variables['classes'] .= ' tw-align-none';
+  }
+
+  $variables['classes'] .= ' wysiwyg-embed';
+}
+
+function d10starter_preprocess_responsive_image(&$variables) {
+  if($variables['responsive_image_style_id'] == 'wide') {
+    $files = \Drupal::entityTypeManager()->getStorage('file')->loadByProperties(['uri' => $variables['uri']]);
+
+    if(!empty($files)) {
+      $file = reset($files);
+      $crop = \Drupal::service('focal_point.manager')->getCropEntity($file, 'focal_point');
+
+      if ($crop) {
+        $focal_point = $crop->position();
+        
+        if(!empty($focal_point)) {
+          $x_percentage = round(($focal_point['x'] * 1 / ($variables['width'] * 1)) * 100);
+          $y_percentage = round(($focal_point['y'] * 1 / ($variables['height'] * 1)) * 100);
+          $variables['img_element']['#attributes']['style'] = 'object-position: '.$x_percentage.'% '. $y_percentage.'%';
+        }
+      }
+    }
+  }
+}
+
+require_once 'inc/page.inc';
+require_once 'inc/node.inc';
+require_once 'inc/paragraph.inc';
+require_once 'inc/eck-entity.inc';
+require_once 'inc/field.inc';
+require_once 'inc/block.inc';

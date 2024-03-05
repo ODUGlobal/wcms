@@ -1,0 +1,13 @@
+odu_mailboxvalidator.apikey:
+  path: '/admin/mailboxvalidator/api-key'
+  defaults:
+    _form: '\Drupal\odu_mailboxvalidator\Form\APIKeyForm'
+    _title: 'MailboxValidator Configuration'
+  requirements:
+    _permission: 'edit any external_link entities'
+odu_mailboxvalidator.verify:
+  path: '/mailboxvalidator/validate' 
+  defaults: 
+    _controller: '\Drupal\odu_mailboxvalidator\Controller\MailboxValidatorController::validate' 
+  requirements: 
+    _permission: 'access content' 

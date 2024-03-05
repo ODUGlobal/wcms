@@ -1,0 +1,17 @@
+uuid: fbb5eac9-acbc-44e7-9cb1-375b5947dbe4
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: partial_width_4x3
+label: 'Partial width 4x3'
+effects:
+  69dd1345-a77f-4786-994b-185b8bad3c9d:
+    uuid: 69dd1345-a77f-4786-994b-185b8bad3c9d
+    id: focal_point_scale_and_crop
+    weight: 1
+    data:
+      width: 630
+      height: 473
+      crop_type: focal_point

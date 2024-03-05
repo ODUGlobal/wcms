@@ -1,0 +1,47 @@
+uuid: fad0ddd3-1639-41bd-a856-8fc0761a9de4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.area_of_study.field_hide_from_listings
+    - field.field.taxonomy_term.area_of_study.field_icon
+    - field.field.taxonomy_term.area_of_study.field_metatags
+    - field.field.taxonomy_term.area_of_study.field_paragraphs
+    - field.field.taxonomy_term.area_of_study.field_slug
+    - taxonomy.vocabulary.area_of_study
+  module:
+    - entity_reference_revisions
+    - metatag
+    - text
+id: taxonomy_term.area_of_study.default
+targetEntityType: taxonomy_term
+bundle: area_of_study
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_hide_from_listings: true
+  field_icon: true
+  field_slug: true

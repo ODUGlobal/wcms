@@ -1,0 +1,14 @@
+{% extends "paragraph.html.twig" %}
+{% block content %}
+{% include "@components/Organism/LinkCollection/LinkCollection.twig" with {
+  linkGroups: content.field_collection_items|children,
+  heading: {
+    headline: content.field_heading|children|first,
+  },
+  editorial: {
+    wysiwyg: content.field_body|children|first,
+  },
+  theme: paragraph.field_outer_theme ? paragraph.field_outer_theme.entity.label() : null,
+  maxCols: paragraph.field_number_of_columns.value ? paragraph.field_number_of_columns.value : 3
+} %}
+{% endblock %}

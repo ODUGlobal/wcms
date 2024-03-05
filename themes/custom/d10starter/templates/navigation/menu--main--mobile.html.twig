@@ -1,0 +1,107 @@
+{#
+/**
+ * @file
+ * Theme override to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *   - is_expanded: TRUE if the link has visible children within the current
+ *     menu tree.
+ *   - is_collapsed: TRUE if the link has children within the current menu tree
+ *     that are not currently visible.
+ *   - in_active_trail: TRUE if the link is in the active trail.
+ */
+#}
+{% import _self as menus %}
+
+{#
+  We call a macro which calls itself to render the full tree.
+  @see https://twig.symfony.com/doc/3.x/tags/macro.html
+#}
+{{ menus.menu_links(items, attributes, 0, 'Main') }}
+
+{% macro menu_links(items, attributes, menu_level, label, backLabel) %}
+  {% import _self as menus %}
+  {% if items %}
+    <div class="relative">
+        <div class="container">
+            <div data-mobile-nav-ul-wrapper class="space-y-4 space-y-reverse flex flex-col-reverse">
+                <ul class="peer flex flex-col space-y-4 max-w-sm" data-depth="{{ menu_level }}" data-label="{{ label }}">
+                {% if menu_level > 0 %}
+                        <li>
+                        <button
+                            data-mobile-nav-back
+                            aria-label="Back to list: {{ backLabel }}"
+                            class="group/button p-2 -m-2 text-left text-theme-fancy-link-color hocus:text-theme-fancy-link-hocus-color transition-colors"
+                        ><span
+                            aria-hidden="true"
+                            class="
+                            relative pl-3.5
+                            text-sm uppercase font-bold
+                            before:absolute before:w-2.5 before:h-2.5 before:top-0.5 before:left-0
+                            before:bg-theme-fancy-link-color group-hocus/button:before:bg-theme-fancy-link-hocus-color before:transition-colors
+                            before:mask-arrow-fancy before:rotate-180
+                            "
+                        >Back to {{ backLabel }}</span></button>
+                        </li>
+                {% endif %}
+                {% for item in items %}
+                {%
+                    set classes = [
+                    'flex',
+                    'justify-between',
+                    'items-center'
+                    ]
+                %}
+                <li{{ item.attributes.addClass(classes) }}>
+                    {% if item.url.toString() %}
+                        <div class="p-2 -m-2 {{ is_current_page(item.url) ? 'bg-light-blue-500' }}">
+                            {% include '@components/Atom/Link/FancyLink/FancyLink.twig' with {
+                                link: { url: item.url, title: item.title },
+                                withAfterIcon: true,
+                                ariaCurrent: is_current_page(item.url) ? 'page'
+                            } only %}
+                        </div>
+                    {% endif %}
+                    {% if item.below %}
+                        <button
+                            data-mobile-nav-next
+                            aria-label="Jump to list: {{ item.title }}"
+                            {% if item.in_active_trail and not is_current_page(item.url) %}
+                                aria-current="true"
+                            {% endif %}
+                            class="
+                                aria-current:bg-light-blue-500
+                                group/button p-2 -m-2
+                                {{ item.url.toString() ? 'shrink-0 !ml-4' : 'grow' }}
+                                text-left font-bold text-theme-fancy-link-color hocus:text-theme-fancy-link-hocus-color transition-colors
+                                flex justify-between items-center
+                            "
+                            >
+                            {% if not item.url.toString() %}
+                                <span aria-hidden="true" class="mr-4">{{ item.title }}</span>
+                            {% endif %}
+                            <span aria-hidden="true" class="shrink-0 w-5 h-5 mask-plus-in-square bg-theme-fancy-link-color group-hocus/button:bg-theme-fancy-link-hocus-color transition-colors"></span>
+                        </button>
+                        <div class="absolute w-full top-0 left-full">{{ menus.menu_links(item.below, attributes, menu_level + 1, item.title, label) }}</div>
+                    {% endif %}
+                </li>
+                {% endfor %}
+                </ul>
+                {#
+                Visual "title" for the list.
+                We use `aria-hidden` b/c the list already gets an `aria-label` with said title (see above).
+                We also hide this unless the list is the currently active one (helps on VoiceOver/Safari)
+                #}
+                <p aria-hidden="true" class="hidden peer-data-[active-list]:block font-display font-bold text-lg text-theme-heading-color">{{ label }}</p>
+            </div>
+        </div>
+    </div>
+  {% endif %}
+{% endmacro %}

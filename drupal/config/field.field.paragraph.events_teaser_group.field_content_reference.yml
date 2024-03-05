@@ -1,0 +1,29 @@
+uuid: f062b976-d9e3-44ea-bed6-469bbcf74920
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_reference
+    - node.type.events
+    - paragraphs.paragraphs_type.events_teaser_group
+id: paragraph.events_teaser_group.field_content_reference
+field_name: field_content_reference
+entity_type: paragraph
+bundle: events_teaser_group
+label: 'Content Reference'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      events: events
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

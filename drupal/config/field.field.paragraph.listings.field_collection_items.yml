@@ -1,0 +1,28 @@
+uuid: 993e4fdb-2ec4-4817-8198-2ed99ccae0ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.listing
+    - field.storage.paragraph.field_collection_items
+    - paragraphs.paragraphs_type.listings
+id: paragraph.listings.field_collection_items
+field_name: field_collection_items
+entity_type: paragraph
+bundle: listings
+label: 'Collection Items'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:collection_item'
+  handler_settings:
+    target_bundles:
+      listing: listing
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

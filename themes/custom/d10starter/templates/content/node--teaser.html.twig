@@ -1,0 +1,11 @@
+{% extends "node.html.twig" %}
+{% block content %}
+{% include "@components/Molecule/Teaser/StandardTeaser/StandardTeaser.twig" with {
+  link: {
+    title: display_title,
+    url: path('entity.node.canonical', {'node': node.id}),
+  },
+  picture: content.field_media|children|first,
+  hLevel: hLevel,
+} %}
+{% endblock %}

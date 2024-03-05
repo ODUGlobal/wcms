@@ -1,0 +1,37 @@
+uuid: 8f9507d2-fc47-4d26-95d5-bcb548ff6d6d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.tiny
+    - field.field.media.logo.field_external_link
+    - field.field.media.logo.field_media_image
+    - media.type.logo
+  module:
+    - svg_image
+id: media.logo.tiny
+targetEntityType: media
+bundle: logo
+mode: tiny
+content:
+  field_media_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+      svg_attributes:
+        width: null
+        height: null
+      svg_render_as_image: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  field_external_link: true
+  name: true
+  thumbnail: true
+  uid: true

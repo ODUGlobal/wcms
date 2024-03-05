@@ -1,0 +1,29 @@
+uuid: bb9e4e10-bf2e-40fd-8f34-81bbf24a6775
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_override_course_info
+    - node.type.program
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_override_course_info
+id: node.program.field_override_course_info
+field_name: field_override_course_info
+entity_type: node
+bundle: program
+label: 'Override course info'
+description: 'Replace program info (the left side of the info slab) with one or two columns of custom content.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

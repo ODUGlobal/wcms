@@ -1,0 +1,25 @@
+uuid: b5b7acfc-e9fd-4632-a603-526393d7b9d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_media_caption
+    - node.type.helpful_resource
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_media_caption
+id: node.helpful_resource.field_media_caption
+field_name: field_media_caption
+entity_type: node
+bundle: helpful_resource
+label: 'Media caption'
+description: 'Optional caption for media item.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

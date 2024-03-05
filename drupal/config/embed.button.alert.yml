@@ -1,0 +1,28 @@
+uuid: a27ab900-6e8d-456e-9c6f-2a548d3d8fca
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.alerts.embed
+    - eck.eck_type.alerts.page_alerts
+    - entity_browser.browser.alerts
+  module:
+    - eck
+    - entity_embed
+label: Alert
+id: alert
+type_id: entity
+type_settings:
+  entity_type: alerts
+  bundles:
+    - page_alerts
+  display_plugins:
+    - 'view_mode:alerts.embed'
+  entity_browser: alerts
+  entity_browser_settings:
+    display_review: false
+  inline_entity_edit_enabled: true
+icon:
+  uri: 'public://embed_buttons/danger.svg'
+  data: PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/PgogICAgICAgIDwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgCiAgICAgICAgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+ICA8c3ZnIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciID4gPHBhdGggZD0iTTEyIDZDMTIuNTUyMyA2IDEzIDYuNDQ3NzIgMTMgN1YxM0MxMyAxMy41NTIzIDEyLjU1MjMgMTQgMTIgMTRDMTEuNDQ3NyAxNCAxMSAxMy41NTIzIDExIDEzVjdDMTEgNi40NDc3MiAxMS40NDc3IDYgMTIgNloiIGZpbGw9ImN1cnJlbnRDb2xvciIgLz4gPHBhdGggZD0iTTEyIDE2QzExLjQ0NzcgMTYgMTEgMTYuNDQ3NyAxMSAxN0MxMSAxNy41NTIzIDExLjQ0NzcgMTggMTIgMThDMTIuNTUyMyAxOCAxMyAxNy41NTIzIDEzIDE3QzEzIDE2LjQ0NzcgMTIuNTUyMyAxNiAxMiAxNloiIGZpbGw9ImN1cnJlbnRDb2xvciIgLz4gPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMiAyQzYuNDc3MTUgMiAyIDYuNDc3MTUgMiAxMkMyIDE3LjUyMjggNi40NzcxNSAyMiAxMiAyMkMxNy41MjI4IDIyIDIyIDE3LjUyMjggMjIgMTJDMjIgNi40NzcxNSAxNy41MjI4IDIgMTIgMlpNNCAxMkM0IDE2LjQxODMgNy41ODE3MiAyMCAxMiAyMEMxNi40MTgzIDIwIDIwIDE2LjQxODMgMjAgMTJDMjAgNy41ODE3MiAxNi40MTgzIDQgMTIgNEM3LjU4MTcyIDQgNCA3LjU4MTcyIDQgMTJaIiBmaWxsPSJjdXJyZW50Q29sb3IiIC8+IDwvc3ZnPiAg
+icon_uuid: null

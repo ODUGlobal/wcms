@@ -1,0 +1,6 @@
+odu_mailboxvalidator.admin:
+  title: 'MailboxValidator Config'
+  description: 'Set the MailboxValidator service information'
+  parent: system.admin_config_services
+  route_name: odu_mailboxvalidator.apikey
+  weight: 100

@@ -1,0 +1,32 @@
+{% set add_cache = content|render %}
+{% set content_block = content['#block_content'] %}
+{% set classes = [
+    'shrink-0', 
+    'lg:ml-[--x-space]',
+    'space-y-6'
+] %}
+<div{{ attributes.addClass(classes) }}>
+    {{ title_prefix }}
+    {% if label %}
+        <h2{{ title_attributes }}>{{ label }}</h2>
+    {% endif %}
+    {{ title_suffix }}
+
+    {# phone-link #}
+        {% if content_block.field_phone_number is not empty %}
+        <div class="lg:-mt-1">
+            <div class="uppercase font-display font-extrabold text-xl xs:text-2xl">Call <a href="tel:{{ content_block.field_phone_number.value }}" class="underline hocus:text-theme-fancy-link-color">{{ content_block.field_phone_number.value }}</a></div>
+        </div>
+        {% endif %}
+
+        {# buttonLink #}
+        {% if content_block.field_button is not empty %}
+            <div class="uppercase">
+                {% include '@components/Atom/Link/ButtonLink/ButtonLink.twig' with {
+                    link: {url: content_block.field_button.0.url, title: content_block.field_button.title},
+                    ghost: false,
+                    block: false
+                } only %}
+            </div>
+        {% endif %}
+</div>

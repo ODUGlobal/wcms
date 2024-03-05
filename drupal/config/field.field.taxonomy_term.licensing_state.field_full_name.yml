@@ -1,0 +1,25 @@
+uuid: 07ad3f25-0548-4599-9f52-e204675c71ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_full_name
+    - taxonomy.vocabulary.licensing_state
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_full_name
+id: taxonomy_term.licensing_state.field_full_name
+field_name: field_full_name
+entity_type: taxonomy_term
+bundle: licensing_state
+label: 'Full name'
+description: 'Full name of the state (term name should be the abbreviation)'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

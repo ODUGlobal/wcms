@@ -1,0 +1,22 @@
+# Define the 'local' links for the module
+
+emsi_cache.settings_tab:
+  route_name: odu_emsi.emsi_cache_settings
+  title: Settings
+  base_route: odu_emsi.emsi_cache_settings
+
+emsi_cache.view:
+  route_name: entity.odu_emsi_emsi_cache.canonical
+  base_route: entity.odu_emsi_emsi_cache.canonical
+  title: View
+
+emsi_cache.page_edit:
+  route_name: entity.odu_emsi_emsi_cache.edit_form
+  base_route: entity.odu_emsi_emsi_cache.canonical
+  title: Edit
+
+emsi_cache.delete_confirm:
+  route_name:  entity.odu_emsi_emsi_cache.delete_form
+  base_route:  entity.odu_emsi_emsi_cache.canonical
+  title: Delete
+  weight: 10

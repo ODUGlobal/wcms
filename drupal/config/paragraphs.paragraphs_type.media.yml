@@ -1,0 +1,10 @@
+uuid: 7052b161-fb14-40a3-8a76-2ed03a12f95a
+langcode: en
+status: true
+dependencies: {  }
+id: media
+label: Media
+icon_uuid: null
+icon_default: null
+description: 'Full width media item'
+behavior_plugins: {  }

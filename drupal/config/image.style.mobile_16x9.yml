@@ -1,0 +1,17 @@
+uuid: c36ca0ff-323f-42fc-85f9-7f8e7362819b
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: mobile_16x9
+label: 'Mobile 16x9'
+effects:
+  abf767a1-ad4e-4c75-8ad6-b6b313786562:
+    uuid: abf767a1-ad4e-4c75-8ad6-b6b313786562
+    id: focal_point_scale_and_crop
+    weight: 2
+    data:
+      width: 560
+      height: 315
+      crop_type: focal_point

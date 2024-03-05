@@ -1,0 +1,10 @@
+{% extends "paragraph.html.twig" %}
+{% block content %}
+
+{% include "@components/Organism/TeaserCollection/StandardTeaserCollection/StandardTeaserCollection.twig" with {
+  heading: paragraph.field_headline.value ? {headline: content.field_headline|children|first} : null,
+  editorial: paragraph.field_body.value ? {'wysiwyg': content.field_body|children|first} : null,
+  teasers: paragraph.field_content_reference.value ? content.field_content_reference|children|slice(0, 3) : null,
+  fancyLinkList : paragraph.field_fancy_links.value ? {fancyLinks: content.field_fancy_links|to_link_objects} : null
+} %}
+{% endblock %}

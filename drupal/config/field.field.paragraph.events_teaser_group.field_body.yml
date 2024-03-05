@@ -1,0 +1,22 @@
+uuid: 316ea5c2-2a9f-4721-a0b1-e475dd392b21
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.events_teaser_group
+  module:
+    - text
+id: paragraph.events_teaser_group.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: events_teaser_group
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  allowed_formats: {  }
+field_type: text_long

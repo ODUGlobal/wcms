@@ -1,0 +1,104 @@
+uuid: d15a4a21-601f-4328-a0bc-692fb2f0e385
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paragraphs
+    - node.type.helpful_resource
+    - paragraphs.paragraphs_type.50_50_panel
+    - paragraphs.paragraphs_type.callouts
+  module:
+    - datalayer
+    - entity_reference_revisions
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_paragraphs
+id: node.helpful_resource.field_paragraphs
+field_name: field_paragraphs
+entity_type: node
+bundle: helpful_resource
+label: Paragraphs
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      50_50_panel: 50_50_panel
+      callouts: callouts
+    negate: 1
+    target_bundles_drag_drop:
+      50_50_panel:
+        weight: 24
+        enabled: true
+      accordion:
+        weight: 25
+        enabled: false
+      body:
+        weight: 26
+        enabled: false
+      callouts:
+        weight: 27
+        enabled: true
+      course_table:
+        weight: 28
+        enabled: false
+      custom_teaser_references:
+        weight: 29
+        enabled: false
+      embed:
+        weight: 30
+        enabled: false
+      fast_facts:
+        weight: 31
+        enabled: false
+      featured_link_list:
+        weight: 32
+        enabled: false
+      featured_news:
+        weight: 33
+        enabled: false
+      features:
+        weight: 34
+        enabled: false
+      gallery:
+        weight: 35
+        enabled: false
+      hero:
+        weight: 36
+        enabled: false
+      home:
+        weight: 37
+        enabled: false
+      link_groups:
+        weight: 38
+        enabled: false
+      listings:
+        weight: 39
+        enabled: false
+      media:
+        weight: 40
+        enabled: false
+      program_routing:
+        weight: 41
+        enabled: false
+      quote_collection:
+        weight: 42
+        enabled: false
+      simple:
+        weight: 43
+        enabled: false
+      social_media_callout:
+        weight: 44
+        enabled: false
+      spotlight:
+        weight: 45
+        enabled: false
+      text_aside:
+        weight: 46
+        enabled: false
+field_type: entity_reference_revisions

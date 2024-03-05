@@ -1,0 +1,22 @@
+uuid: 1f1065e5-0a0c-45c7-9318-45f6f6c110bd
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: people
+label: People
+type: 'canonical_entities:node'
+pattern: '/staff/[node:title]'
+selection_criteria:
+  d4bc4b34-c437-4799-82bd-d1de772c1da1:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: d4bc4b34-c437-4799-82bd-d1de772c1da1
+    context_mapping:
+      node: node
+    bundles:
+      person: person
+selection_logic: and
+weight: -5
+relationships: {  }

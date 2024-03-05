@@ -1,0 +1,19 @@
+uuid: fd4e3ac6-c0e1-41e4-9e7b-33c1018a73b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_degree_abbreviation
+    - node.type.program
+id: node.program.field_degree_abbreviation
+field_name: field_degree_abbreviation
+entity_type: node
+bundle: program
+label: 'Degree abbreviation'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

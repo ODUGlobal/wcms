@@ -1,0 +1,22 @@
+uuid: ae4efc7c-a3ed-44f4-a8f5-dcd56d3253d6
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: inquiry_landing_pages
+label: 'Inquiry Landing Pages'
+type: 'canonical_entities:node'
+pattern: '/info/[node:title]'
+selection_criteria:
+  f9457349-2ba9-4606-95dd-8e4a219960e6:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: f9457349-2ba9-4606-95dd-8e4a219960e6
+    context_mapping:
+      node: node
+    bundles:
+      inquiry: inquiry
+selection_logic: and
+weight: -5
+relationships: {  }

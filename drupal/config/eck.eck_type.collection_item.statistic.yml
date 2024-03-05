@@ -1,0 +1,9 @@
+uuid: e27ba6bd-22fe-421c-bcd8-92ad56a639ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.collection_item
+name: Statistic
+type: statistic
+description: 'A <a href="https://newcity.gitlab.io/odu-online/components/detail/fast-fact--default.html">Fast Fact</a> or <a href="https://newcity.gitlab.io/odu-online/components/detail/fast-fact--outcome.html">Outcome</a>.'

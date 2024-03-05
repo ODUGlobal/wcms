@@ -1,0 +1,41 @@
+{% extends '@components/Page/Page.twig' %}
+
+{% block prefix %}
+  <div class="pt-4 bg-black/10 border-b">
+    <div class="container h-60">OPTIONAL FULL-WIDTH PREFIX (maybe for page-header or breadcrumbs, for example)</div>
+  </div>
+{% endblock %}
+
+{% block main %}
+  <div class="
+    conditional-container
+    vertical-rhythm-standard
+  ">
+    <div class="p-4 border space-y-4">
+      <div>MAIN AREA AGAINST SIDEBAR.</div>
+      <div>Gets the container-query treatment.</div>
+      <div><a href="#" class="underline">Link for keyboard-testing</a> (<code>sidebarBottom</code> determines focus order)</div>
+      <div>Note: whole main+sidebar region acquires top and bottom margin when the sidebar is "up" (side-by-side layout), <em>and that margin will not collapse with vertical-margins inside these areas!</em> So to avoid "double" margins, account for that on the <code>verticalRhythm</code> of the inner pieces at the extremities (we have some custom Tailwind variants that help with this, and the <code>.vertical-rhythm-standard</code> class has that behavior baked in).</div>
+      <div>For non-full-bleed pieces in this main area or in the sidebar (which should be all of them?), use <code>.conditional-container</code> instead of <code>.container</code> to avoid extra x-padding.</div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block sidebar %}
+  <div class="
+    conditional-container
+    vertical-rhythm-standard
+  ">
+    <div class="p-4 border space-y-4">
+      <div>SIDEBAR.</div>
+      <div>Gets the container-query treatment.</div>
+      <div><a href="#" class="underline">Link for keyboard-testing</a> (<code>sidebarBottom</code> determines focus order)</div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block fullWidth %}
+  <div class="pt-4 bg-black/10 border-t">
+    <div class="container h-60">OPTIONAL FULL-WIDTH SUFFIX (for full-width components after the sidebar)</div>
+  </div>
+{% endblock %}

@@ -1,0 +1,25 @@
+uuid: 79d366f6-9579-4dfd-845c-276811f85274
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.list_item.cost
+    - field.storage.list_item.field_display_title
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_display_title
+id: list_item.cost.field_display_title
+field_name: field_display_title
+entity_type: list_item
+bundle: cost
+label: 'Display title'
+description: 'If available, overrides the admin title'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

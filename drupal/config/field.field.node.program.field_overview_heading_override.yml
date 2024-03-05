@@ -1,0 +1,25 @@
+uuid: 381a496f-e454-474b-99b3-9df0a68a1d6b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_overview_heading_override
+    - node.type.program
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_overview_heading_override
+id: node.program.field_overview_heading_override
+field_name: field_overview_heading_override
+entity_type: node
+bundle: program
+label: 'Overview heading override'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

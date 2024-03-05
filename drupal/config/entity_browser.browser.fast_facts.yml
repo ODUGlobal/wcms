@@ -1,0 +1,31 @@
+uuid: 41ad54f1-e043-4295-adaa-3142d202bea9
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.reusable_collection_items
+  module:
+    - views
+name: fast_facts
+label: 'Fast Facts'
+display: modal
+display_configuration:
+  width: ''
+  height: ''
+  link_text: 'Select fast fact'
+  auto_open: true
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: single
+widget_selector_configuration: {  }
+widgets:
+  dc31e1da-087c-46fb-ab3f-e94e086db9d8:
+    id: view
+    uuid: dc31e1da-087c-46fb-ab3f-e94e086db9d8
+    label: 'Add existing'
+    weight: 1
+    settings:
+      submit_text: 'Select fast fact'
+      auto_select: false
+      view: reusable_collection_items
+      view_display: entity_browser_2

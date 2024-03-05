@@ -1,0 +1,10 @@
+uuid: ca6d0e00-3e4a-4151-a86f-4f52affa6f5c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.standard_teaser_with_summary
+label: 'Standard Teaser With Summary'
+targetEntityType: node
+cache: true

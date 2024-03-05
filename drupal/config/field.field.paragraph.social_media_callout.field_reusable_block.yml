@@ -1,0 +1,34 @@
+uuid: c5946c7b-eb25-48e6-bc65-d3dc0cc061eb
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.reusable_block.social_media_block
+    - field.storage.paragraph.field_reusable_block
+    - paragraphs.paragraphs_type.social_media_callout
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_reusable_block
+id: paragraph.social_media_callout.field_reusable_block
+field_name: field_reusable_block
+entity_type: paragraph
+bundle: social_media_callout
+label: 'Reusable block'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:reusable_block'
+  handler_settings:
+    target_bundles:
+      social_media_block: social_media_block
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

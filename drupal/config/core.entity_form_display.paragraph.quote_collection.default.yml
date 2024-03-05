@@ -1,0 +1,62 @@
+uuid: e98375ea-50d1-4973-be3b-db6c04bd2555
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.quote_collection.field_body
+    - field.field.paragraph.quote_collection.field_collection_items
+    - field.field.paragraph.quote_collection.field_heading
+    - field.field.paragraph.quote_collection.field_theme
+    - paragraphs.paragraphs_type.quote_collection
+  module:
+    - inline_entity_form
+    - text
+id: paragraph.quote_collection.default
+targetEntityType: paragraph
+bundle: quote_collection
+mode: default
+content:
+  field_body:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_collection_items:
+    type: inline_entity_form_complex
+    weight: 2
+    region: content
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: pullquote
+      label_plural: pullquotes
+      allow_new: true
+      allow_existing: true
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+      removed_reference: optional
+    third_party_settings: {  }
+  field_heading:
+    type: text_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_theme:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

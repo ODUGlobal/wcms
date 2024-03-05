@@ -1,0 +1,26 @@
+uuid: 50782a7d-f14c-48c6-a12c-b88896f9d21a
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.cost_callout
+    - field.storage.collection_item.field_display_title
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_display_title
+id: collection_item.cost_callout.field_display_title
+field_name: field_display_title
+entity_type: collection_item
+bundle: cost_callout
+label: 'Display title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

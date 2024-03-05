@@ -1,0 +1,26 @@
+uuid: 1d77ed5d-f2ab-4881-8f24-94f0bbb649c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.listing
+    - field.field.collection_item.listing.field_view
+  module:
+    - viewfield
+id: collection_item.listing.default
+targetEntityType: collection_item
+bundle: listing
+mode: default
+content:
+  field_view:
+    type: viewfield_default
+    label: hidden
+    settings:
+      view_title: hidden
+      always_build_output: true
+      empty_view_title: hidden
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  title: true

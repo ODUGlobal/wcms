@@ -1,0 +1,9 @@
+{% include '@components/GenericSlab/GenericSlab.twig' with {
+  id: id,
+  verticalRhythm: verticalRhythm,
+  smallContainer: noSmallContainer ? false : true,
+  heading: heading,
+  editorial: editorial,
+  fancyLinkList: fancyLinkList,
+  theme: theme
+} only %}

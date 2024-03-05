@@ -1,0 +1,8 @@
+uuid: b32189a5-8ef6-4dd3-b6b9-4572be09385f
+langcode: en
+status: true
+dependencies: {  }
+name: 'Alert Icons'
+vid: alert_icons
+description: ''
+weight: 0

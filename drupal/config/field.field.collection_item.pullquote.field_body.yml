@@ -1,0 +1,21 @@
+uuid: eac73052-6f57-48a8-a54e-2ada3e0dcebc
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.pullquote
+    - field.storage.collection_item.field_body
+  module:
+    - text
+id: collection_item.pullquote.field_body
+field_name: field_body
+entity_type: collection_item
+bundle: pullquote
+label: Quote
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

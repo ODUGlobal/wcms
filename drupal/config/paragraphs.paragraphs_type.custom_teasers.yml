@@ -1,0 +1,10 @@
+uuid: 73c29187-c460-40f8-9dd2-73170474ea70
+langcode: en
+status: true
+dependencies: {  }
+id: custom_teasers
+label: 'Custom Teasers'
+icon_uuid: null
+icon_default: null
+description: 'Appear as teasers, actually fully customized content linking out'
+behavior_plugins: {  }

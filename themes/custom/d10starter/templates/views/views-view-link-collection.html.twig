@@ -1,0 +1,30 @@
+{# includes:
+  - rows: regular Views output
+  - links: [
+    {
+      heading: ''
+      links: [{title, url}, ...] 
+    },
+    ...
+  ]
+#}
+{% set linkGroups = [] %}
+{% for group in links %}
+  {% set linkGroup %}
+  {% include "@components/Molecule/LinkGroup/LinkGroup.twig" with {
+    heading: group.heading ? {
+      headline: group.heading,
+      hLevel: 3,
+    },
+    fancyLinkList: {
+      fancyLinks: group.links,
+    },
+    allowColumnBreak: group.links|length > 5 ? true : false,
+  } %}
+  {% endset %}
+  {% set linkGroups = linkGroups|merge([linkGroup]) %}
+{% endfor %}
+{% include "@components/Organism/LinkCollection/LinkCollection.twig" with {
+  linkGroups: linkGroups,
+  maxCols: 3
+} %}

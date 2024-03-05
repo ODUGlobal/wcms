@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# See, e.g., https://github.com/pantheon-systems/terminus-build-tools-plugin/blob/main/src/Commands/WorkflowWaitCommand.php
+
+if [ $# -lt 2 ]; then
+  echo "Need Pantheon SITE and ENV"
+  exit 1
+fi
+
+SITE=$1
+ENV=$2
+TIMEOUT=300
+WAIT=60
+
+if [ "$ENV" = "test" ] || [ "$ENV" = "live" ]; then
+  expected="Deploy code to \"$ENV\""
+else
+  expected="Sync code on \"$ENV\""
+fi
+timeout_time=$(( TIMEOUT + $( date +%s ) ))
+while true; do
+  count=$(( count + 1 ))
+  if [ $( terminus workflow:list $SITE --format=string | grep "$expected" | head -n 1 | grep "succeeded" | wc -l ) -eq 1 ]; then
+    # wait a little more
+    sleep $WAIT
+    exit 0
+  fi
+  sleep $WAIT
+  if [  $( date +%s ) -gt $timeout_time ]; then
+    echo "Timed out waiting."
+    exit 1
+  fi
+done

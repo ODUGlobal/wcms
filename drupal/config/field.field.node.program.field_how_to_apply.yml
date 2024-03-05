@@ -1,0 +1,26 @@
+uuid: bfe295e4-1069-4028-ad19-844063ddc7b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_how_to_apply
+    - node.type.program
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_how_to_apply
+id: node.program.field_how_to_apply
+field_name: field_how_to_apply
+entity_type: node
+bundle: program
+label: 'How to Apply'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

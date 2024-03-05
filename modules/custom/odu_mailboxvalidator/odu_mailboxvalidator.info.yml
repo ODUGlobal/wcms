@@ -1,0 +1,6 @@
+name: 'ODU MailboxValidator'
+type: module
+description: 'Email address validation'
+core: 8.x
+core_version_requirement: ^8 || ^9 || ^10
+package: 'Newcity'

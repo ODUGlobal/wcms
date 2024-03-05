@@ -1,0 +1,19 @@
+{% extends "paragraph.html.twig" %}
+{% block content %}
+
+{% include "@components/Organism/PageHeader/HeroPageHeader/HeroPageHeader.twig" with {
+  headline: content.field_heading|children|first,
+  editorial: {
+    wysiwyg: content.field_slug|children|first,
+  },
+  fancyLinkList: {
+    fancyLinks: content.field_fancy_links|to_link_objects,
+  },
+  buttonLinkList: {
+    alternate: true,
+    buttonLinks: content.field_links|to_link_objects,
+  },
+  picture: content.field_media|children|first,
+  vimeoId: paragraph.field_video ? paragraph.field_video.entity.field_media_oembed_video.value|get_video_id : null,
+} %}
+{% endblock %}

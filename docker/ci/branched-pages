@@ -1,0 +1,72 @@
+#!/bin/bash
+# Host feature branches in the Gitlab pages static site
+
+if [ $# -lt 2 ]; then
+  echo "Need a job name (e.g., pages) and a directory (e.g., public)"
+  exit 1
+fi
+
+if [ -z $CI_PROJECT_ID ]; then
+  echo "Not in pipeline context"
+  exit 1
+fi
+
+if [ -z $GITLAB_BOT_API_KEY ]; then
+  echo "Need API key GITLAB_BOT_API_KEY"
+  exit 1
+fi
+
+DIR="$2"
+JOB="$1"
+ARTIFACT=/tmp/artifact.zip
+
+rm -rf public
+
+# figure out the last ref in the pipeline (most recent artifact)
+# presumably this will have the most complete pages artifact
+curl -s --header "PRIVATE-TOKEN: $GITLAB_BOT_API_KEY" "https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/jobs?scope\[\]=success" > /tmp/jobs.json
+# extract the job ID
+job_id=$( jq --arg job "$JOB" 'map(select(.name == $job)) | .[0].id' < /tmp/jobs.json )
+# download the artifact
+rm -f $ARTIFACT
+curl -o $ARTIFACT -L -s --header "PRIVATE-TOKEN: $GITLAB_BOT_API_KEY" "https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/jobs/$job_id/artifacts"
+if [ -f $ARTIFACT ]; then
+  unzip $ARTIFACT
+  if [ ! -d public ]; then
+    echo "No public webroot found in artifact"
+    # maybe this is the first artifact?
+    mkdir public
+  fi
+else
+  # maybe this is the first artifact?
+  mkdir public
+fi
+
+# clean up: remove artifact branches from the artifact that are no longer in the repo
+# get a list of existing repo branches
+curl -s --header "PRIVATE-TOKEN: $GITLAB_BOT_API_KEY" "https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/repository/branches" > /tmp/branches.json
+# self-test by looking for the master branch
+jq -e '.[].name | select(. == "master")' /tmp/branches.json > /dev/null || ( echo "No master branch found in repo" && exit 1 )
+
+cd public
+artifact_branches=$( ls -1d */ | sed 's/\/$//' )
+for branch in "$artifact_branches"; do
+  # does branch exist in repo?
+  jq -e --arg branch "$branch" '.[].name | select(. == $branch)' /tmp/branches.json > /dev/null || rm -rf $branch
+done
+# remove any extraneous files
+find . -maxdepth 1 -type f -exec rm '{}' \;
+cd ..
+cp /tmp/branches.json public/
+
+# create a master default redirect
+echo '<html><body><script>window.location = "master/";</script><a href="master/">View master branch</a></body></html>' > public/index.html
+
+if [ $CI_COMMIT_REF_SLUG != "master" ]; then
+  test -d public/master || ( echo "No master branch found in artifact. Rerun a master deployment." && exit 1 )
+  rm -rf public/$CI_COMMIT_REF_SLUG
+  # hardlink the master branch over the version branch...
+  cp -al public/master public/$CI_COMMIT_REF_SLUG
+fi
+# ... and sync changes from build on top of master copy
+rsync -av --delete $DIR/ public/$CI_COMMIT_REF_SLUG/

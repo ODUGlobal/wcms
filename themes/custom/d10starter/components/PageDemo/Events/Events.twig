@@ -1,0 +1,15 @@
+{% extends '@components/Page/Page.twig' %}
+
+{% block content %}
+  {{ pageHeader|inject_template }}
+
+  {% embed '@components/PageHelper/ConstrainedContent/ConstrainedContent.twig' %}
+    {% block constrainedContent %}
+      {{ stackedTeaserCollection|inject_template }}
+    {% endblock %}
+  {% endembed %}
+
+  {# this is just to get the JS working in Storybook; not actually part of the page #}
+  {% include '@components/utilities/container-query.twig' %}
+
+{% endblock %}

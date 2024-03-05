@@ -1,0 +1,10 @@
+uuid: 75fd6ccf-4b7e-4d2b-8b84-0a89836b2904
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+id: alerts.embed
+label: Embed
+targetEntityType: alerts
+cache: true

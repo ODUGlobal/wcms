@@ -1,0 +1,115 @@
+uuid: 7e5e3df7-2e14-4609-a846-395a9713587a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_page_header
+    - node.type.page
+    - paragraphs.paragraphs_type.featured_news
+    - paragraphs.paragraphs_type.hero
+    - paragraphs.paragraphs_type.home
+    - paragraphs.paragraphs_type.simple
+  module:
+    - entity_reference_revisions
+id: node.page.field_page_header
+field_name: field_page_header
+entity_type: node
+bundle: page
+label: 'Page header'
+description: 'Replace the default page header with a custom element'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      simple: simple
+      hero: hero
+      featured_news: featured_news
+      home: home
+    negate: 0
+    target_bundles_drag_drop:
+      50_50_panel:
+        weight: -37
+        enabled: false
+      accordion:
+        weight: 29
+        enabled: false
+      body:
+        weight: -36
+        enabled: false
+      call_to_action:
+        weight: 32
+        enabled: false
+      callouts:
+        weight: -35
+        enabled: false
+      course_table:
+        weight: 33
+        enabled: false
+      custom_teaser_references:
+        weight: -34
+        enabled: false
+      custom_teasers:
+        weight: 34
+        enabled: false
+      embed:
+        weight: -33
+        enabled: false
+      fast_facts:
+        weight: -32
+        enabled: false
+      featured_link_list:
+        weight: -31
+        enabled: false
+      featured_news:
+        weight: -24
+        enabled: true
+      features:
+        weight: 40
+        enabled: false
+      gallery:
+        weight: -30
+        enabled: false
+      hero:
+        weight: -28
+        enabled: true
+      home:
+        weight: -23
+        enabled: true
+      link_groups:
+        weight: -27
+        enabled: false
+      listings:
+        weight: -26
+        enabled: false
+      media:
+        weight: 46
+        enabled: false
+      program_routing:
+        weight: -22
+        enabled: false
+      quote_collection:
+        weight: -25
+        enabled: false
+      routing_block_with_videos:
+        weight: 49
+        enabled: false
+      simple:
+        weight: -29
+        enabled: true
+      social_media_callout:
+        weight: -20
+        enabled: false
+      spotlight:
+        weight: -21
+        enabled: false
+      testimonial:
+        weight: 53
+        enabled: false
+      text_aside:
+        weight: 54
+        enabled: false
+field_type: entity_reference_revisions

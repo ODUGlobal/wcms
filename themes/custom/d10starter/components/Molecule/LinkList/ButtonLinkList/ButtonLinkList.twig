@@ -1,0 +1,25 @@
+<div>
+  <ul
+    role="list"
+    class="
+      {{ stackedOnMobile ? 'stacked-on-mobile' }}
+      flex flex-wrap children:m-2.5 -m-2.5
+      [&.stacked-on-mobile]:flex-col
+      xs:[&.stacked-on-mobile]:flex-row
+      [.tw-align-center>*>&]:justify-center {# for .wysiwyg-embed.tw-align-center scenario #}
+    "
+  >
+    {% for buttonLink in buttonLinks %}
+      {# `alternate` key alternates between solid and ghost button styles #}
+      {% set stylemerge = (alternate and (loop.index0 is odd)) ? { ghost: true } : {} %}
+      <li class="
+        [.stacked-on-mobile_&]:children:w-full
+        [.stacked-on-mobile_&]:children:text-center
+        xs:[.stacked-on-mobile_&]:children:w-full
+        xs:[.stacked-on-mobile_&]:children:text-left
+      ">
+        {% include '@components/Atom/Link/ButtonLink/ButtonLink.twig' with buttonLink|merge(stylemerge) only %}
+      </li>
+    {% endfor %}
+  </ul>
+</div>

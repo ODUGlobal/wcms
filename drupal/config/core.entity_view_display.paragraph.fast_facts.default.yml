@@ -1,0 +1,51 @@
+uuid: 9dc10531-a104-40f2-acaa-57698c496682
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.fast_facts.field_block_theme
+    - field.field.paragraph.fast_facts.field_collection_items
+    - field.field.paragraph.fast_facts.field_has_dividers
+    - field.field.paragraph.fast_facts.field_heading
+    - field.field.paragraph.fast_facts.field_theme_list
+    - paragraphs.paragraphs_type.fast_facts
+  module:
+    - options
+    - text
+id: paragraph.fast_facts.default
+targetEntityType: paragraph
+bundle: fast_facts
+mode: default
+content:
+  field_block_theme:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_collection_items:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_heading:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_theme_list:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_has_dividers: true

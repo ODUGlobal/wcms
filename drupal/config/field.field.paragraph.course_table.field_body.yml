@@ -1,0 +1,26 @@
+uuid: f44c6f5e-f29d-4655-8c30-8f002a27093b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.course_table
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_body
+id: paragraph.course_table.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: course_table
+label: Intro
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,21 @@
+uuid: 9f3ce5a2-da57-4e3a-836d-70e9e6ac89b6
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+id: external_link.field_day
+field_name: field_day
+entity_type: external_link
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

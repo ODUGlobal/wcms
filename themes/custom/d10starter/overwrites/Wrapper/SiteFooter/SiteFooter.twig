@@ -1,0 +1,54 @@
+{# note: turn off line-wrapping in code-editor for better readability (b/c there's a long inline SVG) #}
+
+<footer id="site-footer">
+  {% set footerContent %}
+    <div class="bg-theme-bg-color text-theme-text-color pt-vertical-space pb-8">
+      <div class="container">
+
+        <div class="space-y-6 sm:space-y-10">
+
+          {# everything above the small copyright text #}
+          <div class="
+            [--x-space:2rem] {# used in several elements for consistent minimum-spacing #}
+            space-y-8 sm:space-y-10 xl:space-y-0 xl:flex xl:justify-between
+          ">
+
+            {# home link/logo and address #}
+            {# home link/logo #}
+            {% block col_1 %}
+              {{ col_1 }}
+            {% endblock %}
+
+            {# main links, social-links, phone-link, and buttonLink #}
+            <div class="space-y-8 sm:space-y-10 lg:space-y-0 lg:flex justify-between">
+
+              {# main links and social-links #}
+              <div class="grow shrink space-y-5 md:space-y-0 md:grid md:grid-cols-3 md:gap-[--x-space]">
+                {% block col_2 %}
+                  {{ col_2 }}
+                {% endblock %}
+              </div>
+
+              {# phone-link and buttonLink #}
+              {% block col_3 %}
+                {{ col_3 }}
+              {% endblock %}
+
+            </div>
+
+          </div>
+
+          <div>
+            <small>© Old Dominion University. <a href="{{ privacyPolicyLink.url }}" class="underline hocus:text-theme-fancy-link-color">{{ privacyPolicyLink.title }}</a></small>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  {% endset %}
+
+  {% include '@components/utilities/theme-flag.twig' with {
+    component: footerContent,
+    theme: 'navy-500'
+  } only %}
+</footer>

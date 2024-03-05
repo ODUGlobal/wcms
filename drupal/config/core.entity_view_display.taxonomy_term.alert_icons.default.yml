@@ -1,0 +1,23 @@
+uuid: 72fd8bea-fb79-4f5c-8be4-7de5d383d031
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.alert_icons.field_alert_icon
+    - taxonomy.vocabulary.alert_icons
+id: taxonomy_term.alert_icons.default
+targetEntityType: taxonomy_term
+bundle: alert_icons
+mode: default
+content:
+  field_alert_icon:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  description: true

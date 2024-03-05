@@ -1,0 +1,9 @@
+uuid: c12db37b-4f8f-456f-b79c-ccfb6a0a5de8
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.reusable_block
+name: 'Social Media Block'
+type: social_media_block
+description: ''

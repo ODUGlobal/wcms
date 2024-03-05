@@ -1,0 +1,50 @@
+{% set component %}
+<form id="location-changer" class="space-y-8">
+  <div class="grid grid-cols-1 gap-y-5 lg:grid-cols-2 gap-x-20">
+    <div class="flex flex-col space-y-1">
+      <label for="location-msa" class="font-bold">
+        <span>Search Careers by City</span> (select from autocomplete)
+      </label>
+      <div class="inputs--inline">
+        <input type="text" id="location-msa" placeholder="Virginia Beach" class="border-1 p-2 text-base">
+        <button class="sr-only">Update</button>
+      </div>
+      <span class="location-error text-[red]"></span>
+    </div>
+    <div class="flex flex-col space-y-1">
+      <label for="location-name" class="font-bold">
+        <span>Current Location</span>
+      </label>
+      <div
+        id="location-name"
+        style="--bg-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNjUgNTYwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cGF0aCBkPSJNMTgyLjkgNTUxLjdjMCAuMS4yLjMuMi4zczE3NS4yLTI2OSAxNzUuMi0zNTcuNGMwLTEzMC4xLTg4LjgtMTg2LjctMTc1LjQtMTg2LjlDOTYuMyA3LjkgNy41IDY0LjUgNy41IDE5NC42IDcuNSAyODMgMTgyLjggNTUyIDE4Mi44IDU1MmwuMS0uM3ptLTYwLjctMzY0LjVjMC0zMy42IDI3LjItNjAuOCA2MC44LTYwLjggMzMuNiAwIDYwLjggMjcuMiA2MC44IDYwLjhTMjE2LjUgMjQ4IDE4Mi45IDI0OGMtMzMuNSAwLTYwLjctMjcuMi02MC43LTYwLjh6IiBmaWxsPSIjM0Y3OUI5Ii8+PC9zdmc+');"
+        class="bg-no-repeat bg-left-top bg-[length:1rem] [&.location-selected]:bg-[image:--bg-image] [&.location-selected]:pl-6"
+      ></div>
+    </div>
+  </div>
+
+  <div id="emsi-careers" class="prose md:prose-lg max-w-none" data-program='{{ emsi.program_id }}'>
+  </div>
+
+  <p>Note: earning a degree from ODU does not guarantee employment in the positions listed above.  Explore more career information on our <a href="https://odu.emsicc.com/">Career Coach website</a>.</p>
+</form>
+{% endset %}
+
+{% include '@components/GenericSlab/GenericSlab.twig' with {
+  heading: {
+    headline: emsi.title|default('Careers with this program'),
+    hLevel: 2,
+  },
+  centeredHeading: true,
+  fancyLinkList: fancyLinkList,
+  centeredFancyLinkList: true,
+  editorial: {
+    wysiwyg: emsi.intro
+  },
+  centeredEditorial: true,
+  centeredEditorialText: true,
+  component: component,
+  id: id,
+  verticalRhythm: verticalRhythm,
+  theme: theme
+} only %}

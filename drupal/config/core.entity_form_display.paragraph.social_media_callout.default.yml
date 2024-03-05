@@ -1,0 +1,37 @@
+uuid: 4e5941c4-004d-44ce-9c17-4d3d792b8848
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.social_media_callout.field_reusable_block
+    - paragraphs.paragraphs_type.social_media_callout
+  module:
+    - entity_browser_entity_form
+    - inline_entity_form
+id: paragraph.social_media_callout.default
+targetEntityType: paragraph
+bundle: social_media_callout
+mode: default
+content:
+  field_reusable_block:
+    type: inline_entity_form_complex
+    weight: 0
+    region: content
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: 'social media block'
+      label_plural: 'social media blocks'
+      allow_new: true
+      allow_existing: true
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: true
+      collapsed: false
+    third_party_settings:
+      entity_browser_entity_form:
+        entity_browser_id: _none
+hidden:
+  created: true
+  status: true
+  uid: true

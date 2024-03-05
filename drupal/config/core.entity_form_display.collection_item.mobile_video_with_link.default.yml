@@ -1,0 +1,57 @@
+uuid: e94867aa-6d27-4cbc-93ba-2a7c16fe2f04
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.mobile_video_with_link
+    - field.field.collection_item.mobile_video_with_link.field_body
+    - field.field.collection_item.mobile_video_with_link.field_link
+    - field.field.collection_item.mobile_video_with_link.field_media
+  module:
+    - link
+    - media_library
+    - text
+id: collection_item.mobile_video_with_link.default
+targetEntityType: collection_item
+bundle: mobile_video_with_link
+mode: default
+content:
+  field_body:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_link:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_media:
+    type: media_library_widget
+    weight: 3
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

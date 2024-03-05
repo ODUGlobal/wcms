@@ -1,0 +1,58 @@
+uuid: 0d12af51-f337-43ac-b645-d739602bd16d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.helpful_resource.body
+    - field.field.node.helpful_resource.field_area_of_study
+    - field.field.node.helpful_resource.field_categories
+    - field.field.node.helpful_resource.field_display_title
+    - field.field.node.helpful_resource.field_hide_from_listings
+    - field.field.node.helpful_resource.field_media
+    - field.field.node.helpful_resource.field_media_caption
+    - field.field.node.helpful_resource.field_metatags
+    - field.field.node.helpful_resource.field_paragraphs
+    - field.field.node.helpful_resource.field_shared_image
+    - field.field.node.helpful_resource.field_tags
+    - node.type.helpful_resource
+  module:
+    - text
+    - user
+id: node.helpful_resource.teaser
+targetEntityType: node
+bundle: helpful_resource
+mode: teaser
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_display_title:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_media:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  body: true
+  field_area_of_study: true
+  field_categories: true
+  field_hide_from_listings: true
+  field_media_caption: true
+  field_metatags: true
+  field_paragraphs: true
+  field_shared_image: true
+  field_tags: true
+  links: true

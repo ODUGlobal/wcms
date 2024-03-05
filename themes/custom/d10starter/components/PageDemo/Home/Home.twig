@@ -1,0 +1,13 @@
+{% extends '@components/Page/Page.twig' %}
+
+{% block content %}
+  {{ pageHeader|inject_template }}
+
+  {{ exploreProgramsRoutingBlock|inject_template }}
+
+  {{ imageCardCollection|inject_template }}
+
+  {{ overlappingFeature|inject_template }}
+
+  {{ form|inject_template }}
+{% endblock %}

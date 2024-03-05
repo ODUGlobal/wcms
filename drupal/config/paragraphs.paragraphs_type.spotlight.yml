@@ -1,0 +1,10 @@
+uuid: 83fde849-f1da-4f2e-8905-357dbba75a2e
+langcode: en
+status: true
+dependencies: {  }
+id: spotlight
+label: Spotlight
+icon_uuid: null
+icon_default: null
+description: 'Feature some teasers and fast facts.'
+behavior_plugins: {  }

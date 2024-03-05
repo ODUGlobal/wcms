@@ -1,0 +1,10 @@
+{% extends "paragraph.html.twig" %}
+{% block content %}
+  {% include "@components/Organism/NoImageRoutingBlockCollection/NoImageRoutingBlockCollection.twig" with {
+    heading : paragraph.field_heading.value ? {'headline' : paragraph.field_heading.value|striptags},
+    editorial: paragraph.field_body ? {wysiwyg : content.field_body|children},
+    id: paragraph.field_heading.value ? paragraph.field_heading.value|striptags|replace({' ': '-', '_': '-'})|lower|trim('-'),
+    routingBlocks: content.field_collection_items|children,
+    withColumns: paragraph.field_two_up.value ? true : false
+  } %}
+{% endblock %}

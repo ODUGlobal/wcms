@@ -1,0 +1,10 @@
+uuid: 1f93c41e-f8ca-48dc-8233-4b11414f71cb
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: ewdu0ESTL282-Cuxug_QVx9qsC_F5blzK5U50FCObQE
+name: 'News Tags'
+vid: news_tags
+description: 'A small number of topics grouping articles'
+weight: 0

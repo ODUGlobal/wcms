@@ -1,0 +1,10 @@
+uuid: bc77d474-fca9-4ccc-b5d1-64ed0c922784
+langcode: en
+status: true
+dependencies: {  }
+id: body
+label: Body
+icon_uuid: null
+icon_default: null
+description: 'A formatted text component.'
+behavior_plugins: {  }

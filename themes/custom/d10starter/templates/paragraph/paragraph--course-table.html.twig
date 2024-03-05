@@ -1,0 +1,29 @@
+{% set add_cache = content|render %}
+
+{% set content = [] %}
+{% set table_rows = [] %}
+
+{% if paragraph.field_body is not empty %}
+    {% set content = content|merge([{'#type': 'processed_text', '#text':  paragraph.field_body.value, '#format': paragraph.field_body.format}]) %}
+{% endif %}
+
+{% for item in paragraph.field_courses %}
+    {% set table_rows = table_rows|merge([{
+        0 : item.entity.field_odu_course_name.value ? item.entity.field_odu_course_name.value : '',
+        1 : item.entity.field_credits ? item.entity.field_credits.value : '',
+        2 : item.entity.field_notes.value ? item.entity.field_notes.value : '',
+    }]) %}
+{% endfor %}
+
+{% if table_rows|length > 0 %}
+    {% set content = content|merge([{'#type' : 'table', '#header' : ['Old Dominion University Course'|t, 'Credits'|t, 'Notes'|t], '#rows' : table_rows, '#attributes' : {'class' : ['striped']}}]) %}
+{% endif %}
+
+{% if paragraph.field_suffix is not empty %}
+    {% set content = content|merge([{'#type': 'processed_text', '#text':  paragraph.field_suffix.value, '#format': paragraph.field_suffix.format}]) %}
+{% endif %}
+
+{% include '@components/Organism/EditorialSlab/EditorialSlab.twig' with {
+        heading : paragraph.field_heading.value ? {'headline' : paragraph.field_heading.value} : null,
+        editorial : content ? {'wysiwyg' : content|render} : null
+} only %}

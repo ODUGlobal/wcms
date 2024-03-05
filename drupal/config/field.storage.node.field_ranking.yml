@@ -1,0 +1,20 @@
+uuid: fe4e733e-570f-4d60-a910-4e3ab46a15ae
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_ranking
+field_name: field_ranking
+entity_type: node
+type: integer
+settings:
+  unsigned: false
+  size: normal
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

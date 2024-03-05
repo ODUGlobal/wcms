@@ -1,0 +1,15 @@
+{% set component %}
+  {% include '@components/Molecule/Testimonial/Testimonial.twig' with testimonial only %}
+{% endset %}
+
+{% include '@components/GenericSlab/GenericSlab.twig' with {
+  bigSpaceY: true,
+  smallContainer: true,
+  heading: heading,
+  editorial: editorial,
+  fancyLinkList: fancyLinkList,
+  component: component,
+  id: id,
+  verticalRhythm: verticalRhythm,
+  theme: theme
+} only %}

@@ -1,0 +1,120 @@
+uuid: 62bf0e9a-7066-4900-887c-30784052313c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paragraphs
+    - node.type.page
+    - paragraphs.paragraphs_type.course_table
+    - paragraphs.paragraphs_type.featured_news
+    - paragraphs.paragraphs_type.hero
+    - paragraphs.paragraphs_type.home
+    - paragraphs.paragraphs_type.simple
+  module:
+    - entity_reference_revisions
+id: node.page.field_paragraphs
+field_name: field_paragraphs
+entity_type: node
+bundle: page
+label: Paragraphs
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      home: home
+      course_table: course_table
+      hero: hero
+      featured_news: featured_news
+      simple: simple
+    negate: 1
+    target_bundles_drag_drop:
+      50_50_panel:
+        weight: 14
+        enabled: false
+      accordion:
+        weight: 23
+        enabled: false
+      body:
+        weight: 5
+        enabled: false
+      call_to_action:
+        weight: 33
+        enabled: false
+      callouts:
+        weight: 6
+        enabled: false
+      course_table:
+        weight: 21
+        enabled: true
+      custom_teaser_references:
+        weight: 17
+        enabled: false
+      custom_teasers:
+        weight: 37
+        enabled: false
+      embed:
+        weight: 18
+        enabled: false
+      events_teaser_group:
+        weight: 29
+        enabled: false
+      fast_facts:
+        weight: 19
+        enabled: false
+      featured_link_list:
+        weight: 20
+        enabled: false
+      featured_news:
+        weight: 26
+        enabled: true
+      features:
+        weight: 42
+        enabled: false
+      gallery:
+        weight: 21
+        enabled: false
+      hero:
+        weight: 22
+        enabled: true
+      home:
+        weight: 17
+        enabled: true
+      link_groups:
+        weight: 7
+        enabled: false
+      listings:
+        weight: 24
+        enabled: false
+      media:
+        weight: 48
+        enabled: false
+      program_routing:
+        weight: 29
+        enabled: false
+      quote_collection:
+        weight: 8
+        enabled: false
+      routing_block_with_videos:
+        weight: 51
+        enabled: false
+      simple:
+        weight: 28
+        enabled: true
+      social_media_callout:
+        weight: 35
+        enabled: false
+      spotlight:
+        weight: 32
+        enabled: false
+      testimonial:
+        weight: 55
+        enabled: false
+      text_aside:
+        weight: 56
+        enabled: false
+field_type: entity_reference_revisions

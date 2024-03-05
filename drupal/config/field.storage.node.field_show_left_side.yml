@@ -1,0 +1,18 @@
+uuid: bf805f20-e8b7-415c-b821-8a52f434d225
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_show_left_side
+field_name: field_show_left_side
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,10 @@
+uuid: 7356b489-1215-41ad-b2dd-e46ed80ed0cd
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.stacked_teaser
+label: 'Stacked Teaser'
+targetEntityType: node
+cache: true

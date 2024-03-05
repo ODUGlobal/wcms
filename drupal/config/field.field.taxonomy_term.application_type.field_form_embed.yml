@@ -1,0 +1,35 @@
+uuid: c12fe86c-e1bb-4184-99a7-a16ec4faeea4
+langcode: en
+status: true
+dependencies:
+  config:
+    - embederator.embederator_type.formassembly
+    - field.storage.taxonomy_term.field_form_embed
+    - taxonomy.vocabulary.application_type
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_form_embed
+id: taxonomy_term.application_type.field_form_embed
+field_name: field_form_embed
+entity_type: taxonomy_term
+bundle: application_type
+label: 'Form Embed'
+description: 'RFI form for this application type'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:embederator'
+  handler_settings:
+    target_bundles:
+      formassembly: formassembly
+    negate: '0'
+    target_bundles_drag_drop:
+      formassembly:
+        enabled: '1'
+        weight: '2'
+field_type: entity_reference

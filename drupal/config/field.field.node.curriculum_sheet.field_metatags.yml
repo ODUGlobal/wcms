@@ -1,0 +1,26 @@
+uuid: b820e405-8373-477d-9800-45b1f76d935b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.curriculum_sheet
+  module:
+    - datalayer
+    - metatag
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_metatags
+id: node.curriculum_sheet.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: curriculum_sheet
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

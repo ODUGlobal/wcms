@@ -1,0 +1,27 @@
+{% extends '@components/Page/Page.twig' %}
+
+{% block content %}
+
+  <div class="pt-4 bg-black/10 border-b">
+    <div class="container h-60">OPTIONAL TOP FULL-WIDTH AREA (maybe for page-header or breadcrumbs, for example)</div>
+  </div>
+
+  {% embed '@components/PageHelper/ConstrainedContent/ConstrainedContent.twig' %}
+    {% block constrainedContent %}
+      <div class="vertical-rhythm-standard space-y-4">
+        <div>CONSTRAINED CONTENT AREA.</div>
+        <div>Gets the container-query treatment.</div>
+        <div>Top/bottom margins not automatic (need to be on outermost components themselves), though we could rethink this if the need arises.</div>
+        <div>For non-full-bleed pieces in here (which should be all of them), use <code>.conditional-container</code> instead of <code>.container</code> to avoid extra x-padding.</div>
+      </div>
+    {% endblock %}
+  {% endembed %}
+
+  <div class="pt-4 bg-black/10 border-t">
+    <div class="container h-60">OPTIONAL BOTTOM FULL-WIDTH AREA</div>
+  </div>
+
+  {# this is just to get the JS working in Storybook; not actually part of the page #}
+  {% include '@components/utilities/container-query.twig' %}
+
+{% endblock %}

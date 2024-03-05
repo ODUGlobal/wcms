@@ -1,0 +1,18 @@
+{% set component %}
+  <div class="space-y-10">
+    <div>{{ autocompleteAndMap }}</div>
+    <div>{% include '@components/Organism/LinkCollection/LinkCollection.twig' with linkCollection|merge({
+      noGenericSlab: true,
+      heading: null,
+      hLevel: heading ? 3 : 2
+    }) only %}</div>
+  </div>
+{% endset %}
+
+{% include '@components/GenericSlab/GenericSlab.twig' with {
+  heading: heading,
+  editorial: editorial,
+  component: component,
+  id: id,
+  verticalRhythm: verticalRhythm
+} only %}

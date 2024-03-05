@@ -1,0 +1,21 @@
+uuid: 1eb58e2c-c322-43ed-a0f6-4c560b25544d
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.mobile_video_with_link
+    - field.storage.collection_item.field_body
+  module:
+    - text
+id: collection_item.mobile_video_with_link.field_body
+field_name: field_body
+entity_type: collection_item
+bundle: mobile_video_with_link
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

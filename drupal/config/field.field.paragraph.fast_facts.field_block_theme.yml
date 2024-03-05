@@ -1,0 +1,21 @@
+uuid: c132f59d-14f7-4565-824d-7b2b223b5af5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_block_theme
+    - paragraphs.paragraphs_type.fast_facts
+  module:
+    - options
+id: paragraph.fast_facts.field_block_theme
+field_name: field_block_theme
+entity_type: paragraph
+bundle: fast_facts
+label: 'Block Theme'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

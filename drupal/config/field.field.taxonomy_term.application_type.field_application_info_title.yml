@@ -1,0 +1,25 @@
+uuid: 1b4ab229-24ea-49d1-a6b0-154c14f1aa16
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_application_info_title
+    - taxonomy.vocabulary.application_type
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_application_info_title
+id: taxonomy_term.application_type.field_application_info_title
+field_name: field_application_info_title
+entity_type: taxonomy_term
+bundle: application_type
+label: 'Application Info title'
+description: 'E.g., "Get guaranteed admission at Old Dominion University"'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,35 @@
+uuid: d20812d7-4432-428a-83e8-170936aecf74
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_regions
+    - taxonomy.vocabulary.location
+    - taxonomy.vocabulary.partner_regions
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_regions
+id: taxonomy_term.location.field_regions
+field_name: field_regions
+entity_type: taxonomy_term
+bundle: location
+label: Regions
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      partner_regions: partner_regions
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

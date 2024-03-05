@@ -1,0 +1,35 @@
+uuid: 39d35c2a-6767-4ae4-9d26-1dded82c4183
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.curriculum_sheet.field_additional_information
+    - field.field.node.curriculum_sheet.field_metatags
+    - field.field.node.curriculum_sheet.field_paragraphs
+    - node.type.curriculum_sheet
+  module:
+    - user
+id: node.curriculum_sheet.teaser
+targetEntityType: node
+bundle: curriculum_sheet
+mode: teaser
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_additional_information: true
+  field_lower_division_courses: true
+  field_lower_division_requirement: true
+  field_metatags: true
+  field_paragraphs: true
+  field_upper_division_courses: true
+  field_upper_division_requirement: true

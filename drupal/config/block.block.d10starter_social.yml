@@ -1,0 +1,25 @@
+uuid: 69b63241-d87b-452a-8c35-5295be602c27
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.social
+  module:
+    - system
+  theme:
+    - d10starter
+id: d10starter_social
+theme: d10starter
+region: footer_col_2
+weight: -7
+provider: null
+plugin: 'system_menu_block:social'
+settings:
+  id: 'system_menu_block:social'
+  label: Social
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

@@ -1,0 +1,9 @@
+{% set heading_id = attributes.id ~ '-menu'|clean_id %}
+<div {{ attributes.addClass(classes) }}>
+    <div>
+        {# Menu. #}
+        {% block content %}
+            {{ content }}
+        {% endblock %}
+    </div>
+</div>

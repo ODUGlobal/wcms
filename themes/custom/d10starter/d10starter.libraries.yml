@@ -1,0 +1,51 @@
+base:
+  version: VERSION
+  js:
+    https://polyfill.io/v3/polyfill.js?features=ResizeObserver%2CMap%2CArray.prototype.flatMap%2CObject.fromEntries%2CDOMTokenList.prototype.replace%2CObject.entries%2CSet%2CIntersectionObserver%2CIntersectionObserverEntry: {type: external, minified: true}
+    //cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js: {type: external, minified: true}
+    https://cdn.jsdelivr.net/npm/focus-visible@5.2.0/dist/focus-visible.min.js: {type: external, minified: true}
+    dist/components/global-scripts/debounceAndThrottle.js: {  }
+    dist/components/global-scripts/realVw.js: {  }
+    dist/components/global-scripts/Figure.js: {  }
+    dist/components/global-scripts/focusOptionsPolyfill.js: {  }
+    dist/components/utilities/container-query.js: {  }
+    dist/components/utilities/linkify.js: {  }
+    dist/components/Atom/Link/FancyLink/FancyLink.js: {  }
+    dist/components/Atom/Media/Figure/Figure.js: {  }
+    dist/components/Atom/Media/Video/Video.js: {  }
+    dist/components/Organism/Accordion/Accordion.js: {  }
+    dist/components/Organism/Editorial/Editorial.js: {  }
+    dist/components/Organism/ExploreProgramsRoutingBlock/ExploreProgramsRoutingBlock.js: {  }
+    dist/components/Organism/Gallery/Gallery.js: {  }
+    dist/components/Organism/PageHeader/HeroPageHeader/HeroPageHeader.js: {  }
+    dist/components/Organism/PageHeader/HomepagePageHeader/HomepagePageHeader.js: {  }
+    dist/components/Organism/ResponsiveIframe/ResponsiveIframe.js: {  }
+    dist/components/Organism/Slider/Slider.js: {  }
+    dist/components/Organism/Tabs/Tabs.js: {  }
+    dist/components/Wrapper/SiteHeader/SiteHeader.js: {  }
+  dependencies:
+    - core/jquery
+  css:
+    base:
+      https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css: {type: external}
+      //cdn.jsdelivr.net/npm/@accessible360/accessible-slick@1.0.1/slick/slick.min.css: {type: external}
+      //cdn.jsdelivr.net/npm/@accessible360/accessible-slick@1.0.1/slick/accessible-slick-theme.min.css: {type: external}
+      dist/css/tailwind.css: {  }
+# testimonial:
+#   js:
+#     dist/components/03-components/testimonial/testimonial.js: {  }
+#   css:
+#     component:
+#       components/css/testimonial.css: {  }
+
+emsi:
+  js:
+    dist/components/Organism/Emsi/Emsi.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal.autocomplete
+theme:
+  js:
+    js/theme.js: {}
+  dependencies:
+    - core/jquery

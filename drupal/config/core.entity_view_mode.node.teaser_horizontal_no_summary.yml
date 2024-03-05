@@ -1,0 +1,10 @@
+uuid: 086303dc-8dfd-4801-a9f5-57f3d84730a5
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.teaser_horizontal_no_summary
+label: 'Teaser Horizontal no summary'
+targetEntityType: node
+cache: true

@@ -1,0 +1,25 @@
+uuid: 5b5aaadf-5178-4ec0-ab32-bc8aee22f5b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_heading_override
+    - taxonomy.vocabulary.location
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_heading_override
+id: taxonomy_term.location.field_heading_override
+field_name: field_heading_override
+entity_type: taxonomy_term
+bundle: location
+label: 'Heading override'
+description: 'Optional override for the page h1'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

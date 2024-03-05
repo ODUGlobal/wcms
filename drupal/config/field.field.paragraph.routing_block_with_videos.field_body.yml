@@ -1,0 +1,21 @@
+uuid: dbdd9e0c-6059-485d-8644-1a338ff4f03a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.routing_block_with_videos
+  module:
+    - text
+id: paragraph.routing_block_with_videos.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: routing_block_with_videos
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

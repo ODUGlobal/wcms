@@ -1,0 +1,512 @@
+<?php
+use Drupal\views\ViewExecutable;
+use Drupal\views\Views;
+use Drupal\Core\Link;
+use Drupal\Core\Url;
+use Drupal\Core\Cache\Cache;
+use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\node\NodeInterface;
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_preprocess_HOOK() for html.html.twig.
+ */
+function odu_custom_preprocess_html(array &$variables) {
+    //exit();
+    // Intercept some file wrappers and just put up the content.
+    if ($media = \Drupal::request()->attributes->get('media')) {
+        if ($media->bundle() == 'file') {
+            // Anon gets file piped to browser; logged in a message.
+            if(\Drupal::currentUser()->isAnonymous()) {
+                $file_uri = FALSE;
+  
+                // If one file, put it up.
+                $file_field = $media->field_media_file;
+                if (count($file_field) == 1) {
+                    $file_uri = $file_field->entity->uri->value;
+                }
+
+                $file = \Drupal::service('file_system')->realpath($file_uri);
+                if(file_exists($file)) {
+                    var_dump($file);
+                    $mime = \Drupal::service('file.mime_type.guesser')->guessMimeType($file);
+                    var_dump($mime);
+                    header('Content-Type: ' . $mime);
+                    header('Content-Length: ' . filesize($file));
+                    if ($mime == 'application/pdf') {
+                        header('Content-Disposition: inline');
+                }
+                readfile($file);
+                exit;
+            }
+        }
+        else {
+          \Drupal::messenger()->addMessage(t('For anonymous (not-logged-in) users this file is downloaded directly to the browser. When linking, use the browser URL above, not the direct URL to the file below.'), 'warning');
+        }
+      }
+    }
+}
+/**
+* Implements hook_views_pre_view().
+*
+* @param ViewExecutable $view
+* @param [type] $display_id
+* @param [type] $args
+* @return void
+*/
+function odu_custom_views_pre_view(ViewExecutable $view, $display_id, &$args) {
+    if($view->id() == 'news' && $display_id == 'block_2') {   
+        $current_node = \Drupal::routeMatch()->getParameter('node');
+        
+        if(!empty($current_node)) {
+            if($current_node->hasField('field_page_header')) {
+                if($item = $current_node->get('field_page_header')) {
+                    if($paragraph = $item->entity) {
+                        if(($paragraph->bundle() == 'featured_news') && $paragraph->hasField('field_content_reference')) {
+                            $items = $paragraph->get('field_content_reference');
+                            $targets = [];
+                            
+                            foreach ($items as $item) {
+                                $targets[] = $item->target_id;
+                            }
+                            $view->setArguments([implode('+', $targets)]);
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function odu_custom_theme($existing, $type, $theme, $path) {
+    return [
+        'google_custom_search' => [
+            'variables' => [
+                'cx' => '',
+                'query_parameter' => '',
+            ],
+        ],
+        'odu_admin_listing' => [
+            'variables' => [
+              'items' => [],
+            ],
+        ],
+    ];
+}
+
+/**
+ * Implements hook_preprocess_block().
+ */
+function odu_custom_preprocess_block(&$variables) {
+    if($variables['plugin_id'] == 'menu_block:main' && !empty($variables['configuration']['suggestion']) && $variables['configuration']['suggestion'] == 'main_secondary_navigation') {
+        if(!empty($variables['content']['#items'])) {
+            $current_url = \Drupal::request()->getRequestUri();
+            $current_url = trim($current_url, '/');
+            $url_parts = explode('/', $current_url);
+
+            foreach($variables['content']['#items'] as $link_item) {
+                $url = is_object($link_item['url']) ? $link_item['url']->toString() : $link_item['url'];
+                $url = trim($url, '/');
+                
+                if(!empty($url_parts[0]) && !empty($url)) {
+                    if($url_parts[0] == $url && !empty($link_item['below'])) {
+                        $variables['content']['#items'] = $link_item['below'];
+                        break;
+                    }
+                }
+            }
+        }
+        
+        $variables['#cache']['contexts'][] = 'route.menu_active_trails:main';
+        $variables['#cache']['contexts'][] = 'url';
+        $variables['#cache']['tags'][] = 'config:system.menu.main';
+        $variables['#cache']['tags'][] = \Drupal::service('path.current')->getPath();
+    }
+}
+
+function odu_custom_preprocess_menu(&$variables) {
+    if(!empty($variables['menu_block_configuration']['suggestion']) && $variables['menu_block_configuration']['suggestion'] == 'main__sidebar') {
+        $current_url = Url::fromRoute('<current>');
+        $request = \Drupal::request();
+        $route_match = \Drupal::routeMatch();
+        $text = \Drupal::service('title_resolver')->getTitle($request, $route_match->getRouteObject());
+        
+        if(!empty($text) && !empty($current_url)) {
+            $variables['headline'] = Link::fromTextAndUrl($text, $current_url)->toString();
+        }
+    }
+}
+
+/**
+ * Implements template_preprocess_views_view_card_collection().
+ */
+function odu_custom_preprocess_views_view_card_collection(&$variables) {
+    $view = $variables['view'];
+    $options = $view->style_plugin->options;
+    $variables['maxCols'] = $options['maxCols'];
+}
+
+/**
+ * Implements template_preprocess_views_view_link_collection().
+ */
+function odu_custom_preprocess_views_view_link_collection(&$variables) {
+    $renderer = \Drupal::service('renderer');
+    $view = $variables['view'];
+    $options = $view->style_plugin->options;
+    $link_field_name = $options['link_field'];
+    $group_field_name = $options['grouping_field'];
+
+    $links = [];
+    $group_index = 0;
+    $group_name = '';
+    foreach ($view->result as $row) {
+        $build = $view->field[$link_field_name]->getItems($row)[0]['rendered'];
+        if ($group_field_name) {
+            $new_group_name = $renderer->render($view->field[$group_field_name]->getItems($row)[0]['rendered']);
+            if ($new_group_name != $group_name) {
+                $group_name = $new_group_name;
+                $group_names[] = $group_name;
+                $group_index = count($group_names) - 1;
+                $links[$group_index]['heading'] = $group_name;
+            }
+        }
+        if ($build['#type'] != 'link') {
+            continue;
+        }
+        $links[$group_index]['links'][] = [
+            'title' => $build['#title']['#context']['value'],
+            'url' => $build['#url']->toString(),
+        ];
+    }
+
+    $variables['links'] = $links;
+}
+
+function odu_custom_preprocess_views_view(&$variables) {
+    $view = $variables['view'];
+
+    if($view->id() == 'partners' && $view->current_display == 'block_2') {
+        $links = [];
+        $group_name = '';
+    
+        $attachment = Views::getView('partners');
+        $attachment->setDisplay('attachment_1');
+        $attachment->execute();
+    
+        $results = $attachment->result;
+    
+        foreach ($results as $row) {
+            if(!empty($row->_relationship_entities['field_regions'])) {
+                if($row->_relationship_entities['field_regions']->label() != $group_name) {
+                    $group_name = $row->_relationship_entities['field_regions']->label();
+                    $links[$group_name]['heading'] = $group_name;
+                }
+            }
+                
+            $url = Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $row->tid]);
+        
+            $links[$group_name]['links'][] = [
+                'title' => $row->taxonomy_term_field_data_name,
+                'url' => $url->toString(),
+            ];
+        }
+
+        $international = Views::getView('partners');
+        $international->setDisplay('block_3');
+        $international->execute();
+
+        $results = $international->result;
+        
+        foreach ($results as $row) {
+            if(!empty($row->_relationship_entities['field_regions'])) {
+                if($row->_relationship_entities['field_regions']->label() != $group_name) {
+                    $group_name = $row->_relationship_entities['field_regions']->label();
+                    $links[$group_name]['heading'] = $group_name;
+                }
+            }
+                
+            $url = Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $row->tid]);
+        
+            $links[$group_name]['links'][] = [
+                'title' => $row->taxonomy_term_field_data_name,
+                'url' => $url->toString(),
+            ];
+        }
+    
+        if(!empty($links)) {
+            $links = array_values($links);
+        }
+    
+        $variables['links'] = $links;
+        $cache_tags = !empty($variables['#cache']['tags']) ? $variables['#cache']['tags'] : [];
+        $variables['#cache']['tags'] = Cache::mergeTags($cache_tags, $international->getCacheTags(), $attachment->getCacheTags());
+    }
+    elseif($view->id() == 'licensure' && $view->current_display == 'page_1') {
+        $items = [];
+        $arguments = ['yes', 'maybe'];
+        $arguments_text = ['yes' => 'Meets requirements', 'maybe' => 'Undetermined'];
+
+        $results = $view->result;
+        
+        foreach($results as $row) {
+            $collection_items = [];
+            $heading = [];
+            
+            foreach($arguments as $argument) {
+                $collection = [];
+                
+                $lic_view = Views::getView('licensure_for_program');
+                $lic_view->setDisplay('block');
+                $lic_view->setArguments([$row->nid, $argument]);
+                $lic_view->execute();
+                $lic_results = $lic_view->result;
+                $cnt_lic_results = count($lic_results);
+                
+                if($cnt_lic_results > 0) {
+                    $heading[] = $arguments_text[$argument].' in '.$cnt_lic_results.($cnt_lic_results > 1 ? ' states' : ' state');
+                    $collection['heading'] = ['headline' => $arguments_text[$argument]];
+                    $collection['fancyLinkList'] = ['fancyLinks' => []];
+
+                    foreach($lic_results as $lic_row) {
+                        $term_url = Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $lic_row->taxonomy_term_field_data_relationship__field_state_tid]);
+                        $collection['fancyLinkList']['fancyLinks'][] = ['url' => $term_url->toString(), 'title' => $lic_row->taxonomy_term_field_data_relationship__field_state__taxonomy];
+                    }
+                }
+                $collection_items[] = $collection;
+            }
+            
+            $items[] = [
+                'headline' => $row->node_field_data_title.(!empty($row->_entity->get('field_degree_abbreviation')->value) ? ' ('.$row->_entity->get('field_degree_abbreviation')->value.')' : ''),
+                'linkCollection' => ['linkGroups'=> $collection_items, 'editorial' => count($heading) ? ['wysiwyg' => implode(' | ', $heading)] : null]
+            ];
+        }
+
+        if(!empty($items)) {
+            $variables['rows'] = $items;
+        }
+    }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function odu_custom_form_views_exposed_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+  // Remove the continuing education option from the Programs A-Z areas of study exposed filter
+  $view = $form_state->get('view');
+  if ($view->id() == 'programs' && $view->current_display == 'page_1') {
+    // Check the existence of the field in the form.
+    if (isset($form['area'])) {
+      // Remove the option.
+      unset($form['area']['#options'][550]); //remove continuing education from option list (value 550)
+    }
+  }
+  elseif($view->id() == 'partners' && $view->current_display == 'block_2') {
+    if(!empty($form['field_geofield_proximity_wrapper'])) {
+        $form['field_geofield_proximity_wrapper']['#title'] = '';
+    }
+    if(!empty($form['field_geofield_proximity_wrapper']['field_geofield_proximity']['value'])) {
+        $form['field_geofield_proximity_wrapper']['field_geofield_proximity']['value']['#type'] = 'hidden';
+    }
+    if(!empty($form['field_geofield_proximity_wrapper']['field_geofield_proximity']['source_configuration']['zip'])) {
+        $form['field_geofield_proximity_wrapper']['field_geofield_proximity']['source_configuration']['zip']['#title'] = 'Find Partners by Zip Code<span>Show partners within 50 miles</span>';
+        $form['field_geofield_proximity_wrapper']['field_geofield_proximity']['source_configuration']['zip']['#description'] = '';
+    }
+  } 
+}
+
+function odu_custom_preprocess_taxonomy_term(&$variables) {
+    $term = $variables['elements']['#taxonomy_term'];
+    if($term->bundle() == 'licensing_state') {
+        $items = [
+            'yes' => ['heading' => ['headline' => 'Meets requirements'], 'editorial' => ['wysiwyg' => 'ODU has determined that completion of the following programs meets educational requirements to apply for a license or endorsement in this state.'], 'sections' => []], 
+            'no' => ['heading' => ['headline' => 'Does not meet requirements'], 'editorial' => ['wysiwyg' => 'ODU has determined that the following programs do not meet educational requirements to apply for a license or endorsement in this state.'], 'sections' => []],
+            'maybe' => ['heading' => ['headline' => 'Undetermined'], 'editorial' => ['wysiwyg' => 'ODU has not determined whether completion of the following programs meets educational requirements to apply for a license or endorsement in this state.'], 'sections' => []] 
+        ];
+        $arguments = ['yes', 'no', 'maybe'];
+
+        foreach($arguments as $argument) {
+            $row_group_name = '';
+            $group = [];
+            
+            $view = Views::getView('licensure_for_state');
+            $view->setDisplay('block_2');
+            $view->setArguments([$term->id(), $argument]);
+            $view->execute();
+            $results = $view->result;
+
+            foreach($results as $row) {
+                $row_group_name = $row->_relationship_entities['field_licensing_body']->get('field_display_name')->value;
+                $group_link = $row->_relationship_entities['field_licensing_body']->get('field_link')->getValue();
+                if(!array_key_exists($row_group_name, $group)) {
+                    $group[$row_group_name] = ['heading' => ['headline' => $row_group_name], 'linkAndEditorials' => [], 'fancyLink' => []];
+                }
+
+                if(!empty($group_link) && empty($group[$row_group_name]['fancyLink'])) {
+                    $group[$row_group_name]['fancyLink'] = ['link' => ['url' => $group_link[0]['uri'], 'title' => $group_link[0]['title']]];
+                }
+
+                $url = Url::fromUri('internal:/node/'.$row->field_licensure_information_relationship_field_data_nid);
+
+                $link_title = $row->_relationship_entities['reverse__node__field_licensure_information']->label();
+                $degree_abbreviation = $row->_relationship_entities['reverse__node__field_licensure_information']->get('field_degree_abbreviation')->value;
+                
+                if(!empty($degree_abbreviation)) {
+                    $link_title = $link_title.' ('.$degree_abbreviation.')';
+                }
+
+                $body = !empty($row->_entity->get('field_information')->value) ? ['wysiwyg' => ['#type' => 'processed_text', '#format' => 'full_html', '#text' => $row->_entity->get('field_information')->value]] : false;
+
+                $group[$row_group_name]['linkAndEditorials'][] = ['fancyLink' => ['link' => ['url' => $url->toString(), 'title' => $link_title]], 'editorial' => $body];
+            }
+
+            $items[$argument]['sections'] = array_values($group);
+        }
+
+        $variables['items'] = $items;
+    }
+}
+
+function odu_custom_form_external_link_course_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+    _odu_custom_modify_link_course_form($form, $form_state);
+}
+
+function odu_custom_form_external_link_course_edit_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+    _odu_custom_modify_link_course_form($form, $form_state);
+}
+
+function _odu_custom_modify_link_course_form(&$form, FormStateInterface $form_state) {
+    if(!empty($form['title'])) {
+        $form['title']['widget'][0]['value']['#type'] = 'hidden';
+        $form['title']['widget'][0]['value']['#required'] = false;
+        array_unshift($form['#validate'], '_odu_custom_link_course_form_submit');
+    }
+}
+
+function _odu_custom_link_course_form_submit(&$form, FormStateInterface $form_state) {
+    $values = [];
+
+    $course = $form_state->getValue('field_course');
+    $semester = $form_state->getValue('field_semester');
+
+    if(!empty($course)) {
+        $values[] = $course[0]['value'];
+    }
+    if(!empty($semester)) {
+        $term = \Drupal::entityTypeManager()->getStorage('taxonomy_term')->load($semester[0]['target_id']);
+
+        if(!empty($term)) {
+            $values[] = $term->getName();
+        }
+    }
+        
+    if(!empty($values)) {
+        $title = [0 => ['value' => implode(' - ', $values)]];
+        $form_state->setValue('title', $title);
+    }
+}
+
+function odu_custom_field_widget_single_element_paragraphs_form_alter(&$element, FormStateInterface $form_state, $context) {
+    if($element['#paragraph_type'] == 'embed') {
+        if(!empty($element['subform']['field_theme'])) {
+            if(!empty($element['subform']['field_theme']['widget']['#options'])) {
+
+                $values_to_remove = ['neutral-900', 'gold-300'];
+
+                foreach($element['subform']['field_theme']['widget']['#options'] as $key => $option) {
+                    if(in_array($option, $values_to_remove)) {
+                        unset($element['subform']['field_theme']['widget']['#options'][$key]);
+                    }
+                }
+            }
+        }
+    }
+}
+
+/**
+ * Implements hook_ENTITY_TYPE_presave().
+ */
+function odu_custom_node_presave(NodeInterface $node) {
+    if($node->bundle() == 'person') {
+        $title = [];
+
+        if(!empty($node->get('field_name')->given)) {
+            $title[] = $node->get('field_name')->given;
+        }
+        if(!empty($node->get('field_name')->family)) {
+            $title[] = $node->get('field_name')->family;
+        }
+
+        if(!empty($title)) {
+            $node->set('title', implode(' ', $title));
+        }
+    }  
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function odu_custom_entity_delete(EntityInterface $entity) {
+    $field_map = \Drupal::service('entity_field.manager')->getFieldMapByFieldType('entity_reference');
+    
+    foreach ($field_map as $entity_type => $item) {
+        foreach ($item as $field_name => $item2) {
+            foreach ($item2['bundles'] as $bundle) {
+                $bundle_fields = \Drupal::getContainer()->get('entity_field.manager')->getFieldDefinitions($entity_type, $bundle);
+                $field_definition = $bundle_fields[$field_name];
+  
+                if($field_definition->getItemDefinition()->getSetting('target_type') == $entity->getEntityType()->id()) {
+                    $parent_entities = \Drupal::entityTypeManager()->getStorage($entity_type)->loadByProperties([$field_name => $entity->id()]);
+  
+                    foreach($parent_entities as $parent_entity) {
+                        foreach($parent_entity->get($field_name) as $delta => $field_item) {
+                            if($field_item->target_id == $entity->id()) {
+                                $parent_entity->get($field_name)->removeItem($delta);
+                                $parent_entity->save();
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+function odu_custom_preprocess_views_view_field(&$variables) {
+    $view = $variables['view'];
+    $field = $variables['field'];
+    $row = $variables['row'];
+    
+    $variables['output'] = $variables['field']->advancedRender($variables['row']);
+
+    if($view->id() == 'paragraph_usage' && $view->current_display == 'page_1') {
+        if($field->field == 'nothing') {
+            $entity = $row->_entity;
+
+            if(!empty($entity)) {
+                $host_entity = $entity->getParentEntity();
+                
+                if(!empty($host_entity)) {
+                    $type = $host_entity->getEntityTypeId();
+                    
+                    switch($type) {
+                        case 'node':
+                            $url = Url::fromRoute('entity.node.canonical', ['node' => $host_entity->id()]);
+                            $variables['output'] = Link::fromTextAndUrl($host_entity->getTitle(), $url)->toString();
+                        break;
+                        case 'taxonomy_term':
+                            $url = Url::fromRoute('entity.taxonomy_term.canonical', ['taxonomy_term' => $host_entity->id()]);
+                            $variables['output'] = Link::fromTextAndUrl($host_entity->getName(), $url)->toString();
+                        break;
+                        default:
+                            $variables['output'] = t('No direct link available');
+                    }
+                }
+            }
+        }
+    }
+}

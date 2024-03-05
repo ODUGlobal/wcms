@@ -1,0 +1,105 @@
+{% set component %}
+  <div class="max-w-5xl mx-auto">
+    <ul role="list" class="
+      mx-auto
+      columns-xs children:pb-5 -mb-5 gap-5
+      [&>*>*]:w-full [&>*>*]:text-center descendants:break-inside-avoid
+    ">
+      {% if buttonLinks %}
+        {% for buttonLink in buttonLinks %}
+          <li class="block">
+            {% include '@components/Atom/Link/ButtonLink/ButtonLink.twig' with buttonLink only %}
+          </li>
+        {% endfor %}
+      {% endif %}
+
+      {% if areasOfStudyLinks %}
+        <li class="block hide-if-no-js">
+          {% set select %}
+            {% set selectBgSvg %}
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g clip-path="url(#clip0_1979_17514)"><path d="M7.41 8.59003L12 13.17L16.59 8.59003L18 10L12 16L6 10L7.41 8.59003Z" fill="currentColor"/></g><defs><clipPath id="clip0_1979_17514"><rect width="24" height="24" fill="currentColor"/></clipPath></defs></svg>
+            {% endset %}
+
+            <div
+              style="--tw-mask-image: url('data:image/svg+xml,{{ selectBgSvg|escape('url') }}')"
+              class="
+                relative h-full
+                after:absolute after:pointer-events-none after:mask-custom after:bg-theme-fancy-link-color
+                after:w-6 after:h-6 after:right-1.5 after:top-1/2 after:-translate-y-1/2
+              "
+            >
+              <select
+                id="areas-of-study-select"
+                aria-label="'Area of Study' links (selecting an option will navigate to the corresponding page)"
+                class="
+                  bg-theme-bg-color text-theme-fancy-link-color border border-theme-fancy-link-color
+                  appearance-none rounded-none py-4 px-6 h-full
+                  text-lg leading-tight tracking-wider font-bold w-full pr-10
+                "
+              >
+                <option value="">{{ areasOfStudyHeadline|default('Or view by Area of Study') }}</option>
+                {% for link in areasOfStudyLinks %}
+                  <option value="{{ link.url }}">{{ link.title }}</option>
+                {% endfor %}
+              </select>
+            </div>
+          {% endset %}
+
+          <div>
+            {% include '@components/utilities/theme-flag.twig' with {
+              component: select,
+              theme: 'light-blue-500',
+            } only %}
+          </div>
+        </li>
+      {% endif %}
+
+      {% if fancyLink %}
+        <li class="block">
+          <div class="py-4 text-lg">
+            {% set withAfterIcon = fancyLink.withBeforeIcon ? false : true %}
+            {% if 'withAfterIcon' in fancyLink|keys %}
+              {% set withAfterIcon = fancyLink.withAfterIcon %}
+            {% endif %}
+            {% include '@components/Atom/Link/FancyLink/FancyLink.twig' with fancyLink|merge({
+              withAfterIcon: withAfterIcon
+            }) only %}
+          </div>
+        </li>
+      {% endif %}
+    </ul>
+
+    <noscript>
+      <div class="py-4 mt-4">
+        <details class="relative">
+          <summary class="px-2 cursor-pointer transition-colors text-lg leading-tight font-bold text-theme-fancy-link-color hocus:text-theme-fancy-link-hocus-color">{{ areasOfStudyHeadline|default('Or view by Area of Study') }}</summary>
+          <div class="bg-theme-bg-color absolute z-10 left-0 top-full mt-6 w-max p-4 border border-neutral-700">
+            <ul role="list" class="space-y-2">
+              {% for link in areasOfStudyLinks %}
+                <li><a href="{{ link.url }}" class="text-sm leading-none font-bold text-theme-fancy-link-color hocus:text-theme-fancy-link-hocus-color">{{ link.title }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+        </details>
+      </div>
+    </noscript>
+  </div>
+{% endset %}
+
+{% set backgroundDecoration %}
+  <div class="max-w-6xl mx-auto sm:mt-[calc(-.5*var(--vertical-space))] lg:mt-[calc(-.75*var(--vertical-space))] overflow-hidden flex flex-col">
+    <svg class="min-w-[calc(300rem/16)]" viewBox="0 0 972 137" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 133.76V2.34389H114.032V33.8608H42.3548V52.0068H103.683V82.1866H42.3548V102.243H115.374V133.76H0Z" fill="#F1F5FA"/><path d="M124.32 133.76L171.466 64.2315L128.92 2.34389H180.09L200.022 35.9619H200.789L220.912 2.34389H268.25L225.511 64.4226L272.658 133.76H221.295L196.956 92.8832H196.189L171.849 133.76H124.32Z" fill="#F1F5FA"/><path d="M286.901 133.76V2.34389H364.711C373.016 2.34389 380.299 4.254 386.559 8.07422C392.948 11.7671 397.931 16.9244 401.508 23.5461C405.086 30.1679 406.874 37.872 406.874 46.6585C406.874 55.6997 405.022 63.5948 401.317 70.3439C397.739 76.9656 392.756 82.1229 386.368 85.8158C380.107 89.5087 372.888 91.3551 364.711 91.3551H329.256V133.76H286.901ZM329.256 60.6023H350.529C355.001 60.6023 358.323 59.4563 360.495 57.1641C362.795 54.872 363.945 51.4975 363.945 47.0405C363.945 43.9844 363.434 41.5012 362.411 39.5911C361.517 37.5536 360.048 36.0256 358.004 35.0068C356.087 33.9881 353.596 33.4787 350.529 33.4787H329.256V60.6023Z" fill="#F1F5FA"/><path d="M425.212 133.76V2.34389H467.566V100.142H535.219V133.76H425.212Z" fill="#F1F5FA"/><path d="M612.784 136.052C597.835 136.052 585.058 133.505 574.453 128.411C563.849 123.318 555.736 115.741 550.114 105.681C544.492 95.4937 541.681 82.9506 541.681 68.0518C541.681 53.0255 544.492 40.4825 550.114 30.4226C555.736 20.3626 563.849 12.7858 574.453 7.69221C585.058 2.59857 597.835 0.0517578 612.784 0.0517578C627.86 0.0517578 640.701 2.59857 651.305 7.69221C661.91 12.7858 670.023 20.3626 675.645 30.4226C681.267 40.4825 684.078 53.0255 684.078 68.0518C684.078 82.9506 681.267 95.4937 675.645 105.681C670.023 115.741 661.91 123.318 651.305 128.411C640.701 133.505 627.86 136.052 612.784 136.052ZM612.784 104.535C617.383 104.535 621.408 103.835 624.858 102.434C628.435 100.906 631.374 98.8046 633.674 96.1304C636.101 93.4563 637.89 90.2727 639.04 86.5798C640.19 82.7596 640.765 78.6211 640.765 74.1641V61.9394C640.765 57.4825 640.19 53.4076 639.04 49.7147C637.89 45.8945 636.101 42.6473 633.674 39.9731C631.374 37.299 628.435 35.2615 624.858 33.8608C621.408 32.3327 617.383 31.5686 612.784 31.5686C608.184 31.5686 604.095 32.3327 600.518 33.8608C597.068 35.2615 594.194 37.299 591.894 39.9731C589.594 42.6473 587.869 45.8945 586.719 49.7147C585.569 53.4076 584.994 57.4825 584.994 61.9394V74.1641C584.994 78.6211 585.569 82.7596 586.719 86.5798C587.869 90.2727 589.594 93.4563 591.894 96.1304C594.194 98.8046 597.068 100.906 600.518 102.434C604.095 103.835 608.184 104.535 612.784 104.535Z" fill="#F1F5FA"/><path d="M706.886 133.76V2.34389H789.487C799.325 2.34389 807.502 4.31768 814.018 8.26525C820.662 12.2128 825.645 17.3701 828.967 23.7372C832.289 30.1042 833.95 36.9806 833.95 44.3664C833.95 52.7709 831.97 60.284 828.009 66.9057C824.048 73.4001 818.682 78.621 811.91 82.5686L837.783 133.76H790.254L770.13 89.636H749.24V133.76H706.886ZM749.24 60.4113H778.946C782.268 60.4113 785.079 59.1379 787.379 56.5911C789.679 53.9169 790.829 50.4151 790.829 46.0855C790.829 43.4113 790.318 41.0555 789.295 39.0181C788.273 36.9806 786.868 35.3888 785.079 34.2428C783.29 32.9694 781.246 32.3327 778.946 32.3327H749.24V60.4113Z" fill="#F1F5FA"/><path d="M856.626 133.76V2.34389H970.658V33.8608H898.981V52.0068H960.309V82.1866H898.981V102.243H972V133.76H856.626Z" fill="#F1F5FA"/></svg>
+  </div>
+{% endset %}
+
+{# tw #} {% include '@components/GenericSlab/GenericSlab.twig' with {
+  id: id,
+  verticalRhythm: verticalRhythm|default('vertical-rhythm-standard sm:mt-[calc(var(--vertical-space)+2rem)] lg:mt-[calc(var(--vertical-space)+3.5rem)]'),
+  heading: heading,
+  centeredHeading: true,
+  centeredEditorial: true,
+  centeredEditorialText: true,
+  editorial: editorial,
+  component: component,
+  backgroundDecoration: backgroundDecoration
+} only %}

@@ -1,0 +1,224 @@
+{% set is_degree_completion = node.field_degree_completion.value %}
+{% set is_full_degree = node.field_full_bachelor_program.value %}
+{% set show_degree_options = node.field_degree_level.entity.field_show_degree_options.value %}
+{% set override_course_info = node.field_override_course_info.value %}
+{% set show_emsi = node.field_show_emsi.value %}
+
+{# Degree, department, school #}
+{% set program_affiliation = [{
+  title: node.field_degree_description.value
+}] %}
+{# Sort departments by target_id, pull out term name #}
+{% set departments = node.field_department|sort_entity_field('parent', 'target_id')|map_entity_field('name', 'value', TRUE)|to_text_objects %}
+{% set program_affiliation = program_affiliation|merge(departments|default([])) %}
+
+{# "Request Info" and "Ready to apply" links are stored on a referenced term #}
+{% set how_to_apply_term = node.field_application_type.entity %}
+{% set how_to_apply_links = [] %}
+{% for link in how_to_apply_term.field_links %}
+  {% set how_to_apply_links = how_to_apply_links|merge([{
+    url: link.url.toString(),
+    title: link.title,
+  }]) %}
+{% endfor %}
+
+{# Set the program option panels at the bottom of the header #}
+{% set program_options = [] %}
+{% if override_course_info %}
+  {# Custom program info #}
+  {% set custom_heading = node.field_overview_heading_override.value %}
+  {% for panel in node.field_info_columns %}
+    {# These are ECK List Items (Text + Heading) #}
+    {% set list_item = panel.entity %}
+    {# Blarg. Not sure this still fits the content model #}
+    {% set panel_heading = list_item.field_hide_heading.value ? custom_heading : list_item.title.value %}
+    {% set program_options = program_options|merge([{
+      headline: panel_heading,
+      body: list_item.field_body|field_view
+    }]) %}
+  {% endfor %}
+{% else %}
+  {# Set the default program options #}
+  {# Degree completion #}
+  {% if is_degree_completion %}
+    {% set program_options = program_options|merge([{
+      headline: 'Degree completion',
+      list: [
+        'For students with some college credits',
+        'Complete at least 30 credits online from ODU',
+      ],
+    }]) %}
+  {% endif %}
+  {# Full degree #}
+  {% if is_full_degree %}
+    {% set program_options = program_options|merge([{
+      headline: 'Full degree',
+      list: [
+        'A start-to-finish curriculum for students to earn a degree online from ODU',
+        node.field_full_program_credit_hours.value|default('30 credit hours minimum'),
+      ],
+    }]) %}
+  {% endif %}
+{% endif %}
+
+{% extends "node.html.twig" %}
+{% block content %}
+
+{{ attach_library('d10starter/emsi') }}
+
+{# Page header #}
+{% include "@components/Organism/PageHeader/ProgramPageHeader/ProgramPageHeader.twig" with {
+  picture: content.field_header_image|children|first,
+  heading: {
+    headline: display_title,
+  },
+  list: program_affiliation,
+  programOptions: program_options,
+  buttonLink: how_to_apply_links[0],
+  fancyLink: how_to_apply_links[1],
+} %}
+
+{# Article text #}
+{% if node.field_article_body.value %}
+  {% set form %}
+    {% include "@components/Atom/Heading/Heading.twig" with {
+      headline: "Want to learn more? Contact us!",
+      hLevel: 2,
+    } %}
+    {{ how_to_apply_term.field_form_embed|field_view({label: 'hidden', type: 'entity_reference_entity_view'}) }}
+  {% endset %}
+  {% include "@components/Organism/FiftyFifty/FiftyFiftyGeneric.twig" with {
+    text_heading: {
+      headline: node.field_article_title.value,
+    },
+    editorial: {
+      wysiwyg: content.field_article_body|children|first,
+    },
+    text_footer: state_availability,
+    aside_content: form,
+    id: 'request-info'
+  } %}
+{% endif %}
+
+{# Paragraphs #}
+{{ content.field_paragraphs }}
+
+{# EMSI widget #}
+{% if show_emsi %}
+  {% include '@components/Organism/Emsi/Emsi.twig' with {
+    emsi: {
+      program_id: node.id,
+      title: node.field_emsi_title.value ? node.field_emsi_title.value : 'Jobs and Careers',
+      intro: node.field_emsi_intro.value ? {'#type': 'processed_text', '#format': 'full_html','#text': node.field_emsi_intro.value} : null,
+    }
+  } %}
+{% endif %}
+
+{# Licensure #}
+{% if content.field_licensure_information|children|length %}
+  {# Represented as a no-image routing block, like a callout #}
+  {% set routing_block %}
+  {% include "@components/Molecule/NoImageRoutingBlock/NoImageRoutingBlock.twig" with {
+    headline: "State Licensure",
+    hLevel: 2,
+    picture: {
+      '#type': 'processed_text',
+      '#format': 'full_html',
+      '#text': '<svg viewbox="0 0 53 45" xmlns="http://www.w3.org/2000/svg"><path d="m18.826.588 32.514.95a.9.9 0 0 1 .87.979l-.157 1.713-.168 1.663c-.114 1.09-.244 2.243-.389 3.45-.57 4.738-1.276 9.449-2.13 13.853l-.227 1.139c-1.787 8.822-3.968 15.179-6.674 18.202-1.384 1.546-2.844 2.22-4.36 2.014l-.126-.02-4.425-.027-7.285-.06-9.075-.105a716.287 716.287 0 0 1-6.348-.116c-3.535-.083-6.221-2.088-8.15-5.31a18.629 18.629 0 0 1-1.617-3.523l-.151-.457c-.16-.505-.266-.907-.322-1.17A.9.9 0 0 1 1.4 32.68l.107-.004 28.716.662a.9.9 0 0 1 .791.51l.352.722c4.016 8.104 7.1 9.737 9.758 6.768 2.526-2.823 4.709-9.393 6.474-18.485.846-4.356 1.546-9.026 2.11-13.723l.166-1.411c.106-.923.201-1.81.287-2.654l.171-1.754-30.701-.898-.052.62c-.103 1.173-.236 2.48-.4 3.887-.47 4.022-1.1 8.045-1.916 11.805-.945 4.357-2.08 8.08-3.43 10.978a.9.9 0 1 1-1.633-.76c1.286-2.759 2.384-6.362 3.304-10.6.802-3.696 1.424-7.663 1.887-11.632l.131-1.165c.083-.76.155-1.485.218-2.167l.116-1.335.046-.615a.9.9 0 0 1 .814-.836l.11-.004ZM2.68 34.503l.101.304a16.856 16.856 0 0 0 1.46 3.181c1.64 2.741 3.821 4.37 6.647 4.435l3.156.065c1.648.03 3.497.057 5.521.083l5.3.06c1.884.019 3.818.036 5.768.051l4.091.029-.117-.11c-1.588-1.53-3.216-3.944-4.863-7.252l-.111-.225-26.953-.621Zm19.636-9.208 8.847.312a.9.9 0 0 1 .05 1.796l-.114.003-8.846-.312a.9.9 0 0 1-.05-1.796l.113-.003Zm1.963-7.528 15.499.545a.9.9 0 0 1 .05 1.796l-.113.003-15.5-.546a.9.9 0 0 1-.05-1.795l.114-.003Zm1.22-7.502 16.58.583a.9.9 0 0 1 .05 1.796l-.113.003-16.581-.583a.9.9 0 0 1-.05-1.796l.113-.003Z" fill="currentColor" fill-rule="nonzero"/></svg>',
+    },
+    editorial: {
+      wysiwyg: content.field_licensure_intro|children|first,
+    },
+    fancyLinkList: {
+      fancyLinks: [
+        {
+          title: 'View state licensure information',
+          url: '/about-us/state-authorization-licensure/licensure',
+          variant: 'link--fancy',
+        },
+        {
+          title: 'Learn about state licensures and authorizations',
+          url: '/about-us/state-authorization-licensure',
+          variant: 'link--fancy',
+        },
+      ],
+    }
+  } %}
+  {% endset %}
+
+  {# Wrap the routing block in a collection for layout #}
+  {% include "@components/Organism/NoImageRoutingBlockCollection/NoImageRoutingBlockCollection.twig" with {
+    routingBlocks: [routing_block],
+  } %}
+{% endif %}
+
+{# Enrollment team #}
+{% set enrollment_team = content.field_enrollment_team|children|length ? node.field_enrollment_team.entity : null %}
+{% if enrollment_team and enrollment_team.field_body.value %}
+  {% set enrollment_team_editorial = {'#type': 'processed_text', '#format': 'full_html', '#text': enrollment_team.field_body.value} %}
+{% else %}
+  {% set enrollment_team_editorial = {'#type': 'processed_text', '#format': 'full_html', '#text': node.field_team_body_override} %}
+{% endif %}
+{% if enrollment_team_editorial or enrollment_team %}
+{% include "@components/Organism/CardCollection/CardCollection.twig" with {
+  heading: {
+    hLevel: 2,
+    headline: content.field_team_heading_override|children|length ? content.field_team_heading_override|render|striptags : "Meet Your Team",
+  },
+  editorial: {
+    wysiwyg: enrollment_team_editorial,
+  },
+  component: enrollment_team ? content.field_enrollment_team_view,
+  theme: 'neutral-50',
+} %}
+{% endif %}
+
+{# Application block #}
+{% set how_to_apply_editorial = how_to_apply_term.field_body|field_view %}
+{% set finish_your_degree_title = how_to_apply_term.field_application_info_title.value %}
+{% set finish_your_degree_editorial = how_to_apply_term.field_application_info_body|field_view %}
+
+{% if node.field_how_to_apply.value %}
+  {% set how_to_apply_editorial = {
+      '#type': 'processed_text',
+      '#format': 'full_html',
+      '#text': node.field_how_to_apply.value 
+  }%}
+{% endif %}
+
+{% set how_to_apply_block %}
+{% include "@components/Molecule/NoImageRoutingBlock/NoImageRoutingBlock.twig" with {
+  hLevel: 3,
+  headline: "How to Apply",
+  editorial: {
+    wysiwyg: how_to_apply_editorial
+  },
+  buttonLinkList: {
+    buttonLinks: how_to_apply_links,
+  },
+} %}
+{% endset %}
+{% set finish_your_degree_block %}
+{% include "@components/Molecule/NoImageRoutingBlock/NoImageRoutingBlock.twig" with {
+  hLevel: 3,
+  headline: finish_your_degree_title,
+  editorial: {
+    wysiwyg: finish_your_degree_editorial
+  },
+} %}
+{% endset %}
+
+{% include "@components/Organism/NoImageRoutingBlockCollection/NoImageRoutingBlockCollection.twig" with {
+  theme: 'mid-blue-500',
+  heading: {
+    headline: 'Ready to get started?',
+    hLevel: 2,
+  },
+  withColumns: true,
+  routingBlocks: [
+    how_to_apply_block,
+    finish_your_degree_block,
+  ],
+} %}
+
+{% endblock %}

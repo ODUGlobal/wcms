@@ -1,0 +1,10 @@
+uuid: 2699f8b1-3c1d-433d-b09a-da8fe09fa21a
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.big_4x3
+label: 'Big 4x3'
+targetEntityType: media
+cache: true

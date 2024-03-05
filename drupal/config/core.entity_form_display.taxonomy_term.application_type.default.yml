@@ -1,0 +1,85 @@
+uuid: 90950819-3117-45e1-aa2b-da3c06d04a53
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.application_type.field_application_info_body
+    - field.field.taxonomy_term.application_type.field_application_info_title
+    - field.field.taxonomy_term.application_type.field_body
+    - field.field.taxonomy_term.application_type.field_form_embed
+    - field.field.taxonomy_term.application_type.field_links
+    - taxonomy.vocabulary.application_type
+  module:
+    - link
+    - text
+id: taxonomy_term.application_type.default
+targetEntityType: taxonomy_term
+bundle: application_type
+mode: default
+content:
+  field_application_info_body:
+    type: text_textarea
+    weight: 5
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_application_info_title:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_body:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_form_embed:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_links:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap_index_now:
+    weight: 130
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 100
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  description: true
+  path: true

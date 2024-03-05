@@ -1,0 +1,31 @@
+uuid: 217f7e81-e696-41c8-8599-e0a2229eea25
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.icons
+  module:
+    - views
+name: icons
+label: Icons
+display: modal
+display_configuration:
+  width: ''
+  height: ''
+  link_text: 'Select icon'
+  auto_open: false
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: single
+widget_selector_configuration: {  }
+widgets:
+  dcb4213a-e039-4b0e-bdb3-4d8a8605232c:
+    id: view
+    uuid: dcb4213a-e039-4b0e-bdb3-4d8a8605232c
+    label: Browse
+    weight: 1
+    settings:
+      submit_text: 'Select icon'
+      auto_select: false
+      view: icons
+      view_display: entity_browser_1

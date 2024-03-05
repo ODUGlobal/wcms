@@ -1,0 +1,35 @@
+uuid: c12cbd4d-317c-49b1-814b-6e0c2ce722a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_importance
+    - node.type.person
+    - taxonomy.vocabulary.staff_importance
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_importance
+id: node.person.field_importance
+field_name: field_importance
+entity_type: node
+bundle: person
+label: Importance
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      staff_importance: staff_importance
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

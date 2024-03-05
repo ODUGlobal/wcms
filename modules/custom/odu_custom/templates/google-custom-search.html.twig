@@ -1,0 +1,29 @@
+<h1>Search</h1>
+
+<style>
+  .gsc-control-cse {
+    padding: 1em 0;
+  }
+  .gsc-input {
+    padding: 0;
+  }
+  .gsc-input input {
+    box-shadow: none;
+  }
+</style>
+
+<div id="google-search-container">
+  <script>
+    (function() {
+      var cx = '{{ cx }}';
+      var gcse = document.createElement('script');
+      gcse.type = 'text/javascript';
+      gcse.async = true;
+      gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+      var s = document.getElementsByTagName('script')[0];
+      s.parentNode.insertBefore(gcse, s);
+    })();
+  </script>
+  <gcse:searchbox queryParameterName="{{ query_parameter }}" autoSearchOnLoad="true"></gcse:searchbox>
+  <gcse:searchresults></gcse:searchresults>
+</div>

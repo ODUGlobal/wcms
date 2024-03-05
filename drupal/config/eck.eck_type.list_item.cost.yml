@@ -1,0 +1,9 @@
+uuid: 58e38bbf-ac9a-42b9-b642-a39ca3393f2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.list_item
+name: Cost
+type: cost
+description: 'A special kind of list item designed for cost definitions.'

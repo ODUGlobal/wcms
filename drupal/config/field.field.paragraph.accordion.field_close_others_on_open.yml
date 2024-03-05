@@ -1,0 +1,23 @@
+uuid: b552ade0-3401-4652-8424-8031fd2d6b5c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_close_others_on_open
+    - paragraphs.paragraphs_type.accordion
+id: paragraph.accordion.field_close_others_on_open
+field_name: field_close_others_on_open
+entity_type: paragraph
+bundle: accordion
+label: 'Close Others On Open'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

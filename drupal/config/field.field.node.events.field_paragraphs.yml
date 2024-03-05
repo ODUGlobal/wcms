@@ -1,0 +1,114 @@
+uuid: 69f162c1-072a-4e11-be53-94a64f4758c2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paragraphs
+    - node.type.events
+    - paragraphs.paragraphs_type.50_50_panel
+    - paragraphs.paragraphs_type.callouts
+  module:
+    - entity_reference_revisions
+id: node.events.field_paragraphs
+field_name: field_paragraphs
+entity_type: node
+bundle: events
+label: Paragraphs
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      50_50_panel: 50_50_panel
+      callouts: callouts
+    negate: 1
+    target_bundles_drag_drop:
+      50_50_panel:
+        weight: 22
+        enabled: true
+      accordion:
+        weight: 23
+        enabled: false
+      body:
+        weight: 24
+        enabled: false
+      call_to_action:
+        weight: 33
+        enabled: false
+      callouts:
+        weight: 25
+        enabled: true
+      course_table:
+        weight: 21
+        enabled: false
+      custom_teaser_references:
+        weight: 26
+        enabled: false
+      custom_teasers:
+        weight: 35
+        enabled: false
+      embed:
+        weight: 27
+        enabled: false
+      events_teaser_group:
+        weight: 38
+        enabled: false
+      fast_facts:
+        weight: 28
+        enabled: false
+      featured_link_list:
+        weight: 29
+        enabled: false
+      featured_news:
+        weight: 30
+        enabled: false
+      features:
+        weight: 42
+        enabled: false
+      gallery:
+        weight: 31
+        enabled: false
+      hero:
+        weight: 32
+        enabled: false
+      home:
+        weight: 33
+        enabled: false
+      link_groups:
+        weight: 34
+        enabled: false
+      listings:
+        weight: 35
+        enabled: false
+      media:
+        weight: 26
+        enabled: false
+      program_routing:
+        weight: 36
+        enabled: false
+      quote_collection:
+        weight: 37
+        enabled: false
+      routing_block_with_videos:
+        weight: 51
+        enabled: false
+      simple:
+        weight: 38
+        enabled: false
+      social_media_callout:
+        weight: 39
+        enabled: false
+      spotlight:
+        weight: 40
+        enabled: false
+      testimonial:
+        weight: 55
+        enabled: false
+      text_aside:
+        weight: 56
+        enabled: false
+field_type: entity_reference_revisions

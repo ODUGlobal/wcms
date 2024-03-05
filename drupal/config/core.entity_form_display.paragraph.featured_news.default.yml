@@ -1,0 +1,37 @@
+uuid: 06422c36-37c3-4fc1-abc4-4a1f7012b1ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.featured_news.field_content_reference
+    - field.field.paragraph.featured_news.field_heading
+    - paragraphs.paragraphs_type.featured_news
+  module:
+    - text
+id: paragraph.featured_news.default
+targetEntityType: paragraph
+bundle: featured_news
+mode: default
+content:
+  field_content_reference:
+    type: entity_reference_autocomplete_tags
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_heading:
+    type: text_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

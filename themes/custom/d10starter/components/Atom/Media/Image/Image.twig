@@ -1,0 +1,9 @@
+<!--
+  On actual site, it's best to include `width` and `height` attributes on
+  the `<img>` tags (so that browsers can allot the correct space to the
+  images before they load, preventing undesirable layout-shift).
+-->
+<img
+  src="{{ src }}"
+  alt="{{ alt|default('Images should have alt-text.') }}"
+/>

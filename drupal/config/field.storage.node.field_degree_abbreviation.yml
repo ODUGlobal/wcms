@@ -1,0 +1,21 @@
+uuid: 445b20ae-5bc6-461f-ab0d-369839e49076
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_degree_abbreviation
+field_name: field_degree_abbreviation
+entity_type: node
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

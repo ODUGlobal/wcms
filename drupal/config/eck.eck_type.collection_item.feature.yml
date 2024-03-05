@@ -1,0 +1,9 @@
+uuid: 183ca95d-6c22-41ea-9a44-a2883f8a1ac3
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.collection_item
+name: Feature
+type: feature
+description: 'A title, image, and fancy link'

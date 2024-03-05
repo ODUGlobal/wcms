@@ -1,0 +1,69 @@
+{% set component %}
+  <section class="bg-theme-bg-color text-theme-text-color p-molecule-padding">
+    <div class="space-y-6">
+
+      {% if headline is not empty or picture %}
+        <div class="flex space-x-5">
+          <div class="grow">
+            {% if headline is not empty %}
+              {% include '@components/Atom/Heading/Heading.twig' with {
+                headline: headline,
+                tagLevel: hLevel|default(3),
+                styleLevel: 4,
+                slim: true,
+                superhead: superhead,
+                subhead: subhead
+              } only %}
+            {% endif %}
+          </div>
+
+          {% if picture %}
+            <div
+              {% if not pictureIsNotDecorative %}
+                aria-hidden="true"
+              {% endif %}
+              class="basis-24 grow-0 shrink xs:shrink-0 min-w-[2rem] [&_img]:ml-auto"
+            >
+              {{ picture|inject_template }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if editorial or iconDescriptionList or fancyLinkList or buttonLinkList %}
+        <div class="{{ headline is not empty or picture ? 'pt-6 border-t border-light-teal-300' }} space-y-6">
+          {% if editorial %}
+            <div>
+              {% include '@components/Organism/Editorial/Editorial.twig' with editorial only %}
+            </div>
+          {% endif %}
+
+          {% if iconDescriptionList %}
+            <div>
+              {% include '@components/Molecule/IconDescriptionList/IconDescriptionList.twig' with iconDescriptionList only %}
+            </div>
+          {% endif %}
+
+          {% if fancyLinkList %}
+            <div>
+              {% include '@components/Molecule/LinkList/FancyLinkList/FancyLinkList.twig' with fancyLinkList|merge({
+                inline: true
+              }) only %}
+            </div>
+          {% endif %}
+
+          {% if buttonLinkList %}
+            <div>
+              {% include '@components/Molecule/LinkList/ButtonLinkList/ButtonLinkList.twig' with buttonLinkList only %}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </section>
+{% endset %}
+
+{% include '@components/utilities/theme-flag.twig' with {
+  component: component,
+  theme: theme|default('neutral-50')
+} only %}

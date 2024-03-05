@@ -1,0 +1,8 @@
+uuid: a60b6212-50dc-45c9-86ae-7ccb81dc0898
+langcode: en
+status: true
+dependencies: {  }
+id: alert_block
+label: 'Alert Block'
+revision: 0
+description: ''

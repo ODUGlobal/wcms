@@ -1,0 +1,26 @@
+uuid: 6896d353-3525-46b8-b84f-e0e49acd22dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_job_title
+    - node.type.person
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_job_title
+id: node.person.field_job_title
+field_name: field_job_title
+entity_type: node
+bundle: person
+label: 'Job title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

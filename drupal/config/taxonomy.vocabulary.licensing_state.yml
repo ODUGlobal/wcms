@@ -1,0 +1,8 @@
+uuid: 83620aeb-a49f-49c0-8849-f84aebaeca5e
+langcode: en
+status: true
+dependencies: {  }
+name: 'Licensing State'
+vid: licensing_state
+description: 'A US state with some description about program licensure'
+weight: 0

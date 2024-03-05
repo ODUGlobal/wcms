@@ -1,0 +1,31 @@
+uuid: efe98e6f-2992-4911-a04d-aa5496e08f09
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.reusable_collection_items
+  module:
+    - views
+name: callouts
+label: Callouts
+display: modal
+display_configuration:
+  width: ''
+  height: ''
+  link_text: 'Select callout'
+  auto_open: true
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  ec7081d5-8f0b-4b74-a814-7a7760a6ba23:
+    id: view
+    uuid: ec7081d5-8f0b-4b74-a814-7a7760a6ba23
+    label: 'Add existing'
+    weight: 2
+    settings:
+      submit_text: 'Select callout'
+      auto_select: false
+      view: reusable_collection_items
+      view_display: entity_browser_1

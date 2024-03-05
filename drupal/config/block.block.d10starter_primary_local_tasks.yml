@@ -1,0 +1,22 @@
+uuid: 3c163c1f-22a3-4716-a675-810a7fcb9751
+langcode: en
+status: false
+dependencies:
+  theme:
+    - d10starter
+_core:
+  default_config_hash: nGE3EoPQQaQCuqTUtZgw0-KIzmrqdKDzdNQf2JyPUt4
+id: d10starter_primary_local_tasks
+theme: d10starter
+region: utility_nav
+weight: -7
+provider: null
+plugin: local_tasks_block
+settings:
+  id: local_tasks_block
+  label: 'Primary tabs'
+  label_display: '0'
+  provider: core
+  primary: true
+  secondary: false
+visibility: {  }

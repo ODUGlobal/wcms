@@ -1,0 +1,26 @@
+uuid: b821d25b-ee42-4aca-aa69-1c0f6830836e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.link_groups
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_heading
+id: paragraph.link_groups.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: link_groups
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

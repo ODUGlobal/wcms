@@ -1,0 +1,20 @@
+uuid: 46c828ad-ab06-4d30-97f7-4e86ceb7c396
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+    - paragraphs
+id: paragraph.field_courses
+field_name: field_courses
+entity_type: paragraph
+type: entity_reference
+settings:
+  target_type: curriculum_item
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

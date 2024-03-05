@@ -1,0 +1,14 @@
+api_version: 1
+
+php_version: 8.1
+database:
+  version: 10.6
+
+web_docroot: true
+
+workflows:
+  deploy:
+    after:
+      - type: webphp
+        description: Log to New Relic
+        script: private/scripts/new_relic_deploy.php

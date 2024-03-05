@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * The views infinite scroll pager template.
+ */
+#}
+
+{% if items.next %}
+{% set pager_component %}
+{# list markup is goofy but required by the module #}
+<ul{{ attributes }}>
+  <li class="pager__item">
+    {% include "@components/Atom/Link/ButtonLink/ButtonLink.twig" with {
+      title: options.button_text,
+      url: items.next.href,
+    } %}
+  </li>
+</ul>
+{% endset %}
+{% include '@components/GenericSlab/GenericSlab.twig' with {
+        component: pager_component,
+        centered: true,
+} only %}
+{% endif %}

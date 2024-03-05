@@ -1,0 +1,5 @@
+name: 'ODU Custom Functionality'
+type: module
+description: 'Custom Functionality for ODU'
+core: 8.x
+core_version_requirement: ^8 || ^9 || ^10

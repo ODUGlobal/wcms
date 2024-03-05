@@ -1,0 +1,38 @@
+uuid: 01df6d6f-d42a-4a80-b175-115f42369adc
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:alert_block:0ed8ea08-d16a-42bc-8ba7-26922349e11c'
+  module:
+    - block_content
+    - node
+  theme:
+    - d10starter
+id: pagealert
+theme: d10starter
+region: content
+weight: 0
+provider: null
+plugin: 'block_content:0ed8ea08-d16a-42bc-8ba7-26922349e11c'
+settings:
+  id: 'block_content:0ed8ea08-d16a-42bc-8ba7-26922349e11c'
+  label: 'Page Alert'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      curriculum_sheet: curriculum_sheet
+      helpful_resource: helpful_resource
+      news: news
+      page: page
+      person: person
+      program: program

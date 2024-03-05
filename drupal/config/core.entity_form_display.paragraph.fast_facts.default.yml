@@ -1,0 +1,90 @@
+uuid: da0ea40e-1768-4132-ab62-53893f85aa6b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.fast_facts.field_block_theme
+    - field.field.paragraph.fast_facts.field_collection_items
+    - field.field.paragraph.fast_facts.field_has_dividers
+    - field.field.paragraph.fast_facts.field_heading
+    - field.field.paragraph.fast_facts.field_theme_list
+    - paragraphs.paragraphs_type.fast_facts
+  module:
+    - entity_browser_entity_form
+    - field_group
+    - inline_entity_form
+    - text
+third_party_settings:
+  field_group:
+    group_settings:
+      children:
+        - field_theme
+        - field_has_dividers
+      label: Settings
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: settings
+      format_settings:
+        id: ''
+        classes: ''
+        visible_for_roles:
+          content_moderator: content_moderator
+          administrator: 0
+          authenticated: 0
+          content_editor: 0
+id: paragraph.fast_facts.default
+targetEntityType: paragraph
+bundle: fast_facts
+mode: default
+content:
+  field_block_theme:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_collection_items:
+    type: inline_entity_form_complex
+    weight: 2
+    region: content
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: 'fast fact'
+      label_plural: 'fast facts'
+      allow_new: true
+      allow_existing: true
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings:
+      entity_browser_entity_form:
+        entity_browser_id: fast_facts
+  field_has_dividers:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_heading:
+    type: text_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_theme_list:
+    type: options_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

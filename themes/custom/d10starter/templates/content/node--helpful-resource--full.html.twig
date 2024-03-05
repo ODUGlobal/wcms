@@ -1,0 +1,21 @@
+{% extends "node.html.twig" %}
+{% block content %}
+{% include "@components/Organism/PageHeader/NewsStoryPageHeader/NewsStoryPageHeader.twig" with {
+  heading: {
+    headline: display_title,
+  },
+  figure: {
+    media: content.field_media|children|first,
+    caption: content.field_media_caption|children|first,
+  },
+  wider: true
+} %}
+
+
+{% include "@components/Organism/EditorialSlab/EditorialSlab.twig" with {
+  editorial: {
+    wysiwyg: content.body|children|first,
+  },
+} %}
+{{ content.field_paragraphs }}
+{% endblock %}

@@ -1,0 +1,21 @@
+uuid: 7d48b3db-137e-4cc8-9bdd-42f5866bfa1b
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+id: external_link.field_delivery_technology
+field_name: field_delivery_technology
+entity_type: external_link
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

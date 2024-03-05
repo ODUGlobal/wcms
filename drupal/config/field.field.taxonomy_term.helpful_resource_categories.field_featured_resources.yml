@@ -1,0 +1,35 @@
+uuid: 3d89b776-ebaa-4bdc-894d-6b68aff705a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_featured_resources
+    - node.type.helpful_resource
+    - taxonomy.vocabulary.helpful_resource_categories
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_featured_resources
+id: taxonomy_term.helpful_resource_categories.field_featured_resources
+field_name: field_featured_resources
+entity_type: taxonomy_term
+bundle: helpful_resource_categories
+label: 'Featured Resources'
+description: 'These will show at the top of the topic page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      helpful_resource: helpful_resource
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

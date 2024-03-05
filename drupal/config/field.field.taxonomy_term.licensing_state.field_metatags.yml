@@ -1,0 +1,26 @@
+uuid: e1b78adf-048b-4f60-a7b9-327d1b407b1f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_metatags
+    - taxonomy.vocabulary.licensing_state
+  module:
+    - datalayer
+    - metatag
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_metatags
+id: taxonomy_term.licensing_state.field_metatags
+field_name: field_metatags
+entity_type: taxonomy_term
+bundle: licensing_state
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

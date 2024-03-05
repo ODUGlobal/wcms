@@ -1,0 +1,9 @@
+uuid: 5985a117-4348-4071-a87e-0f631cf000b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.external_link
+name: 'Online Events'
+type: online_events
+description: 'Web conference and special online events video links'

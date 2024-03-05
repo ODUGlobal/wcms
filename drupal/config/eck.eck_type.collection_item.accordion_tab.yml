@@ -1,0 +1,9 @@
+uuid: 9664d34e-2204-400a-9ea9-25ca10b08460
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.collection_item
+name: 'Accordion tab'
+type: accordion_tab
+description: 'A piece of an accordion: tab title + content'

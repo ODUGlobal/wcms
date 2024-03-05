@@ -1,0 +1,20 @@
+uuid: 072c7908-83b2-4eae-9cb4-3c7591540e6e
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+    - text
+id: collection_item.field_citation_job_title
+field_name: field_citation_job_title
+entity_type: collection_item
+type: text
+settings:
+  max_length: 255
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,19 @@
+uuid: 4615bb2a-0b65-40b7-9f4a-c9ede31b7b2d
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.external_link.course
+    - field.storage.external_link.field_course
+id: external_link.course.field_course
+field_name: field_course
+entity_type: external_link
+bundle: course
+label: Course
+description: 'Course abbreviation and number'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

@@ -1,0 +1,17 @@
+uuid: 9ead3f99-0b7b-4068-a26a-9218dd64436b
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Helpful Resource'
+type: helpful_resource
+description: 'Similar to a news article, but evergreen'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

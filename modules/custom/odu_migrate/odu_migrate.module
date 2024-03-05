@@ -1,0 +1,114 @@
+<?php
+
+function odu_migrate_content_export_entity_alter(array &$base_fields, $entity) {
+  switch ($entity->getEntityTypeId()) {
+    case 'collection_item':
+    case 'curriculum_item':
+    case 'external_link':
+    case 'list_item':
+    case 'reusable_block':
+      $base_fields['langcode'] = $entity->language()->getId();
+      $base_fields['title'] = $entity->label();
+    break;
+    case 'relationship':
+      $base_fields['langcode'] = $entity->language()->getId();
+      $base_fields['title'] = $entity->label();
+      $base_fields['uid'] = 1;
+      $base_fields['created'] = $entity->get('created')->value;
+      $base_fields['changed'] = $entity->get('changed')->value;
+    break;
+    case 'embederator':
+      $base_fields['title'] = $entity->label();
+      $base_fields['user_id'] = 1;
+      $base_fields['embed_id'] = $entity->get('embed_id')->value;
+    break;
+  }
+}
+
+function odu_migrate_content_export_field_value_alter(&$value, $field) {
+  switch ($field->getFieldDefinition()->getType()) {
+    case 'viewfield':
+      $value[] = [
+        'target_id' => $field->target_id,
+        'display_id' => $field->display_id,
+        'arguments' => $field->arguments,
+        'items_to_display' => $field->items_to_display
+      ];
+      break;
+      case 'name':
+      $value[] = [
+        'title' => $field->title,
+        'given' => $field->given,
+        'middle' => $field->middle,
+        'family' => $field->family,
+        'generational' => $field->generational,
+        'credentials' => $field->credentials
+      ];
+      break;
+      case 'geofield':
+        $value[] = [
+          'value' => $field->value,
+          'geo_type' => $field->geo_type,
+          'lat' => $field->lat,
+          'lon' => $field->lon,
+          'left' => $field->left,
+          'top' => $field->top,
+          'right' => $field->right,
+          'bottom' => $field->bottom,
+          'geohash' => $field->geohash
+        ];
+      break;
+  }
+}
+
+function odu_migrate_content_import_entity_alter(array $content, &$entity = NULL) {
+  switch ($content['entity_type']) {
+    case 'collection_item':
+    case 'curriculum_item':
+    case 'external_link':
+    case 'list_item':
+    case 'reusable_block':
+      $storage = \Drupal::entityTypeManager()->getStorage($content['entity_type']);
+      $entity = $storage->create([
+        'type' => $content['bundle'],
+        'uuid' => $content['uuid'],
+        'langcode' => $content['base_fields']['langcode'],
+        'title' => $content['base_fields']['title']
+      ]);
+    break;
+    case 'relationship':
+      $storage = \Drupal::entityTypeManager()->getStorage($content['entity_type']);
+      $entity = $storage->create([
+        'type' => $content['bundle'],
+        'uuid' => $content['uuid'],
+        'langcode' => $content['base_fields']['langcode'],
+        'title' => $content['base_fields']['title'],
+        'created' => $content['base_fields']['created'],
+        'changed' => $content['base_fields']['changed'],
+        'uid' => $content['base_fields']['uid']
+      ]);
+    break;
+    case 'embederator':
+      $storage = \Drupal::entityTypeManager()->getStorage($content['entity_type']);
+      $entity = $storage->create([
+        'type' => $content['bundle'],
+        'uuid' => $content['uuid'],
+        'label' => $content['base_fields']['title'],
+        'embed_id' => $content['base_fields']['embed_id'],
+        'user_id' => $content['base_fields']['user_id']
+      ]);
+    break;
+  }
+}
+
+function odu_migrate_content_import_field_value_alter($entity, $field_name, $field_value) {
+  $field_definition = $entity->getFieldDefinition($field_name);
+
+  switch ($field_definition->getType()) {
+    case 'viewfield':
+    case 'name':
+    case 'geofield':
+      $entity->set($field_name, $field_value);
+    break;
+  }
+}

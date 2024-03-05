@@ -1,0 +1,21 @@
+uuid: b758b214-d500-4e60-9d7e-86933d11677a
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+id: external_link.field_time_text
+field_name: field_time_text
+entity_type: external_link
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

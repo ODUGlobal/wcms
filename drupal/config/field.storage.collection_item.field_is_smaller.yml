@@ -1,0 +1,18 @@
+uuid: f758e769-85e0-41e3-8425-b6ab72e0a08c
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+id: collection_item.field_is_smaller
+field_name: field_is_smaller
+entity_type: collection_item
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,25 @@
+{% extends "eck-entity.html.twig" %}
+{% block content %}
+
+{% set links = [] %}
+
+{% if eck_entity.field_links is not empty %}
+  {% for link in eck_entity.field_links %}
+    {% set links = links|merge([{'link' : {'title' : link.title, 'url' : link.url}}]) %}
+  {% endfor %}
+{% endif %}
+
+{% include '@components/Molecule/Teaser/StandardTeaser/StandardTeaser.twig' with {
+  link: { 
+    url: content.field_link|children|first|to_url,
+    title: content.field_display_title|children|first,
+  },
+  picture: content.field_media|children|first,
+  editorial: {
+    wysiwyg: content.field_body|children|first,
+  },
+  hLevel: hLevel,
+  hStyleLevel: maxCols == 4 ? 4 : 3,
+  buttonLinkList: links ? {'buttonLinks': links} : null,
+} %}
+{% endblock %}

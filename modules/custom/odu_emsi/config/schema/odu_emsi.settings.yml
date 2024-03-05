@@ -1,0 +1,10 @@
+odu_emsi.settings:
+  type: config_object
+  label: 'EMSI module settings'
+  mapping:
+    client_id:
+      type: text
+      label: 'Client ID'
+    client_secret:
+      type: text
+      label: 'Client Secret'

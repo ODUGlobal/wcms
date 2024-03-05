@@ -1,0 +1,21 @@
+uuid: 1df6b345-49ec-47aa-b3ad-4d9d5afc2b54
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.custom_teaser_references
+  module:
+    - text
+id: paragraph.custom_teaser_references.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: custom_teaser_references
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

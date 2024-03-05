@@ -1,0 +1,88 @@
+uuid: 622f6ffc-962a-4529-91ac-5e66309f68a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_licensure_states_listing
+    - node.type.program
+    - views.view.licensure_for_program
+  module:
+    - datalayer
+    - viewfield
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_licensure_states_listing
+id: node.program.field_licensure_states_listing
+field_name: field_licensure_states_listing
+entity_type: node
+bundle: program
+label: 'Licensure states listing'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 933ba97b-8d49-4acc-8b3d-a8f23bf0120b
+    display_id: block_2
+    arguments: '[node:nid]/yes'
+    items_to_display: ''
+    token_help: ''
+  -
+    target_uuid: 933ba97b-8d49-4acc-8b3d-a8f23bf0120b
+    display_id: block_2
+    arguments: '[node:nid]/maybe'
+    items_to_display: ''
+    token_help: ''
+  -
+    target_uuid: 933ba97b-8d49-4acc-8b3d-a8f23bf0120b
+    display_id: block_2
+    arguments: '[node:nid]/no'
+    items_to_display: ''
+    token_help: ''
+default_value_callback: ''
+settings:
+  force_default: true
+  allowed_views:
+    licensure_for_program: licensure_for_program
+    collection_items: '0'
+    content: '0'
+    course_launchers: '0'
+    block_content: '0'
+    enrollment_team: '0'
+    files: '0'
+    filtered_content: '0'
+    frontpage: '0'
+    icons: '0'
+    licensure: '0'
+    licensure_for_state: '0'
+    list_items: '0'
+    locations_partners_admin_: '0'
+    media: '0'
+    media_entity_browser_media_library: '0'
+    media_library: '0'
+    moderated_content: '0'
+    news: '0'
+    online_events: '0'
+    partners: '0'
+    user_admin_people: '0'
+    programs: '0'
+    programs_admin_list_: '0'
+    redirect: '0'
+    redirect_404: '0'
+    reusable_collection_items: '0'
+    staff: '0'
+    staff_admin_listing_: '0'
+    staff_for_location: '0'
+    term_listing: '0'
+    watchdog: '0'
+  allowed_display_types:
+    block: block
+    attachment: '0'
+    entity_browser: '0'
+    feed: '0'
+    default: '0'
+    page: '0'
+  handler: 'default:view'
+  handler_settings: {  }
+field_type: viewfield

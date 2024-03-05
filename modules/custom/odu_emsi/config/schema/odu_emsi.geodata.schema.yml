@@ -1,0 +1,10 @@
+odu_emsi.geodata.config:
+  type: config_object
+  label: 'Geodata config'
+  mapping:
+    geoid:
+      type: text
+      label: 'GeoID'
+    name:
+      type: text
+      label: 'Name'

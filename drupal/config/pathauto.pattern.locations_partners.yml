@@ -1,0 +1,23 @@
+uuid: 58b8a0ea-d71e-4590-96f1-779e9cc2f70d
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: locations_partners
+label: 'Locations / Partners'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/partners/[term:name]'
+selection_criteria:
+  c613157f-100f-476b-baad-26da8e3a1c38:
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    uuid: c613157f-100f-476b-baad-26da8e3a1c38
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    bundles:
+      location: location
+selection_logic: and
+weight: -5
+relationships: {  }

@@ -1,0 +1,11 @@
+{% extends "paragraph.html.twig" %}
+{% block content %}
+{% include "@components/Organism/Slider/Slider.twig" with {
+  heading: {
+    headline: content.field_heading|children|first,
+  },
+  editorial: paragraph.field_body ? {wysiwyg: content.field_body|children} : null,
+  slides: content.field_collection_items|children,
+  theme: paragraph.field_theme ? paragraph.field_theme.entity.label() : null,
+} %}
+{% endblock %}

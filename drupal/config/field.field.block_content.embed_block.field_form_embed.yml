@@ -1,0 +1,33 @@
+uuid: eda3d402-bba0-4a22-a3ac-4adcd5938dd6
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.embed_block
+    - field.storage.block_content.field_form_embed
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_form_embed
+id: block_content.embed_block.field_form_embed
+field_name: field_form_embed
+entity_type: block_content
+bundle: embed_block
+label: Embed
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:embederator'
+  handler_settings:
+    target_bundles: null
+    negate: '0'
+    target_bundles_drag_drop:
+      formassembly:
+        weight: '2'
+        enabled: 0
+field_type: entity_reference

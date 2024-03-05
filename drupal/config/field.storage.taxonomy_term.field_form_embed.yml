@@ -1,0 +1,20 @@
+uuid: 36e6de4a-3921-4053-8db5-af1a70f10dfd
+langcode: en
+status: true
+dependencies:
+  module:
+    - embederator
+    - taxonomy
+id: taxonomy_term.field_form_embed
+field_name: field_form_embed
+entity_type: taxonomy_term
+type: entity_reference
+settings:
+  target_type: embederator
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

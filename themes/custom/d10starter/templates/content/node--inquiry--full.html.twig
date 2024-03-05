@@ -1,0 +1,31 @@
+{%
+  set classes = [
+    'node',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+  ]
+%}
+<article{{ attributes.addClass(classes) }}>
+    {{ title_prefix }}
+    {{ title_suffix }}
+    
+    {% include '@components/Organism/PageHeader/SimplePageHeader/SimplePageHeader.twig' with {
+        heading: {headline : node.field_display_title.value ? node.field_display_title.value : label},
+        editorial: node.field_byline.value ? {'wysiwyg' : {'#type': 'processed_text', '#format': 'full_html', '#text': node.field_byline.value}} : null,
+    } only %}
+
+    {% if regions.form_embed and node.field_media %}
+        {% include '@components/Organism/FiftyFifty/FiftyFifty.twig' with {
+            id: 'request-info',
+            firstHalf: {'picture': content.field_media|children|first},
+            firstHalfType: 'picture',
+            secondHalf: {'form': {'form': regions.form_embed, 'editorial' : {'wysiwyg': 'Complete this short form and someone will contact you soon with more information.'}}},
+            secondHalfType: 'form',
+        } only %}
+    {% endif %}
+    
+    {{ content.field_paragraphs }}
+</article>

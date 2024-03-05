@@ -1,0 +1,18 @@
+uuid: 7920aff5-3df7-4075-8367-7767fe69b5a2
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_has_dividers
+field_name: field_has_dividers
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

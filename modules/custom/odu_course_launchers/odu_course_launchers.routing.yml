@@ -1,0 +1,19 @@
+odu_course_launchers.upload:
+  path: '/admin/course-csv'
+  defaults:
+    _form: '\Drupal\odu_course_launchers\Form\CsvUploadForm'
+    _title: 'CSV Upload'
+  requirements:
+    _permission: 'edit any external_link entities'
+odu_course_launchers.clear_orphans:
+  path: '/admin/course-csv/clear-orphans'
+  defaults:
+    _controller: '\Drupal\odu_course_launchers\Controller\MigrateHelperController::clearOrphans'
+  requirements:
+    _permission: 'edit any external_link entities'
+odu_course_launchers.reset_migration:
+  path: '/admin/course-csv/reset-migration'
+  defaults:
+    _controller: '\Drupal\odu_course_launchers\Controller\MigrateHelperController::resetMigration'
+  requirements:
+    _permission: 'edit any external_link entities'

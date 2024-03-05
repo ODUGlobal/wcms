@@ -1,0 +1,34 @@
+uuid: c7e8809a-1afb-4999-b6db-429263f5129c
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.cost_callout
+    - eck.eck_type.list_item.cost
+    - field.storage.collection_item.field_cost_list
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_cost_list
+id: collection_item.cost_callout.field_cost_list
+field_name: field_cost_list
+entity_type: collection_item
+bundle: cost_callout
+label: 'Cost List'
+description: 'Cost mini-callouts'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:list_item'
+  handler_settings:
+    target_bundles:
+      cost: cost
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

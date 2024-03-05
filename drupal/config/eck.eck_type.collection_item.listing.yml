@@ -1,0 +1,9 @@
+uuid: e2ee245a-4db5-42d9-a231-8645b5e9848a
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.collection_item
+name: Listing
+type: listing
+description: 'Reference a Views dynamic listing.'

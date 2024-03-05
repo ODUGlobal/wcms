@@ -1,0 +1,10 @@
+uuid: 878455b0-47d0-4215-83e1-79df80c23f1b
+langcode: en
+status: true
+dependencies: {  }
+id: gallery
+label: Gallery
+icon_uuid: null
+icon_default: null
+description: 'A collection of media items'
+behavior_plugins: {  }

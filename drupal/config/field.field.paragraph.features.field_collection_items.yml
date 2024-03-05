@@ -1,0 +1,34 @@
+uuid: b14b5a4d-77bd-460d-919e-199120fef9ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.feature
+    - field.storage.paragraph.field_collection_items
+    - paragraphs.paragraphs_type.features
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_collection_items
+id: paragraph.features.field_collection_items
+field_name: field_collection_items
+entity_type: paragraph
+bundle: features
+label: 'Collection Items'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:collection_item'
+  handler_settings:
+    target_bundles:
+      feature: feature
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

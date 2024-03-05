@@ -1,0 +1,29 @@
+uuid: ac89bbac-c506-4c37-9b10-370d6474ff16
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.statistic
+    - field.storage.collection_item.field_is_outcome
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_is_outcome
+id: collection_item.statistic.field_is_outcome
+field_name: field_is_outcome
+entity_type: collection_item
+bundle: statistic
+label: 'Is Outcome'
+description: 'Style variant for a longer fact'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

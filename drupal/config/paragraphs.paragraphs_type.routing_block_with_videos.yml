@@ -1,0 +1,10 @@
+uuid: 1cf8474c-e26a-4dbe-8476-7d3bcab7f1d4
+langcode: en
+status: true
+dependencies: {  }
+id: routing_block_with_videos
+label: 'Image card collection'
+icon_uuid: null
+icon_default: null
+description: 'A set of four vertical images with call-to-action links.'
+behavior_plugins: {  }

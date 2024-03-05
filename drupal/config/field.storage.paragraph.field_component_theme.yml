@@ -1,0 +1,36 @@
+uuid: 5ce24e49-9017-484c-98a0-8c197bf29244
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: mid-blue-500
+      label: mid-blue-500
+    -
+      value: navy-500
+      label: navy-500
+    -
+      value: neutral-900
+      label: neutral-900
+    -
+      value: light-blue-500
+      label: light-blue-500
+    -
+      value: gold-300
+      label: gold-300
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

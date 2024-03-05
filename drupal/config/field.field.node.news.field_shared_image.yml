@@ -1,0 +1,28 @@
+uuid: 262f3ea5-1967-4b1c-a6e5-617424d27f36
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_shared_image
+    - media.type.image
+    - node.type.news
+id: node.news.field_shared_image
+field_name: field_shared_image
+entity_type: node
+bundle: news
+label: 'Shared image'
+description: 'Shared image for social media cards; i.e., has a watermark.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

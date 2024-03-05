@@ -1,0 +1,10 @@
+uuid: 45ee590e-3049-484b-82b9-129f64fa8688
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.full_content_no_optimization
+label: 'Full content, no optimization'
+targetEntityType: media
+cache: true

@@ -1,0 +1,35 @@
+{% set text %}
+  {% if text_heading %}
+    <div class="mb-6">
+      {% include '@components/Atom/Heading/Heading.twig' with text_heading only %}
+    </div>
+  {% endif %}
+  {% include '@components/Organism/Editorial/Editorial.twig' with editorial only %}
+  {{ text_footer }}
+{% endset %}
+
+{% set aside %}
+  <div class="{{ 'sm:[&_[data-tw-theme]:not([data-tw-theme=default])>section]:[--vertical-space:2rem]' }}">
+    {{ aside_content }}
+  </div>
+{% endset %}
+
+{% set component %}
+  <div class="fifty-fifty grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+    <div>
+      {{ flip ? aside : text }}
+    </div>
+    <div>
+      {{ flip ? text : aside }}
+    </div>
+  </div>
+{% endset %}
+
+{% include '@components/GenericSlab/GenericSlab.twig' with {
+  component: component,
+  id: id,
+  verticalRhythm: verticalRhythm,
+  theme: theme,
+  heading: heading,
+  centeredHeading: true
+} only %}

@@ -1,0 +1,28 @@
+version: '2.1'
+
+services:
+  storybook:
+    build: ./docker/bookbinder
+    environment:
+      - PROJECT_NAME=${PROJECT_NAME}
+      - MODE=build
+      - NODE_ENV=production
+      - NODE_OPTIONS="--max-old-space-size=8192"
+    volumes:
+      - ./themes/custom/${THEMENAME}/components:/app/components:ro
+      - ./themes/custom/${THEMENAME}/tsconfig.json:/app/tsconfig.json:ro
+      - ./themes/custom/${THEMENAME}/global.d.ts:/app/global.d.ts:ro
+      - ./themes/custom/${THEMENAME}/storybook-config/tailwind.config.js:/app/tailwind.config.js:ro
+      - ./themes/custom/${THEMENAME}/storybook-config/tailwind-helpers:/app/tailwind-helpers:ro
+      - ./themes/custom/${THEMENAME}/storybook-config/preview-head.html:/app/.storybook/preview-head.html:ro
+      - ./themes/custom/${THEMENAME}/storybook-src:/app/storybook-src:ro
+      # Static direcotry for assets in Storybook, mirrors theme directory stucture so paths with be the same as Drupal
+      - ./themes/custom/${THEMENAME}/images:/app/static/themes/custom/${THEMENAME}/images:ro
+      - ./themes/custom/${THEMENAME}/css:/app/css:ro
+      - ./themes/custom/${THEMENAME}/fonts:/app/static/themes/custom/${THEMENAME}/fonts:ro
+      - ./storybook-static:/app/storybook-static
+      - ./dist:/app/dist
+    working_dir: /app
+    ports:
+      - '3000:3000'
+    restart: always

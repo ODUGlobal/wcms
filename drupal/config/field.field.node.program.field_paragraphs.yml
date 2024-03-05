@@ -1,0 +1,72 @@
+uuid: 71e251e0-3383-488a-888f-e0a4e30900ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paragraphs
+    - node.type.program
+    - paragraphs.paragraphs_type.hero
+  module:
+    - datalayer
+    - entity_reference_revisions
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_paragraphs
+id: node.program.field_paragraphs
+field_name: field_paragraphs
+entity_type: node
+bundle: program
+label: Paragraphs
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      hero: hero
+    negate: 1
+    target_bundles_drag_drop:
+      50_50_panel:
+        weight: 14
+        enabled: false
+      body:
+        weight: 3
+        enabled: false
+      callouts:
+        weight: 4
+        enabled: false
+      custom_teaser_references:
+        weight: 17
+        enabled: false
+      embed:
+        weight: 18
+        enabled: false
+      fast_facts:
+        weight: 19
+        enabled: false
+      featured_link_list:
+        weight: 20
+        enabled: false
+      gallery:
+        weight: 21
+        enabled: false
+      hero:
+        weight: 22
+        enabled: true
+      link_groups:
+        weight: 23
+        enabled: false
+      listings:
+        weight: 24
+        enabled: false
+      quote_collection:
+        weight: 25
+        enabled: false
+      routing_panel:
+        weight: 26
+        enabled: false
+field_type: entity_reference_revisions

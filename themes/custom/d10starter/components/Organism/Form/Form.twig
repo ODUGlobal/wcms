@@ -1,0 +1,31 @@
+{% set component %}
+  {#
+    In Storybook, will be demo form-markup.
+    On Drupal site, might be inline `script` tags or whatever that dynamically load the form.
+  #}
+  {{ form }}
+{% endset %}
+
+{% set noTheme = (not theme or theme == 'default') %}
+
+{# some context-specific y-margin/x-padding overrides for GenericSlab #}
+{# tw #} {% set extraClasses = noTheme
+  ? '[.fifty-fifty_&]:[--vertical-space:0] children:[.fifty-fifty_&]:!no-container [.view-partners_&]:mt-0 [.view-partners_&]:mb-8 children:[.view-partners_&]:!no-container'
+  : 'lg:[.fifty-fifty_&]:[--vertical-space:theme(spacing.vertical-space-mobile-value)]'
+%}
+
+{# tw #} {% set partnersPageOverrides = '[.partners-by-zip-form_&>*>*>.max-w-full.self-center]:max-w-none' %}
+
+{# tw #} {% include '@components/GenericSlab/GenericSlab.twig' with {
+  id: id,
+  verticalRhythm: verticalRhythm,
+  extraClasses: extraClasses ~ ' ' ~ partnersPageOverrides,
+  heading: heading,
+  centeredHeading: true,
+  editorial: editorial,
+  centeredEditorial: true,
+  centeredEditorialText: true,
+  component: component,
+  centered: true,
+  theme: theme
+} only %}

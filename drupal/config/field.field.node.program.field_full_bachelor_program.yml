@@ -1,0 +1,23 @@
+uuid: 0374413f-9f7e-42c4-a260-b17bada8dc8a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_full_bachelor_program
+    - node.type.program
+id: node.program.field_full_bachelor_program
+field_name: field_full_bachelor_program
+entity_type: node
+bundle: program
+label: 'Full bachelor program'
+description: 'Check if this is a full bachelor degree program'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

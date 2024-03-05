@@ -1,0 +1,29 @@
+uuid: bf022b6d-6b69-4cab-9764-891fcc819005
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hide_on_location_page
+    - node.type.person
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_hide_on_location_page
+id: node.person.field_hide_on_location_page
+field_name: field_hide_on_location_page
+entity_type: node
+bundle: person
+label: 'Hide on location page'
+description: 'Do not show on a location page, even if affiliated with the location'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

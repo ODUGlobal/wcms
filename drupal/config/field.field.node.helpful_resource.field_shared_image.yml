@@ -1,0 +1,34 @@
+uuid: 471ed9f3-5e90-4a2d-a349-5159d9bded2d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_shared_image
+    - media.type.image
+    - node.type.helpful_resource
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_shared_image
+id: node.helpful_resource.field_shared_image
+field_name: field_shared_image
+entity_type: node
+bundle: helpful_resource
+label: 'Shared image'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

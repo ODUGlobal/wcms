@@ -1,0 +1,165 @@
+<header class="flex flex-col-reverse relative">
+  {% set component %}
+    {# decorative transparent background for desktop only #}
+    <div class="
+      hidden lg:block
+      absolute z-30 inset-y-0 left-0 w-1/2
+      bg-theme-bg-color/75 mix-blend-multiply
+    "></div>
+    {# actual content (w/ solid background-color on mobile only) #}
+    <div class="
+      relative z-30
+      bg-theme-bg-color lg:bg-transparent text-theme-text-color
+    ">
+      <div class="py-vertical-space lg:py-28 xl:py-52">
+        <div class="container">
+          <div class="lg:w-1/2 lg:pr-16">
+            <div class="space-y-6 lg:space-y-8">
+
+              <div>
+                {# tw #} {% include '@components/Atom/Heading/Heading.twig' with {
+                  headline: headline,
+                  tagLevel: 1,
+                  colorClasses: 'text-theme-fancy-link-color',
+                  extraClasses: 'xl:text-size-6xl'
+                } only %}
+              </div>
+
+              {% if editorial %}
+                <div>
+                  {% include '@components/Organism/Editorial/Editorial.twig' with editorial only %}
+                </div>
+              {% endif %}
+
+              {% if fancyLinkList %}
+                <div class="text-xl">
+                  {% include '@components/Molecule/LinkList/FancyLinkList/FancyLinkList.twig' with fancyLinkList|merge({
+                    inline: true
+                  }) only %}
+                </div>
+              {% endif %}
+
+              {% if buttonLinkList %}
+                <div>
+                  {% include '@components/Molecule/LinkList/ButtonLinkList/ButtonLinkList.twig' with buttonLinkList only %}
+                </div>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endset %}
+
+  {# tw #} {% include '@components/utilities/theme-flag.twig' with {
+    theme: 'navy-500',
+    component: component,
+    extraClasses: 'bg-black'
+  } only %}
+
+  {#
+    Picture + optional video.
+    Below `lg`, try to limit its height so that the h1 is visible above the fold
+    (unless screen is too short, in which case just give it a reasonable height).
+  #}
+  <div class="
+    relative h-[50vh] short:h-[70vh]
+    lg:!h-full lg:absolute lg:inset-0
+  ">
+
+    {% if vimeoId %}
+      {# Actual video (JS adds iframe inside the inner div). #}
+      <div id="hero-header-ambient-video-container" class="absolute inset-0 overflow-hidden">
+        <div
+          aria-hidden="true"
+          {# note: we must avoid the name `data-vimeo-id` b/c it's a reserved attribute for the Vimeo SDK #}
+          data-vimeo-video-id="{{ vimeoId }}"
+          id="hero-header-ambient-video"
+          class="
+            absolute pointer-events-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+            min-w-full min-h-full
+            h-screen w-[1000vw]
+            {# the `.stretch-video` class is controlled via JS w/ a ResizeObserver on parent (checks for 16/9 aspect-ratio) #}
+            [&.stretch-video]:h-[1000vw] [&.stretch-video]:w-screen
+            [&>iframe]:w-full [&>iframe]:h-full
+          "
+        ></div>
+      </div>
+
+      {# A dark overlay to provide enough contrast for the play/pause-button to be visible #}
+      <div class="absolute z-10 inset-x-0 top-0 h-40 bg-gradient-to-b from-black/80"></div>
+
+      {# Play/pause button #}
+      <div class="absolute z-[101] w-full top-3 sm:top-5">{# using 101 z-index b/c Andy says that something on Drupal has 100 #}
+        <div class="container">
+          {# Note: even though video is `aria-hidden`, button cannot be (b/c it's a focusable element). #}
+          <button
+            type="button"
+            id="hero-header-video-button"
+            class="
+              group/button block overflow-hidden transition-[opacity,visibility]
+              invisible opacity-0 data-[video-ready]:visible data-[video-ready]:opacity-100
+              w-8 h-8 sm:w-11 sm:h-11 relative ml-auto
+            "
+            aria-pressed="false" {# value determined by the video's current play/pause state (see JS) #}
+            aria-label="Play ambient video"
+          >
+            {# tw #} {% set spanClasses = 'absolute inset-0 block bg-white transition-[background-color,opacity,visibility]' %}
+            {# tw #} {% set playPauseClasses = '
+            group-hocus/button:bg-yellow-400
+              group-data-[video-loading]/button:!opacity-0
+              group-data-[video-loading]/button:!invisible
+            ' %}
+
+            {# pause-icon #}
+            <span
+              aria-hidden="true"
+              class="
+                mask-pause {{ spanClasses }} {{ playPauseClasses }}
+                invisible opacity-0
+                group-aria-pressed/button:visible group-aria-pressed/button:opacity-100
+              "
+            ></span>
+
+            {# play-icon #}
+            <span
+              aria-hidden="true"
+              class="
+                mask-play {{ spanClasses }} {{ playPauseClasses }}
+                visible opacity-100
+                group-aria-pressed/button:invisible group-aria-pressed/button:opacity-0
+              "
+            ></span>
+
+            {# loading-spinner #}
+            <span
+              aria-hidden="true"
+              class="
+                mask-play-pause-circle {{ spanClasses }}
+                invisible opacity-0
+                group-data-[video-loading]/button:visible group-data-[video-loading]/button:opacity-100
+                animate-spin firefox:blur-[1px]
+                before:absolute before:top-0 before:left-0 before:h-1/2 before:w-1/2 before:bg-yellow-400
+              "
+            ></span>
+          </button>
+        </div>
+      </div>
+    {% endif %}
+
+    {# Hero-image/overlay. If there's a video, the overlay fades out when the video plays for the first time. #}
+    <div
+      aria-hidden="true" {# (at least when there's a video, and maybe always?) #}
+      id="hero-header-overlay"
+      class="
+        absolute inset-0 overflow-hidden
+        descendants:w-full descendants:h-full [&_img]:object-cover
+        data-[video-started]:opacity-0 data-[video-started]:invisible transition-[opacity,visibility] duration-[5000ms]
+      "
+    >
+      {{ picture|inject_template }}
+    </div>
+
+  </div>
+</header>

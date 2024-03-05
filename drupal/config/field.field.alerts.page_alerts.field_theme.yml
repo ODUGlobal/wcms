@@ -1,0 +1,29 @@
+uuid: b85b8155-7302-42d9-a21b-6fff5c1241f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.alerts.page_alerts
+    - field.storage.alerts.field_theme
+    - taxonomy.vocabulary.alert_themes
+id: alerts.page_alerts.field_theme
+field_name: field_theme
+entity_type: alerts
+bundle: page_alerts
+label: Theme
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      alert_themes: alert_themes
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

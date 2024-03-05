@@ -1,0 +1,8 @@
+uuid: c2c82703-ce60-4071-acc9-dbc6c7a7abd0
+langcode: en
+status: true
+dependencies: {  }
+name: 'Partner Regions'
+vid: partner_regions
+description: 'Groupings for partners/locations'
+weight: 0

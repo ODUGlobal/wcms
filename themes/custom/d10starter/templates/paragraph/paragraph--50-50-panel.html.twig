@@ -1,0 +1,30 @@
+{% extends "paragraph.html.twig" %}
+{% block content %}
+    {% set links = [] %}
+    {% set fancy_links = [] %}
+    {% set heading = {} %}
+
+    {% if paragraph.field_heading is not empty %}
+        {% set heading = heading|merge({'headline' : {'#type': 'processed_text', '#text':  paragraph.field_heading.value, '#format': paragraph.field_heading.format}}) %}
+    {% endif %}
+
+    {% if paragraph.field_superhead is not empty %}
+        {% set heading = heading|merge({'superhead' : paragraph.field_superhead.value}) %}
+    {% endif %}
+
+    {% if paragraph.field_links is not empty %}
+        {% for link in paragraph.field_links %}
+            {% set links = links|merge([{'link' : {'title' : link.title, 'url' : link.url}, 'withAfterIcon': true}]) %}
+        {% endfor %}
+    {% endif %}
+
+    {% include '@components/Organism/OverlappingFeature/OverlappingFeature.twig' with {
+        media: content.field_media|children|first,
+        heading: paragraph.field_heading ? heading : null,
+        editorial: paragraph.field_body.value ? {'wysiwyg' : {'#type': 'processed_text', '#text':  paragraph.field_body.value, '#format': paragraph.field_body.format}} : null,
+        fancyLinkList: links ? {'fancyLinks': links} : null,
+        flipped: paragraph.field_flip.value ? true : false,
+        theme: paragraph.field_component_theme.value ? paragraph.field_component_theme.value : null,
+        outerTheme: paragraph.field_outer_theme.value ? paragraph.field_outer_theme.value : null,
+    } only %}
+{% endblock %}

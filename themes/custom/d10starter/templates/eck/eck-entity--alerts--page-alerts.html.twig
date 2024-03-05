@@ -1,0 +1,12 @@
+{% extends "eck-entity.html.twig" %}
+{% block content %}
+  {% if eck_entity.status.value %}
+    {% include "@components/Organism/InPageAlert/InPageAlert.twig" with {
+      theme: eck_entity.field_theme.value ? eck_entity.field_theme.entity.label() : null,
+      picture: eck_entity.field_icon.entity.field_alert_icon ? content.field_icon|children|first : null,
+      heading: eck_entity.field_title.value ? {headline: eck_entity.field_title.value} : null,
+      editorial: eck_entity.field_body.value ? {wysiwyg: content.field_body|children|first} : null,
+      fancyLink: eck_entity.field_fancy_link.value ? content.field_fancy_link|children|first|to_link_object : null,
+    } %}
+  {% endif %}
+{% endblock %}

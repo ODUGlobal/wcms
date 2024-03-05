@@ -1,0 +1,26 @@
+uuid: 5e2d3958-aa5b-43fd-9729-11ee67290009
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_body
+    - taxonomy.vocabulary.enrollment_team
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_body
+id: taxonomy_term.enrollment_team.field_body
+field_name: field_body
+entity_type: taxonomy_term
+bundle: enrollment_team
+label: Body
+description: 'Optional information about the team'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

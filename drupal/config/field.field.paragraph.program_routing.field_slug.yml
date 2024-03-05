@@ -1,0 +1,25 @@
+uuid: a94c4be9-41ca-4424-9aff-a803ee0cea18
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_slug
+    - paragraphs.paragraphs_type.program_routing
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_slug
+id: paragraph.program_routing.field_slug
+field_name: field_slug
+entity_type: paragraph
+bundle: program_routing
+label: Slug
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

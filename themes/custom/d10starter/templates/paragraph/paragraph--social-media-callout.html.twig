@@ -1,0 +1,26 @@
+{% set add_cache = content|render %}
+
+{% for item in paragraph.field_reusable_block %}
+    {% set images = [] %}
+    {% set links = [] %}
+    {% set collection = item.entity %}
+
+    {% if collection.field_images is not empty %}
+        {% for image in collection.field_images %}
+            {% set images = images|merge([{'picture' : drupal_entity(image.entity, 'full')}]) %}
+        {% endfor %}
+    {% endif %}
+
+    {% if collection.field_links is not empty %}
+        {% for link in collection.field_links %}
+            {% set links = links|merge([{'link' : {'title' : link.title, 'url' : link.url}}]) %}
+        {% endfor %}
+    {% endif %}
+    
+    {% include '@components/Organism/Gallery/Gallery.twig' with {
+        heading: collection.field_display_title.value ? {'headline' : collection.field_display_title.value} : null,
+        editorial: collection.field_body.value ? {'wysiwyg' : {'#type': 'processed_text', '#text':  collection.field_body.value, '#format': collection.field_body.format}} : null,
+        fancyLinkList: links ? {'fancyLinks': links} : null,
+        items: images
+    } only %}
+{% endfor %}

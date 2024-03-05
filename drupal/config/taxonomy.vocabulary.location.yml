@@ -1,0 +1,8 @@
+uuid: 676a7816-25fb-4904-97df-8278de6aa3bc
+langcode: en
+status: true
+dependencies: {  }
+name: Location/Partner
+vid: location
+description: 'Partner locations'
+weight: 0

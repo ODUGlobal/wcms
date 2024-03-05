@@ -1,0 +1,8 @@
+{% set add_cache = content|render %}
+
+{% include '@components/Organism/ExploreProgramsRoutingBlock/ExploreProgramsRoutingBlock.twig' with {
+    heading: {'headline' : paragraph.field_heading.value, 'subhead' : paragraph.field_slug.value},
+    fancyLink : {'link' : {'title' : 'See All Programs A–Z', 'url' : '/academics/programs'}, 'withAfterIcon' : true},
+    buttonLinks: buttonLinks ? buttonLinks : null,
+    areasOfStudyLinks: areasOfStudyLinks ? areasOfStudyLinks : null
+} only %}

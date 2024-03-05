@@ -1,0 +1,32 @@
+<div>
+  <div class="px-4 pb-4 border-b-3 border-light-teal-500">
+    {% include '@components/Atom/Heading/Heading.twig' with heading|merge({
+      styleLevel: 2,
+      tagLevel: hLevel|default(2),
+    }) only %}
+  </div>
+
+  <ol
+    role="list"
+    class="grid grid-cols-1 sm:grid-cols-2"
+  >
+    {% for linkGroupItem in linkGroup %}
+      <li class="
+        flex flex-col space-y-1 sm:space-y-1.5 border-b border-neutral-200
+        p-4 sm:even:pl-6 sm:odd:pr-6
+      ">
+        <div>
+          <a
+            href="{{ linkGroupItem.link.url }}"
+            class="font-bold text-lg leading-tight sm:text-size-xl underline text-theme-fancy-link-color hocus:text-theme-fancy-link-hocus-color"
+            aria-label="{{ linkGroupItem.link.title }}{{ linkGroupItem.description ? ' (' ~ linkGroupItem.description ~ ')' }}"
+          ><span aria-hidden="true">{{ linkGroupItem.link.title }}</span></a>
+        </div>
+
+        {% if linkGroupItem.description %}
+          <p aria-hidden="true" class="text-theme-subsup-color text-base leading-tight">{{ linkGroupItem.description }}</p>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ol>
+</div>

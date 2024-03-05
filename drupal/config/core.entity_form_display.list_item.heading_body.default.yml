@@ -1,0 +1,46 @@
+uuid: eea90485-116a-43c4-9beb-92863c14fccb
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.list_item.heading_body
+    - field.field.list_item.heading_body.field_body
+    - field.field.list_item.heading_body.field_hide_heading
+  module:
+    - text
+id: list_item.heading_body.default
+targetEntityType: list_item
+bundle: heading_body
+mode: default
+content:
+  field_body:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_hide_heading:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 100
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

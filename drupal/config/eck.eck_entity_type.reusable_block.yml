@@ -1,0 +1,10 @@
+uuid: d1ce7a1b-8bf7-44a9-a20d-eb61160f585e
+langcode: en
+status: true
+dependencies: {  }
+id: reusable_block
+label: 'Reusable block'
+uid: false
+created: false
+changed: false
+title: true

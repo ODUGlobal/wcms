@@ -1,0 +1,26 @@
+uuid: 6ff96ba4-ece1-416e-8387-b4c0ca7de351
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.program_routing
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_heading
+id: paragraph.program_routing.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: program_routing
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

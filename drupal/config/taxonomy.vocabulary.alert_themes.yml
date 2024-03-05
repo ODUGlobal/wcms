@@ -1,0 +1,8 @@
+uuid: f3226b7b-c52e-479f-b7cc-06fdd486cb07
+langcode: en
+status: true
+dependencies: {  }
+name: 'Alert Themes'
+vid: alert_themes
+description: ''
+weight: 0

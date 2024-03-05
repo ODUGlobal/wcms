@@ -1,0 +1,30 @@
+{# So that we can reuse in `ButtonLink.twig` #}
+{% macro baseButtonClasses() %}
+  {# TODO (maybe): size-variants #}
+  {# tw #} {{ '
+    text-center transition-colors
+    text-lg leading-tight font-sans font-bold tracking-wider
+    py-3.5 px-6 border-3 border-transparent
+    text-theme-button-text-color
+    bg-theme-button-bg-color
+    hocus:bg-theme-button-hocus-bg-color
+    [&.ghost]:bg-transparent
+    [&.ghost]:border-theme-button-bg-color
+    [&.ghost]:text-theme-button-bg-color
+    [&.ghost]:hocus:bg-theme-button-bg-color
+    [&.ghost]:hocus:text-theme-button-text-color
+  '|trim }}
+{% endmacro %}
+
+{% import _self as macros %}
+
+<button
+  {% if type %}
+    type="{{ type }}"
+  {% endif %}
+  class="
+    {{ ghost ? 'ghost' }}
+    {{ block ? 'block' : 'inline-block' }}
+    {{ macros.baseButtonClasses() }}
+  "
+>{{ title }}</button>

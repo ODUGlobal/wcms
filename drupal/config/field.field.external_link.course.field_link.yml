@@ -1,0 +1,23 @@
+uuid: f58c9940-0cca-4ec9-86f1-3822c72404cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.external_link.course
+    - field.storage.external_link.field_link
+  module:
+    - link
+id: external_link.course.field_link
+field_name: field_link
+entity_type: external_link
+bundle: course
+label: Link
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 0
+  link_type: 16
+field_type: link

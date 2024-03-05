@@ -1,0 +1,8 @@
+uuid: 5ed69e5f-7e78-44bb-bf18-77dd0fc999ac
+langcode: en
+status: true
+dependencies: {  }
+name: 'Course Semester'
+vid: course_semester
+description: 'Grouping course launchers'
+weight: 0

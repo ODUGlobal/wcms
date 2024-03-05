@@ -1,0 +1,30 @@
+{% set component %}
+  <div
+    style="--max-cols: 4"
+    class="
+      [&_ul]:block [&_ul]:columns-xs [&_ul]:gap-10 xl:[&_ul]:columns-[--max-cols] xl:[&_ul]:gap-12
+      [&_li]:!my-0 [&_li]:pb-3.5 last:[&_li]:pb-0
+      [&_li]:break-inside-avoid descendants:[&_li]:break-inside-avoid
+    ">
+    {% include '@components/Molecule/LinkList/FancyLinkList/FancyLinkList.twig' with linkCollection|merge({
+      inline: false,
+      columns: false,
+      slim: false,
+      centered: false
+    }) only %}
+  </div>
+{% endset %}
+
+{% if noGenericSlab %}
+  {{ component }}
+{% else %}
+  {% include '@components/GenericSlab/GenericSlab.twig' with {
+    verticalRhythm: verticalRhythm,
+    id: id,
+    heading: heading,
+    fancyLinkList: fancyLinkList,
+    editorial: editorial,
+    component: component,
+    theme: theme
+  } only %}
+{% endif %}

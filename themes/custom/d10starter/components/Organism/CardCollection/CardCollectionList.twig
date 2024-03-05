@@ -1,0 +1,58 @@
+{# This is the list wrapped by the CardCollection. #}
+
+{% if cards|length == 1 %}
+  <div class="max-w-2xl mx-auto">
+    {% for card in cards %}
+      <div>
+        {#
+          NOTE: the object passed to `|inject_template()` here ONLY
+          works in Storybook. Logic for the `hLevel`, `theme`, and
+          `pictureIsNotDecorative` values needs to be reproduced
+          separately in Drupal.
+        #}
+        {{ card|inject_template({
+          hLevel: cardHLevel|default(heading ? 3 : 2),
+          theme: theme == 'neutral-50' ? 'default' : 'neutral-50',
+          pictureIsNotDecorative: cardPicturesAreNotDecorative
+        }) }}
+      </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <ul
+    role="list"
+    style="--max-cols: {{ maxCols|default(3) }}"
+    class="
+      {# "flexible" grid, based on: https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/ #}
+      [--item-min-w:10rem] [--gap-x:1.1rem] [--fr:1fr]
+      xs:[--item-min-w:19rem] xs:[--gap-x:1.5rem]
+      md:[--gap-x:2rem]
+      lg:[--gap-x:3rem]
+      lg:[--fr:.5fr] {# so that if there is only 1 item it takes up only 1/2-width on desktop #}
+      xl:[--gap-x:3.75rem]
+
+      [--max-gap-x-count:calc(var(--max-cols)-1)]
+      [--max-total-gap-x-width:calc(var(--max-gap-x-count)*var(--gap-x))]
+      [--item-max-w:calc((100%-var(--max-total-gap-x-width))/var(--max-cols))]
+
+      grid gap-x-[--gap-x] gap-y-10
+      grid-cols-[repeat(auto-fit,minmax(max(var(--item-max-w),var(--item-min-w)),var(--fr)))]
+    "
+  >
+    {% for card in cards %}
+      <li>
+        {#
+          NOTE: the object passed to `|inject_template()` here ONLY
+          works in Storybook. Logic for the `hLevel`, `theme`, and
+          `pictureIsNotDecorative` values needs to be reproduced
+          separately in Drupal.
+        #}
+        {{ card|inject_template({
+          hLevel: cardHLevel|default(heading ? 3 : 2),
+          theme: theme == 'neutral-50' ? 'default' : 'neutral-50',
+          pictureIsNotDecorative: cardPicturesAreNotDecorative
+        }) }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}

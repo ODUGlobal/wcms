@@ -1,0 +1,77 @@
+uuid: 7b653bba-eb49-4e4c-9572-9c6c8514d034
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_paragraphs
+    - paragraphs.paragraphs_type.hero
+    - paragraphs.paragraphs_type.simple
+    - taxonomy.vocabulary.degree_level
+  module:
+    - datalayer
+    - entity_reference_revisions
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_paragraphs
+id: taxonomy_term.degree_level.field_paragraphs
+field_name: field_paragraphs
+entity_type: taxonomy_term
+bundle: degree_level
+label: Paragraphs
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      hero: hero
+      simple: simple
+    negate: 1
+    target_bundles_drag_drop:
+      50_50_panel:
+        weight: 15
+        enabled: false
+      body:
+        weight: 16
+        enabled: false
+      callouts:
+        weight: 17
+        enabled: false
+      custom_teaser_references:
+        weight: 18
+        enabled: false
+      embed:
+        weight: 19
+        enabled: false
+      fast_facts:
+        weight: 20
+        enabled: false
+      featured_link_list:
+        weight: 21
+        enabled: false
+      gallery:
+        weight: 22
+        enabled: false
+      hero:
+        weight: 23
+        enabled: true
+      link_groups:
+        weight: 24
+        enabled: false
+      listings:
+        weight: 25
+        enabled: false
+      quote_collection:
+        weight: 26
+        enabled: false
+      routing_panel:
+        weight: 27
+        enabled: false
+      simple:
+        weight: 28
+        enabled: true
+field_type: entity_reference_revisions

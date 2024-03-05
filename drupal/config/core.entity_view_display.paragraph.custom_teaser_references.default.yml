@@ -1,0 +1,49 @@
+uuid: 70528353-1b5a-4ca9-9b21-925d03fdf747
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.custom_teaser_references.field_body
+    - field.field.paragraph.custom_teaser_references.field_content_reference
+    - field.field.paragraph.custom_teaser_references.field_heading
+    - field.field.paragraph.custom_teaser_references.field_theme
+    - paragraphs.paragraphs_type.custom_teaser_references
+  module:
+    - text
+id: paragraph.custom_teaser_references.default
+targetEntityType: paragraph
+bundle: custom_teaser_references
+mode: default
+content:
+  field_body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_content_reference:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_heading:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_theme:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

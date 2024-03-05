@@ -1,0 +1,46 @@
+{#
+/**
+ * @file
+ * Theme override to display a view of unformatted rows.
+ *
+ * Available variables:
+ * - title: The title of this group of rows. May be empty.
+ * - rows: A list of the view's row items.
+ *   - attributes: The row's HTML attributes.
+ *   - content: The row's content.
+ * - view: The view object.
+ * - default_row_class: A flag indicating whether default classes should be
+ *   used on rows.
+ *
+ * @see template_preprocess_views_view_unformatted()
+ */
+#}
+{% if title %}
+  <h3>{{ title }}</h3>
+{% endif %}
+
+{% set fancyLinks = [] %}
+
+{% for row in rows %}
+  {% set entity = row.content['#row']._entity %}
+  {% set fancyLinks = fancyLinks|merge([{
+    'url' : path('entity.taxonomy_term.canonical', {'taxonomy_term': entity.id}),
+    'title' : entity.label(),
+  }]) %}
+{% endfor %}
+
+{% if fancyLinks|length > 0 %}
+    {% set component %}
+        {% include "@components/Molecule/LinkList/FancyLinkList/FancyLinkList.twig" with {
+            fancyLinks: fancyLinks,
+            inline: true 
+        } %}
+    {% endset %}
+    {% include '@components/GenericSlab/GenericSlab.twig' with {
+        heading: {headline : 'Browse by topic'},
+        component: component,
+        headingStyleLevel: 'h6',
+        fancyLinks: fancyLinks,
+        verticalRhythm: 'vertical-rhythm-standard-bottom'
+    } only %}
+{% endif %}

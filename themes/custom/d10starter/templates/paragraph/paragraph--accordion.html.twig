@@ -1,0 +1,16 @@
+{% set add_cache = content|render %}
+
+{% set panels = [] %}
+
+{% for item in paragraph.field_collection_items %}
+    {% set panels = panels|merge([{
+        'headline' : item.entity.field_display_title.value,
+        'editorial' : item.entity.field_body ? {'wysiwyg' : {'#type': 'processed_text', '#text':  item.entity.field_body.value, '#format': item.entity.field_body.format}} : null
+    }]) %}
+{% endfor %}
+
+{% include '@components/Organism/Accordion/Accordion.twig' with {
+    heading : paragraph.field_heading ? {'headline' : paragraph.field_heading.value} : null,
+    panels : panels,
+    closeOthersOnOpen: paragraph.field_close_others_on_open.value ? true : false,
+} only %}

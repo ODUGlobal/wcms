@@ -1,0 +1,31 @@
+{% set byline = content.field_byline|children|first %}
+{% set article_date = node.getCreatedTime()|date('M d, Y') %}
+
+{% extends "node.html.twig" %}
+{% block content %}
+{% set figure = null %}
+{% if node.field_media.value %}
+  {% set figure %}
+    {% include "@components/Atom/Media/Figure/Figure.twig" with {
+      media: content.field_media|children|first,
+      caption: node.field_media_caption.value ? content.field_media_caption|children|first : null,
+    }%}
+  {% endset %}
+{% endif %}
+
+{% include "@components/Organism/PageHeader/NewsStoryPageHeader/NewsStoryPageHeader.twig" with {
+  heading: {
+    headline: display_title,
+    subhead: (byline ? (byline|render ~ ' | ') : '') ~ article_date,
+    hLevel: hLevel,
+  },
+  figure: figure,
+  wider: true
+} %}
+
+{% include "@components/Organism/EditorialSlab/EditorialSlab.twig" with {
+  editorial: {
+    wysiwyg: content.body|children|first,
+  },
+} %}
+{% endblock %}

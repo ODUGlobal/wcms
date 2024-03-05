@@ -1,0 +1,9 @@
+uuid: 47db13e3-22fe-4cd6-bb34-09397bed10cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.collection_item
+name: 'Cost Callout'
+type: cost_callout
+description: 'Like a callout, but also referencing a definition listing for e.g., costs'

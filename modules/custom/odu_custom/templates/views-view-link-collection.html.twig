@@ -1,0 +1,17 @@
+{# includes:
+  - rows: the listing content
+  - links: [
+    {
+      heading: ''
+      links: []
+    },
+    ...
+  ]
+#}
+
+{% for row in rows %}
+<div>
+  {{ row }}
+</div>
+{% endfor %}
+  

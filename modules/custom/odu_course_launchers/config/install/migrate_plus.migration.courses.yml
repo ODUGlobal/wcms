@@ -1,0 +1,29 @@
+id: courses
+label: Course CSV import
+migration_tags:
+  - csv
+source:
+  plugin: csv
+  path: sites/default/files/csv/courses.csv
+  # The number of rows at the beginning which are not data.
+  header_row_count: 1
+  ids:
+    - url
+process:
+  type:
+    plugin: default_value
+    default_value: course
+  field_course: course
+  field_subject: title
+  field_meets_with: parent
+  field_part_of_term: session
+  field_day: day
+  field_time_text: time
+  field_instructor: instructor
+  field_link/uri: 
+    plugin: check_valid_url
+    method: process
+    source: url
+  field_semester: semester
+destination:
+  plugin: entity:external_link

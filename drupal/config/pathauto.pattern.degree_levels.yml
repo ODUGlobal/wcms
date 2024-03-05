@@ -1,0 +1,23 @@
+uuid: 0f158b8c-90e9-4c1d-adc1-4d1a54b958bd
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: degree_levels
+label: 'Degree Levels'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/academics/degree/[term:name]'
+selection_criteria:
+  d425adf1-224b-4542-b53a-ddb1d3708a44:
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    uuid: d425adf1-224b-4542-b53a-ddb1d3708a44
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    bundles:
+      degree_level: degree_level
+selection_logic: and
+weight: -5
+relationships: {  }

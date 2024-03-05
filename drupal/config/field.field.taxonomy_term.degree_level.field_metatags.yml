@@ -1,0 +1,26 @@
+uuid: 9123b59f-f117-4a32-9a1f-6e91d578dabe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_metatags
+    - taxonomy.vocabulary.degree_level
+  module:
+    - datalayer
+    - metatag
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_metatags
+id: taxonomy_term.degree_level.field_metatags
+field_name: field_metatags
+entity_type: taxonomy_term
+bundle: degree_level
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

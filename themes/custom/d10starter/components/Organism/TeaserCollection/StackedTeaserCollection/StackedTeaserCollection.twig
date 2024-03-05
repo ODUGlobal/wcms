@@ -1,0 +1,33 @@
+{% set component %}
+  <ul role="list" class="flex flex-col space-y-12 md:space-y-16">
+    {% for teaser in teasers %}
+      <li>
+        {#
+          NOTE: the object passed to `|inject_template()` here ONLY works
+          in Storybook. So the `hLevel` and `hStyleLevel` logic has to
+          be reproduced elsewhere on the Drupal side.
+        #}
+        {{ teaser|inject_template({
+          hLevel: teaserHLevel|default(heading ? 3 : 2),
+          hStyleLevel: teaserHStyleLevel|default(3)
+        }) }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endset %}
+
+{% if noGenericSlab %}
+  {{ component }}
+{% else %}
+  {% include '@components/GenericSlab/GenericSlab.twig' with {
+    bigSpaceY: true,
+    extraSmallContainer: true,
+    heading: heading,
+    fancyLinkList: fancyLinkList,
+    editorial: editorial,
+    component: component,
+    id: id,
+    verticalRhythm: verticalRhythm,
+    theme: theme
+  } only %}
+{% endif %}

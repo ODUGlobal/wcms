@@ -1,0 +1,27 @@
+uuid: 775571ba-1252-4326-83c1-b9756d24e1d4
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_block_theme
+field_name: field_block_theme
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: navy-700
+      label: navy-700
+    -
+      value: light-blue-300
+      label: light-blue-300
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

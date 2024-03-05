@@ -1,0 +1,18 @@
+uuid: 358079c5-4e99-493d-a1c4-b53e98438e10
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.alerts.page_alerts
+id: alerts.page_alerts.title
+field_name: title
+entity_type: alerts
+bundle: page_alerts
+label: 'Description (only visible in admin)'
+description: 'The title of the entity.'
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

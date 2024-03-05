@@ -1,0 +1,10 @@
+uuid: 73c7d71a-5f9b-4702-94d3-21a6504c7ded
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+id: collection_item.embed
+label: Embed
+targetEntityType: collection_item
+cache: true

@@ -1,0 +1,72 @@
+uuid: 2f0d151a-fec9-46ff-9922-41f464f0ddeb
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.alerts.page_alerts
+    - field.field.alerts.page_alerts.field_body
+    - field.field.alerts.page_alerts.field_fancy_link
+    - field.field.alerts.page_alerts.field_icon
+    - field.field.alerts.page_alerts.field_theme
+    - field.field.alerts.page_alerts.field_title
+  module:
+    - link
+    - text
+id: alerts.page_alerts.default
+targetEntityType: alerts
+bundle: page_alerts
+mode: default
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: -4
+    region: content
+  field_fancy_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: -1
+    region: content
+  field_icon:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: -2
+    region: content
+  field_theme:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: -3
+    region: content
+  field_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -5
+    region: content
+hidden: {  }

@@ -1,0 +1,47 @@
+{% set component %}
+  <div class="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
+    <div
+      aria-hidden="true"
+      class="shrink-0 w-8 h-8 sm:w-10 sm:h-10"
+    >
+      {{ picture|inject_template }}
+    </div>
+
+    <div class="space-y-3 {{ fancyLink and not heading and not editorial ? 'sm:self-center' }}">
+      {% if heading is not empty %}
+        <div>
+          {% include '@components/Atom/Heading/Heading.twig' with heading|merge({
+            styleLevel: 4,
+            slim: true
+          }) %}
+        </div>
+      {% endif %}
+
+      {% if editorial %}
+        <div>
+          {% include '@components/Organism/Editorial/Editorial.twig' with editorial only %}
+        </div>
+      {% endif %}
+
+      {% if fancyLink %}
+        <div class="text-lg">
+          {% set withAfterIcon = fancyLink.withBeforeIcon ? false : true %}
+          {% if 'withAfterIcon' in fancyLink|keys %}
+            {% set withAfterIcon = fancyLink.withAfterIcon %}
+          {% endif %}
+          {% include '@components/Atom/Link/FancyLink/FancyLink.twig' with fancyLink|merge({
+            withAfterIcon: withAfterIcon
+          }) only %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+{% endset %}
+
+{# tw #} {% include '@components/GenericSlab/GenericSlab.twig' with {
+  id: id,
+  verticalRhythm: verticalRhythm,
+  verticalPadding: 'py-5 sm:py-8',
+  theme: theme|default('yellow-500'),
+  component: component
+} only %}

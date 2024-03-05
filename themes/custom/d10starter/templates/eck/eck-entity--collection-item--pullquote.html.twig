@@ -1,0 +1,14 @@
+{# Currently testimonials only appear within slides so this is the default view mode.
+   If this changes, `isSlide` below should be set to false, and the pullquote collection
+   paragraph should display this in a `slider` view mode.
+#}
+{% extends "eck-entity.html.twig" %}
+{% block content %}
+{% include "@components/Molecule/Testimonial/Testimonial.twig" with {
+  picture: content.field_media|children|first,
+  quotation: content.field_body|children|first,
+  attributionName: content.field_citation_person|children|first,
+  attributionDescription: content.field_citation_job_title|children|first,
+  isSlide: true,
+} %}
+{% endblock %}

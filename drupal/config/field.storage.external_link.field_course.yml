@@ -1,0 +1,21 @@
+uuid: bf34a27e-4ada-4d33-9eb3-a6797a21d0d2
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+id: external_link.field_course
+field_name: field_course
+entity_type: external_link
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

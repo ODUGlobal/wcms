@@ -1,0 +1,19 @@
+uuid: 6b3e9e61-ff6d-4c96-a60f-ae5abcf8f144
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.alerts.page_alerts
+    - field.storage.alerts.field_title
+id: alerts.page_alerts.field_title
+field_name: field_title
+entity_type: alerts
+bundle: page_alerts
+label: Title
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

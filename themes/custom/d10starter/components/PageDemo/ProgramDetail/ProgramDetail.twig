@@ -1,0 +1,25 @@
+{% extends '@components/Page/Page.twig' %}
+
+{% block content %}
+  {{ pageHeader|inject_template }}
+
+  {{ fiftyFifty1|inject_template }}
+
+  {{ fastFacts|inject_template }}
+
+  {{ fiftyFifty2|inject_template }}
+
+  {{ fiftyFifty3|inject_template }}
+
+  {{ overlappingFeature|inject_template }}
+
+  {{ fiftyFifty4|inject_template }}
+
+  <div class="vertical-rhythm-standard">
+    <div class="container">[[ Careers in Accounting here (fancy table thing, implementation TBD) ]]</div>
+  </div>
+
+  {{ cardCollection|inject_template }}
+
+  {{ noImageRoutingBlockCollection|inject_template }}
+{% endblock %}

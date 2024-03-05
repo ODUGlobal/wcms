@@ -1,0 +1,23 @@
+uuid: abd170a6-941c-4acb-8147-02948db95248
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.cost_callout
+    - field.storage.collection_item.field_reusable
+id: collection_item.cost_callout.field_reusable
+field_name: field_reusable
+entity_type: collection_item
+bundle: cost_callout
+label: Reusable
+description: 'Notes (for administrative purposes) that this callout is shared by multiple content items.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

@@ -1,0 +1,64 @@
+uuid: 39977f82-dbc8-44ba-9fae-d95940321957
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.relationship.licensure
+    - field.field.relationship.licensure.field_information
+    - field.field.relationship.licensure.field_licensing_body
+    - field.field.relationship.licensure.field_licensing_status
+    - field.field.relationship.licensure.field_link
+    - field.field.relationship.licensure.field_state
+  module:
+    - chosen_field
+    - text
+id: relationship.licensure.default
+targetEntityType: relationship
+bundle: licensure
+mode: default
+content:
+  field_information:
+    type: text_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_licensing_body:
+    type: chosen_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_licensing_status:
+    type: options_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_state:
+    type: chosen_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 100
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_link: true
+  uid: true

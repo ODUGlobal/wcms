@@ -1,0 +1,28 @@
+uuid: 618b401f-be8e-4aa7-93e7-610d4502d2ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_links
+    - taxonomy.vocabulary.application_type
+  module:
+    - datalayer
+    - link
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_links
+id: taxonomy_term.application_type.field_links
+field_name: field_links
+entity_type: taxonomy_term
+bundle: application_type
+label: Links
+description: '"Request Info" and "Apply Now" buttons, probably'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 2
+  link_type: 17
+field_type: link

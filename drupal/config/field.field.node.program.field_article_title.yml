@@ -1,0 +1,26 @@
+uuid: ffa53e91-0e02-4895-90e8-4fa96b80a618
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_article_title
+    - node.type.program
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_article_title
+id: node.program.field_article_title
+field_name: field_article_title
+entity_type: node
+bundle: program
+label: 'Article title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

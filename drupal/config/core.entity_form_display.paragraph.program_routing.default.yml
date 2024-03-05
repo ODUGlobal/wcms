@@ -1,0 +1,58 @@
+uuid: 6898abf1-81bd-451f-8f1d-b8aaf7b3e4b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.program_routing.field_background_image
+    - field.field.paragraph.program_routing.field_buttons_listing
+    - field.field.paragraph.program_routing.field_heading
+    - field.field.paragraph.program_routing.field_icons_listing
+    - field.field.paragraph.program_routing.field_slug
+    - paragraphs.paragraphs_type.program_routing
+  module:
+    - media_library
+    - text
+    - viewfield
+id: paragraph.program_routing.default
+targetEntityType: paragraph
+bundle: program_routing
+mode: default
+content:
+  field_background_image:
+    type: media_library_widget
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_buttons_listing:
+    type: viewfield_select
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_heading:
+    type: text_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_icons_listing:
+    type: viewfield_select
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_slug:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

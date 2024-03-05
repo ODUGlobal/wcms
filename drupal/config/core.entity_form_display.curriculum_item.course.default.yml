@@ -1,0 +1,56 @@
+uuid: 03c72d7d-8ccf-47ba-8360-c3a1edfe44ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.curriculum_item.course
+    - field.field.curriculum_item.course.field_credits
+    - field.field.curriculum_item.course.field_notes
+    - field.field.curriculum_item.course.field_odu_course_name
+  module:
+    - text
+id: curriculum_item.course.default
+targetEntityType: curriculum_item
+bundle: course
+mode: default
+content:
+  field_credits:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_notes:
+    type: text_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_odu_course_name:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 100
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

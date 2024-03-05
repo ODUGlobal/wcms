@@ -1,0 +1,34 @@
+uuid: 425b5c07-9436-4c26-9a61-2bb816b8b84f
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.relationship.licensure
+    - field.storage.node.field_licensure_information
+    - node.type.program
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_licensure_information
+id: node.program.field_licensure_information
+field_name: field_licensure_information
+entity_type: node
+bundle: program
+label: 'Licensure information'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:relationship'
+  handler_settings:
+    target_bundles:
+      licensure: licensure
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

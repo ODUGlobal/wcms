@@ -1,0 +1,64 @@
+uuid: 9beeca8f-d696-4e22-b8a2-d58904a8d0ee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.program_routing.field_background_image
+    - field.field.paragraph.program_routing.field_buttons_listing
+    - field.field.paragraph.program_routing.field_heading
+    - field.field.paragraph.program_routing.field_icons_listing
+    - field.field.paragraph.program_routing.field_slug
+    - paragraphs.paragraphs_type.program_routing
+  module:
+    - text
+    - viewfield
+id: paragraph.program_routing.default
+targetEntityType: paragraph
+bundle: program_routing
+mode: default
+content:
+  field_background_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: desaturated_background
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_buttons_listing:
+    type: viewfield_default
+    label: hidden
+    settings:
+      view_title: hidden
+      always_build_output: false
+      empty_view_title: hidden
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_heading:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_icons_listing:
+    type: viewfield_default
+    label: hidden
+    settings:
+      view_title: hidden
+      always_build_output: false
+      empty_view_title: hidden
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_slug:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

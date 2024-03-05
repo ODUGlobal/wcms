@@ -1,0 +1,18 @@
+uuid: 70d6b024-3b88-49ab-b620-7adcd98473b1
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.field_close_others_on_open
+field_name: field_close_others_on_open
+entity_type: paragraph
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

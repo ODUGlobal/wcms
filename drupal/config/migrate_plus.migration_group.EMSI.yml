@@ -1,0 +1,10 @@
+uuid: bd689f13-ddbb-4427-9c80-11e8a73fc7ee
+langcode: en
+status: true
+dependencies: {  }
+id: EMSI
+label: EMSI
+description: ''
+source_type: null
+module: null
+shared_configuration: null

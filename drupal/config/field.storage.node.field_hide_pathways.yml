@@ -1,0 +1,18 @@
+uuid: 2a901547-2afc-45c3-98f1-c3083825d174
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_hide_pathways
+field_name: field_hide_pathways
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,26 @@
+uuid: 663b9a30-b1c0-4d04-9caf-4f3f87cff8d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_title
+    - node.type.helpful_resource
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_display_title
+id: node.helpful_resource.field_display_title
+field_name: field_display_title
+entity_type: node
+bundle: helpful_resource
+label: 'Display title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

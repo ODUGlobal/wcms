@@ -1,0 +1,61 @@
+{# tw #} {% set defaultVerticalRhythm = 'vertical-rhythm-standard' %}
+
+{% if panels and panels is iterable %}
+  <section
+    {% if id is not empty %}id="{{ id }}"{% endif %}
+    class="{{ verticalRhythm|default(defaultVerticalRhythm) }}"
+  >
+    <div class="conditional-container">
+
+      <div class="space-y-8">
+        {% if heading %}
+          <div>
+            {% include '@components/Atom/Heading/Heading.twig' with heading only %}
+          </div>
+        {% endif %}
+
+        <div class="space-y-8">
+          <ul
+            data-tabby-tabs
+            class="inline-flex flex-wrap gap-x-2 gap-y-2 border-b"
+          >{% apply spaceless %}
+            {% for panel in panels %}
+              <li>
+                <a
+                  {% if loop.first %}data-tabby-default{% endif %}
+                  href="#{{ panel.id }}"
+                  class="
+                    inline-block border border-b-0 rounded-t shadow-sm py-1 px-3
+                    hover:bg-black/10 aria-selected:bg-black/10
+                    text-lg
+                  "
+                >{{ panel.title }}</a>
+              </li>
+            {% endfor %}
+          {% endapply %}</ul>
+
+          <div class="space-y-8">
+            {% for panel in panels %}
+              <div id="{{ panel.id }}">
+                <div class="space-y-6">
+                  {% if panel.heading %}
+                    <div>
+                      {% include '@components/Atom/Heading/Heading.twig' with panel.heading only %}
+                    </div>
+                  {% endif %}
+                  <div>
+                    {% if panel.editorial %}
+                      {% include '@components/Organism/Editorial/Editorial.twig' with panel.editorial only %}
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+{% endif %}

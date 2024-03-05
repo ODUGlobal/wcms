@@ -1,0 +1,10 @@
+{# includes:
+  - maxCols: max columns in a row
+  - rows: the listing content
+#}
+
+{% include "@components/Organism/CardCollection/CardCollectionList.twig" with {
+  maxCols: maxCols,
+  cards: rows,
+} %}
+  

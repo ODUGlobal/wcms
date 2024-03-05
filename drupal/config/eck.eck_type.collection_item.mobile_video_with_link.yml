@@ -1,0 +1,9 @@
+uuid: a395f12d-d3da-4204-a555-9cac0f6dc5a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.collection_item
+name: 'Image Card with Link'
+type: mobile_video_with_link
+description: 'An embedded vertical image and a call-to-action link.'

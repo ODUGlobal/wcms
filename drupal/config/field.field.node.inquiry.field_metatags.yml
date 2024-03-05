@@ -1,0 +1,26 @@
+uuid: 67994bff-b232-4091-a89a-75b6b3b410a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_metatags
+    - node.type.inquiry
+  module:
+    - datalayer
+    - metatag
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_metatags
+id: node.inquiry.field_metatags
+field_name: field_metatags
+entity_type: node
+bundle: inquiry
+label: Metatags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

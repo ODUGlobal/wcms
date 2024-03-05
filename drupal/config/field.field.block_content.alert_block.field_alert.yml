@@ -1,0 +1,29 @@
+uuid: c86e4097-a4a8-4f24-a717-c2d1078059a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.alert_block
+    - eck.eck_type.alerts.page_alerts
+    - field.storage.block_content.field_alert
+id: block_content.alert_block.field_alert
+field_name: field_alert
+entity_type: block_content
+bundle: alert_block
+label: Alert
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:alerts'
+  handler_settings:
+    target_bundles:
+      page_alerts: page_alerts
+    sort:
+      field: title
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

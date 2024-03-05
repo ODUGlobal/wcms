@@ -1,0 +1,25 @@
+uuid: f11e95cd-227a-43fd-9b9b-aa234fad1233
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.footer
+  module:
+    - system
+  theme:
+    - d10starter
+id: d10starter_footer
+theme: d10starter
+region: footer_col_2
+weight: -8
+provider: null
+plugin: 'system_menu_block:footer'
+settings:
+  id: 'system_menu_block:footer'
+  label: Footer
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

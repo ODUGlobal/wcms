@@ -1,0 +1,29 @@
+uuid: f5c89184-199e-47bd-9cf5-038dbcf0484a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_full_heading
+    - paragraphs.paragraphs_type.text_aside
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_full_heading
+id: paragraph.text_aside.field_full_heading
+field_name: field_full_heading
+entity_type: paragraph
+bundle: text_aside
+label: 'Full heading'
+description: 'Make the heading stretch across the full slab over main content and aside.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

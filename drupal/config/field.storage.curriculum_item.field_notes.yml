@@ -1,0 +1,20 @@
+uuid: fe403e89-bb34-45ee-a7a1-a7403180887b
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+    - text
+id: curriculum_item.field_notes
+field_name: field_notes
+entity_type: curriculum_item
+type: text
+settings:
+  max_length: 255
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

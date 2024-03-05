@@ -1,0 +1,26 @@
+uuid: 433b3c9b-c0ee-465b-9756-0ec8244e3d86
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.custom_teasers
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_body
+id: paragraph.custom_teasers.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: custom_teasers
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

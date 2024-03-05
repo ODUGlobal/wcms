@@ -1,0 +1,38 @@
+uuid: 80775f94-4f45-4d68-b338-2bef0018f1e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.accordion_tab
+    - field.field.collection_item.accordion_tab.field_body
+    - field.field.collection_item.accordion_tab.field_display_title
+  module:
+    - text
+id: collection_item.accordion_tab.default
+targetEntityType: collection_item
+bundle: accordion_tab
+mode: default
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: -4
+    region: content
+  field_display_title:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: -3
+    region: content
+  title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -5
+    region: content
+hidden: {  }

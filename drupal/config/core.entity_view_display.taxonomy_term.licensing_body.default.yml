@@ -1,0 +1,44 @@
+uuid: 83d398f1-8c02-43fe-b267-eeb0f8273dc0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.licensing_body.field_display_name
+    - field.field.taxonomy_term.licensing_body.field_link
+    - taxonomy.vocabulary.licensing_body
+  module:
+    - link
+    - text
+id: taxonomy_term.licensing_body.default
+targetEntityType: taxonomy_term
+bundle: licensing_body
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_display_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

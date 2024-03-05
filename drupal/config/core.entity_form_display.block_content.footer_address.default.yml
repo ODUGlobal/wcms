@@ -1,0 +1,29 @@
+uuid: d9931307-610c-4a2b-8caa-6a9a2fa86752
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.footer_address
+    - field.field.block_content.footer_address.field_address_line
+id: block_content.footer_address.default
+targetEntityType: block_content
+bundle: footer_address
+mode: default
+content:
+  field_address_line:
+    type: string_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

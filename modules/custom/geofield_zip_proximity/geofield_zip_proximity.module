@@ -1,0 +1,25 @@
+<?php
+
+/**
+ * @file
+ * Contains geofield_zip_proximity.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_help().
+ */
+function geofield_zip_proximity_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the geofield_zip_proximity module.
+    case 'help.page.geofield_zip_proximity':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Zip code proximity filter') . '</p>';
+      return $output;
+
+    default:
+  }
+}

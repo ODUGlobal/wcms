@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains odu_course_launchers.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function odu_course_launchers_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the odu_course_launchers module.
+    case 'help.page.odu_course_launchers':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Importers for course launcher exports') . '</p>';
+      return $output;
+
+    default:
+  }
+}

@@ -1,0 +1,14 @@
+tasks:
+  - init: |
+      cd themes/custom/themename && npm install
+  - command: |
+      docker-compose up
+vscode:
+  extensions:
+    - Tobermory.es6-string-html
+    - dbaeumer.vscode-eslint
+    - csstools.postcss
+    - esbenp.prettier-vscode
+    - bradlc.vscode-tailwindcss
+    - mblode.twig-language-2
+    - unifiedjs.vscode-mdx

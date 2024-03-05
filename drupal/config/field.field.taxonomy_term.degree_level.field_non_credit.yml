@@ -1,0 +1,29 @@
+uuid: ad693651-c6b8-49fa-ac0d-a8426b0554b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_non_credit
+    - taxonomy.vocabulary.degree_level
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_non_credit
+id: taxonomy_term.degree_level.field_non_credit
+field_name: field_non_credit
+entity_type: taxonomy_term
+bundle: degree_level
+label: Non-credit
+description: 'Controls layout and form options for non-credit program pages.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

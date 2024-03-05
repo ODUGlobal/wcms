@@ -1,0 +1,21 @@
+uuid: ec114820-cc2d-4c9e-967f-00ea1bc13dde
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+id: taxonomy_term.field_contact_us_heading
+field_name: field_contact_us_heading
+entity_type: taxonomy_term
+type: string
+settings:
+  max_length: 255
+  case_sensitive: false
+  is_ascii: false
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

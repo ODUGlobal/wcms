@@ -1,0 +1,28 @@
+uuid: ae1bd6fe-2975-4252-95f5-198997551f26
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.collection_item.embed
+    - eck.eck_type.collection_item.pullquote
+    - entity_browser.browser.collection_items
+  module:
+    - eck
+    - entity_embed
+label: 'Collection Item'
+id: pullquote
+type_id: entity
+type_settings:
+  entity_type: collection_item
+  bundles:
+    - pullquote
+  display_plugins:
+    - 'view_mode:collection_item.embed'
+  entity_browser: collection_items
+  entity_browser_settings:
+    display_review: false
+  inline_entity_edit_enabled: true
+icon:
+  uri: 'public://embed_buttons/collection.svg'
+  data: PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMjEuNTYxIDE2bC0xLjIgNmgtMTYuNzIxbC0xLjItNmgxOS4xMjF6bTIuNDM5LTJoLTI0bDIgMTBoMjBsMi0xMHptLTMuNDQ0LTEyLjAwMWwuNDM5LTEuOTk5aC0xNy45OTRsLjQzOSAxLjk5OWgxNy4xMTZ6bTEuNyA0LjAwMWwuMzctMmgtMjEuMjU2bC4zNyAyaDIwLjUxNnptLTE5LjczMSA2bC0uMjU1LTJoMTkuNDVsLS4yNjIgMmgyLjAxN2wuNTI1LTRoLTI0bC41MDkgNGgyLjAxNnoiLz48L3N2Zz4=
+icon_uuid: null

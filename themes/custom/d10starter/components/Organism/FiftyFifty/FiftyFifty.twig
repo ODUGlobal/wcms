@@ -1,0 +1,48 @@
+{% set component %}
+  <div class="fifty-fifty grid grid-cols-1 gap-12 lg:grid-cols-2 lg:gap-16">
+    {% for half in [
+      {
+        contents: firstHalf,
+        type: firstHalfType
+      },
+      {
+        contents: secondHalf,
+        type: secondHalfType
+      }
+    ] %}
+      <div>
+        {% if half.type == 'editorial' %}
+          <div class="space-y-8">
+            {% if half.contents.heading %}
+              {% include '@components/Atom/Heading/Heading.twig' with half.contents.heading only %}
+            {% endif %}
+            <div>
+              {% include '@components/Organism/Editorial/Editorial.twig' with half.contents.editorial only %}
+            </div>
+          </div>
+        {% elseif half.type == 'picture' %}
+          {{ half.contents.picture|inject_template }}
+        {% elseif half.type == 'video' %}
+          {{ half.contents.video|inject_template }}
+        {% elseif half.type == 'picture-figure' %}
+          {{ half.contents.figure|inject_template }}
+        {% elseif half.type == 'video-figure' %}
+          {{ half.contents.figure|inject_template }}
+        {% elseif half.type == 'no-image-routing-block' %}
+          {% include '@components/Molecule/NoImageRoutingBlock/NoImageRoutingBlock.twig' with half.contents.noImageRoutingBlock only %}
+        {% elseif half.type == 'cost-blocks' %}
+          {% include '@components/Molecule/CostBlocks/CostBlocks.twig' with half.contents.costBlocks only %}
+        {% elseif half.type == 'form' %}
+          {% include '@components/Organism/Form/Form.twig' with half.contents.form only %}
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+{% endset %}
+
+{% include '@components/GenericSlab/GenericSlab.twig' with {
+  component: component,
+  id: id,
+  verticalRhythm: verticalRhythm,
+  theme: theme
+} only %}

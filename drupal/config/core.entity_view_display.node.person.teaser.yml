@@ -1,0 +1,54 @@
+uuid: 9bd7289f-272e-4bc2-8822-528a78cec236
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.person.body
+    - field.field.node.person.field_department
+    - field.field.node.person.field_email
+    - field.field.node.person.field_enrollment_team
+    - field.field.node.person.field_hide_on_location_page
+    - field.field.node.person.field_importance
+    - field.field.node.person.field_job_title
+    - field.field.node.person.field_location
+    - field.field.node.person.field_media
+    - field.field.node.person.field_name
+    - field.field.node.person.field_phone
+    - field.field.node.person.field_ranking
+    - field.field.node.person.field_topics
+    - node.type.person
+  module:
+    - text
+    - user
+id: node.person.teaser
+targetEntityType: node
+bundle: person
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_department: true
+  field_email: true
+  field_enrollment_team: true
+  field_hide_on_location_page: true
+  field_importance: true
+  field_job_title: true
+  field_location: true
+  field_media: true
+  field_name: true
+  field_phone: true
+  field_ranking: true
+  field_topics: true

@@ -1,0 +1,22 @@
+{% extends "paragraph.html.twig" %}
+{% block content %}
+{# collect the other teasers (i.e., not the first) and switch their view mode #}
+{% set other_teasers = [] %}
+{% for ot in content.field_content_reference|children|slice(1) %}
+{% set other_teasers = other_teasers|merge([
+  ot|view_mode('teaser_with_summary')
+]) %}
+{% endfor %}
+
+{% include '@components/Organism/TeaserCollection/MixedTeaserCollection/MixedTeaserCollection.twig' with {
+  heading: {
+    headline: content.field_heading|children|first,
+  },
+  standardTeaser: paragraph.field_content_reference.0.entity ? {
+    link: { url: path('entity.node.canonical', {'node': paragraph.field_content_reference.0.entity.id}), title: paragraph.field_content_reference.0.entity.title.value },
+    picture: drupal_entity(paragraph.field_content_reference.0.entity.field_media.entity, 'teaser'),
+    editorial: paragraph.field_content_reference.0.entity.body.value ? {'wysiwyg': paragraph.field_content_reference.0.entity.body|field_view('teaser_with_summary')} : null
+  } : null,
+  stackedTeaserCollection: {teasers: other_teasers}
+} only %}
+{% endblock %}

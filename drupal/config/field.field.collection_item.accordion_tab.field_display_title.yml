@@ -1,0 +1,26 @@
+uuid: b2293d91-ec5f-4044-b462-89376532c3fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.accordion_tab
+    - field.storage.collection_item.field_display_title
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_display_title
+id: collection_item.accordion_tab.field_display_title
+field_name: field_display_title
+entity_type: collection_item
+bundle: accordion_tab
+label: 'Display title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

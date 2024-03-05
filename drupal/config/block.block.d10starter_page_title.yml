@@ -1,0 +1,20 @@
+uuid: cb8033d9-f18c-4281-a0d1-aa8964fd8be9
+langcode: en
+status: false
+dependencies:
+  theme:
+    - d10starter
+_core:
+  default_config_hash: 6aOgWsNTXjqrDm98TXSAjP6qd2nCijD1xw45MrnbK-Y
+id: d10starter_page_title
+theme: d10starter
+region: utility_nav
+weight: 1
+provider: null
+plugin: page_title_block
+settings:
+  id: page_title_block
+  label: 'Page title'
+  label_display: '0'
+  provider: core
+visibility: {  }

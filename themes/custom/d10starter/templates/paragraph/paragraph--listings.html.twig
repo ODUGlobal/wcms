@@ -1,0 +1,15 @@
+{% extends "paragraph.html.twig" %}
+{% block content %}
+{% set id = paragraph.field_heading.value ? paragraph.field_heading.value|striptags|clean_id : null %}
+
+{% include "@components/GenericSlab/GenericSlab.twig" with {
+  id: id,
+  heading: {
+    headline: content.field_heading|children|first,
+  },
+  editorial: {
+    wysiwyg: content.field_body|children|first,
+  },
+} %}
+{{ content.field_collection_items }}
+{% endblock %}

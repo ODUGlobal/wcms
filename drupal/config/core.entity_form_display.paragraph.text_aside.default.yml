@@ -1,0 +1,85 @@
+uuid: 0ceaf7ec-f478-40ee-8df9-4dad8bb48f9b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.text_aside.field_body
+    - field.field.paragraph.text_aside.field_flip
+    - field.field.paragraph.text_aside.field_full_heading
+    - field.field.paragraph.text_aside.field_heading
+    - field.field.paragraph.text_aside.field_paragraph
+    - paragraphs.paragraphs_type.text_aside
+  module:
+    - field_group
+    - paragraphs
+    - text
+third_party_settings:
+  field_group:
+    group_settings:
+      children:
+        - field_flip
+        - field_full_heading
+      label: Settings
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: settings
+      format_settings:
+        id: ''
+        classes: ''
+        visible_for_roles:
+          content_moderator: content_moderator
+          administrator: 0
+          authenticated: 0
+          content_editor: 0
+          course_launcher: 0
+id: paragraph.text_aside.default
+targetEntityType: paragraph
+bundle: text_aside
+mode: default
+content:
+  field_body:
+    type: text_textarea
+    weight: 3
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_flip:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_full_heading:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_heading:
+    type: text_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_paragraph:
+    type: entity_reference_paragraphs
+    weight: 4
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

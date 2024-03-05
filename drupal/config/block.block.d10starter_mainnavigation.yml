@@ -1,0 +1,25 @@
+uuid: 235a7c10-f788-44bd-a87d-358d3da53582
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - system
+  theme:
+    - d10starter
+id: d10starter_mainnavigation
+theme: d10starter
+region: primary_nav
+weight: -8
+provider: null
+plugin: 'system_menu_block:main'
+settings:
+  id: 'system_menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: system
+  level: 1
+  depth: 1
+  expand_all_items: false
+visibility: {  }

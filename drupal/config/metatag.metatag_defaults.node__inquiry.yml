@@ -1,0 +1,8 @@
+uuid: 7b807a5a-1f81-4427-bc1c-251a08561ef6
+langcode: en
+status: true
+dependencies: {  }
+id: node__inquiry
+label: 'Content: Inquiry'
+tags:
+  robots: 'noindex, noarchive'

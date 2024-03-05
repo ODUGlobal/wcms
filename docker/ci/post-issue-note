@@ -1,0 +1,64 @@
+#!/bin/bash
+# Log something to a note associated with a commit message
+
+if [ $# -lt 1 ]; then
+  echo "Need a note"
+  exit 1
+fi
+
+if [ -z $CI_PROJECT_ID ]; then
+  echo "Not in pipeline context"
+  exit 1
+fi
+
+if [ -z $GITLAB_BOT_API_KEY ]; then
+  echo "Need API key GITLAB_BOT_API_KEY"
+fi
+
+NOTE="$1"
+
+function send_comment {
+  message="$1"
+  sha="$2"
+
+  issue_number=$( echo $message | sed -r 's/^.*#([0-9]+).*$/\1/' )
+  if [[ $issue_number =~ ^[0-9]+$ ]]; then
+    echo "Found issue number $issue_number in: $message"
+    # add the comment
+    curl -s \
+          --request POST \
+          --header "PRIVATE-TOKEN: $GITLAB_BOT_API_KEY" \
+          --data-urlencode "body=$NOTE ($sha)" \
+          https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/issues/$issue_number/notes
+  else
+    echo "Could not find issue number in: $message"
+  fi
+}
+
+# find the commit of the last successful pipeline
+last_sha=$( curl -s --header "PRIVATE-TOKEN: $GITLAB_BOT_API_KEY" https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/pipelines \
+  | jq -r 'map(select(.status == "success")) | .[0] | .sha' )
+current_sha=$CI_COMMIT_SHA
+if [ ! -z $last_sha ]; then
+  # find all the commits from last_sha to the current one
+  curl -s --header "PRIVATE-TOKEN: $GITLAB_BOT_API_KEY" "https://gitlab.com/api/v4/projects/$CI_PROJECT_ID/repository/commits" > /tmp/commits.json
+  # index of last (pipeline) commit
+  i=$( jq 'indices(map(select(.id == "'$last_sha'"))) | .[0]' < /tmp/commits.json )
+  # index of the current commit
+  # this should usually be 0, but in a race condition when multiple pipelines are running, 
+  # might be older (1 or 2)
+  k=$( jq 'indices(map(select(.id == "'$current_sha'"))) | .[0]' < /tmp/commits.json )
+  # decrement by one to get the last commit SINCE the last successful pipeline
+  i=$(( $i - 1 ))
+  # make sure index is not less than 0
+  i=$(( $i < 0 ? 0 : $i ))
+  # commit messages from $current to $last
+  for j in $( seq $k $i ); do
+    message=$( jq -r '.['$j'].message' < /tmp/commits.json )
+    short_sha=$( jq -r '.['$j'].short_id' < /tmp/commits.json )
+    send_comment "$message" "$short_sha"
+  done
+else
+  # couldn't find last_sha; use the single current commit message instead
+  send_comment "$CI_COMMIT_TITLE" "$CI_COMMIT_SHORT_SHA"
+fi

@@ -1,0 +1,26 @@
+uuid: e3cab488-bd73-49a7-a249-2456a0a3c8a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.features
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_heading
+id: paragraph.features.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: features
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

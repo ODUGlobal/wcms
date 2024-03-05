@@ -1,0 +1,26 @@
+uuid: 691dc26c-c5cd-4a56-89a6-8278be25c9b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_location_people_descriptio
+    - taxonomy.vocabulary.location
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_location_people_descriptio
+id: taxonomy_term.location.field_location_people_descriptio
+field_name: field_location_people_descriptio
+entity_type: taxonomy_term
+bundle: location
+label: 'Location people description'
+description: 'Custom text shown above the people listing.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

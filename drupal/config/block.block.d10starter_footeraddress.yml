@@ -1,0 +1,25 @@
+uuid: d2fec4e2-2883-492c-a5d2-dcb740fbdaef
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:footer_address:1b681fa5-fde5-4aff-bc6d-767ce286790d'
+  module:
+    - block_content
+  theme:
+    - d10starter
+id: d10starter_footeraddress
+theme: d10starter
+region: footer_col_1
+weight: -8
+provider: null
+plugin: 'block_content:1b681fa5-fde5-4aff-bc6d-767ce286790d'
+settings:
+  id: 'block_content:1b681fa5-fde5-4aff-bc6d-767ce286790d'
+  label: 'Footer Address'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

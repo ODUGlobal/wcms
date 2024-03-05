@@ -1,0 +1,31 @@
+uuid: 4f0fb532-35ad-4f50-b513-98c05a2e90e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.collection_items
+  module:
+    - views
+name: image_card
+label: 'Image Card'
+display: modal
+display_configuration:
+  width: ''
+  height: ''
+  link_text: 'Select entities'
+  auto_open: true
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: single
+widget_selector_configuration: {  }
+widgets:
+  a421c5ad-97ee-446b-b472-0bca5a7f9024:
+    id: view
+    uuid: a421c5ad-97ee-446b-b472-0bca5a7f9024
+    label: 'Browse Image Cards'
+    weight: -9
+    settings:
+      submit_text: 'Select image card'
+      auto_select: false
+      view: collection_items
+      view_display: entity_browser_2

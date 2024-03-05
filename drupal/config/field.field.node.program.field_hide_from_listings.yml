@@ -1,0 +1,29 @@
+uuid: 18305336-7335-4bf8-9454-e2b10edf80e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_hide_from_listings
+    - node.type.program
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_hide_from_listings
+id: node.program.field_hide_from_listings
+field_name: field_hide_from_listings
+entity_type: node
+bundle: program
+label: 'Hide from listings'
+description: 'Keep a page published but try to hide it from listings'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

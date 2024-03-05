@@ -1,0 +1,31 @@
+uuid: db627139-61ec-43bb-b1ae-e54b7f789e38
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.alert_themes
+id: taxonomy_term.alert_themes.default
+targetEntityType: taxonomy_term
+bundle: alert_themes
+mode: default
+content:
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 1
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  description: true
+  path: true
+  simple_sitemap: true
+  simple_sitemap_index_now: true

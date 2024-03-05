@@ -1,0 +1,23 @@
+uuid: d6e6c7d6-e169-4d05-b1e4-a03ece32f700
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_show_left_side
+    - node.type.inquiry
+id: node.inquiry.field_show_left_side
+field_name: field_show_left_side
+entity_type: node
+bundle: inquiry
+label: 'Show Left Side On Mobile'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

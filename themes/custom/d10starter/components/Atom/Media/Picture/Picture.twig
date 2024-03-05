@@ -1,0 +1,17 @@
+<!--
+  This is only a mock-up <picture> without any actual
+  optimization (the `srcset` attribute of each <source>
+  is just the `src` used for the `<img>`).
+
+  If there's no optimized picture-component on the actual site,
+  then just omit the `sources` array altogether.
+-->
+<picture>
+  {% if sources and sources is iterable %}
+    {% for source in sources %}
+      <source srcset="{{ source.srcsetPath }}" {{ source.otherAttributes|raw }} />
+      {{ source.src }}
+    {% endfor %}
+  {% endif %}
+  {{ image|inject_template }}
+</picture>

@@ -1,0 +1,35 @@
+uuid: f6636faa-887c-4ea5-931c-4ca94f0d44c5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_enrollment_team
+    - node.type.person
+    - taxonomy.vocabulary.enrollment_team
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_enrollment_team
+id: node.person.field_enrollment_team
+field_name: field_enrollment_team
+entity_type: node
+bundle: person
+label: 'Enrollment Teams'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      enrollment_team: enrollment_team
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

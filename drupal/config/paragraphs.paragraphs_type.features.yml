@@ -1,0 +1,10 @@
+uuid: 61852298-e38c-4c3d-88c2-22a44a1d663f
+langcode: en
+status: true
+dependencies: {  }
+id: features
+label: Features
+icon_uuid: null
+icon_default: null
+description: 'Grid of features, which have a title, image, and fancy link'
+behavior_plugins: {  }

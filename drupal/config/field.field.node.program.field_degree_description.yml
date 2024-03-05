@@ -1,0 +1,19 @@
+uuid: 97ce6162-ef98-4d32-834a-1ccec679d7cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_degree_description
+    - node.type.program
+id: node.program.field_degree_description
+field_name: field_degree_description
+entity_type: node
+bundle: program
+label: 'Degree description'
+description: 'A short description of the degree: “Bachelor’s of Science in Business Administration”'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

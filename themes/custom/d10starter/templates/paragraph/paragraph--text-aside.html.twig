@@ -1,0 +1,18 @@
+{% extends "paragraph.html.twig" %}
+{% block content %}
+{% set id = paragraph.field_heading.value ? paragraph.field_heading.value|striptags|clean_id : null %}
+{% include "@components/Organism/FiftyFifty/FiftyFiftyGeneric.twig" with {
+  id: id,
+  editorial: {
+    wysiwyg: content.field_body|children|first,
+  },
+  text_heading: not paragraph.field_full_heading.value ? {
+     headline: content.field_heading|children|first,
+  },
+  aside_content: content.field_paragraph|children|first,
+  heading: paragraph.field_full_heading.value ? {
+    headline: content.field_heading|children|first,
+  },
+  flip: paragraph.field_flip.value,
+} %}
+{% endblock %}

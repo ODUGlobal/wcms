@@ -1,0 +1,26 @@
+uuid: e856b7c5-6507-4705-b714-82363668f9d1
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.relationship.licensure
+    - field.storage.relationship.field_information
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_information
+id: relationship.licensure.field_information
+field_name: field_information
+entity_type: relationship
+bundle: licensure
+label: Information
+description: 'Optional; use in case of any caveats on the state/licensing body list page.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

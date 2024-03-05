@@ -1,0 +1,8 @@
+uuid: cbec52bb-91a9-4db9-9aff-fa507b19583d
+langcode: en
+status: true
+dependencies: {  }
+id: footer_address
+label: 'Footer Address'
+revision: 0
+description: ''

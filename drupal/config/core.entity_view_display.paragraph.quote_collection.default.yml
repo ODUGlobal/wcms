@@ -1,0 +1,49 @@
+uuid: a540e603-3f78-4710-8943-1e4c48f24615
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.quote_collection.field_body
+    - field.field.paragraph.quote_collection.field_collection_items
+    - field.field.paragraph.quote_collection.field_heading
+    - field.field.paragraph.quote_collection.field_theme
+    - paragraphs.paragraphs_type.quote_collection
+  module:
+    - text
+id: paragraph.quote_collection.default
+targetEntityType: paragraph
+bundle: quote_collection
+mode: default
+content:
+  field_body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_collection_items:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_heading:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_theme:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

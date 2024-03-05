@@ -1,0 +1,79 @@
+uuid: eb909e88-e5e6-4b2c-8985-ccc8181f21bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.listings.field_body
+    - field.field.paragraph.listings.field_collection_items
+    - field.field.paragraph.listings.field_heading
+    - field.field.paragraph.listings.field_theme
+    - paragraphs.paragraphs_type.listings
+  module:
+    - field_group
+    - inline_entity_form
+    - text
+third_party_settings:
+  field_group:
+    group_settings:
+      children:
+        - field_theme
+      label: Settings
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: settings
+      format_settings:
+        id: ''
+        classes: ''
+        visible_for_roles:
+          content_moderator: content_moderator
+          administrator: 0
+          authenticated: 0
+          content_editor: 0
+id: paragraph.listings.default
+targetEntityType: paragraph
+bundle: listings
+mode: default
+content:
+  field_body:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_collection_items:
+    type: inline_entity_form_complex
+    weight: 3
+    region: content
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: listing
+      label_plural: listings
+      allow_new: true
+      allow_existing: true
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+    third_party_settings: {  }
+  field_heading:
+    type: text_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_theme:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

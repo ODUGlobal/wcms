@@ -1,0 +1,26 @@
+uuid: 3ebb5f9a-aadd-4acd-8167-3e613a57cd76
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_article_title
+    - node.type.inquiry
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_article_title
+id: node.inquiry.field_article_title
+field_name: field_article_title
+entity_type: node
+bundle: inquiry
+label: 'Article title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

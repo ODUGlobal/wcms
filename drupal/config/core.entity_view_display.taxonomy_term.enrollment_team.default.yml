@@ -1,0 +1,41 @@
+uuid: ad686d05-5883-4b97-8597-ea1f91cfffb3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.enrollment_team.field_body
+    - field.field.taxonomy_term.enrollment_team.field_email
+    - field.field.taxonomy_term.enrollment_team.field_enrollment_people
+    - field.field.taxonomy_term.enrollment_team.field_job_title
+    - field.field.taxonomy_term.enrollment_team.field_phone
+    - taxonomy.vocabulary.enrollment_team
+  module:
+    - text
+    - viewfield
+id: taxonomy_term.enrollment_team.default
+targetEntityType: taxonomy_term
+bundle: enrollment_team
+mode: default
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_enrollment_people:
+    type: viewfield_default
+    label: hidden
+    settings:
+      view_title: hidden
+      always_build_output: false
+      empty_view_title: hidden
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  description: true
+  field_email: true
+  field_job_title: true
+  field_phone: true

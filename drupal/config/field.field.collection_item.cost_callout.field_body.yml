@@ -1,0 +1,21 @@
+uuid: 60059978-d390-4647-a09c-551ce0e13266
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.cost_callout
+    - field.storage.collection_item.field_body
+  module:
+    - text
+id: collection_item.cost_callout.field_body
+field_name: field_body
+entity_type: collection_item
+bundle: cost_callout
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

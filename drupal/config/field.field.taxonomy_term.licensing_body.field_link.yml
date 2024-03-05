@@ -1,0 +1,28 @@
+uuid: a3623ae9-6a67-40bd-9ffd-020813a9700b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_link
+    - taxonomy.vocabulary.licensing_body
+  module:
+    - datalayer
+    - link
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_link
+id: taxonomy_term.licensing_body.field_link
+field_name: field_link
+entity_type: taxonomy_term
+bundle: licensing_body
+label: Link
+description: 'Link out to licensing board home page'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 16
+field_type: link

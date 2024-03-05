@@ -1,0 +1,23 @@
+uuid: 5e0c61b3-2924-4188-8ed1-afe8133f44b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.callout
+    - field.storage.collection_item.field_links
+  module:
+    - link
+id: collection_item.callout.field_links
+field_name: field_links
+entity_type: collection_item
+bundle: callout
+label: Links
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

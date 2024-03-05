@@ -1,0 +1,247 @@
+@import 'tailwindcss/base';
+
+@import 'tailwindcss/components';
+
+/* component-level CSS files (the relative path pertains to the Docker container) */
+@import-glob '../components/**/*.css';
+
+@import 'tailwindcss/utilities';
+
+/*
+  Google Search styles
+*/
+
+/* .gsc-wrapper {
+  @apply small-container !important;
+} */
+
+table.gsc-search-box {
+  @apply mt-8;
+}
+
+.gsc-search-box tr {
+  @apply border-0;
+}
+
+button.gsc-search-button {
+  padding: 16px 27px;
+  @apply bg-navy-500;
+}
+
+.gsc-control-cse.gsc-control-cse-en {
+  @apply pt-0 px-0;
+}
+
+.gsc-above-wrapper-area {
+  @apply border-0 !important;
+}
+
+.gsc-result {
+  @apply py-8 border-0 border-b-1 border-neutral-200 border-dashed !important;
+}
+
+.gsc-result,
+.gsc-result * {
+  @apply font-sans !important;
+}
+
+.gsc-table-result {
+  @apply px-0 !important;
+}
+
+.gs-web-image-box {
+  @apply xs:mr-4 w-auto mt-2 !important;
+}
+
+.gs-image {
+  @apply max-w-full xs:max-w-[calc(100rem/16)] sm:max-w-xs max-h-none mb-1.5 !important;
+}
+
+.gs-image img {
+  @apply inline !important;
+}
+
+.gs-title * {
+  @apply font-bold text-navy-500 text-xl sm:text-2xl md:text-3xl transition-colors !important;
+}
+
+a.gs-title:hover,
+a.gs-title:hover * {
+  @apply text-navy-400 !important;
+}
+
+.gsc-url-top {
+  @apply my-2 !important;
+}
+
+.gs-visibleUrl,
+.gs-visibleUrl * {
+  @apply text-navy-500 text-base leading-tight !important;
+}
+
+.gsc-table-result,
+.gsc-table-result * {
+  @apply text-base !important;
+}
+
+.gsc-cursor {
+  @apply text-2xl !important;
+}
+
+.gsc-cursor-page {
+  @apply mr-2.5 text-neutral-900 !important;
+}
+
+.gsc-results .gsc-cursor-box.gs-bidi-start-align {
+  @apply mt-6;
+}
+
+.gcsc-more-maybe-branding-root {
+  margin-bottom: 3.75rem;
+}
+
+/* Drupal pager nav */
+
+nav.pager {
+  @apply container;
+
+  ul.pager__items {
+    @apply flex flex-wrap gap-2.5 mb-8 mx-auto max-w-max;
+
+    & > li {
+      @apply inline-block text-lg;
+
+      a {
+        @apply inline-block py-3 px-4 rounded-full leading-none;
+      }
+
+      &:not(.is-active) a {
+        @apply bg-light-blue-400 text-navy-800 hocus:bg-navy-500 hocus:text-white transition-colors;
+      }
+
+      &.is-active a {
+        @apply bg-navy-500 text-white;
+      }
+
+      &.pager__item--ellipsis {
+        @apply mt-2 px-0.5;
+      }
+    }
+  }
+}
+
+/* Drupal `views-exposed-form` */
+
+form.views-exposed-form {
+  .form--inline {
+    @apply flex flex-wrap;
+  }
+
+  .form-item {
+    @apply inline-flex flex-col !float-none mr-6 mb-4 max-w-full;
+  }
+
+  fieldset.form-item {
+    @apply block w-full;
+
+    legend {
+      @apply text-2xl mb-5;
+    }
+
+    .fieldset-wrapper {
+      @apply flex flex-wrap;
+    }
+  }
+
+  /* .js-form-type-textfield {
+    @apply flex-grow md:basis-3/7 md:flex-grow-0;
+  } */
+
+  .form-item label {
+    @apply mb-[calc(2rem/16)] text-lg;
+  }
+
+  .form-item input {
+    @apply py-2.5 px-3 border-2 border-neutral-300 text-lg w-0 min-w-[calc(180rem/16)];
+  }
+
+  .form-item select {
+    @apply bg-theme-button-bg-color pl-6 pr-8 py-2.5 border-2 border-transparent text-lg text-white appearance-none truncate max-w-full;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'%3E%3Cpath fill='%23FFF' fill-rule='evenodd' d='M553.607159,52.3861937 C553.089161,51.8712688 552.252575,51.8712688 551.734577,52.3861937 L546.966798,57.0875688 L542.265423,52.3861937 C541.747425,51.8712688 540.910839,51.8712688 540.392841,52.3861937 C540.141421,52.6355612 540,52.975011 540,53.3291248 C540,53.6832387 540.141421,54.0226884 540.392841,54.272056 L546.023867,59.9030815 C546.273235,60.1545024 546.612684,60.295923 546.966798,60.295923 C547.320912,60.295923 547.660362,60.1545024 547.909729,59.9030815 L553.607159,54.272056 C553.858579,54.0226884 554,53.6832387 554,53.3291248 C554,52.975011 553.858579,52.6355612 553.607159,52.3861937 L553.607159,52.3861937 Z' transform='translate(-540 -52)'/%3E%3C/svg%3E");
+    background-origin: content-box;
+    background-position: right -1.25rem center;
+    background-repeat: no-repeat;
+    background-size: 0.75rem;
+    /* max-width? */
+  }
+
+  .form-actions {
+    @apply mb-4 mt-2 self-end;
+
+    input.form-submit {
+      @apply py-2.5 px-8 border-2 border-transparent text-lg text-theme-button-text-color bg-theme-button-bg-color hocus:bg-theme-button-hocus-bg-color mr-6 cursor-pointer transition-colors;
+    }
+  }
+}
+
+/* Drupal `views-exposed-form` (for the `/partners` page) */
+.partners-by-zip-form form.views-exposed-form {
+  .form--inline {
+    @apply items-center gap-6;
+
+    fieldset {
+      @apply mb-0 mr-0 w-auto;
+
+      legend {
+        @apply m-0;
+      }
+
+      .js-form-item-field-geofield-proximity-source-configuration-zip {
+        @apply flex flex-row flex-wrap gap-5 items-center mb-0 mr-0;
+
+        label {
+          @apply text-xl font-bold mb-0;
+
+          span {
+            @apply text-lg block font-normal;
+          }
+        }
+
+        input {
+          @apply min-w-[calc(150rem/16)] border-mid-blue-400 bg-light-blue-50 text-navy-500;
+        }
+      }
+
+      + div {
+        @apply my-0 self-center;
+
+        input {
+          @apply mr-0 uppercase tracking-wider font-bold;
+        }
+      }
+    }
+  }
+}
+
+/* Emergency alert benner */
+
+.emergency-alert-wrapper {
+  @apply bg-yellow-500 py-6;
+
+  .emergency-alert {
+    @apply container flex flex-col space-y-3 text-lg text-black;
+
+    .title {
+      @apply text-2xl font-bold;
+    }
+
+    a {
+      @apply text-navy-500 hocus:text-navy-400 underline;
+    }
+  }
+}
+
+/*
+  NOTE: Do NOT try to whitelist TW utility-classes here or in any other
+  CSS files. It won't work. Instead, use the `safelist` in tailwind.config.js
+*/

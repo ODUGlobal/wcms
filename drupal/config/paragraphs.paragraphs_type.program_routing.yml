@@ -1,0 +1,10 @@
+uuid: 32e120a8-d274-4865-8934-d2bfde4a0b3a
+langcode: en
+status: true
+dependencies: {  }
+id: program_routing
+label: 'Program Routing'
+icon_uuid: null
+icon_default: null
+description: 'Academic program routing by degree level and area of study'
+behavior_plugins: {  }

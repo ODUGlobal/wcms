@@ -1,0 +1,19 @@
+uuid: 89678e54-9862-49aa-b870-df5863a6645b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_headline
+    - paragraphs.paragraphs_type.events_teaser_group
+id: paragraph.events_teaser_group.field_headline
+field_name: field_headline
+entity_type: paragraph
+bundle: events_teaser_group
+label: Headline
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

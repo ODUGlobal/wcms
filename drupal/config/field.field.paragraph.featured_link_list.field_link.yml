@@ -1,0 +1,28 @@
+uuid: 4b58aab5-dcbb-4556-8bee-fdd358448b00
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_link
+    - paragraphs.paragraphs_type.featured_link_list
+  module:
+    - datalayer
+    - link
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_link
+id: paragraph.featured_link_list.field_link
+field_name: field_link
+entity_type: paragraph
+bundle: featured_link_list
+label: 'Call to action link'
+description: 'Optional button-like link at the bottom of the slab'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

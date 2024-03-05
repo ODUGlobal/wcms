@@ -1,0 +1,10 @@
+uuid: a22bdf7c-b8a4-47a7-b0a6-f58c60e9472b
+langcode: en
+status: true
+dependencies: {  }
+id: text_aside
+label: 'Text + Aside'
+icon_uuid: null
+icon_default: null
+description: "50/50 panel with text and an arbitrary aside that's another paragraph"
+behavior_plugins: {  }

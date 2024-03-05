@@ -1,0 +1,21 @@
+uuid: 679d7f58-ef98-4813-a52a-ea4592462837
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_atttribution
+    - paragraphs.paragraphs_type.testimonial
+  module:
+    - text
+id: paragraph.testimonial.field_atttribution
+field_name: field_atttribution
+entity_type: paragraph
+bundle: testimonial
+label: Atttribution
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

@@ -1,0 +1,37 @@
+uuid: e06db658-a837-4877-bcb0-67c8b2410809
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.link_list
+    - field.field.collection_item.link_list.field_display_title
+    - field.field.collection_item.link_list.field_links
+  module:
+    - link
+    - text
+id: collection_item.link_list.default
+targetEntityType: collection_item
+bundle: link_list
+mode: default
+content:
+  field_display_title:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_links:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  title: true

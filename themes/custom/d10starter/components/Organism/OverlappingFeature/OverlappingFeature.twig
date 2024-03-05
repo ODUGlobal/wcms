@@ -1,0 +1,75 @@
+{% set component %}
+  <div class="
+    flex flex-col-reverse
+    xl:grid grid-cols-3 xl:items-center
+    xl:grid-cols-2
+  ">
+    {% set themedPart %}
+      <div class="bg-theme-bg-color text-theme-text-color">
+        <div class="
+          {{ theme
+            ? 'p-5 xs:p-8 md:p-12 lg:p-16 xl:pr-32 xl:[.flipped_&]:pr-16 xl:[.flipped_&]:pl-32'
+            : 'pt-5 xs:pt-8 xl:pt-0 xl:pr-16 xl:[.flipped_&]:pr-0 xl:[.flipped_&]:pl-16'
+          }}
+        ">
+          <div class="flex flex-col space-y-6">
+
+            {% if heading %}
+              <div>
+                {% include '@components/Atom/Heading/Heading.twig' with heading only %}
+              </div>
+            {% endif %}
+
+            {% if editorial %}
+              <div>
+                {% include '@components/Organism/Editorial/Editorial.twig' with editorial only %}
+              </div>
+            {% endif %}
+
+            {% if fancyLinkList %}
+              <div class="text-lg">
+                {% include '@components/Molecule/LinkList/FancyLinkList/FancyLinkList.twig' with fancyLinkList|merge({
+                  inline: true
+                }) only %}
+              </div>
+            {% endif %}
+
+            {% if buttonLinkList %}
+              <div>
+                <div class="mt-2">
+                  {% include '@components/Molecule/LinkList/ButtonLinkList/ButtonLinkList.twig' with buttonLinkList only %}
+                </div>
+              </div>
+            {% endif %}
+
+          </div>
+        </div>
+      </div>
+    {% endset %}
+
+    {# tw #} {% include '@components/utilities/theme-flag.twig' with {
+      component: themedPart,
+      theme: theme,
+      extraClasses: theme ? 'xl:pb-20 xl:self-start' : ''
+    } only %}
+
+    <div class="
+      relative xl:[.flipped_&]:order-first
+      {{ theme ? '
+        xl:h-full xl:[&_:not(svg)]:w-full xl:[&_:not(svg)]:h-full xl:[&_img]:object-cover
+        xl:pt-16
+        xl:-ml-16 xl:[.flipped_&]:ml-0 xl:[.flipped_&]:-mr-16      
+      ' }}
+    ">
+      {{ media|inject_template }}
+    </div>
+  </div>
+{% endset %}
+
+{% include '@components/GenericSlab/GenericSlab.twig' with {
+  extraClasses: flipped ? 'flipped',
+  component: component,
+  id: id,
+  verticalRhythm: verticalRhythm,
+  theme: outerTheme
+} only %}

@@ -1,0 +1,41 @@
+uuid: fbf36bc5-fbd3-4eba-b481-77c02ec63415
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.alert_icons.field_alert_icon
+    - taxonomy.vocabulary.alert_icons
+  module:
+    - media_library
+id: taxonomy_term.alert_icons.default
+targetEntityType: taxonomy_term
+bundle: alert_icons
+mode: default
+content:
+  field_alert_icon:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  description: true
+  path: true
+  simple_sitemap: true
+  simple_sitemap_index_now: true

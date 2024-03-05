@@ -1,0 +1,66 @@
+uuid: f81837b4-20ea-4946-84cc-d942e3bd216a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.accordion.field_close_others_on_open
+    - field.field.paragraph.accordion.field_collection_items
+    - field.field.paragraph.accordion.field_heading
+    - field.field.paragraph.accordion.field_links
+    - paragraphs.paragraphs_type.accordion
+  module:
+    - entity_browser_entity_form
+    - inline_entity_form
+    - link
+    - text
+id: paragraph.accordion.default
+targetEntityType: paragraph
+bundle: accordion
+mode: default
+content:
+  field_close_others_on_open:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_collection_items:
+    type: inline_entity_form_complex
+    weight: 4
+    region: content
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: tab
+      label_plural: tabs
+      allow_new: true
+      allow_existing: true
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: true
+      collapsed: false
+      revision: false
+    third_party_settings:
+      entity_browser_entity_form:
+        entity_browser_id: _none
+  field_heading:
+    type: text_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_links:
+    type: link_default
+    weight: 6
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true
+  uid: true

@@ -1,0 +1,61 @@
+{% set component %}
+  {# these description paragraphs will become `aria-describedby` targets once the JS loads #}
+  <p
+    data-gallery-description
+    class="sr-only"
+    aria-hidden="true"
+  >Clicking the buttons in this list will open the gallery lightbox.</p>
+  <p
+    data-gallery-item-description
+    class="sr-only"
+    aria-hidden="true"
+  >Click to open the gallery lightbox.</p>
+
+  {% if items and items is iterable %}
+    <ul
+      {# once JS loads, will get an `aria-describedby` #}
+      role="list"
+      data-mfp-image-gallery
+      class="
+        {# "flexible" grid, based on: https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/ #}
+        [--item-min-w:6rem] [--gap-x:1rem] [--max-cols:5] [--fr:1fr]
+        xs:[--item-min-w:9rem] xs:[--gap-x:1.25rem]
+        sm:[--item-min-w:12rem] sm:[--gap-x:1.5rem]
+        lg:[--fr:.5fr] {# so that if there is only 1 item it takes up only 1/2-width on desktop #}
+
+        [--max-gap-x-count:calc(var(--max-cols)-1)]
+        [--max-total-gap-x-width:calc(var(--max-gap-x-count)*var(--gap-x))]
+        [--item-max-w:calc((100%-var(--max-total-gap-x-width))/var(--max-cols))]
+
+        grid gap-[--gap-x]
+        grid-cols-[repeat(auto-fit,minmax(max(var(--item-max-w),var(--item-min-w)),var(--fr)))]
+      "
+    >
+      {% for item in items %}
+        <li class="aspect-w-1 aspect-h-1 descendants:w-full descendants:h-full [&_img]:object-cover">
+          <a
+            {# once JS loads, will get an `aria-describedby` and `role="button"` #}
+            data-mfp-image-gallery-delegate
+            href="{{ item.src }}"
+            class="after:absolute after:inset-0 after:bg-black/25 after:hocus:bg-transparent after:transition-colors"
+            {% if item.caption is not empty %}
+              data-caption="{{ item.caption }}"
+            {% endif %}
+          >
+            {{ item.picture|inject_template }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endset %}
+
+{% include '@components/GenericSlab/GenericSlab.twig' with {
+  id: id,
+  theme: theme,
+  heading: heading,
+  fancyLinkList: fancyLinkList,
+  editorial: editorial,
+  component: component,
+  verticalRhythm: verticalRhythm
+} only %}

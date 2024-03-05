@@ -1,0 +1,17 @@
+uuid: 0f6e1bc9-3a40-4d86-aaac-3d08f68227e5
+langcode: en
+status: true
+dependencies:
+  module:
+    - focal_point
+name: tiny_square
+label: 'Tiny square'
+effects:
+  d72924ea-7452-400f-bf3f-d5e2a328c757:
+    uuid: d72924ea-7452-400f-bf3f-d5e2a328c757
+    id: focal_point_scale_and_crop
+    weight: 2
+    data:
+      width: 100
+      height: 100
+      crop_type: focal_point

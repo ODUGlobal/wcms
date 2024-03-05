@@ -1,0 +1,10 @@
+uuid: e273ff11-52c1-4ace-b7b2-f97545d712f2
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+id: relationship.teaser
+label: Teaser
+targetEntityType: relationship
+cache: true

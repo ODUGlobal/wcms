@@ -1,0 +1,29 @@
+uuid: e7d99e00-1b91-4493-91be-5d88942590c8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_application_type
+    - node.type.program
+    - taxonomy.vocabulary.application_type
+id: node.program.field_application_type
+field_name: field_application_type
+entity_type: node
+bundle: program
+label: 'Application type'
+description: 'Controls the default text and application link in "How to apply"'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      application_type: application_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

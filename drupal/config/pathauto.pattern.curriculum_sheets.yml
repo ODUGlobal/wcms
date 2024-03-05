@@ -1,0 +1,22 @@
+uuid: 0f9ef89a-0a46-41d0-9dcc-0510393afa50
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: curriculum_sheets
+label: 'Curriculum sheets'
+type: 'canonical_entities:node'
+pattern: '/academics/programs/[node:title]'
+selection_criteria:
+  ffb04885-0ac2-40b9-a76a-a6b310d82615:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: ffb04885-0ac2-40b9-a76a-a6b310d82615
+    context_mapping:
+      node: node
+    bundles:
+      curriculum_sheet: curriculum_sheet
+selection_logic: and
+weight: -5
+relationships: {  }

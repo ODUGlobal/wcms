@@ -1,0 +1,5 @@
+services:
+  odu_course_launchers.event_subscriber:
+    class: Drupal\odu_course_launchers\EventSubscriber\ImportSubscriber
+    tags: 
+      - { name: event_subscriber }

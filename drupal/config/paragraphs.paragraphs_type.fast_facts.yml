@@ -1,0 +1,10 @@
+uuid: d0ca97fe-1d2f-4c21-96f0-4dc1fc40588c
+langcode: en
+status: true
+dependencies: {  }
+id: fast_facts
+label: 'Fast Facts'
+icon_uuid: null
+icon_default: null
+description: 'A collection of fast facts / statistics'
+behavior_plugins: {  }

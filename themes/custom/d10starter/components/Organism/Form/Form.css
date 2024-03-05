@@ -1,0 +1,64 @@
+.wFormContainer.wFormContainer {
+  /*
+    This is the less-than-ideal solution for the problem explained here:
+    https://gitlab.insidenewcity.com/newcity/odu-global-2023/-/issues/226#note_28615
+
+    Ideally, we'd instead find a way to prevent the markup from coming in with the
+    inline `style="max-width: 100%; width: auto;` altogether. It's affecting
+    at least this page: https://online.odu.edu/resources/how-finish-college-online
+
+    The `770px` number here is what all the other forms I've seen use. Hopefully
+    no edge-cases arise where this creates a problem.
+  */
+  max-width: 770px !important;
+
+  @apply text-theme-text-color;
+
+  /* see TW config */
+  @supports (overflow-wrap: anywhere) {
+    overflow-wrap: normal;
+  }
+  @supports not (overflow-wrap: anywhere) {
+    word-break: normal;
+  }
+
+  .wForm.wForm {
+    @apply bg-none bg-transparent p-0 font-sans;
+
+    .secondaryAction,
+    .primaryAction,
+    .wfPageNextButton,
+    .wfPagePreviousButton {
+      @apply font-sans;
+    }
+
+    .primaryAction {
+      @apply transition-colors text-base text-theme-button-text-color bg-theme-button-bg-color hocus:bg-theme-button-hocus-bg-color;
+    }
+  }
+
+  /* .inputWrapper textarea {
+    width: auto !important;
+  }
+
+  #tfa_310 {
+    width: auto !important;
+  } */
+
+  /*
+    Not sure if we can get away with hiding these elements across the board,
+    but that's easiest so I'm starting with it.
+  */
+
+  .wFormHeader {
+    @apply hidden;
+  }
+
+  .wFormFooter {
+    @apply hidden;
+  }
+
+  .supportInfo {
+    @apply hidden;
+  }
+}

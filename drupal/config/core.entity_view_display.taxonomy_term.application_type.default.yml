@@ -1,0 +1,56 @@
+uuid: 13205a75-6ac5-4267-9e8f-0ec0ea99ddb0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.application_type.field_application_info_body
+    - field.field.taxonomy_term.application_type.field_application_info_title
+    - field.field.taxonomy_term.application_type.field_body
+    - field.field.taxonomy_term.application_type.field_form_embed
+    - field.field.taxonomy_term.application_type.field_links
+    - taxonomy.vocabulary.application_type
+  module:
+    - link
+    - text
+id: taxonomy_term.application_type.default
+targetEntityType: taxonomy_term
+bundle: application_type
+mode: default
+content:
+  field_application_info_body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_application_info_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_links:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  description: true
+  field_form_embed: true

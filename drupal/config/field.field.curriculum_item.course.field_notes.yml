@@ -1,0 +1,26 @@
+uuid: a9f0e4ab-6fe6-4d43-b00d-8b1b655af3f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.curriculum_item.course
+    - field.storage.curriculum_item.field_notes
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_notes
+id: curriculum_item.course.field_notes
+field_name: field_notes
+entity_type: curriculum_item
+bundle: course
+label: Notes
+description: 'VCCS equivalencies or other notes'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

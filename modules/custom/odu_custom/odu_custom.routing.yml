@@ -1,0 +1,16 @@
+odu_custom.search:
+  path: '/search'
+  defaults:
+    _controller: '\Drupal\odu_custom\Controller\GoogleCustomSearchController::search'
+    _title: 'Search'
+  requirements:
+    _permission: 'access content'
+odu_custom.dashboard:
+  path: '/admin/odu-dashboard'
+  defaults:
+    _controller: '\Drupal\odu_custom\Controller\DashboardController::view'
+    _title: 'ODU Admin Dashboard'
+  requirements:
+    _permission: 'view the administration theme'
+  options:
+    _admin_route: TRUE

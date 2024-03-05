@@ -1,0 +1,42 @@
+{% set component %}
+  <div
+    {% if maxCols %}
+    style="--max-cols: {{ maxCols }}"
+    {% else %}
+    style="--max-cols: {{ linkGroups|length < 3 ? 2 : (linkGroups|length < 5 ? linkGroups|length : 4) }}"
+    {% endif %}
+    class="columns-xs gap-10 xl:columns-[--max-cols] xl:gap-12 children:pb-8 -mb-8">
+    {% for linkGroup in linkGroups %}
+      {# This `include` version is needed for the licensure page in Drupal (for now anyway). #}
+      {% if linkGroup.fancyLinkList %}
+        {% include '@components/Molecule/LinkGroup/LinkGroup.twig' with linkGroup|merge({
+          hLevel: hLevel|default(heading ? 3 : 2)
+        }) only %}
+      {% else %}
+        {#
+          NOTE: the object passed to `inject_template()` only works in Storybook.
+          In Drupal, that object will be ignored, and the logic for the `hLevel`
+          needs to be handled elsewhere.
+        #}
+        {{ linkGroup|inject_template({
+          hLevel: hLevel|default(heading ? 3 : 2)
+        }) }}
+      {% endif %}
+    {% endfor %}
+  </div>
+{% endset %}
+
+{% if noGenericSlab %}
+  {{ component }}
+{% else %}
+  {% include '@components/GenericSlab/GenericSlab.twig' with {
+    verticalRhythm: verticalRhythm,
+    id: id,
+    heading: heading,
+    fancyLinkList: fancyLinkList,
+    editorial: editorial,
+    component: component,
+    theme: theme,
+    smallContainer: linkGroups|length < 3,
+  } only %}
+{% endif %}

@@ -1,0 +1,10 @@
+uuid: 5565ff1f-c98a-4236-9f99-8cbc9108be2d
+langcode: en
+status: true
+dependencies: {  }
+id: quote_collection
+label: 'Quote Collection'
+icon_uuid: null
+icon_default: null
+description: '<a href="https://newcity.gitlab.io/odu-online/components/detail/collection--pullquote-collection.html">Pullquote collection</a>'
+behavior_plugins: {  }

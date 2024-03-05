@@ -1,0 +1,62 @@
+uuid: 9a409971-fc7f-4961-816f-3b0fccb1f9de
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.callout
+    - field.field.collection_item.callout.field_body
+    - field.field.collection_item.callout.field_display_title
+    - field.field.collection_item.callout.field_fancy_links
+    - field.field.collection_item.callout.field_icon
+    - field.field.collection_item.callout.field_links
+    - field.field.collection_item.callout.field_reusable
+  module:
+    - link
+    - text
+id: collection_item.callout.default
+targetEntityType: collection_item
+bundle: callout
+mode: default
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_display_title:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_fancy_links:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_links:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_icon: true
+  field_reusable: true
+  title: true

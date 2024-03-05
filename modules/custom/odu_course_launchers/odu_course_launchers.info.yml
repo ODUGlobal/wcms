@@ -1,0 +1,9 @@
+name: 'ODU Course Launchers'
+type: module
+description: 'Importers for course launcher exports'
+core: 8.x
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  migrate_plus:migrate_plus
+  migrate_tools:migrate_tools
+  migrate_source_csv:migrate_source_csv

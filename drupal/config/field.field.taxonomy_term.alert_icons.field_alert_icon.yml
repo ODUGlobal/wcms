@@ -1,0 +1,29 @@
+uuid: 6df1daf8-7a50-4c73-8543-a075775c6004
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_alert_icon
+    - media.type.icon
+    - taxonomy.vocabulary.alert_icons
+id: taxonomy_term.alert_icons.field_alert_icon
+field_name: field_alert_icon
+entity_type: taxonomy_term
+bundle: alert_icons
+label: 'Alert Icon'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      icon: icon
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: icon
+field_type: entity_reference

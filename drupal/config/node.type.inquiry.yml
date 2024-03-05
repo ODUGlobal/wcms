@@ -1,0 +1,17 @@
+uuid: 38d9cb3f-80e8-4830-be26-c50972786a7b
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Inquiry
+type: inquiry
+description: 'Inquiry / info landing pages'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

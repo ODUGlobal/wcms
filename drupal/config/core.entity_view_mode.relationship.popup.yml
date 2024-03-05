@@ -1,0 +1,10 @@
+uuid: f7716215-ad02-4b8f-96c9-e08618ca86c9
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+id: relationship.popup
+label: Popup
+targetEntityType: relationship
+cache: true

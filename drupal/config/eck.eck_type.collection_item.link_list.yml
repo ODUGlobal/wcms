@@ -1,0 +1,9 @@
+uuid: e1eb948d-b068-4490-9857-2042f221a364
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.collection_item
+name: 'Link list'
+type: link_list
+description: '<a href="https://newcity.gitlab.io/odu-online/components/detail/link-group--default.html">Link group</a>. A list of links with optional title.'

@@ -1,0 +1,33 @@
+uuid: 72db23a3-031b-453d-bfc9-4a073a9a2c41
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.page.field_hide_pathways
+    - field.field.node.page.field_metatags
+    - field.field.node.page.field_page_header
+    - field.field.node.page.field_paragraphs
+    - node.type.page
+  module:
+    - user
+id: node.page.teaser
+targetEntityType: node
+bundle: page
+mode: teaser
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  field_hide_pathways: true
+  field_metatags: true
+  field_page_header: true
+  field_paragraphs: true

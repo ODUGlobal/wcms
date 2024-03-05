@@ -1,0 +1,289 @@
+{% if vimeoId %}
+  <header class="sm:mb-vertical-space">
+    {#
+      Note: the `--media-shift` variable used here is also used on the picture/video wrapper
+      (see below). It's used to "shift" the media vertically while also preserving all
+      the relevant vertical-spacing. It's a tricky layout, and there may well be better
+      ways to do this, but this suffices I think.
+    #}
+    <div class="
+      [--media-shift:0rem]
+      sm:[--media-shift:11rem]
+      md:[--media-shift:14rem]
+      lg:[--media-shift:18rem]
+      xl:[--media-shift:24rem]
+      pb-[--media-shift]
+      mb-[calc(-1*var(--media-shift))]
+    ">
+      {% set component %}
+        <div class="
+          relative bg-gradient-to-b from-theme-bg-color to-mid-blue-500 text-theme-text-color
+          pt-8 sm:pt-12 md:pt-20
+        ">
+          <svg aria-hidden="true" class="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMin slice" viewBox="0 0 1420 825" fill="none" xmlns="http://www.w3.org/2000/svg"><mask id="mask0_2634_14434" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1420" height="825"><rect y="0.0258789" width="1420" height="824" fill="url(#paint0_linear_2634_14434)"/></mask><g mask="url(#mask0_2634_14434)"><path d="M812 426L0 206V920H1420V110L812 426Z" fill="white" fill-opacity="0.1"/><path d="M522 532L0 174V830H1420V20L522 532Z" fill="#00839B" fill-opacity="0.4"/><path d="M275.239 83.2825L-69.8945 -58.4043L749 -45.9998L275.239 83.2825Z" fill="#005586" fill-opacity="0.5"/><path d="M440 527L0 341.672V1008H1420V261L440 527Z" fill="#002749" fill-opacity="0.3"/></g><defs><linearGradient id="paint0_linear_2634_14434" x1="710" y1="0.0258789" x2="710" y2="824.026" gradientUnits="userSpaceOnUse"><stop stop-color="#002749"/><stop offset="1" stop-color="#005586"/></linearGradient></defs></svg>
+
+          <div class="relative container">
+
+            <div class="space-y-8 sm:space-y-16 md:space-y-20">
+
+              <div class="
+                space-y-5 sm:space-y-8
+                {{ buttonLink or fancyLink ? 'xl:space-y-0 xl:grid grid-cols-3 gap-16' }}
+              ">
+                <div class="space-y-5 col-span-2">
+                  <hgroup>
+                    {# first sr-only h1 and headline (subhead) #}
+                    <h1 class="sr-only">{{ visuallyHiddenH1Text|default('ODU Global') }}</h1>
+                    <p class="sr-only">{% apply trim %}{% for line in headline %}{{ line }} {% endfor %}{% endapply %}</p>
+                    {# now just the headline (subhead) visually #}
+                    <p aria-hidden="true" class="text-theme-heading-color uppercase text-3xl sm:text-5xl md:text-[calc(80rem/16)] md:leading-[calc(88rem/16)] font-display font-extrabold">
+                      {% for line in headline %}
+                        <span>{{ line }}</span>
+                        {% if not loop.last %}<br>{% endif %}
+                      {% endfor %}
+                    </p>
+                  </hgroup>
+
+                  {% if wysiwyg %}
+                    {# kind of a haphazard customized prose-region here, *just* for <p>-tags preferably (everything will be the same font-size) #}
+                    <div class="prose font-display !text-size-lg sm:!text-size-2xl !leading-[1.5] children:!mb-0 space-y-5">{{ wysiwyg }}</div>
+                  {% endif %}
+                </div>
+
+                {% if buttonLink or fancyLink %}
+                  <div class="flex flex-col space-y-5 sm:space-y-8 xl:place-self-center xl:ml-auto xl:items-center">
+                    {% if buttonLink %}
+                      <div>
+                        {% include '@components/Atom/Link/ButtonLink/ButtonLink.twig' with buttonLink only %}
+                      </div>
+                    {% endif %}
+
+                    {% if fancyLink %}
+                      <div class="text-lg">
+                        {% set withAfterIcon = fancyLink.withBeforeIcon ? false : true %}
+                        {% if 'withAfterIcon' in fancyLink|keys %}
+                          {% set withAfterIcon = fancyLink.withAfterIcon %}
+                        {% endif %}
+                        {% include '@components/Atom/Link/FancyLink/FancyLink.twig' with fancyLink|merge({
+                          withAfterIcon: withAfterIcon
+                        }) only %}
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+
+              {# 
+                Picture + optional video.
+                The `--media-shift` variable used here is defined on the `header` element at the top of this file.
+              #}
+              <div>
+                <div
+                  class="
+                    relative
+                    -mx-container-offset sm:ml-0
+                    mb-[--media-shift] top-[--media-shift] mt-[calc(-1*var(--media-shift))]
+                  "
+                >
+                  <div class="aspect-w-16 aspect-h-9">
+                    <div>
+
+                      {# Actual video (JS adds iframe inside the inner div). #}
+                      <div id="home-header-ambient-video-container" class="absolute inset-0 overflow-hidden">
+                        <div
+                          aria-hidden="true"
+                          {# note: we must avoid the name `data-vimeo-id` b/c it's a reserved attribute for the Vimeo SDK #}
+                          data-vimeo-video-id="{{ vimeoId }}"
+                          id="home-header-ambient-video"
+                          class="
+                            absolute pointer-events-none left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
+                            min-w-full min-h-full
+                            h-screen w-[1000vw]
+                            {# the `.stretch-video` class is controlled via JS w/ a ResizeObserver on parent (checks for 16/9 aspect-ratio) #}
+                            [&.stretch-video]:h-[1000vw] [&.stretch-video]:w-screen
+                            [&>iframe]:w-full [&>iframe]:h-full
+                          "
+                        ></div>
+                      </div>
+
+                      {# A dark overlay to provide enough contrast for the play/pause-button to be visible #}
+                      <div class="absolute z-10 inset-x-0 top-0 h-40 bg-gradient-to-b from-black/80"></div>
+
+                      {# Play/pause button #}
+                      <div class="absolute z-40 w-full top-3 sm:top-5">
+                        <div class="container !ml-0">
+                          {# Note: even though video is `aria-hidden`, button cannot be (b/c it's a focusable element). #}
+                          <button
+                            type="button"
+                            id="home-header-video-button"
+                            class="
+                              group/button block overflow-hidden transition-[opacity,visibility]
+                              invisible opacity-0 data-[video-ready]:visible data-[video-ready]:opacity-100
+                              w-8 h-8 sm:w-11 sm:h-11 relative ml-auto
+                            "
+                            aria-pressed="false" {# value determined by the video's current play/pause state (see JS) #}
+                            aria-label="Play ambient video"
+                          >
+                            {# tw #} {% set spanClasses = 'absolute inset-0 block bg-white transition-[background-color,opacity,visibility]' %}
+                            {# tw #} {% set playPauseClasses = '
+                            group-hocus/button:bg-yellow-400
+                              group-data-[video-loading]/button:!opacity-0
+                              group-data-[video-loading]/button:!invisible
+                            ' %}
+
+                            {# pause-icon #}
+                            <span
+                              aria-hidden="true"
+                              class="
+                                mask-pause {{ spanClasses }} {{ playPauseClasses }}
+                                invisible opacity-0
+                                group-aria-pressed/button:visible group-aria-pressed/button:opacity-100
+                              "
+                            ></span>
+
+                            {# play-icon #}
+                            <span
+                              aria-hidden="true"
+                              class="
+                                mask-play {{ spanClasses }} {{ playPauseClasses }}
+                                visible opacity-100
+                                group-aria-pressed/button:invisible group-aria-pressed/button:opacity-0
+                              "
+                            ></span>
+
+                            {# loading-spinner #}
+                            <span
+                              aria-hidden="true"
+                              class="
+                                mask-play-pause-circle {{ spanClasses }}
+                                invisible opacity-0
+                                group-data-[video-loading]/button:visible group-data-[video-loading]/button:opacity-100
+                                animate-spin firefox:blur-[1px]
+                                before:absolute before:top-0 before:left-0 before:h-1/2 before:w-1/2 before:bg-yellow-400
+                              "
+                            ></span>
+                          </button>
+                        </div>
+                      </div>
+
+                      {# Hero-image/overlay. If there's a video, the overlay fades out when the video plays for the first time. #}
+                      <div
+                        aria-hidden="true" {# (at least when there's a video, and maybe always?) #}
+                        id="home-header-overlay"
+                        class="
+                          absolute inset-0 overflow-hidden
+                          [&_:not(.visually-hidden)]:h-full [&_:not(.visually-hidden)]:w-full [&_img]:object-cover
+                          data-[video-started]:opacity-0 data-[video-started]:invisible transition-[opacity,visibility] duration-[5000ms]
+                        "
+                      >
+                        {{ picture|inject_template }}
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      {% endset %}
+
+      {% include '@components/utilities/theme-flag.twig' with {
+        theme: 'navy-700',
+        component: component
+      } only %}
+    </div>
+  </header>
+{% else %}
+  <header>
+    {% set component %}
+      <div class="relative bg-gradient-to-b from-theme-bg-color to-mid-blue-500 text-theme-text-color">
+        <svg aria-hidden="true" class="absolute inset-0 h-full w-full" preserveAspectRatio="xMidYMin slice" viewBox="0 0 1420 825" fill="none" xmlns="http://www.w3.org/2000/svg"><mask id="mask0_2634_14434" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="1420" height="825"><rect y="0.0258789" width="1420" height="824" fill="url(#paint0_linear_2634_14434)"/></mask><g mask="url(#mask0_2634_14434)"><path d="M812 426L0 206V920H1420V110L812 426Z" fill="white" fill-opacity="0.1"/><path d="M522 532L0 174V830H1420V20L522 532Z" fill="#00839B" fill-opacity="0.4"/><path d="M275.239 83.2825L-69.8945 -58.4043L749 -45.9998L275.239 83.2825Z" fill="#005586" fill-opacity="0.5"/><path d="M440 527L0 341.672V1008H1420V261L440 527Z" fill="#002749" fill-opacity="0.3"/></g><defs><linearGradient id="paint0_linear_2634_14434" x1="710" y1="0.0258789" x2="710" y2="824.026" gradientUnits="userSpaceOnUse"><stop stop-color="#002749"/><stop offset="1" stop-color="#005586"/></linearGradient></defs></svg>
+
+        <div class="
+          relative
+          grid grid-cols-1 gap-8 sm:gap-16 md:gap-20
+          lg:grid-cols-2 lg:gap-[--lg-gap] [--lg-gap:4rem]
+        ">
+
+          {#
+            Content.
+            At `lg`, span both grid cols on 1st row (so that `container` works right),
+            and then handle the 1/2-width on the child-div (the next-sibling grid-item
+            will overlap the 2nd col in the same row).
+          #}
+          <div class="container lg:col-start-1 lg:col-span-2 lg:row-start-1">
+            <div class="lg:max-w-1/2 lg:pr-[calc(var(--lg-gap)/2)]">
+              <div class="
+                pt-8 sm:pt-12 md:pt-20 lg:py-24 xl:py-32
+                space-y-5 sm:space-y-8 lg:space-y-12 xl:space-y-16
+              ">
+                <div class="space-y-5 col-span-2">
+                  <hgroup>
+                    {# first sr-only h1 and headline (subhead) #}
+                    <h1 class="sr-only">{{ visuallyHiddenH1Text|default('ODU Global') }}</h1>
+                    <p class="sr-only">{% apply trim %}{% for line in headline %}{{ line }} {% endfor %}{% endapply %}</p>
+                    {# now just the headline (subhead) visually #}
+                    <p aria-hidden="true" class="text-theme-heading-color uppercase text-3xl sm:text-5xl md:text-size-[calc(53rem/16)] xl:text-[calc(64rem/16)] xl:leading-[calc(70rem/16)] font-display font-extrabold">
+                      {% for line in headline %}
+                        <span>{{ line }}</span>
+                        {% if not loop.last %}<br>{% endif %}
+                      {% endfor %}
+                    </p>
+                  </hgroup>
+
+                  {% if wysiwyg %}
+                    {# kind of a haphazard customized prose-region here, *just* for <p>-tags preferably (everything will be the same font-size) #}
+                    <div class="prose font-display !text-size-lg sm:!text-size-2xl !leading-[1.5] children:!mb-0 space-y-5">{{ wysiwyg }}</div>
+                  {% endif %}
+                </div>
+
+                {% if buttonLink or fancyLink %}
+                  <div class="flex flex-col space-y-5 sm:space-y-8">
+                    {% if buttonLink %}
+                      <div>
+                        {% include '@components/Atom/Link/ButtonLink/ButtonLink.twig' with buttonLink only %}
+                      </div>
+                    {% endif %}
+
+                    {% if fancyLink %}
+                      <div class="text-lg">
+                        {% set withAfterIcon = fancyLink.withBeforeIcon ? false : true %}
+                        {% if 'withAfterIcon' in fancyLink|keys %}
+                          {% set withAfterIcon = fancyLink.withAfterIcon %}
+                        {% endif %}
+                        {% include '@components/Atom/Link/FancyLink/FancyLink.twig' with fancyLink|merge({
+                          withAfterIcon: withAfterIcon
+                        }) only %}
+                      </div>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+
+          {#
+            Picture.
+            At `lg`, occupy the 2nd column of 1st row (overlapping the previous sibling).
+          #}
+          <div class="relative lg:col-start-2 lg:row-start-1">
+            <div class="
+              lg:absolute top-0 bottom-0 left-0 right-0
+              lg:[&_:not(.visually-hidden)]:h-full lg:[&_:not(.visually-hidden)]:w-full
+              lg:[&_img]:object-cover
+            ">
+              {{ picture|inject_template }}
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endset %}
+
+    {% include '@components/utilities/theme-flag.twig' with {
+      theme: 'navy-700',
+      component: component
+    } only %}
+  </header>
+{% endif %}

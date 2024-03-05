@@ -1,0 +1,26 @@
+uuid: f354afab-a2d5-40ed-a617-3efe89f3fb45
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_fax
+    - taxonomy.vocabulary.location
+  module:
+    - datalayer
+    - telephone
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_fax
+id: taxonomy_term.location.field_fax
+field_name: field_fax
+entity_type: taxonomy_term
+bundle: location
+label: Fax
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: telephone

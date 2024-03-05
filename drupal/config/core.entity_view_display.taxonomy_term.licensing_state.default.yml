@@ -1,0 +1,51 @@
+uuid: 1e0116b8-9379-4300-9a33-d96746be9083
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.licensing_state.field_full_name
+    - field.field.taxonomy_term.licensing_state.field_licensing_info
+    - field.field.taxonomy_term.licensing_state.field_metatags
+    - taxonomy.vocabulary.licensing_state
+  module:
+    - metatag
+    - text
+    - viewfield
+id: taxonomy_term.licensing_state.default
+targetEntityType: taxonomy_term
+bundle: licensing_state
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_full_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_licensing_info:
+    type: viewfield_default
+    label: hidden
+    settings:
+      view_title: hidden
+      always_build_output: false
+      empty_view_title: hidden
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

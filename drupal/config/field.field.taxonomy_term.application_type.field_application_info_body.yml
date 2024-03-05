@@ -1,0 +1,26 @@
+uuid: b4826107-91c0-4f1f-91b0-2fde16ff49b8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_application_info_body
+    - taxonomy.vocabulary.application_type
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_application_info_body
+id: taxonomy_term.application_type.field_application_info_body
+field_name: field_application_info_body
+entity_type: taxonomy_term
+bundle: application_type
+label: 'Application Info body'
+description: 'Application info body and links'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

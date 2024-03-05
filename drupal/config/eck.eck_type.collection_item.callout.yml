@@ -1,0 +1,9 @@
+uuid: c2a8025b-9aec-45cb-8862-4f06a1bf0559
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.collection_item
+name: Callout
+type: callout
+description: 'a.k.a <a href="https://newcity.gitlab.io/odu-online/components/detail/cta.html">call to action</a>. Title, description, an action link, and an icon.'

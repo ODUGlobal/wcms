@@ -1,0 +1,106 @@
+version: '2.1'
+
+services:
+  storybook:
+    build: ./docker/bookbinder
+    environment:
+      - PROJECT_NAME=${PROJECT_NAME}
+      - NODE_ENV=development
+    volumes:
+      - ./themes/custom/${THEMENAME}/components:/app/components:ro
+      - ./themes/custom/${THEMENAME}/tsconfig.json:/app/tsconfig.json:ro
+      - ./themes/custom/${THEMENAME}/global.d.ts:/app/global.d.ts:ro
+      - ./themes/custom/${THEMENAME}/storybook-config/tailwind.config.js:/app/tailwind.config.js:ro
+      - ./themes/custom/${THEMENAME}/storybook-config/tailwind-helpers:/app/tailwind-helpers:ro
+      - ./themes/custom/${THEMENAME}/storybook-config/preview-head.html:/app/.storybook/preview-head.html:ro
+      - ./themes/custom/${THEMENAME}/storybook-src:/app/storybook-src:ro
+      - ./themes/custom/${THEMENAME}/css:/app/css:ro
+      # Static assets directory, mirrors theme directory stucture so paths are the same as Drupal
+      - ./themes/custom/${THEMENAME}/images:/app/static/themes/custom/${THEMENAME}/images:ro
+      - ./themes/custom/${THEMENAME}/fonts:/app/static/themes/custom/${THEMENAME}/fonts:ro
+      - base_css:/app/dist/css
+      - component_assets:/app/dist/components
+    working_dir: /app
+    ports:
+      - "3000:3000"
+
+  php:
+    image: newcity/php-app:php8-1
+    environment:
+      - ENABLE_CACHING=0
+      - TTY=1
+      - GITLAB_API_PRIVATE_TOKEN=${GITLAB_API_PRIVATE_TOKEN}
+      - GITLAB_PROJECT=newcity%2F${GITLAB_PROJECT}
+      - GITLAB_API_ENDPOINT=${GITLAB_API_ENDPOINT}
+    volumes:
+      # Drupal is in the web directory, but core is maintained in Docker persistent storage
+      # this means composer should be run on the container
+      - drupal_core:/app/web
+      - vendor:/app/vendor
+      # theme files on the host
+      - ./private:/app/private
+      - ./scripts:/app/scripts
+      - ./docker/php/settings.php:/app/web/sites/default/settings.php
+      - ./docker/php/settings.local-dev.php:/app/web/sites/default/settings.local-dev.php
+      - ./docker/php/newcity.services.yml:/app/web/sites/default/newcity.services.yml
+      - ./drupal/config:/app/web/sites/default/files/config
+      - ./drupal/composer.json:/app/composer.json
+      - ./.git:/app/.git:ro
+      - ./docker/php/Makefile:/app/Makefile
+      # custom themes
+      - ./themes/custom:/app/web/themes/custom
+      # custom modules
+      - ./modules/custom:/app/web/modules/custom
+      - base_css:/app/web/themes/custom/${THEMENAME}/dist/css:ro
+      - component_assets:/app/web/themes/custom/${THEMENAME}/dist/components:ro
+      - ./for_webroot/configs:/app/web/configs
+    working_dir: /app
+    command: ["git config --global --add safe.directory /app"]
+    links:
+      - database
+      # - index
+    ports:
+      - '9001:8080'
+
+  web:
+    image: nginx:alpine
+    ports:
+      - '9000:80'
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./docker/nginx/site.conf:/etc/nginx/conf.d/default.conf:ro
+      - drupal_core:/app/web
+      # custom themes
+      - ./themes/custom:/app/web/themes/custom
+      # custom modules
+      - ./modules/custom:/app/web/modules/custom
+      - base_css:/app/web/themes/custom/${THEMENAME}/dist/css
+      - component_assets:/app/web/themes/custom/${THEMENAME}/dist/components
+      - ./for_webroot/libraries:/app/web/libraries
+      - ./for_webroot/configs:/app/web/configs
+    links:
+      - php
+    depends_on:
+      - php
+
+  # MySQL Server
+  database:
+    image: mariadb:10.6
+    command: --max_allowed_packet=32505856
+    volumes:
+      - db_data:/var/lib/mysql
+    environment:
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
+      MYSQL_DATABASE: drupal
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+    ports:
+      - '3306:3306'
+
+volumes: # Files and data that are the result of the build and should not be saved in the project repo.
+  db_data: # Drupal MySQL database
+  drupal_core: # Composer installed Drupal core and contrib modules.
+  vendor: # Package depenencies
+  base_css: # Compiled PostCSS files end up here.
+  component_assets: # Component specific JS files end up here in the same directory structure.

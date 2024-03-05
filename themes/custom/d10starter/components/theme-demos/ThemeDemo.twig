@@ -1,0 +1,16 @@
+{% set component %}
+  <div class="space-y-8">
+    <div>{{ fancyLink|inject_template }}</div>
+    <div class="space-y-4">
+      <div>{{ buttonLink|inject_template }}</div>
+      <div>{{ buttonLinkGhost|inject_template }}</div>
+    </div>
+  </div>
+{% endset %}
+
+{% include '@components/GenericSlab/GenericSlab.twig' with {
+  heading: heading,
+  editorial: editorial,
+  component: component,
+  theme: theme
+} only %}

@@ -1,0 +1,21 @@
+uuid: de9cf6a2-a161-4855-84f6-9169febc9f3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.50_50_panel
+  module:
+    - text
+id: paragraph.50_50_panel.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: 50_50_panel
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

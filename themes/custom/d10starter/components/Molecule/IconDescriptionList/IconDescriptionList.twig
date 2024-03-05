@@ -1,0 +1,41 @@
+{# tw #} {% set linkClasses = 'text-theme-fancy-link-color hocus:text-theme-fancy-link-hocus-color underline font-bold' %}
+
+<dl class="leading-tight children:pb-3 -mb-5">
+  {% for item in keyValuePairs %}
+    {#
+      Note: only a single div-wrapper is allowed between `dl` and `dt`/`dd` children,
+      so we're limited in terms of what styling options we have available. I'm trying to
+      avoid using flex-gap for the most part (b/c of Safari support), so the spacing
+      techniques here are a little janky, but it's working more or less satisfactorily.
+      However: best to avoid `item.key.show: true` where possible (especially if it's long). 
+    #}
+    <div class="flex {{ item.key.show ? 'flex-wrap xs:flex-nowrap' }}  children:mx-1 -mx-1 children:mb-2">
+      <dt class="shrink-0">
+        <div class="flex {{ item.key.show ? 'flex-wrap' }} children:mx-0.5 -mx-0.5 children:mb-2 -mb-2">
+          <div aria-hidden="true" class="w-6 h-6 shrink-0 justify-self-center descendants:max-w-full descendants:max-h-full">
+            <div class="-mt-0.5">{{ item.picture|inject_template }}</div>
+          </div>
+          <span class="font-semibold {{ not item.key.show ? 'sr-only' }}">{{ item.key.text }}: </span>
+        </div>
+      </dt>
+
+      <dd>
+        {% if item.value.links is defined and item.value.links is iterable %}
+          {% if item.value.links|length == 1 %}
+            {% for link in item.value.links %}
+              <a class="{{ linkClasses }}" href="{{ link.url }}">{{ link.title }}</a>
+            {% endfor %}
+          {% else %}
+            <ul role="list" class="space-y-2">
+              {% for link in item.value.links %}
+                <li><a href="{{ link.url }}" class="{{ linkClasses }}">{{ link.title }}</a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        {% else %}
+          <span class="[&_a]:text-theme-fancy-link-color hocus:[&_a]:text-theme-fancy-link-hocus-color [&_a]:underline [&_a]:font-bold">{{ item.value.text }}</span>
+        {% endif %}
+      </dd>
+    </div>
+  {% endfor %}
+</dl>

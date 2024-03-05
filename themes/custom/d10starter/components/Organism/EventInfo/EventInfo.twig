@@ -1,0 +1,16 @@
+{% set component %}
+  <div class="space-y-6">
+    {% if iconDescriptionList %}
+      <div>{{ iconDescriptionList|inject_template }}</div>
+    {% endif %}
+    {% if buttonLink %}
+      <div>{{ buttonLink|inject_template }}</div>
+    {% endif %}
+  </div>
+{% endset %}
+
+{% include '@components/GenericSlab/GenericSlab.twig' with {
+  component: component,
+  id: id,
+  verticalRhythm: verticalRhythm,
+} only %}

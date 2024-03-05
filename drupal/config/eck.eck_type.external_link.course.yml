@@ -1,0 +1,9 @@
+uuid: d18e6860-4316-4b46-8549-6857c271dbff
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.external_link
+name: Course
+type: course
+description: 'Future courses or links to current courses'

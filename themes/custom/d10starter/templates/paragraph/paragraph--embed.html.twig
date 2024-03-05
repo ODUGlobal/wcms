@@ -1,0 +1,17 @@
+{% extends "paragraph.html.twig" %}
+{% block content %}
+    {% if paragraph.field_embed %}
+        {% set id = paragraph.field_heading.value ? paragraph.field_heading.value|striptags|clean_id : null %}
+        {% include '@components/GenericSlab/GenericSlab.twig' with {
+            heading: paragraph.field_heading ? {'headline': paragraph.field_heading.value},
+            editorial: paragraph.field_body.value is not empty ? {'wysiwyg' : {'#type': 'processed_text', '#text': paragraph.field_body.value, '#format': paragraph.field_body.format}} : null,
+            component: content.field_embed|render,
+            centered: true,
+            centeredHeading: true,
+            centeredEditorial: true,
+            centeredEditorialText: true,
+            theme: paragraph.field_theme.value ? paragraph.field_theme.entity.label() : 'light-blue-100',
+            id: id ? id : null
+        } only %}
+    {% endif %}
+{% endblock %}

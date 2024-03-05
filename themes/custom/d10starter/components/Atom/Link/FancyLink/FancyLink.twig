@@ -1,0 +1,94 @@
+{#
+  IMPORTANT: use em-units for everything related to the icons here!
+  This allows the fancy-link to scale correctly (note that no
+  font-size or line-height is set directly on this component).
+
+  Note: we use `span` (w/ `display: block`) instead of `div` so
+  that it's valid HTML to use this inside an h-tag.
+#}
+<span
+  {% if customBeforeSvgMarkup or customBeforeSvgPath or customAfterSvgMarkup or customAfterSvgPath %}
+    style="
+      {% if customBeforeSvgMarkup %}
+        --tw-mask-image: url('data:image/svg+xml,{{ customBeforeSvgMarkup|escape('url') }}');
+      {% elseif customBeforeSvgPath %}
+        --tw-mask-image: url('{{ customBeforeSvgPath }}');
+      {% endif %}
+      {% if customAfterSvgMarkup %}
+        --tw-mask-image-2: url('data:image/svg+xml,{{ customAfterSvgMarkup|escape('url') }}');
+      {% elseif customAfterSvgPath %}
+        --tw-mask-image-2: url('{{ customAfterSvgPath }}');
+      {% endif %}
+    "
+  {% endif %}
+  class="
+    block
+    {{ withBeforeIcon ? 'with-before-icon' }}
+    {{ withAfterIcon ? 'with-after-icon' }}
+    {{ customBeforeSvgMarkup or customBeforeSvgPath ? 'custom-before-icon' }}
+    {{ customAfterSvgMarkup or customAfterSvgPath ? 'custom-after-icon' }}
+    {{ beforeIconStatic ? 'before-icon-static' }}
+    {{ afterIconStatic ? 'after-icon-static' }}
+    [&.with-before-icon]:pl-[--pl]
+    [&.with-after-icon]:pr-[--pr]
+    {# adjust as needed (use em): #}
+    [--pr:1.5em] {# should be wide enough to fit hocus-shifted after-icon #}
+    [--pl:1.25em] {# should be wide enough to fit before-icon #}
+    [--w:calc(14em/16)] {# w/h of icon #}
+    [--shift:calc(4em/16)] {# how much icons shift on hocus #}
+    [--after-buffer:calc(6em/16)] {# space b/w end of text and after-icon #}
+    [--duration:150ms] {# for all link-transitions; not smooth if too slow #}
+  "
+>{% apply spaceless %}{# spaceless needed to prevent after-icon from becoming "orphaned" on its own line #}
+
+  {# you probably shouldn't have to adjust these at all: #}
+  {# tw #} {% set beforeClasses = '
+    before:hidden [.with-before-icon>&]:before:block
+    before:w-[--w] before:h-[--w]
+    before:mask-arrow-fancy before:!mask-contain
+    [.custom-before-icon>&]:before:mask-custom
+    before:bg-current before:pointer-events-none
+    before:absolute
+    before:left-[calc(-1*var(--pl))]
+    hocus:before:translate-x-[--shift]
+    [.before-icon-static>&]:before:!translate-x-0
+    motion-reduce:before:!translate-x-0
+    before:transition-[transform,background-color] before:ease-linear before:duration-[--duration]
+    [&.in-viewport]:before:will-change-transform
+  '|trim %}
+
+  {# you probably shouldn't have to adjust these at all: #}
+  {# tw #} {% set afterClasses = '
+    after:hidden [.with-after-icon>&]:after:inline-block
+    after:mask-arrow-fancy after:!mask-contain
+    [.custom-after-icon>&]:after:mask-custom-2
+    after:bg-current after:pointer-events-none
+    after:relative
+    after:ml-[calc(-1*var(--w))] after:w-[--w] after:h-[--w]
+    after:left-[calc(var(--w)+var(--after-buffer))]
+    hocus:after:translate-x-[--shift]
+    [.after-icon-static>&]:after:translate-x-[--shift]
+    after:transition-[transform,background-color] after:ease-linear after:duration-[--duration]
+    [&.in-viewport]:after:will-change-transform
+  '|trim %}
+
+  <a
+    {% if ariaCurrent %}
+      aria-current="{{ ariaCurrent }}"
+    {% endif %}
+    href="{{ link ? link.url : url }}"
+    class="
+      fancy-link
+      relative font-bold font-sans
+      text-theme-fancy-link-color hocus:text-theme-fancy-link-hocus-color
+      duration-[--duration]
+      {{ beforeClasses }}
+      {{ afterClasses }}
+      {# adjust as needed (use `em`): #}
+      before:top-[calc(1em/16)] firefox:before:top-[calc(2em/16)]
+      after:top-[calc(1em/16)] firefox:after:top-[calc(2em/16)]
+    "
+    {# `|trim` below is needed to prevent "orphaned" after-icon in case of accidental space at end #}
+  >{{ (link ? link.title : title)|trim }}{% if srOnlySuffix %}<span class="sr-only"> ({{ srOnlySuffix }})</span>{% endif %}</a>
+
+{% endapply %}</span>

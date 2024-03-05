@@ -1,0 +1,35 @@
+uuid: b09bc3ef-7e2d-4cf6-ba0b-bc6534ad2a40
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_theme
+    - paragraphs.paragraphs_type.embed
+    - taxonomy.vocabulary.theme_options
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_theme
+id: paragraph.embed.field_theme
+field_name: field_theme
+entity_type: paragraph
+bundle: embed
+label: Theme
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      theme_options: theme_options
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

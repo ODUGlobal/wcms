@@ -1,0 +1,12 @@
+# Define the menu links for this module
+
+entity.odu_emsi_emsi_cache.collection:
+  title: 'ODU EMSI: EMSI Cache Listing'
+  route_name: entity.odu_emsi_emsi_cache.collection
+  description: 'List EMSI Cache'
+  weight: 10
+odu_emsi_emsi_cache.admin.structure.settings:
+  title: EMSI Cache
+  description: 'Configure EMSI Cache entity'
+  route_name:  odu_emsi.emsi_cache_settings
+  parent: system.admin_structure

@@ -1,0 +1,26 @@
+uuid: 44d525a3-8c39-468c-b83a-59a42d057f26
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.reusable_block.social_media_block
+    - field.storage.reusable_block.field_body
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_body
+id: reusable_block.social_media_block.field_body
+field_name: field_body
+entity_type: reusable_block
+bundle: social_media_block
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

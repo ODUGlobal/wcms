@@ -1,0 +1,85 @@
+uuid: a4dfc50a-82c9-4afd-9873-91deb19e2958
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.enrollment_team.field_body
+    - field.field.taxonomy_term.enrollment_team.field_email
+    - field.field.taxonomy_term.enrollment_team.field_enrollment_people
+    - field.field.taxonomy_term.enrollment_team.field_job_title
+    - field.field.taxonomy_term.enrollment_team.field_phone
+    - taxonomy.vocabulary.enrollment_team
+  module:
+    - telephone
+    - text
+    - viewfield
+id: taxonomy_term.enrollment_team.default
+targetEntityType: taxonomy_term
+bundle: enrollment_team
+mode: default
+content:
+  field_body:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_email:
+    type: email_default
+    weight: 3
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_enrollment_people:
+    type: viewfield_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_job_title:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_phone:
+    type: telephone_default
+    weight: 4
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  name:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap_index_now:
+    weight: 130
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 100
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+hidden:
+  description: true
+  path: true

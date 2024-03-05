@@ -1,0 +1,26 @@
+uuid: 155f6864-198f-49e1-bb3d-e43308106993
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_team_heading_override
+    - node.type.program
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_team_heading_override
+id: node.program.field_team_heading_override
+field_name: field_team_heading_override
+entity_type: node
+bundle: program
+label: 'Meet your team heading replacement'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

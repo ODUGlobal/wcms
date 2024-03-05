@@ -1,0 +1,117 @@
+<!-- Google fonts:
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;1,400;1,600&family=Sora:wght@300;400;600&display=swap" rel="stylesheet">
+-->
+
+<!--
+  Fonts — will need to reproduce this on the real site, too.
+  If the path isn't right in "production" Storybook, can always
+  add "duplicates" with the right path for that environment.
+
+  Archivo SemiExpanded: 400 (normal/regular), 800 (extrabold)
+  Archivo SemiCondensed: 600 (semibold), 700 (bold)
+  Archivo: 400 (normal/regular), 400i (normal/regular italic), 700 (bold)
+
+  (Do we need any more italic fonts? Right now Archivo 400i is only one.)
+-->
+<style>
+  @font-face {
+    font-family: 'Archivo SemiExpanded';
+    src: url('./themes/custom/d10starter/fonts/ArchivoSemiExpanded-Regular.woff2') format('woff2'),
+      url('./themes/custom/d10starter/fonts/ArchivoSemiExpanded-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Archivo SemiExpanded';
+    src: url('./themes/custom/d10starter/fonts/ArchivoSemiExpanded-ExtraBold.woff2') format('woff2'),
+      url('./themes/custom/d10starter/fonts/ArchivoSemiExpanded-ExtraBold.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Archivo SemiCondensed';
+    src: url('./themes/custom/d10starter/fonts/ArchivoSemiCondensed-SemiBold.woff2') format('woff2'),
+      url('./themes/custom/d10starter/fonts/ArchivoSemiCondensed-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Archivo SemiCondensed';
+    src: url('./themes/custom/d10starter/fonts/ArchivoSemiCondensed-Bold.woff2') format('woff2'),
+      url('./themes/custom/d10starter/fonts/ArchivoSemiCondensed-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Archivo';
+    src: url('./themes/custom/d10starter/fonts/Archivo-Regular.woff2') format('woff2'),
+      url('./themes/custom/d10starter/fonts/Archivo-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Archivo';
+    src: url('./themes/custom/d10starter/fonts/Archivo-Italic.woff2') format('woff2'),
+      url('./themes/custom/d10starter/fonts/Archivo-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Archivo';
+    src: url('./themes/custom/d10starter/fonts/Archivo-Bold.woff2') format('woff2'),
+      url('./themes/custom/d10starter/fonts/Archivo-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+  }
+</style>
+
+<!-- 3rd-party CSS -->
+
+<!-- Magnific Popup (needed at least for `video`, maybe make it a Drupal global?) -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
+  integrity="sha512-+EoPw+Fiwh6eSeRK7zwIKG2MA8i3rV/DGa3tdttQGgWyatG/SkncT53KHQaS5Jh9MNOT3dmFL0FjTY08And/Cw=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+
+<!-- Accessible Slick (needed for `Slider`) -->
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/@accessible360/accessible-slick@1.0.1/slick/slick.min.css">
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/@accessible360/accessible-slick@1.0.1/slick/accessible-slick-theme.min.css">
+
+
+<!-- 3rd-party JS. In Drupal, use `defer` as normal, but not in Storybook b/c pattern-level scripts that might need them will run first -->
+
+<!-- polyfill as needed (not necessarily using all of these, but some we are, and others are likely) -->
+<script src="https://polyfill.io/v3/polyfill.min.js?features=ResizeObserver%2CMap%2CArray.prototype.flatMap%2CObject.fromEntries%2CDOMTokenList.prototype.replace%2CObject.entries%2CSet%2CIntersectionObserver%2CIntersectionObserverEntry"></script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+<!-- Magnific Popup (needed at least for `Video` and `Gallery`) -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+
+<!-- focus-visible polyfill (should be a global in Drupal) -->
+<script src="https://cdn.jsdelivr.net/npm/focus-visible@5.2.0/dist/focus-visible.min.js"></script>
+
+<!--
+  For "graceful degradation," we have a class for hiding things if JS is disabled.
+  Only use for things that have a no-JS alternative on the page
+  (typically where there's "equivalent" content in a `<noscript>`).
+-->
+<noscript id="noscript-style-wrapper">
+  <style>
+    .hide-if-no-js {
+      display: none !important;
+    }
+  </style>
+</noscript>

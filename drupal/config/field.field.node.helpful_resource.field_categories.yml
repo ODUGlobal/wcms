@@ -1,0 +1,35 @@
+uuid: 3f693502-c8a0-4402-acd4-aef3b0f6e3e8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_categories
+    - node.type.helpful_resource
+    - taxonomy.vocabulary.helpful_resource_categories
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_categories
+id: node.helpful_resource.field_categories
+field_name: field_categories
+entity_type: node
+bundle: helpful_resource
+label: Categories
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      helpful_resource_categories: helpful_resource_categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,21 @@
+uuid: 614eecd4-fe31-4560-aae0-d2f154218463
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+    - viewfield
+    - views
+id: taxonomy_term.field_licensing_info
+field_name: field_licensing_info
+entity_type: taxonomy_term
+type: viewfield
+settings:
+  target_type: view
+module: viewfield
+locked: false
+cardinality: 3
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

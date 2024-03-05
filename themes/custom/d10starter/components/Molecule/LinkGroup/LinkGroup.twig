@@ -1,0 +1,24 @@
+<section class="space-y-5 {{ not allowColumnBreak ? 'break-inside-avoid' }}">
+  {% if heading %}
+    <div class="break-after-avoid break-inside-avoid descendants:break-inside-avoid">
+      {% include '@components/Atom/Heading/Heading.twig' with heading|merge({
+        tagLevel: hLevel,
+        styleLevel: 4
+      }) only %}
+    </div>
+  {% endif %}
+  <div class="
+    [&_ul]:block [&_li]:!my-0 [&_li]:pb-3.5 last:[&_li]:pb-0
+    {{ allowColumnBreak
+      ? '[&_li]:break-inside-avoid descendants:[&_li]:break-inside-avoid'
+      : 'break-inside-avoid descendants:break-inside-avoid'
+    }}
+  ">
+    {% include '@components/Molecule/LinkList/FancyLinkList/FancyLinkList.twig' with fancyLinkList|merge({
+      inline: false,
+      columns: false,
+      slim: false,
+      centered: false
+    }) only %}
+  </div>
+</section>

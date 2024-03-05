@@ -1,0 +1,47 @@
+uuid: b245b9bb-8c35-4641-8c20-e107672343af
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.degree_level.field_hide_from_listings
+    - field.field.taxonomy_term.degree_level.field_metatags
+    - field.field.taxonomy_term.degree_level.field_non_credit
+    - field.field.taxonomy_term.degree_level.field_paragraphs
+    - field.field.taxonomy_term.degree_level.field_show_degree_options
+    - taxonomy.vocabulary.degree_level
+  module:
+    - entity_reference_revisions
+    - metatag
+    - text
+id: taxonomy_term.degree_level.default
+targetEntityType: taxonomy_term
+bundle: degree_level
+mode: default
+content:
+  description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_metatags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_paragraphs:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  field_hide_from_listings: true
+  field_non_credit: true
+  field_show_degree_options: true

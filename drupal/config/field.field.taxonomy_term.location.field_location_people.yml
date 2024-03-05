@@ -1,0 +1,64 @@
+uuid: 40e24310-7d9b-4d41-a2f0-9f417031c046
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_location_people
+    - taxonomy.vocabulary.location
+    - views.view.staff_for_location
+  module:
+    - datalayer
+    - viewfield
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_location_people
+id: taxonomy_term.location.field_location_people
+field_name: field_location_people
+entity_type: taxonomy_term
+bundle: location
+label: 'Location people'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 21ea5121-3dbe-451e-ad57-c55af8ccede4
+    display_id: block_1
+    arguments: '[term:tid]'
+    items_to_display: ''
+    token_help: ''
+default_value_callback: ''
+settings:
+  force_default: true
+  allowed_views:
+    content: '0'
+    block_content: '0'
+    enrollment_team: '0'
+    files: '0'
+    filtered_content: '0'
+    frontpage: '0'
+    media: '0'
+    media_entity_browser_media_library: '0'
+    media_library: '0'
+    moderated_content: '0'
+    news: '0'
+    user_admin_people: '0'
+    programs: '0'
+    programs_admin_list_: '0'
+    redirect: '0'
+    redirect_404: '0'
+    reusable_collection_items: '0'
+    staff: '0'
+    staff_admin_listing_: '0'
+    staff_for_location: '0'
+    watchdog: '0'
+  allowed_display_types:
+    block: block
+    entity_browser: '0'
+    feed: '0'
+    default: '0'
+    page: '0'
+  handler: 'default:view'
+  handler_settings: {  }
+field_type: viewfield

@@ -1,0 +1,9 @@
+uuid: b8f64ddc-cee7-42e0-a31f-e23fed7938d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.collection_item
+name: Pullquote
+type: pullquote
+description: '<a href="https://newcity.gitlab.io/odu-online/components/detail/pullquote.html">Pull quote</a> with quote and attribution.'

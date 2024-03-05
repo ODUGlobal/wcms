@@ -1,0 +1,26 @@
+uuid: c1be9fc5-92b1-4249-82ec-0a57a9554b00
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.embed
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_body
+id: paragraph.embed.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: embed
+label: Body
+description: 'Optional introductory text'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,43 @@
+/* Tweaks/fixes to 3rd-party Magnific Popup CSS */
+
+body.mfp-active {
+  /* lock down bg-scrolling on mobile */
+
+  overflow: hidden;
+
+  .mfp-bg {
+    height: 100% !important;
+    position: fixed !important;
+    overflow: hidden;
+  }
+
+  .mfp-wrap {
+    top: 0 !important;
+    position: fixed !important;
+    overflow: auto;
+    height: 100% !important;
+  }
+
+  /* prevent arrow-alignment bug on mobile */
+
+  .mfp-arrow-left {
+    @apply origin-left;
+  }
+
+  .mfp-arrow-right {
+    @apply origin-right;
+  }
+
+  .mfp-bottom-bar .mfp-title {
+    @apply pr-14;
+  }
+
+  .mfp-counter {
+    @apply text-base;
+  }
+
+  .mfp-bottom-bar .mfp-title,
+  .mfp-bottom-bar .mfp-counter {
+    @apply mt-1;
+  }
+}

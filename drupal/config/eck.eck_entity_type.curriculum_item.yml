@@ -1,0 +1,10 @@
+uuid: 76fc1410-56a8-4be7-9818-1f58bf2685c2
+langcode: en
+status: true
+dependencies: {  }
+id: curriculum_item
+label: 'Curriculum Item'
+uid: false
+created: false
+changed: false
+title: true

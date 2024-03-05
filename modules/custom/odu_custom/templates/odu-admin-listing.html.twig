@@ -1,0 +1,24 @@
+{#
+/**
+ * @file
+ * Make something like /admin.
+ *
+ *
+ * Available variables:
+ * - items: A list of content types, each with the following properties:
+ *   - label
+ *   - url
+ *   - description
+ *
+ * @see template_preprocess_odu_admin_listing()
+ *
+ * @ingroup themeable
+ */
+#}
+{% if items is not empty %}
+  <ul class="admin-list">
+    {% for item in items %}
+      <li class="clearfix"><a href="{{ item.url }}"><span class="label">{{ item.label }}</span><div class="description">{{ item.description }}</div></a></li>
+    {% endfor %}
+  </ul>
+{% endif %}

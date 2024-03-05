@@ -1,0 +1,21 @@
+{% set component %}
+  <ol
+    role="list"
+    class="flex flex-col space-y-12"
+  >
+    {% for item in items %}
+      <li class="block">
+        {% include '@components/Molecule/ProgramListingItem/ProgramListingItem.twig' with item|merge({
+          hLevel: itemHLevel|default(heading ? 3 : 2)
+        }) only %}
+      </li>
+    {% endfor %}
+  </ol>
+{% endset %}
+
+{% include '@components/GenericSlab/GenericSlab.twig' with {
+  heading: heading,
+  component: component,
+  id: id,
+  verticalRhythm: verticalRhythm
+} only %}

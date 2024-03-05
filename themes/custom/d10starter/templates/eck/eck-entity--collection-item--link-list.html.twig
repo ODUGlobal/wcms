@@ -1,0 +1,11 @@
+{% extends "eck-entity.html.twig" %}
+{% block content %}
+{% include "@components/Molecule/LinkGroup/LinkGroup.twig" with {
+  heading: eck_entity.field_display_title.value ? {
+    headline: content.field_display_title|children|first
+  } : false,
+  fancyLinkList: {
+    fancyLinks: content.field_links|to_link_objects,
+  }
+} %}
+{% endblock %}

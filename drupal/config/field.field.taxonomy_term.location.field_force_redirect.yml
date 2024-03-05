@@ -1,0 +1,29 @@
+uuid: 4ddd8708-e888-4bbe-9d09-2812cfc677c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_force_redirect
+    - taxonomy.vocabulary.location
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_force_redirect
+id: taxonomy_term.location.field_force_redirect
+field_name: field_force_redirect
+entity_type: taxonomy_term
+bundle: location
+label: 'Force redirect'
+description: 'Redirect to the link for this location, if available'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

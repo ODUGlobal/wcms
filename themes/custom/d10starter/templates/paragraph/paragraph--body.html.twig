@@ -1,0 +1,11 @@
+{% extends "paragraph.html.twig" %}
+{% block content %}
+{% include "@components/Organism/EditorialSlab/EditorialSlab.twig" with {
+  heading: {
+    headline: content.field_heading|children|first,
+  },
+  editorial: {
+    wysiwyg: content.field_body|children|first,
+  },
+} %}
+{% endblock %}

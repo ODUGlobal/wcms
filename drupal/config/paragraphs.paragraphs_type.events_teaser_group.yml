@@ -1,0 +1,10 @@
+uuid: 0be4f729-7e97-4780-ac04-b0d7040013b0
+langcode: en
+status: true
+dependencies: {  }
+id: events_teaser_group
+label: 'Events Teaser Group'
+icon_uuid: null
+icon_default: null
+description: ''
+behavior_plugins: {  }

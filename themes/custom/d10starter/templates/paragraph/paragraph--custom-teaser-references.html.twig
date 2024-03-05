@@ -1,0 +1,11 @@
+{% extends "paragraph.html.twig" %}
+{% block content %}
+{% include "@components/Organism/TeaserCollection/StandardTeaserCollection/StandardTeaserCollection.twig" with {
+  heading: {
+    headline: content.field_heading|children|first,
+  },
+  editorial: paragraph.field_body.value ? {'wysiwyg': content.field_body|children|first} : null,
+  teasers: content.field_content_reference|children|update_view_mode('standard_teaser_with_summary')|slice(0, 3),
+  theme: paragraph.field_theme.value ? paragraph.field_theme.entity.label() : null,
+} %}
+{% endblock %}

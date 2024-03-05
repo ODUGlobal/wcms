@@ -1,0 +1,17 @@
+uuid: 924b1e7d-bb8c-4a32-900b-7869a8c5fecd
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Person
+type: person
+description: 'Staff for directory'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

@@ -1,0 +1,10 @@
+uuid: c72ded82-93e5-422d-b525-bb8db1f98b5f
+langcode: en
+status: true
+dependencies: {  }
+id: embed
+label: Embed
+icon_uuid: null
+icon_default: null
+description: 'An embed from an external service'
+behavior_plugins: {  }

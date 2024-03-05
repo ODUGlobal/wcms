@@ -1,0 +1,51 @@
+id: emsi
+label: Import EMSI data
+migration_group: EMSI
+dependencies:
+  enforced:
+    module:
+      - odu_emsi
+source:
+  plugin: url_paged
+  data_fetcher_plugin: http
+  data_parser_plugin: json
+  url_pattern: https://cc.emsiservices.com/programs/odu?limit=50&offset=OFFSET
+  offset_key: OFFSET
+  offset_increment: 50
+  authentication:
+    plugin: oauth2
+    grant_type: client_credentials
+    provider_options:
+      clientId: odu
+      clientSecret: AVAV*7en*2Fn
+      urlAccessToken: https://auth.emsicloud.com/connect/token
+      urlAuthorize: https://auth.emsicloud.com/connect/authorize
+      urlResourceOwnerDetails: https://auth.emsicloud.com/connect/resource
+    grant_options:
+      scope: "programs careers"
+  item_selector: data
+  fields:
+    -
+      name: id
+      selector: /attributes/code
+    -
+      name: name
+      selector: /attributes/name
+    -
+      name: emsi_slug
+      selector: /attributes/slug
+    -
+      name: career_data
+      selector: /attributes
+  ids:
+    id:
+      type: integer
+destination:
+  plugin: entity:odu_emsi_emsi_cache
+process:
+  program_id: id
+  career_data:
+    plugin: serializer
+    source: career_data
+  emsi_slug: emsi_slug
+  name: name

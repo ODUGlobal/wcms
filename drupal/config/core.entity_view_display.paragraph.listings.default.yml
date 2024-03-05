@@ -1,0 +1,42 @@
+uuid: 108cd2e0-357f-4bd4-a5cf-aa99faad18c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.listings.field_body
+    - field.field.paragraph.listings.field_collection_items
+    - field.field.paragraph.listings.field_heading
+    - field.field.paragraph.listings.field_theme
+    - paragraphs.paragraphs_type.listings
+  module:
+    - text
+id: paragraph.listings.default
+targetEntityType: paragraph
+bundle: listings
+mode: default
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_collection_items:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_heading:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_theme: true

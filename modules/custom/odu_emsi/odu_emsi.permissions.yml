@@ -1,0 +1,11 @@
+view emsi cache:
+  title: 'View EMSI cache'
+add emsi cache:
+  title: 'Add EMSI cache'
+edit emsi cache:
+  title: 'Edit EMSI cache'
+delete emsi cache:
+  title: 'Delete EMSI cache'
+administer emsi cache:
+  title: 'Administer EMSI cache'
+  restrict access: TRUE

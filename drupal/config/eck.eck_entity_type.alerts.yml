@@ -1,0 +1,10 @@
+uuid: 1a663106-856c-465d-81ff-0224c837fe83
+langcode: en
+status: true
+dependencies: {  }
+id: alerts
+label: Alerts
+uid: false
+created: false
+changed: false
+title: true

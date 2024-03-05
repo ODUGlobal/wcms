@@ -1,0 +1,10 @@
+uuid: 273dcf0c-8eec-4ca8-b30f-d3530356f0b5
+langcode: en
+status: true
+dependencies: {  }
+id: 50_50_panel
+label: '50/50 Panel'
+icon_uuid: null
+icon_default: null
+description: 'A media / text split panel.'
+behavior_plugins: {  }

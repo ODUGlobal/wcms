@@ -1,0 +1,26 @@
+uuid: 79b2b84e-989a-4cf0-8336-10ece687e156
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.statistic
+    - field.storage.collection_item.field_display_title
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_display_title
+id: collection_item.statistic.field_display_title
+field_name: field_display_title
+entity_type: collection_item
+bundle: statistic
+label: 'Display title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

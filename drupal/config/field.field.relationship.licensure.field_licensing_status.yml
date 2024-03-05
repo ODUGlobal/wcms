@@ -1,0 +1,28 @@
+uuid: 9dca9699-f5ca-4592-9438-59f256352edd
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.relationship.licensure
+    - field.storage.relationship.field_licensing_status
+  module:
+    - datalayer
+    - options
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_licensing_status
+id: relationship.licensure.field_licensing_status
+field_name: field_licensing_status
+entity_type: relationship
+bundle: licensure
+label: 'Licensing status'
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    value: 'yes'
+default_value_callback: ''
+settings: {  }
+field_type: list_string

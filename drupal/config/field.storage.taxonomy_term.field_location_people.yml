@@ -1,0 +1,21 @@
+uuid: d46203f5-a6a9-4312-a947-9ae8be4c5fe1
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+    - viewfield
+    - views
+id: taxonomy_term.field_location_people
+field_name: field_location_people
+entity_type: taxonomy_term
+type: viewfield
+settings:
+  target_type: view
+module: viewfield
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

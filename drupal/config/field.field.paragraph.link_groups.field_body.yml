@@ -1,0 +1,26 @@
+uuid: 08b0a262-8df9-4729-b6f5-2a69cf3b93e9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_body
+    - paragraphs.paragraphs_type.link_groups
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_body
+id: paragraph.link_groups.field_body
+field_name: field_body
+entity_type: paragraph
+bundle: link_groups
+label: Intro
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

@@ -1,0 +1,88 @@
+uuid: 3c7f5c7e-3052-4347-b519-fb2afd6ffd31
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_paragraphs
+    - paragraphs.paragraphs_type.hero
+    - paragraphs.paragraphs_type.home
+    - paragraphs.paragraphs_type.simple
+    - taxonomy.vocabulary.area_of_study
+  module:
+    - datalayer
+    - entity_reference_revisions
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_paragraphs
+id: taxonomy_term.area_of_study.field_paragraphs
+field_name: field_paragraphs
+entity_type: taxonomy_term
+bundle: area_of_study
+label: Paragraphs
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      hero: hero
+      home: home
+      simple: simple
+    negate: 1
+    target_bundles_drag_drop:
+      50_50_panel:
+        weight: 18
+        enabled: false
+      body:
+        weight: 19
+        enabled: false
+      callouts:
+        weight: 20
+        enabled: false
+      custom_teaser_references:
+        weight: 21
+        enabled: false
+      embed:
+        weight: 22
+        enabled: false
+      fast_facts:
+        weight: 23
+        enabled: false
+      featured_link_list:
+        weight: 24
+        enabled: false
+      gallery:
+        weight: 25
+        enabled: false
+      hero:
+        weight: 26
+        enabled: true
+      home:
+        weight: 27
+        enabled: true
+      link_groups:
+        weight: 28
+        enabled: false
+      listings:
+        weight: 29
+        enabled: false
+      program_routing:
+        weight: 30
+        enabled: false
+      quote_collection:
+        weight: 31
+        enabled: false
+      simple:
+        weight: 32
+        enabled: true
+      social_media_callout:
+        weight: 33
+        enabled: false
+      spotlight:
+        weight: 34
+        enabled: false
+field_type: entity_reference_revisions

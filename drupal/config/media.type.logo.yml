@@ -1,0 +1,13 @@
+uuid: 58b0aec6-0411-43d5-8302-58e1e851bf49
+langcode: en
+status: true
+dependencies: {  }
+id: logo
+label: Logo
+description: 'A vector image or PNG bitmap'
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map: {  }

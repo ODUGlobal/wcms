@@ -1,0 +1,14 @@
+_core:
+  default_config_hash: VDJxTZtQR21qB4lvOq8zszJZLvLKrSPQpdn2E3T71Ww
+langcode: en
+uuid: bc4ddc48-7187-4955-9c77-86c864004788
+name: ODUGlobal
+mail: odudlweb@odu.edu
+slogan: ''
+page:
+  403: ''
+  404: /node/1188
+  front: /node/467
+admin_compact_mode: false
+weight_select_max: 100
+default_langcode: en

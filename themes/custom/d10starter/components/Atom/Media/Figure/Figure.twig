@@ -1,0 +1,25 @@
+{% if media is empty %}
+{% set media %}
+  {% if picture %}
+    {% block picture %}
+      {{ picture|inject_template }}
+    {% endblock %}
+  {% elseif video %}
+    {% block video %}
+      {{ video|inject_template }}
+    {% endblock %}
+  {% endif %}
+{% endset %}
+{% endif %}
+
+<figure class="{{ caption or credit ? 'table' }} {{ figureClasses|default('space-y-2.5') }}">
+  {{ media }}
+  {% if caption or credit %}
+    <figcaption class="table-caption caption-bottom text-sm text-theme-text-color">
+      <div class="flex flex-col space-y-1 max-w-4xl">
+        {% if caption %}<span>{{ caption|raw }}</span>{% endif %}
+        {% if credit %}<span class="italic font-semibold">{{ credit }}</span>{% endif %}
+      </div>
+    </figcaption>
+  {% endif %}
+</figure>

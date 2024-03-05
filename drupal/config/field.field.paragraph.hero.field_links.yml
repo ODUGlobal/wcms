@@ -1,0 +1,28 @@
+uuid: 7f7cb8a2-9c21-4983-80f6-1a76b9a4e08a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_links
+    - paragraphs.paragraphs_type.hero
+  module:
+    - datalayer
+    - link
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_links
+id: paragraph.hero.field_links
+field_name: field_links
+entity_type: paragraph
+bundle: hero
+label: Links
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

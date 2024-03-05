@@ -1,0 +1,10 @@
+uuid: 30bda1f2-3fdb-4660-91e8-eeef1c4df68d
+langcode: en
+status: true
+dependencies: {  }
+id: simple
+label: Simple
+icon_uuid: null
+icon_default: null
+description: 'A simple page header allowing an alternate display title.'
+behavior_plugins: {  }

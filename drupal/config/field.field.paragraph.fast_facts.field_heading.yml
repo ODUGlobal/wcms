@@ -1,0 +1,26 @@
+uuid: 0e2a29f8-8df1-4f0b-9fe3-c19b6fd711c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.fast_facts
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_heading
+id: paragraph.fast_facts.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: fast_facts
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

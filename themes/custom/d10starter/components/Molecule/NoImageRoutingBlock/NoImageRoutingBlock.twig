@@ -1,0 +1,48 @@
+<section class="flex flex-col space-y-5 sm:space-y-0 sm:flex-row sm:space-x-7">
+  {% if picture %}
+    <div aria-hidden="true" class="basis-16 max-w-[4rem] max-h-[4rem] grow-0 shrink-0 [&_svg]:max-h-full sm:[&_svg]:ml-auto sm:[&_img]:ml-auto">
+      {{ picture|inject_template }}
+    </div>
+  {% endif %}
+
+  <div class="grow space-y-6">
+    {% if headline is not empty %}
+      {% set hLevel = hLevel|default(2) %}
+      <div>
+        {% include '@components/Atom/Heading/Heading.twig' with {
+          headline: headline,
+          tagLevel: hLevel,
+          slim: hLevel > 2,
+          superhead: superhead,
+          subhead: subhead
+        } only %}
+      </div>
+    {% endif %}
+
+    {% if costBlocks and costBlocks.items %}
+      <div>
+        {% include '@components/Molecule/CostBlocks/CostBlocks.twig' with costBlocks only %}
+      </div>
+    {% endif %}
+
+    {% if editorial %}
+      <div>
+        {% include '@components/Organism/Editorial/Editorial.twig' with editorial only %}
+      </div>
+    {% endif %}
+
+    {% if fancyLinkList and fancyLinkList.fancyLinks %}
+      <div>
+        {% include '@components/Molecule/LinkList/FancyLinkList/FancyLinkList.twig' with fancyLinkList|merge({
+          inline: 'inline' in fancyLinkList|keys ? fancyLinkList.inline : true
+        }) only %}
+      </div>
+    {% endif %}
+
+    {% if buttonLinkList %}
+      <div>
+        {% include '@components/Molecule/LinkList/ButtonLinkList/ButtonLinkList.twig' with buttonLinkList only %}
+      </div>
+    {% endif %}
+  </div>
+</section>

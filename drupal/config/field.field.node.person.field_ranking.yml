@@ -1,0 +1,29 @@
+uuid: 33a36358-05e3-451b-976d-4d276687ce19
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_ranking
+    - node.type.person
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_ranking
+id: node.person.field_ranking
+field_name: field_ranking
+entity_type: node
+bundle: person
+label: Ranking
+description: 'Ranking field, for displaying VIPs at the top of filtered lists. Higher numbers will appear earlier in listings (default ranking is 0).'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: null
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

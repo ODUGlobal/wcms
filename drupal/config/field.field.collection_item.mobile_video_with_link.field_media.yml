@@ -1,0 +1,29 @@
+uuid: 976763c1-7326-4dde-bf7b-c7d19f5f6e34
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.mobile_video_with_link
+    - field.storage.collection_item.field_media
+    - media.type.image
+id: collection_item.mobile_video_with_link.field_media
+field_name: field_media
+entity_type: collection_item
+bundle: mobile_video_with_link
+label: 'Poster Image'
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,18 @@
+{% extends "eck-entity.html.twig" %}
+{% block content %}
+{% include "@components/Molecule/NoImageRoutingBlock/NoImageRoutingBlock.twig" with {
+  headline: content.field_display_title|children|first,
+  hLevel: 2,
+  picture: eck_entity.field_icon.entity.field_svg.value|icon,
+  editorial: {
+    wysiwyg: content.field_body|children|first,
+  },
+  fancyLinkList: {
+    fancyLinks: content.field_fancy_links|to_link_objects,
+  },
+  costBlocks: {
+    items: content.field_cost_list|children,
+  },
+  buttonLinkList: eck_entity.field_links ? {alternate: true, buttonLinks: content.field_links|to_link_objects} : null
+} %}
+{% endblock %}

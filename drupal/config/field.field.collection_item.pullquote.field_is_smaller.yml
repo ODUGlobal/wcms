@@ -1,0 +1,29 @@
+uuid: 8b81b5c2-9e0e-48b2-aca5-0f50311df1f0
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.pullquote
+    - field.storage.collection_item.field_is_smaller
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_is_smaller
+id: collection_item.pullquote.field_is_smaller
+field_name: field_is_smaller
+entity_type: collection_item
+bundle: pullquote
+label: 'Is smaller'
+description: 'Applies to cited quote -- brings font size down in size to match the non-quote pullquote.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

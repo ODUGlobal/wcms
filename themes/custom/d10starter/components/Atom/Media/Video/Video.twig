@@ -1,0 +1,23 @@
+<div class="relative max-w-max">
+  {# Gets `role="button"` via the JS (so it's just a normal link if JS is disabled). #}
+  <a
+    href="{{ url }}"
+    aria-label="Play video{{ title ? (': ' ~ title) : '' }}"
+    data-mfp-video-popup
+    class="block peer"
+  >
+    {{ picture|inject_template }}
+  </a>
+
+  {# overlay (darkens picture to make play-icon more visible) #}
+  <div class="
+    absolute pointer-events-none inset-0
+    bg-black/30 peer-hocus:bg-transparent transition-colors
+  "></div>
+
+  {# play icon #}
+  <svg class="
+    absolute pointer-events-none w-16 h-16 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+    fill-black/50 peer-hocus:fill-black transition-colors
+  " aria-hidden="true" viewBox="0 0 85 85"><g stroke="none" stroke-width="1" fill-rule="evenodd"><g transform="translate(-864.000000, -2708.000000)"><g transform="translate(464.000000, 2502.000000)"><g transform="translate(400.000000, 206.000000)"><circle cx="42.5" cy="42.5" r="42.5"></circle><polygon fill="#FFFFFF" transform="translate(45.241935, 42.956989) rotate(-270.000000) translate(-45.241935, -42.956989) " points="45.9878463 32.9032258 58.4946237 53.0107527 31.9892473 53.0107527"></polygon></g></g></g></g></svg>
+</div>

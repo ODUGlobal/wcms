@@ -1,0 +1,19 @@
+uuid: b0ca28c9-f88f-4116-9842-c0392ddf58c1
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+    - text
+id: taxonomy_term.field_svg
+field_name: field_svg
+entity_type: taxonomy_term
+type: text_long
+settings: {  }
+module: text
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,26 @@
+uuid: ed6b9118-b5e3-43ef-86c1-9a586b2b5b8e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_title
+    - node.type.news
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_display_title
+id: node.news.field_display_title
+field_name: field_display_title
+entity_type: node
+bundle: news
+label: 'Display title'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

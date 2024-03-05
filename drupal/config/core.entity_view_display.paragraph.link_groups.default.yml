@@ -1,0 +1,50 @@
+uuid: bdab0c88-c642-4a51-aa4d-0576e5d0eb1e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.link_groups.field_body
+    - field.field.paragraph.link_groups.field_collection_items
+    - field.field.paragraph.link_groups.field_heading
+    - field.field.paragraph.link_groups.field_number_of_columns
+    - paragraphs.paragraphs_type.link_groups
+  module:
+    - text
+id: paragraph.link_groups.default
+targetEntityType: paragraph
+bundle: link_groups
+mode: default
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_collection_items:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_heading:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_number_of_columns:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

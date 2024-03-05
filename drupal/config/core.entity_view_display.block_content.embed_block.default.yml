@@ -1,0 +1,36 @@
+uuid: 29a5b73e-26be-4da2-a62b-e6dc279f66cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.embed_block
+    - field.field.block_content.embed_block.field_form_embed
+    - field.field.block_content.embed_block.field_intro
+    - field.field.block_content.embed_block.field_narrow
+    - field.field.block_content.embed_block.field_theme
+  module:
+    - text
+id: block_content.embed_block.default
+targetEntityType: block_content
+bundle: embed_block
+mode: default
+content:
+  field_form_embed:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_intro:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_narrow: true
+  field_theme: true

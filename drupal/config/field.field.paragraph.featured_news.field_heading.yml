@@ -1,0 +1,26 @@
+uuid: aa8fd355-ce3a-45bd-8c89-4b8d15ff7ed1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.featured_news
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_heading
+id: paragraph.featured_news.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: featured_news
+label: 'Display Title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

@@ -1,0 +1,40 @@
+uuid: 4f74a3dd-7ab6-4ad3-8ff3-7770b795fcc2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.routing_block_with_videos.field_body
+    - field.field.paragraph.routing_block_with_videos.field_heading
+    - field.field.paragraph.routing_block_with_videos.field_mobile_videos
+    - paragraphs.paragraphs_type.routing_block_with_videos
+  module:
+    - text
+id: paragraph.routing_block_with_videos.default
+targetEntityType: paragraph
+bundle: routing_block_with_videos
+mode: default
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_heading:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_mobile_videos:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

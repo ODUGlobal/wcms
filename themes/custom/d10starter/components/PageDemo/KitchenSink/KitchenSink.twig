@@ -1,0 +1,53 @@
+{% extends '@components/Page/Page.twig' %}
+
+{% block content %}
+  {{ pageHeader|inject_template }}
+
+  {% for inPageAlert in inPageAlerts %}
+    {{ inPageAlert|inject_template }}
+  {% endfor %}
+
+  {% for overlappingFeature in overlappingFeatures %}
+    {{ overlappingFeature|inject_template }}
+  {% endfor %}
+
+  {% for standardTeaserCollection in standardTeaserCollections %}
+    {{ standardTeaserCollection|inject_template }}
+  {% endfor %}
+
+  {% for stackedTeaserCollection in stackedTeaserCollections %}
+    {{ stackedTeaserCollection|inject_template }}
+  {% endfor %}
+
+  {% for mixedTeaserCollection in mixedTeaserCollections %}
+    {{ mixedTeaserCollection|inject_template }}
+  {% endfor %}
+
+  {% for cardCollection in cardCollections %}
+    {{ cardCollection|inject_template }}
+  {% endfor %}
+
+  {% for noImageRoutingBlockCollection in noImageRoutingBlockCollections %}
+    {{ noImageRoutingBlockCollection|inject_template }}
+  {% endfor %}
+
+  {% for linkCollection in linkCollections %}
+    {{ linkCollection|inject_template }}
+  {% endfor %}
+
+  {% for fastFacts in fastFactses %}
+    {{ fastFacts|inject_template }}
+  {% endfor %}
+
+  {% for testimonialSlab in testimonialSlabs %}
+    {{ testimonialSlab|inject_template }}
+  {% endfor %}
+
+  {% for slider in sliders %}
+    {{ slider|inject_template }}
+  {% endfor %}
+
+  {{ accordion|inject_template }}
+
+  {{ editorialSlab|inject_template }}
+{% endblock %}

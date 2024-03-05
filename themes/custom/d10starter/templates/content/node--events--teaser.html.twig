@@ -1,0 +1,54 @@
+{% extends "node.html.twig" %}
+{% block content %}
+    {% set event_date = [] %}
+    {% set start_day = node.field_date.value ? (node.field_date.value ~ ' UTC')|date('j') : '' %}
+    {% set start_month = node.field_date.value ? (node.field_date.value ~ ' UTC')|date('m') : '' %}
+    {% set start_year = node.field_date.value ? (node.field_date.value ~ ' UTC')|date('Y') : '' %}
+    {% set end_day = node.field_date.end_value ? (node.field_date.end_value ~ ' UTC')|date('j') : '' %}
+    {% set end_month = node.field_date.end_value ? (node.field_date.end_value ~ ' UTC')|date('m') : '' %}
+    {% set end_year = node.field_date.end_value ? (node.field_date.end_value ~ ' UTC')|date('Y') : '' %}
+
+    {% if node.field_date.value %}
+        {% if start_year == end_year %}
+            {% if start_day != end_day %}
+                {% set event_date = event_date|merge([(node.field_date.value ~ ' UTC')|date('F j')]) %}
+            {% else %}
+                {% set event_date = event_date|merge([(node.field_date.value ~ ' UTC')|date('F j Y')]) %}
+            {% endif %}
+        {% else %}
+            {% set event_date = event_date|merge([(node.field_date.value ~ ' UTC')|date('F j Y')]) %}
+        {% endif %}
+    {% endif %}
+
+    {% if node.field_date.end_value %}
+        {% if start_year == end_year %}
+            {% if start_month == end_month %}
+                {% if start_day != end_day %}
+                    {% set event_date = event_date|merge([(node.field_date.end_value ~ ' UTC')|date('j, Y')]) %}
+                {% endif %}
+            {% else %}
+                {% set event_date = event_date|merge([(node.field_date.end_value ~ ' UTC')|date('F j, Y')]) %}
+            {% endif %}
+        {% else %}
+            {% set event_date = event_date|merge([(node.field_date.end_value ~ ' UTC')|date('F j Y')]) %}
+        {% endif %}
+    {% endif %}
+
+    {% if event_date|length > 0 %}
+        {% set iconDescriptionList = [{
+            picture : '<img src="/themes/custom/d10starter/images/icons/calendar.svg" alt="Date icon" />'|icon,
+            key : {text: 'Date', show: true},
+            value: {text: event_date|join(' - ')}
+        }] %}
+    {% endif %}
+
+    {% include "@components/Molecule/Teaser/StackedTeaser/StackedTeaser.twig" with {
+        link: {
+            title: label,
+            url: path('entity.node.canonical', {'node': node.id}),
+        },
+        iconDescriptionList : iconDescriptionList ? {keyValuePairs : iconDescriptionList} : null,
+        iconDescriptionListFirst : true,
+        editorial : content.body ? {wysiwyg: content.body} : null
+    } %}
+{% endblock %}

@@ -1,0 +1,8 @@
+uuid: f0525863-15b8-4b20-a917-11ee189f8cc8
+langcode: en
+status: true
+dependencies: {  }
+id: footer_call_block
+label: 'Footer Call Block'
+revision: 0
+description: ''

@@ -1,0 +1,19 @@
+uuid: b1cb302a-46b4-4eb0-852a-9cfe6d8d20e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.external_link.online_events
+    - field.storage.external_link.field_time_text
+id: external_link.online_events.field_time_text
+field_name: field_time_text
+entity_type: external_link
+bundle: online_events
+label: Time
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

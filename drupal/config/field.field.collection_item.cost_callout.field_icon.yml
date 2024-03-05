@@ -1,0 +1,29 @@
+uuid: dd08fc25-80d7-448f-a850-20119693a6e7
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.cost_callout
+    - field.storage.collection_item.field_icon
+    - taxonomy.vocabulary.icons
+id: collection_item.cost_callout.field_icon
+field_name: field_icon
+entity_type: collection_item
+bundle: cost_callout
+label: Icon
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      icons: icons
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

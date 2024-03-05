@@ -1,0 +1,21 @@
+uuid: 8d1b096b-b671-4337-89e2-08461f52ec45
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.footer_address
+    - field.field.block_content.footer_address.field_address_line
+id: block_content.footer_address.default
+targetEntityType: block_content
+bundle: footer_address
+mode: default
+content:
+  field_address_line:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

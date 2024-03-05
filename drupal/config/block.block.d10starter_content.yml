@@ -1,0 +1,22 @@
+uuid: 04824f8d-382b-410c-a806-b6c16825a3b8
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - d10starter
+_core:
+  default_config_hash: erQSEZF2XUjNmgTl0uNRBzmg18ZGXwUcw2FhApoeuHk
+id: d10starter_content
+theme: d10starter
+region: utility_nav
+weight: 2
+provider: null
+plugin: system_main_block
+settings:
+  id: system_main_block
+  label: 'Main page content'
+  label_display: '0'
+  provider: system
+visibility: {  }

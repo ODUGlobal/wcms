@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "dbaeumer.vscode-eslint",
+    "mblode.twig-language-2",
+    "tobermory.es6-string-html",
+    "esbenp.prettier-vscode",
+    "csstools.postcss",
+    "unifiedjs.vscode-mdx"
+  ]
+}

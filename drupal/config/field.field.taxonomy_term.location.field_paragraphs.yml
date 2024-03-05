@@ -1,0 +1,103 @@
+uuid: 7329d828-9517-4e0d-9a5f-11509a084a86
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_paragraphs
+    - taxonomy.vocabulary.location
+  module:
+    - datalayer
+    - entity_reference_revisions
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_paragraphs
+id: taxonomy_term.location.field_paragraphs
+field_name: field_paragraphs
+entity_type: taxonomy_term
+bundle: location
+label: Paragraphs
+description: 'Social media metatags will pull the image in the first paragraph for use on link cards'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles: null
+    negate: 0
+    target_bundles_drag_drop:
+      50_50_panel:
+        weight: 11
+        enabled: false
+      accordion:
+        weight: 26
+        enabled: false
+      body:
+        weight: 12
+        enabled: false
+      callouts:
+        weight: 13
+        enabled: false
+      course_table:
+        weight: 29
+        enabled: false
+      custom_teaser_references:
+        weight: 30
+        enabled: false
+      custom_teasers:
+        weight: 31
+        enabled: false
+      embed:
+        weight: 14
+        enabled: false
+      fast_facts:
+        weight: 15
+        enabled: false
+      featured_link_list:
+        weight: 34
+        enabled: false
+      featured_news:
+        weight: 35
+        enabled: false
+      features:
+        weight: 36
+        enabled: false
+      gallery:
+        weight: 16
+        enabled: false
+      hero:
+        weight: 38
+        enabled: false
+      home:
+        weight: 39
+        enabled: false
+      link_groups:
+        weight: 17
+        enabled: false
+      listings:
+        weight: 18
+        enabled: false
+      media:
+        weight: 42
+        enabled: false
+      program_routing:
+        weight: 43
+        enabled: false
+      quote_collection:
+        weight: 19
+        enabled: false
+      simple:
+        weight: 45
+        enabled: false
+      social_media_callout:
+        weight: 46
+        enabled: false
+      spotlight:
+        weight: 47
+        enabled: false
+      text_aside:
+        weight: 48
+        enabled: false
+field_type: entity_reference_revisions

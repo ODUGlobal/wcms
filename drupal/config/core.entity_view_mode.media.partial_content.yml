@@ -1,0 +1,10 @@
+uuid: 37c8c124-94c5-4183-82bb-84770daaed96
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.partial_content
+label: 'Partial content'
+targetEntityType: media
+cache: true

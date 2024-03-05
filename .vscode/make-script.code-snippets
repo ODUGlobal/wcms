@@ -1,0 +1,15 @@
+{
+  "make-script": {
+    "scope": "typescript,javascript",
+    "prefix": "make-script",
+    "body": [
+      "const setUp${1:${TM_FILENAME_BASE/(.*)\\..+$/$1/}} = () => {",
+      "\t$0",
+      "};",
+      "",
+      "if (!window.IS_STORYBOOK) setUp$1();",
+      "",
+      "export default setUp$1;"
+    ]
+  }
+}

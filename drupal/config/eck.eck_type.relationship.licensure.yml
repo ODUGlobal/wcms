@@ -1,0 +1,9 @@
+uuid: 4a6b2138-0327-489f-8cd5-f55de92e11d7
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.relationship
+name: Licensure
+type: licensure
+description: "Describes a program's licensing status with a particular state"

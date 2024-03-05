@@ -1,0 +1,10 @@
+uuid: f828fe64-46f7-454c-b78d-5a94f7550a49
+langcode: en
+status: true
+dependencies:
+  module:
+    - media
+id: media.tiny
+label: Tiny
+targetEntityType: media
+cache: true

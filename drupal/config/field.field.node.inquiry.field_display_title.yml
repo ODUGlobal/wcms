@@ -1,0 +1,26 @@
+uuid: d4f40c4b-17d6-4e36-8e67-4789b9cba08a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_display_title
+    - node.type.inquiry
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_display_title
+id: node.inquiry.field_display_title
+field_name: field_display_title
+entity_type: node
+bundle: inquiry
+label: 'Display title'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

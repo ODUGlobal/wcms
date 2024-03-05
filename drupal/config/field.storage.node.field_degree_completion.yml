@@ -1,0 +1,18 @@
+uuid: bfa65c66-f84d-4a4b-9ec6-23a8c9924c8b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: node.field_degree_completion
+field_name: field_degree_completion
+entity_type: node
+type: boolean
+settings: {  }
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

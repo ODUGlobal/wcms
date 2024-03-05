@@ -1,0 +1,10 @@
+uuid: 94df7083-6984-4bef-b7a0-2b7eb770e2e1
+langcode: en
+status: true
+dependencies: {  }
+id: featured_link_list
+label: 'Featured Link List'
+icon_uuid: null
+icon_default: null
+description: 'A routing component with optional descriptive text and CTA'
+behavior_plugins: {  }

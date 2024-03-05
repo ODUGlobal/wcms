@@ -1,0 +1,25 @@
+uuid: 8708f808-1675-4f32-9d3f-ea40b0290b8e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field__how_to_apply_title_overri
+    - node.type.program
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field__how_to_apply_title_overri
+id: node.program.field__how_to_apply_title_overri
+field_name: field__how_to_apply_title_overri
+entity_type: node
+bundle: program
+label: '"How to apply" title override'
+description: 'If supplied, overrides the heading for the block of text above'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

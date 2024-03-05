@@ -1,0 +1,26 @@
+uuid: ff626d89-6776-4e37-a9d6-a971f89c7a60
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.pullquote
+    - field.storage.collection_item.field_citation_job_title
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_citation_job_title
+id: collection_item.pullquote.field_citation_job_title
+field_name: field_citation_job_title
+entity_type: collection_item
+bundle: pullquote
+label: 'Citation (Job Title)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

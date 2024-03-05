@@ -1,0 +1,26 @@
+uuid: 8ad74447-c96b-498a-9bd9-c38913c8fde7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_byline
+    - node.type.inquiry
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_byline
+id: node.inquiry.field_byline
+field_name: field_byline
+entity_type: node
+bundle: inquiry
+label: Slug
+description: 'Page header subheading'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

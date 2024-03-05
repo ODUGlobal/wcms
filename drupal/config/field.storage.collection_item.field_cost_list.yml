@@ -1,0 +1,19 @@
+uuid: a41120eb-6b79-4a2b-8f0f-82b8c6a245b3
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+id: collection_item.field_cost_list
+field_name: field_cost_list
+entity_type: collection_item
+type: entity_reference
+settings:
+  target_type: list_item
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

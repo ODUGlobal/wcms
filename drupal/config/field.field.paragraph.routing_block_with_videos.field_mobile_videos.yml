@@ -1,0 +1,29 @@
+uuid: 7a38d09b-c502-46f5-98d9-ac42f4e02a1d
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.mobile_video_with_link
+    - field.storage.paragraph.field_mobile_videos
+    - paragraphs.paragraphs_type.routing_block_with_videos
+id: paragraph.routing_block_with_videos.field_mobile_videos
+field_name: field_mobile_videos
+entity_type: paragraph
+bundle: routing_block_with_videos
+label: 'Image Card'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:collection_item'
+  handler_settings:
+    target_bundles:
+      mobile_video_with_link: mobile_video_with_link
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

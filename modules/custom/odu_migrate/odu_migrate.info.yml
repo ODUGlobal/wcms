@@ -1,0 +1,6 @@
+name: 'ODU Drupal 10 migrate'
+type: module
+description: 'Migrate to Drupal 10'
+core: 8.x
+core_version_requirement: ^8 || ^9 || ^10
+package: 'Newcity'

@@ -1,0 +1,29 @@
+uuid: 59c937e1-238d-4703-9292-5480baf14559
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_has_dividers
+    - paragraphs.paragraphs_type.fast_facts
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_has_dividers
+id: paragraph.fast_facts.field_has_dividers
+field_name: field_has_dividers
+entity_type: paragraph
+bundle: fast_facts
+label: 'Has dividers'
+description: 'Include dividing lines about and below slab'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

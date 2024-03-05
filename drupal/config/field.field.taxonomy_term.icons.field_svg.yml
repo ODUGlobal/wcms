@@ -1,0 +1,26 @@
+uuid: c9c73403-de68-4031-9d40-7da47c8bd4c3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_svg
+    - taxonomy.vocabulary.icons
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_svg
+id: taxonomy_term.icons.field_svg
+field_name: field_svg
+entity_type: taxonomy_term
+bundle: icons
+label: SVG
+description: 'no multicolor icons; use no color attributes attributes or set fill=currentColor; and remove any id attributes'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

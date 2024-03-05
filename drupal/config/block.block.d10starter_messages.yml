@@ -1,0 +1,22 @@
+uuid: 0b69f489-0f36-4237-9af2-77d9fe82b18f
+langcode: en
+status: false
+dependencies:
+  module:
+    - system
+  theme:
+    - d10starter
+_core:
+  default_config_hash: BZ5tpW7H8X4PVGRm3MImTIHd2tN0eF7zOtp4SpRYUA0
+id: d10starter_messages
+theme: d10starter
+region: utility_nav
+weight: -4
+provider: null
+plugin: system_messages_block
+settings:
+  id: system_messages_block
+  label: 'Status messages'
+  label_display: '0'
+  provider: system
+visibility: {  }

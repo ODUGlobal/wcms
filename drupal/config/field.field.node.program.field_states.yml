@@ -1,0 +1,21 @@
+uuid: d5290635-7fd7-4d60-ab82-552c83f0c572
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_states
+    - node.type.program
+  module:
+    - options
+id: node.program.field_states
+field_name: field_states
+entity_type: node
+bundle: program
+label: 'Exclude states'
+description: 'Program is *not* available in these states.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

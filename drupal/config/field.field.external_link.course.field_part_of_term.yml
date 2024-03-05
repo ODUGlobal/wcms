@@ -1,0 +1,19 @@
+uuid: 1da63e72-dea5-4157-9f61-a10873c3ab2c
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.external_link.course
+    - field.storage.external_link.field_part_of_term
+id: external_link.course.field_part_of_term
+field_name: field_part_of_term
+entity_type: external_link
+bundle: course
+label: 'Part of Term'
+description: 'a.k.a. Session'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

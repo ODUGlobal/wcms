@@ -1,0 +1,110 @@
+{#
+  Can use this to turn an atom/molecule into an organism.
+  Can also use as a "base" slab template (that other organisms use for structure).
+#}
+
+{% set slab %}
+  <section
+    {% if id is not empty %}id="{{ id }}"{% endif %}
+    class="
+      {{ extraClasses|default('') }}
+      {#
+        By default, apply (conditional) vertical-margin for the default theme
+        (including the no-theme "implicit"-default case), and instead apply
+        vertical PADDING for all other themes. No need for !important on
+        the `theme-not-default` rule, since it only needs to "beat" the
+        base non-zero margin rule in `vertical-rhythm-standard` (the rest
+        of `vertical-rhythm-standard` is just exceptions that supply margin
+        values of 0, so it's no harm if they "win").
+      #}
+      {{ verticalRhythm|default('vertical-rhythm-standard theme-not-default:my-0') }}
+      {{ verticalPadding|default('theme-not-default:py-vertical-space') }}
+      {#
+        Set base theme-colors, including for the explicit default-theme case,
+        but exclude the no-theme case (implicit default-theme), b/c it might
+        be the case that keeping a transparent background is important (e.g.,
+        if there is a background-pattern higher up in the DOM, then putting a
+        a white-background here would render it invisible).
+      #}
+      theme-any:bg-theme-bg-color
+      theme-any:text-theme-text-color
+      relative
+    "
+  >
+
+    {% if backgroundDecoration %}
+      <div
+        aria-hidden="true"
+        class="absolute inset-0 pointer-events-none"
+      >{{ backgroundDecoration }}</div>
+    {% endif %}
+
+    {#
+      Apply container, but use CONDITIONAL container for the default-theme/no-theme case.
+      No need for !important on the `theme-not-default` rule (at the moment, anyway),
+      since it's already "winning" all specificty-battles it fights against the relevant
+      `conditional-container` rules. Can revisit if needed.
+    #}
+    <div class="relative conditional-container theme-not-default:container">
+
+      <div class="
+        flex flex-col
+        {{ bigSpaceY ? 'space-y-10' : 'space-y-8' }}
+        {{ smallContainer ? 'max-w-4xl mx-auto' }}
+        {{ extraSmallContainer ? 'max-w-3xl mx-auto' }}
+      ">
+
+        {% if (heading and heading.headline) or (fancyLinkList and fancyLinkList.fancyLinks) or (editorial and editorial.wysiwyg) %}
+          <div class="flex flex-col space-y-6">
+            {% if heading and heading.headline %}
+              <div class="
+                max-w-3xl
+                {{ centeredHeading ? 'self-center text-center' }}
+              ">
+                {% set headingExtraArgs = {} %}
+
+                {# Only add them conditionally so that we don't overwrite props set in the TypeScript #}
+                {% if headingStyleLevel %}
+                  {% set headingExtraArgs = headingExtraArgs|merge({ styleLevel: headingStyleLevel }) %}
+                {% endif %}
+
+                {% include '@components/Atom/Heading/Heading.twig' with heading|merge(headingExtraArgs) only %}
+              </div>
+            {% endif %}
+
+            {% if fancyLinkList and fancyLinkList.fancyLinks %}
+              <div class="text-lg {{ centeredFancyLinkList ? 'self-center' }}">
+                {% set fancyLinkListExtraArgs = { inline: true } %}
+
+                {# Only add them conditionally so that we don't overwrite props set in the TypeScript #}
+                {% if centeredFancyLinkList %}
+                  {% set fancyLinkListExtraArgs = fancyLinkListExtraArgs|merge({ centered: true }) %}
+                {% endif %}
+
+                {% include '@components/Molecule/LinkList/FancyLinkList/FancyLinkList.twig' with fancyLinkList|merge(fancyLinkListExtraArgs) only %}
+              </div>
+            {% endif %}
+
+            {% if editorial and editorial.wysiwyg %}
+              <div class="
+                {{ centeredEditorial ? 'self-center' }}
+                {{ centeredEditorialText ? 'text-center' }}
+              ">
+                {% include '@components/Organism/Editorial/Editorial.twig' with editorial only %}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if component %}
+          <div class="{{ centered ? 'self-center max-w-full' }}">{{ component }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endset %}
+
+{% include '@components/utilities/theme-flag.twig' with {
+  component: slab,
+  theme: theme
+} only %}

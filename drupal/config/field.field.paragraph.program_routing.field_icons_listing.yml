@@ -1,0 +1,70 @@
+uuid: 75290d9b-1cc2-4b61-bac3-6ed2633e65e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_icons_listing
+    - paragraphs.paragraphs_type.program_routing
+    - views.view.term_listing
+  module:
+    - datalayer
+    - viewfield
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_icons_listing
+id: paragraph.program_routing.field_icons_listing
+field_name: field_icons_listing
+entity_type: paragraph
+bundle: program_routing
+label: 'Icons Listing'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 88a0ed8c-24e0-46e1-889b-97a8a4c9b600
+    display_id: areas_of_study
+    arguments: ''
+    items_to_display: ''
+    token_help: ''
+default_value_callback: ''
+settings:
+  force_default: true
+  allowed_views:
+    admin_paragraphs: '0'
+    content: '0'
+    block_content: '0'
+    enrollment_team: '0'
+    files: '0'
+    filtered_content: '0'
+    frontpage: '0'
+    icons: '0'
+    list_items: '0'
+    locations_partners_admin_: '0'
+    media: '0'
+    media_entity_browser_media_library: '0'
+    media_library: '0'
+    moderated_content: '0'
+    news: '0'
+    partners: '0'
+    user_admin_people: '0'
+    programs: '0'
+    programs_admin_list_: '0'
+    redirect: '0'
+    redirect_404: '0'
+    reusable_collection_items: '0'
+    staff: '0'
+    staff_admin_listing_: '0'
+    staff_for_location: '0'
+    term_listing: '0'
+    watchdog: '0'
+  allowed_display_types:
+    block: block
+    entity_browser: '0'
+    feed: '0'
+    default: '0'
+    page: '0'
+  handler: 'default:view'
+  handler_settings: {  }
+field_type: viewfield

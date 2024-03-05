@@ -1,0 +1,25 @@
+uuid: 05c45ec7-4461-4b04-bb7e-da2ffac159b2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_slug
+    - paragraphs.paragraphs_type.hero
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_slug
+id: paragraph.hero.field_slug
+field_name: field_slug
+entity_type: paragraph
+bundle: hero
+label: Slug
+description: 'Short introductory text, probably relating to the action links'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

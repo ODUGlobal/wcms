@@ -1,0 +1,33 @@
+uuid: a9f487ce-c256-49d1-aa3f-335f871c73eb
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:embed_block:91e84f85-eaf3-44bf-b86e-8f784dfd0f39'
+  module:
+    - block_content
+    - node
+  theme:
+    - d10starter
+id: inquiryform_2
+theme: d10starter
+region: content
+weight: 12
+provider: null
+plugin: 'block_content:91e84f85-eaf3-44bf-b86e-8f784dfd0f39'
+settings:
+  id: 'block_content:91e84f85-eaf3-44bf-b86e-8f784dfd0f39'
+  label: 'Have questions? Contact us.'
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      helpful_resource: helpful_resource

@@ -1,0 +1,613 @@
+uuid: 1bdfa02a-55e5-402a-b894-d9faea306c03
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.program.field__how_to_apply_title_overri
+    - field.field.node.program.field_application_type
+    - field.field.node.program.field_area_of_study
+    - field.field.node.program.field_article_body
+    - field.field.node.program.field_article_title
+    - field.field.node.program.field_degree_abbreviation
+    - field.field.node.program.field_degree_completion
+    - field.field.node.program.field_degree_description
+    - field.field.node.program.field_degree_level
+    - field.field.node.program.field_department
+    - field.field.node.program.field_display_title
+    - field.field.node.program.field_emsi_intro
+    - field.field.node.program.field_emsi_key
+    - field.field.node.program.field_emsi_title
+    - field.field.node.program.field_enrollment_team
+    - field.field.node.program.field_enrollment_team_view
+    - field.field.node.program.field_full_bachelor_program
+    - field.field.node.program.field_full_program_credit_hours
+    - field.field.node.program.field_header_image
+    - field.field.node.program.field_hide_from_listings
+    - field.field.node.program.field_hide_pathways
+    - field.field.node.program.field_how_to_apply
+    - field.field.node.program.field_info_columns
+    - field.field.node.program.field_intro
+    - field.field.node.program.field_licensure_information
+    - field.field.node.program.field_licensure_intro
+    - field.field.node.program.field_licensure_states_listing
+    - field.field.node.program.field_location
+    - field.field.node.program.field_media
+    - field.field.node.program.field_metatags
+    - field.field.node.program.field_override_course_info
+    - field.field.node.program.field_overview_heading_override
+    - field.field.node.program.field_paragraphs
+    - field.field.node.program.field_plus_odu_online_partner
+    - field.field.node.program.field_plus_odu_partners
+    - field.field.node.program.field_program_length
+    - field.field.node.program.field_show_emsi
+    - field.field.node.program.field_states
+    - field.field.node.program.field_team_body_override
+    - field.field.node.program.field_team_heading_override
+    - node.type.program
+    - workflows.workflow.editorial
+  module:
+    - chosen_field
+    - content_moderation
+    - entity_browser_entity_form
+    - field_group
+    - inline_entity_form
+    - media_library
+    - media_library_edit
+    - metatag_async_widget
+    - paragraphs
+    - path
+    - text
+    - viewfield
+third_party_settings:
+  field_group:
+    group_tabs:
+      children:
+        - group_meta
+        - group_content
+        - group_rich_content
+        - group_applying
+        - group_emsi
+        - group_licensure
+      label: Tabs
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        id: ''
+        direction: horizontal
+    group_meta:
+      children:
+        - title
+        - field_display_title
+        - field_hide_from_listings
+        - field_location
+        - field_department
+        - field_area_of_study
+        - field_degree_level
+        - field_degree_completion
+        - field_full_bachelor_program
+        - field_full_program_credit_hours
+        - field_states
+        - field_override_course_info
+        - group_info_override
+        - group_plus_odu
+      label: Meta
+      region: content
+      parent_name: group_tabs
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_emsi:
+      children:
+        - field_show_emsi
+        - field_emsi_key
+        - field_emsi_title
+        - field_emsi_intro
+      label: EMSI
+      region: content
+      parent_name: group_tabs
+      weight: 24
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_content:
+      children:
+        - field_degree_abbreviation
+        - field_degree_description
+        - field_header_image
+        - field_media
+        - field_intro
+        - field_article_title
+        - field_article_body
+      label: 'Basic Content'
+      region: content
+      parent_name: group_tabs
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_rich_content:
+      children:
+        - field_paragraphs
+      label: 'Rich Content'
+      region: content
+      parent_name: group_tabs
+      weight: 22
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_applying:
+      children:
+        - field_application_type
+        - field_how_to_apply
+        - field__how_to_apply_title_overri
+        - field_enrollment_team
+        - group_enrollment_team_override
+      label: Applying
+      region: content
+      parent_name: group_tabs
+      weight: 23
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_plus_odu:
+      children:
+        - field_plus_odu_partners
+        - field_plus_odu_online_partner
+      label: +ODU
+      region: content
+      parent_name: group_meta
+      weight: 14
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        id: ''
+        description: ''
+        required_fields: true
+    group_licensure:
+      children:
+        - field_licensure_information
+        - field_licensure_intro
+      label: Licensure
+      region: content
+      parent_name: group_tabs
+      weight: 25
+      format_type: tab
+      format_settings:
+        classes: ''
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_enrollment_team_override:
+      children:
+        - field_team_heading_override
+        - field_team_body_override
+      label: 'Enrollment team replacement'
+      region: content
+      parent_name: group_applying
+      weight: 36
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        id: ''
+        description: 'Customize third column heading/body content. Only works if no enrollment team specified above.'
+        required_fields: true
+    group_info_override:
+      children:
+        - field_overview_heading_override
+        - field_info_columns
+      label: 'Info override'
+      region: content
+      parent_name: group_meta
+      weight: 13
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        id: ''
+        description: ''
+        required_fields: true
+id: node.program.default
+targetEntityType: node
+bundle: program
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field__how_to_apply_title_overri:
+    type: string_textfield
+    weight: 34
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_application_type:
+    type: chosen_select
+    weight: 32
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_area_of_study:
+    type: chosen_select
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_article_body:
+    type: text_textarea
+    weight: 17
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_article_title:
+    type: text_textfield
+    weight: 16
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_degree_abbreviation:
+    type: string_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_degree_completion:
+    type: boolean_checkbox
+    weight: 8
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_degree_description:
+    type: string_textfield
+    weight: 12
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_degree_level:
+    type: chosen_select
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_department:
+    type: chosen_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_display_title:
+    type: text_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_emsi_intro:
+    type: text_textarea
+    weight: 31
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_emsi_key:
+    type: string_textfield
+    weight: 29
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_emsi_title:
+    type: string_textfield
+    weight: 30
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_enrollment_team:
+    type: chosen_select
+    weight: 35
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_enrollment_team_view:
+    type: viewfield_select
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_full_bachelor_program:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_full_program_credit_hours:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: '120 credit hours'
+    third_party_settings: {  }
+  field_header_image:
+    type: media_library_widget
+    weight: 13
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_hide_from_listings:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_how_to_apply:
+    type: text_textarea
+    weight: 33
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_info_columns:
+    type: inline_entity_form_complex
+    weight: 40
+    region: content
+    settings:
+      form_mode: default
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings: {  }
+  field_intro:
+    type: string_textfield
+    weight: 15
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_licensure_information:
+    type: inline_entity_form_complex
+    weight: 36
+    region: content
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: 'licensure information'
+      label_plural: 'licensure information'
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings:
+      entity_browser_entity_form:
+        entity_browser_id: _none
+  field_licensure_intro:
+    type: text_textarea
+    weight: 37
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_licensure_states_listing:
+    type: viewfield_select
+    weight: 38
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_location:
+    type: chosen_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_media:
+    type: media_library_widget
+    weight: 14
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings:
+      media_library_edit:
+        show_edit: '1'
+  field_metatags:
+    type: metatag_async_widget_firehose
+    weight: 9
+    region: content
+    settings:
+      sidebar: false
+      use_details: true
+    third_party_settings: {  }
+  field_override_course_info:
+    type: boolean_checkbox
+    weight: 12
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_overview_heading_override:
+    type: string_textfield
+    weight: 39
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_paragraphs:
+    type: entity_reference_paragraphs
+    weight: 22
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+  field_plus_odu_online_partner:
+    type: chosen_select
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_plus_odu_partners:
+    type: chosen_select
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_show_emsi:
+    type: boolean_checkbox
+    weight: 28
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_states:
+    type: chosen_select
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_team_body_override:
+    type: text_textarea
+    weight: 38
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_team_heading_override:
+    type: text_textfield
+    weight: 37
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  simple_sitemap:
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  simple_sitemap_index_now:
+    weight: 130
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 8
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  field_hide_pathways: true
+  field_program_length: true

@@ -1,0 +1,10 @@
+uuid: 6cb4056c-559d-4697-9db1-c15d931e7387
+langcode: en
+status: true
+dependencies: {  }
+id: link_groups
+label: 'Link Groups'
+icon_uuid: null
+icon_default: null
+description: 'A set of link lists'
+behavior_plugins: {  }

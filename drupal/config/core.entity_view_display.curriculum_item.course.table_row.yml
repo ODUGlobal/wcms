@@ -1,0 +1,42 @@
+uuid: 7e769dc0-07ea-4355-850e-d17e45db5adc
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.curriculum_item.table_row
+    - eck.eck_type.curriculum_item.course
+    - field.field.curriculum_item.course.field_credits
+    - field.field.curriculum_item.course.field_notes
+    - field.field.curriculum_item.course.field_odu_course_name
+  module:
+    - text
+id: curriculum_item.course.table_row
+targetEntityType: curriculum_item
+bundle: course
+mode: table_row
+content:
+  field_credits:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_notes:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_odu_course_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  title: true

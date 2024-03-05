@@ -1,0 +1,43 @@
+<?php
+
+/**
+ * @file
+ * ODU EMSI module provides storage, API wrapper, and support functions
+ * for querying and displaying data from the EMSI API service.
+ *
+ * Things is creates and does:
+ *  - creates an entity (odu_emsi_emsi_cache) to store basic program data and the list of related careers for the programs
+ *  - creates a basic list display of this data so admins can view the data
+ *  - implements a migration of this data that can be run manually via "drush migrate:import emsi --update"
+ *  - adds a cron to automatically migrate this data every 24 hours
+ *  - provides a geodata config file of MSA geodata IDs mapped to location names
+ *  - implements a fuzzy search of this data, returned as JSON (see routes below) (example: /location/lookup/name/bla)
+ *  - implements a live pull of career data info from EMSI API given a Program ID and a MSA ID, returned as JSON (see routes below) (example /career_data/119/47260)
+ *
+ * Important routes that are created:
+ *  - /odu_emsi_emsi_cache/list - admin-accessible display of currently cached program data from EMSI service
+ *  - /career_data/{program_id}/{region_id} - returns career data for a specific program and location.  Program ID is legacy EE ID (stored at EMSI), region ID is MSA ID
+ *  - /location/lookup/name/{name} - returns list of MSA IDs and names, given a location name fragment
+ */
+
+/**
+ *
+ */
+function odu_emsi_cron() {
+
+  // Run EMSI program import once a day.
+  $emsi_import_interval = 86400;
+
+  // Do we need to run?
+  $emsi_import_next_execution = \Drupal::state()->get('emsi_import.emsi_import_next_execution');
+  $emsi_import_next_execution = !empty($emsi_import_next_execution) ? $emsi_import_next_execution : 0;
+  \Drupal::logger('emsi_import')->notice($emsi_import_next_execution . ' is next execution time');
+  if ($_SERVER['REQUEST_TIME'] >= $emsi_import_next_execution) {
+
+    \Drupal::service('odu_emsi.importer')->import();
+
+    // Set next run time.
+    \Drupal::state()->set('emsi_import.emsi_import_next_execution', $_SERVER['REQUEST_TIME'] + $emsi_import_interval);
+
+  }
+}

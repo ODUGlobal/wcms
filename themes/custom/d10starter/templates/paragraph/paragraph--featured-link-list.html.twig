@@ -1,0 +1,17 @@
+{% extends "paragraph.html.twig" %}
+{% block content %}
+{% include "@components/Organism/LinkCollection/SingleLinkCollection.twig" with {
+  heading: {
+    headline: content.field_heading|children|first,
+  },
+  editorial: {
+    wysiwyg: content.field_body|children|first,
+  },
+  linkCollection: {
+    fancyLinks: content.field_links|to_link_objects,
+  },
+  fancyLinkList: {
+    fancyLinks: content.field_link|to_link_objects,
+  }
+} %}
+{% endblock %}

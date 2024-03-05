@@ -1,0 +1,25 @@
+uuid: 6f0fca03-7241-4d81-8fef-b9ccc03504b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_email
+    - taxonomy.vocabulary.enrollment_team
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_email
+id: taxonomy_term.enrollment_team.field_email
+field_name: field_email
+entity_type: taxonomy_term
+bundle: enrollment_team
+label: 'Contact Email'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: email

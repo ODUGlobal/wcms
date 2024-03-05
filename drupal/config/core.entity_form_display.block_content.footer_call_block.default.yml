@@ -1,0 +1,40 @@
+uuid: d74a8b01-8b29-4163-9d37-468990c633ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.footer_call_block
+    - field.field.block_content.footer_call_block.field_button
+    - field.field.block_content.footer_call_block.field_phone_number
+  module:
+    - link
+id: block_content.footer_call_block.default
+targetEntityType: block_content
+bundle: footer_call_block
+mode: default
+content:
+  field_button:
+    type: link_default
+    weight: 27
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_phone_number:
+    type: string_textfield
+    weight: 26
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

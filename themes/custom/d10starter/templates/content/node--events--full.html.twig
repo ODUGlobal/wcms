@@ -1,0 +1,118 @@
+{% extends "node.html.twig" %}
+{% set centered = true %}
+{% block content %}
+    {% set figure = null %}
+    {% if node.field_image.value %}
+        {% set figure %}
+            {% include "@components/Atom/Media/Figure/Figure.twig" with {
+                media: content.field_image|children|first,
+                caption: node.field_image_caption.value ? content.field_image_caption|children|first : null,
+            }%}
+        {% endset %}
+    {% endif %}
+
+    {% include "@components/Organism/PageHeader/NewsStoryPageHeader/NewsStoryPageHeader.twig" with {
+        heading: {
+            headline: label
+        },
+        figure: figure,
+        wider: true
+    }%}
+    {% embed '@components/PageHelper/ConstrainedContent/ConstrainedContent.twig' %}
+        {% block constrainedContent %}
+            {% set iconDescriptionList %}
+                {% set meta_info = [] %}
+                {% set start_day = node.field_date.value ? (node.field_date.value ~ ' UTC')|date('j') : '' %}
+                {% set start_month = node.field_date.value ? (node.field_date.value ~ ' UTC')|date('m') : '' %}
+                {% set start_year = node.field_date.value ? (node.field_date.value ~ ' UTC')|date('Y') : '' %}
+                {% set end_day = node.field_date.end_value ? (node.field_date.end_value ~ ' UTC')|date('j') : '' %}
+                {% set end_month = node.field_date.end_value ? (node.field_date.end_value ~ ' UTC')|date('m') : '' %}
+                {% set end_year = node.field_date.end_value ? (node.field_date.end_value ~ ' UTC')|date('Y') : '' %}
+
+                {% set event_date = [] %}
+                {% set event_time = [] %}
+
+                {% if node.field_date.value %}
+                    {% if start_year == end_year %}
+                        {% if start_day != end_day %}
+                            {% set event_date = event_date|merge([(node.field_date.value ~ ' UTC')|date('F j')]) %}
+                        {% else %}
+                            {% set event_date = event_date|merge([(node.field_date.value ~ ' UTC')|date('F j Y')]) %}
+                        {% endif %}
+                    {% else %}
+                        {% set event_date = event_date|merge([(node.field_date.value ~ ' UTC')|date('F j Y')]) %}
+                    {% endif %}
+                    {% set event_time = event_time|merge([(node.field_date.value ~ ' UTC')|date('g:i a')]) %}
+                {% endif %}
+                
+                {% if node.field_date.end_value %}
+                    {% if start_year == end_year %}
+                        {% if start_month == end_month %}
+                            {% if start_day != end_day %}
+                                {% set event_date = event_date|merge([(node.field_date.end_value ~ ' UTC')|date('j, Y')]) %}
+                            {% endif %}
+                        {% else %}
+                            {% set event_date = event_date|merge([(node.field_date.end_value ~ ' UTC')|date('F j, Y')]) %}
+                        {% endif %}
+                    {% else %}
+                        {% set event_date = event_date|merge([(node.field_date.end_value ~ ' UTC')|date('F j Y')]) %}
+                    {% endif %}
+                    {% set event_time = event_time|merge([(node.field_date.end_value ~ ' UTC')|date('g:i a')]) %}
+                {% endif %}
+
+                {% if event_date|length > 0 %}
+                    {% set meta_info = meta_info|merge([{
+                        picture : '<img src="/themes/custom/d10starter/images/icons/calendar.svg" alt="Date icon" />'|icon,
+                        key : {text: 'Date', show: true},
+                        value: {text: event_date|join(' - ')}
+                    }
+                    ])%}
+                {% endif %}
+
+                {% if event_time|length > 0 %}
+                    {% set meta_info = meta_info|merge([{
+                        picture : '<img src="/themes/custom/d10starter/images/icons/clock.svg" alt="Date icon" />'|icon,
+                        key : {text: 'Time', show: true},
+                        value: {text: event_time|join(' - ')}
+                    }
+                    ])%}
+                {% endif %}
+
+                {% if node.field_event_location.value %}
+                    {% set meta_info = meta_info|merge([{
+                        picture : '<img src="/themes/custom/d10starter/images/icons/map-pin.svg" alt="Location icon" />'|icon,
+                        key : {text: 'Location', show: true},
+                        value: {text: node.field_event_location.value}
+                    }
+                    ])%}
+                {% endif %}
+
+                {% include "@components/Molecule/IconDescriptionList/IconDescriptionList.twig" with {
+                    keyValuePairs: meta_info
+                }%}
+            {% endset %}
+            {% set buttonLink %}
+                {% if node.field_registration_link %}
+                    {% include "@components/Atom/Link/ButtonLink/ButtonLink.twig" with {
+                        url: node.field_registration_link.0.uri ? node.field_registration_link.0.uri : '#',
+                        title: node.field_registration_link.0.title ? node.field_registration_link.0.title : 'Register for this Event',
+                    }%}
+                {% endif %}
+            {% endset %}
+            {% include "@components/Organism/EventInfo/EventInfo.twig" with {
+              iconDescriptionList : iconDescriptionList,
+              buttonLink : buttonLink
+            }%}
+
+            {% if node.body %}
+                {% include "@components/Organism/EditorialSlab/EditorialSlab.twig" with {
+                    editorial: {
+                        wysiwyg: content.body|children|first,
+                    }
+                }%}
+            {% endif %}
+            {{ content.field_paragraphs }}
+        {% endblock %}
+    {% endembed %}
+    {{ content.field_paragraphs }}
+{% endblock %}

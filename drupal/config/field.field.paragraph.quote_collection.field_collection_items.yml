@@ -1,0 +1,28 @@
+uuid: f2a805a3-74a2-432e-a5f0-2ec570fc9279
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.pullquote
+    - field.storage.paragraph.field_collection_items
+    - paragraphs.paragraphs_type.quote_collection
+id: paragraph.quote_collection.field_collection_items
+field_name: field_collection_items
+entity_type: paragraph
+bundle: quote_collection
+label: 'Collection Items'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:collection_item'
+  handler_settings:
+    target_bundles:
+      pullquote: pullquote
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

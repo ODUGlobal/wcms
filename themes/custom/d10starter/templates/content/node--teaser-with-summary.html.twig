@@ -1,0 +1,12 @@
+{% extends "node.html.twig" %}
+{% block content %}
+{% include "@components/Molecule/Teaser/StackedTeaser/StackedTeaser.twig" with {
+  link: {
+    title: display_title,
+    url: path('entity.node.canonical', {'node': node.id}),
+  },
+  picture: content.field_media|children|first,
+  hLevel: hLevel,
+  editorial: node.body.value ? {'wysiwyg' : content.body|children|first} : null
+} %}
+{% endblock %}

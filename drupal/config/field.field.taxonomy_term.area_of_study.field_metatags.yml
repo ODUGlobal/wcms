@@ -1,0 +1,26 @@
+uuid: d92f2510-4132-4067-af12-3cf32fb394df
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_metatags
+    - taxonomy.vocabulary.area_of_study
+  module:
+    - datalayer
+    - metatag
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_metatags
+id: taxonomy_term.area_of_study.field_metatags
+field_name: field_metatags
+entity_type: taxonomy_term
+bundle: area_of_study
+label: Metatags
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: metatag

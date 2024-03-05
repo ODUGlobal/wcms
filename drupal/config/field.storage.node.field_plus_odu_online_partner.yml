@@ -1,0 +1,20 @@
+uuid: 9ec56bc3-d0c7-4bb4-a483-cf587a9e2fbc
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - taxonomy
+id: node.field_plus_odu_online_partner
+field_name: field_plus_odu_online_partner
+entity_type: node
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: -1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

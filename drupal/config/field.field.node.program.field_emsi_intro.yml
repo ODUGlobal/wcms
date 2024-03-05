@@ -1,0 +1,21 @@
+uuid: 8d364889-d210-4fca-8ba7-dc8c2b326f29
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_emsi_intro
+    - node.type.program
+  module:
+    - text
+id: node.program.field_emsi_intro
+field_name: field_emsi_intro
+entity_type: node
+bundle: program
+label: 'EMSI intro'
+description: 'Optional intro for EMSI career data.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

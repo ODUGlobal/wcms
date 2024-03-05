@@ -1,0 +1,9 @@
+{% extends "paragraph.html.twig" %}
+{% block content %}
+{% include "@components/Organism/PageHeader/SimplePageHeader/SimplePageHeader.twig" with {
+  heading: {
+    headline: content.field_heading|children|first
+  },
+  editorial: paragraph.field_body.value ? {wysiwyg: content.field_body|children|first} : null
+} %}
+{% endblock %}

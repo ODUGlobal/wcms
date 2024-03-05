@@ -1,0 +1,56 @@
+uuid: ff380621-bd55-4f89-b4c2-f763e7499493
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.custom_teasers.field_body
+    - field.field.paragraph.custom_teasers.field_collection_items
+    - field.field.paragraph.custom_teasers.field_heading
+    - paragraphs.paragraphs_type.custom_teasers
+  module:
+    - entity_browser_entity_form
+    - inline_entity_form
+    - text
+id: paragraph.custom_teasers.default
+targetEntityType: paragraph
+bundle: custom_teasers
+mode: default
+content:
+  field_body:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_collection_items:
+    type: inline_entity_form_complex
+    weight: 2
+    region: content
+    settings:
+      form_mode: default
+      override_labels: true
+      label_singular: teaser
+      label_plural: teasers
+      allow_new: true
+      allow_existing: false
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+    third_party_settings:
+      entity_browser_entity_form:
+        entity_browser_id: _none
+  field_heading:
+    type: text_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

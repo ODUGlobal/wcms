@@ -1,0 +1,24 @@
+{% include '@components/Organism/PageHeader/SimplePageHeader/SimplePageHeader.twig' with {
+            heading: {headline : 'Search'|t}
+} only %}
+{% set component %}
+    <div id="google-search-container">
+        <script>
+        (function() {
+            var cx = '{{ cx }}';
+            var gcse = document.createElement('script');
+            gcse.type = 'text/javascript';
+            gcse.async = true;
+            gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(gcse, s);
+        })();
+        </script>
+        <gcse:searchbox queryParameterName="{{ query_parameter }}" autoSearchOnLoad="true"></gcse:searchbox>
+        <gcse:searchresults></gcse:searchresults>
+    </div>
+{% endset %}
+
+{% include '@components/GenericSlab/GenericSlab.twig' with {
+    component: component
+} only %}

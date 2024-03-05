@@ -1,0 +1,25 @@
+uuid: ace0885d-eda1-442f-90ed-aeaba69be8f3
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:embed_block:91e84f85-eaf3-44bf-b86e-8f784dfd0f39'
+  module:
+    - block_content
+  theme:
+    - d10starter
+id: inquiryform
+theme: d10starter
+region: form_embed
+weight: 0
+provider: null
+plugin: 'block_content:91e84f85-eaf3-44bf-b86e-8f784dfd0f39'
+settings:
+  id: 'block_content:91e84f85-eaf3-44bf-b86e-8f784dfd0f39'
+  label: 'Inquiry Form'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

@@ -1,0 +1,35 @@
+uuid: 59d63b52-796d-4541-8073-7949d6532ba2
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.relationship.licensure
+    - field.storage.relationship.field_licensing_body
+    - taxonomy.vocabulary.licensing_body
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_licensing_body
+id: relationship.licensure.field_licensing_body
+field_name: field_licensing_body
+entity_type: relationship
+bundle: licensure
+label: 'Licensing body'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      licensing_body: licensing_body
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

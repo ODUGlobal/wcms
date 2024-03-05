@@ -1,0 +1,31 @@
+uuid: d38e0bcc-e049-4d55-ae7d-be60ed5b7673
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.list_item.cost
+    - field.field.list_item.cost.field_description
+    - field.field.list_item.cost.field_display_title
+id: list_item.cost.default
+targetEntityType: list_item
+bundle: cost
+mode: default
+content:
+  field_description:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_display_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  title: true

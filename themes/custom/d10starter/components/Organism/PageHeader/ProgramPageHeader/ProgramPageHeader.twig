@@ -1,0 +1,116 @@
+<header>
+  {% set component %}
+    <div class="bg-gradient-to-b from-theme-bg-color to-mid-blue-500 text-theme-text-color py-vertical-space">
+      <div class="container">
+
+        <div class="
+          space-y-5 sm:space-y-8
+          {{ buttonLink or fancyLink ? 'xl:space-y-0 xl:grid grid-cols-4 gap-16' }}
+        ">
+          {# EVERYTHING EXCEPT BUTTON-LINK AND FANCY-LINK  #}
+          <div class="space-y-5 sm:space-y-6 lg:space-y-8 col-span-3">
+
+            {# HEADING AND (OPTIONAL) PICTURE #}
+            <div class="space-y-4 space-y-reverse flex flex-col-reverse">
+              <div>
+                {% include '@components/Atom/Heading/Heading.twig' with heading|merge({
+                  tagLevel: 1
+                }) only %}
+              </div>
+
+              {% if picture %}
+                <div class="max-w-[calc(200rem/16)]">
+                  {{ picture|inject_template }}
+                </div>
+              {% endif %}
+            </div>{# END HEADING AND OPTIONAL PICTURE #}
+
+            {% if list %}
+              <div>
+                <ul
+                  role="list"
+                  class="flex flex-col space-y-2.5 sm:block sm:space-y-0"
+                >
+                  {% for item in list %}
+                    <li class="text-base leading-tight sm:text-lg sm:leading-loose sm:inline-block sm:after:w-1 sm:after:h-1 sm:after:mx-1.5 sm:after:bg-light-blue-500 sm:after:inline-block sm:after:rounded-full sm:after:align-middle sm:after:last:hidden">
+                      {% if item.url %}
+                        <a
+                          href="{{ item.url }}"
+                          class="font-bold underline text-theme-fancy-link-color hocus:text-theme-fancy-link-hocus-color"
+                        >{{ item.title }}</a>
+                      {% else %}
+                        <span class="font-bold">{{ item.title }}</span>
+                      {% endif %}
+                    </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            {% endif %}
+
+            {% if programOptions is not empty %}
+              <div class="space-y-5 lg:flex lg:space-y-0 items-start">
+                {% for programOption in programOptions %}
+                  <div class="space-y-2.5 flex-1">
+                    {% if programOption.headline %}
+                      <h2 class="font-bold text-lg sm:text-size-[calc(22rem/16)]">{{ programOption.headline }}</h2>
+                    {% endif %}
+                    {% if programOption.list %}
+                      <ul role="list" class="list-disc ml-7 text-base sm:text-lg space-y-2">
+                        {% for item in programOption.list %}
+                          <li>{{ item }}</li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
+                    {% if programOption.body %}
+                      <div class="[&_ul]:!list-disc [&_ul]:!pl-0 first:[&_ul]:!mt-0 last:[&_ul]:!mb-0 [&_ul]:!ml-7 [&_ul]:!text-base sm:[&_ul]:!text-lg [&_ul]:!space-y-2 [&_li]:!pl-0">
+                        {% include '@components/Organism/Editorial/Editorial.twig' with {
+                          wysiwyg: programOption.body
+                        } %}
+                      </div>
+                    {% endif %}
+                  </div>
+                  {% if not loop.last %}
+                    <div class="
+                      shrink-0 lg:mx-9
+                      flex items-center
+                      before:h-[2px] before:bg-theme-fancy-link-color before:grow before:min-w-[calc(30rem/16)]
+                      after:h-[2px] after:bg-theme-fancy-link-color after:grow after:min-w-[calc(30rem/16)]
+                    "><span class="font-super font-bold tracking-widest mx-2.5">OR</span></div>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>{# END EVERYTHING EXCEPT BUTTON-LINK AND FANCY-LINK  #}
+
+          {% if buttonLink or fancyLink %}
+            <div class="flex flex-col space-y-5 sm:space-y-8 xl:place-self-center xl:ml-auto xl:items-center">
+              {% if buttonLink %}
+                <div>
+                  {% include '@components/Atom/Link/ButtonLink/ButtonLink.twig' with buttonLink only %}
+                </div>
+              {% endif %}
+
+              {% if fancyLink %}
+                <div class="text-lg">
+                  {% set withAfterIcon = fancyLink.withBeforeIcon ? false : true %}
+                  {% if 'withAfterIcon' in fancyLink|keys %}
+                    {% set withAfterIcon = fancyLink.withAfterIcon %}
+                  {% endif %}
+                  {% include '@components/Atom/Link/FancyLink/FancyLink.twig' with fancyLink|merge({
+                    withAfterIcon: withAfterIcon
+                  }) only %}
+                </div>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+  {% endset %}
+
+  {% include '@components/utilities/theme-flag.twig' with {
+    component: component,
+    theme: 'navy-500'
+  } only %}
+</header>

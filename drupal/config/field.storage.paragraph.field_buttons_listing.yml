@@ -1,0 +1,21 @@
+uuid: d5558d73-6abe-4ff1-ac70-10c4588b98d2
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs
+    - viewfield
+    - views
+id: paragraph.field_buttons_listing
+field_name: field_buttons_listing
+entity_type: paragraph
+type: viewfield
+settings:
+  target_type: view
+module: viewfield
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

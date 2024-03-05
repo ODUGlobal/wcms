@@ -1,0 +1,109 @@
+uuid: 3572b15a-9cac-4271-a2e4-7450dddc4f06
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.external_link.course
+    - field.field.external_link.course.field_course
+    - field.field.external_link.course.field_day
+    - field.field.external_link.course.field_delivery_technology
+    - field.field.external_link.course.field_instructor
+    - field.field.external_link.course.field_link
+    - field.field.external_link.course.field_meets_with
+    - field.field.external_link.course.field_part_of_term
+    - field.field.external_link.course.field_semester
+    - field.field.external_link.course.field_subject
+    - field.field.external_link.course.field_time_text
+  module:
+    - link
+id: external_link.course.default
+targetEntityType: external_link
+bundle: course
+mode: default
+content:
+  field_course:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_day:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_delivery_technology:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_instructor:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  field_meets_with:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 10
+    region: content
+  field_part_of_term:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_semester:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_subject:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_time_text:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+hidden:
+  title: true

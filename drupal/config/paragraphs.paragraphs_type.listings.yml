@@ -1,0 +1,10 @@
+uuid: 54f6194b-cd0a-40c9-8e21-0cbf92703d56
+langcode: en
+status: true
+dependencies: {  }
+id: listings
+label: Listings
+icon_uuid: null
+icon_default: null
+description: 'One or more automatic listings'
+behavior_plugins: {  }

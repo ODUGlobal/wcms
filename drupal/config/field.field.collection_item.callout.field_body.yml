@@ -1,0 +1,21 @@
+uuid: 973dec69-c8a4-466c-88f2-67adaaf74a65
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.callout
+    - field.storage.collection_item.field_body
+  module:
+    - text
+id: collection_item.callout.field_body
+field_name: field_body
+entity_type: collection_item
+bundle: callout
+label: Body
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

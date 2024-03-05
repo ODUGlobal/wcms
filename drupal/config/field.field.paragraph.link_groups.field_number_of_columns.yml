@@ -1,0 +1,23 @@
+uuid: 344c41b0-bdc5-4951-abcc-a935d11766f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_number_of_columns
+    - paragraphs.paragraphs_type.link_groups
+id: paragraph.link_groups.field_number_of_columns
+field_name: field_number_of_columns
+entity_type: paragraph
+bundle: link_groups
+label: 'Number of Columns'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  min: 1
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

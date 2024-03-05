@@ -1,0 +1,18 @@
+{% extends '@components/Page/Page.twig' %}
+
+{% block content %}
+  {% include '@components/Organism/PageHeader/NewsStoryPageHeader/NewsStoryPageHeader.twig' with pageHeader|merge({
+    wider: true
+  }) only %}
+
+  {% embed '@components/PageHelper/ConstrainedContent/ConstrainedContent.twig' %}
+    {% block constrainedContent %}
+      {{ eventInfo|inject_template }}
+      {{ editorialSlab|inject_template }}
+    {% endblock %}
+  {% endembed %}
+
+  {# this is just to get the JS working in Storybook; not actually part of the page #}
+  {% include '@components/utilities/container-query.twig' %}
+
+{% endblock %}

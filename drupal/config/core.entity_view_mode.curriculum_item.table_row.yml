@@ -1,0 +1,10 @@
+uuid: bb12c05e-1679-4570-87a2-0d9880f3591f
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+id: curriculum_item.table_row
+label: 'Table Row'
+targetEntityType: curriculum_item
+cache: true

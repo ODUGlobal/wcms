@@ -1,0 +1,17 @@
+uuid: 44a586e5-ffdd-4efc-8398-4beb6719d941
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: 'Curriculum Sheet'
+type: curriculum_sheet
+description: 'Program curriculum summary, intended for print use'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

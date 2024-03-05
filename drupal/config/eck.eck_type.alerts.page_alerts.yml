@@ -1,0 +1,9 @@
+uuid: 5ab44704-f828-4677-b835-8c5c81720935
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.alerts
+name: 'Page Alerts'
+type: page_alerts
+description: ''

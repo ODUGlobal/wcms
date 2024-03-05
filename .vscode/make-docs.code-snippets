@@ -1,0 +1,36 @@
+{
+  "make-script": {
+    "scope": "mdx",
+    "prefix": "make-docs",
+    "body": [
+      "import { Meta, Stories } from '@storybook/blocks';",
+      "import * as stories from './${TM_FILENAME_BASE/(.*)\\..+$/$1/}.stories.ts';",
+      "import toKebabCase from '@components/_ts-helpers/to-kebab-case.ts';",
+      "",
+      "<Meta of={stories} />",
+      "",
+      "{(() => {",
+      "\tconst { default: { title } = { title: '' } } = stories;",
+      "\tconst path = `?path=/story/${toKebabCase(`\\${title}--${TM_FILENAME_BASE/(.*)\\..+$/$1/}-story`)}`;",
+      "\t// Note: test the automatically generated link at the top of the page.",
+      "\t// If it doesn't work, then manually override the `href` here (like `href=\"?path=/story/...\"`):",
+      "\treturn <h1><a href=${0:{path\\}}>${TM_FILENAME_BASE/([^^A-Z])([A-Z])/$1 $2/g}</a></h1>",
+      "})()}",
+      "",
+      "Introduction text here.",
+      "",
+      "## Usage",
+      "",
+      "Usage notes here.",
+      "",
+      "## Note on the Demo Below",
+      "",
+      "The demo below is an approximation, and some things might not look right or function quite correctly.",
+      "",
+      "For the \"real\" demo, follow the link at the top of the screen.",
+      "",
+      "<Stories title='Demo' />",
+      ""
+    ]
+  }
+}

@@ -1,0 +1,74 @@
+{#
+  Abstract out the main classes because it's likely we'll need a variant
+  or two (with drastically different styling requirements), but we want
+  all variants to make use of this template (because of the JS needs).
+#}
+
+{# tw #} {% set defaultButtonClasses = '
+  text-left block w-full py-5 sm:py-[calc(22rem/16)] pr-4 pl-[calc(56rem/16)] relative
+  bg-mid-blue-500 hocus:bg-navy-500 aria-expanded:bg-navy-500
+  text-yellow-300 hocus:text-white aria-expanded:text-white
+  transition-colors
+  before:bg-yellow-300 before:hocus:bg-white before:aria-expanded:bg-white
+  before:mask-plus before:absolute before:w-5 before:h-5
+  before:left-4 before:top-1/2 before:-translate-y-1/2
+  before:aria-expanded:rotate-45 before:firefox:blur-[1px]
+  before:duration-[400ms] before:transition-[transform,background-color]
+  motion-reduce:before:transition-none
+' %}
+
+{# tw #} {% set defaultHeadingClasses = 'text-lg sm:text-size-xl leading-tight font-sans font-bold' %}
+
+{# tw #} {% set defaultVerticalRhythm = 'vertical-rhythm-standard' %}
+
+<section
+  {% if id is not empty %}id="{{ id }}"{% endif %}
+  class="{{ verticalRhythm|default(defaultVerticalRhythm) }}"
+>
+  <div class="conditional-container">
+    <div class="space-y-8 max-w-4xl mx-auto">
+      {% if heading %}
+        <div class="max-w-3xl mx-auto">
+          <div class="text-center">
+            {% include '@components/Atom/Heading/Heading.twig' with heading only %}
+          </div>
+        </div>
+      {% endif %}
+
+      <div
+        data-accordion
+        {% if closeOthersOnOpen %}data-close-others-on-open{% endif %}
+        class="flex flex-col space-y-2"
+      >
+        {% if panels and panels is iterable %}
+          {% for panel in panels %}
+            <div {% if panel.open %}data-open{% endif %}>
+
+              {% set panelHLevel = panelHLevel|default(heading ? 3 : 2) %}
+              <h{{ panelHLevel }}
+                data-accordion-heading
+                class="{{ defaultHeadingClasses }}"
+                data-button-classes="{{ defaultButtonClasses }}"
+              >
+                {{ panel.headline }}
+              </h{{ panelHLevel }}>
+
+              {# never put padding directly on this `section` #}
+              <section data-accordion-section>
+                <div class="p-7 sm:pl-9">
+                  {% if panel.editorial %}
+                    {% include '@components/Organism/Editorial/Editorial.twig' with panel.editorial only %}
+                  {% elseif panel.linkCollection %}
+                    <div class="vertical-rhythm-canceler container-canceler">
+                      {% include '@components/Organism/LinkCollection/LinkCollection.twig' with panel.linkCollection only %}
+                    </div>
+                  {% endif %}
+                </div>
+              </section>
+            </div>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>

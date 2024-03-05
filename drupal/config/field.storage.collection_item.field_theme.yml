@@ -1,0 +1,20 @@
+uuid: 7293db82-62b3-4826-b64d-dd5d9c13583c
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+    - taxonomy
+id: collection_item.field_theme
+field_name: field_theme
+entity_type: collection_item
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

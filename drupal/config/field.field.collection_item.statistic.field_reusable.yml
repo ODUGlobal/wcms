@@ -1,0 +1,23 @@
+uuid: 7ed3a1b5-db17-4398-9b9a-4d579b214bba
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.statistic
+    - field.storage.collection_item.field_reusable
+id: collection_item.statistic.field_reusable
+field_name: field_reusable
+entity_type: collection_item
+bundle: statistic
+label: Reusable
+description: 'Notes (for administrative purposes) that this callout is shared by multiple content items.'
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

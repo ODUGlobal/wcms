@@ -1,0 +1,32 @@
+uuid: 4a3dd7c2-93ed-4112-83f0-3902a0b28cb5
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.list_item.heading_body
+    - field.field.list_item.heading_body.field_body
+    - field.field.list_item.heading_body.field_hide_heading
+  module:
+    - text
+id: list_item.heading_body.default
+targetEntityType: list_item
+bundle: heading_body
+mode: default
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  field_hide_heading: true

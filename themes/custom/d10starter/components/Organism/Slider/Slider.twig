@@ -1,0 +1,47 @@
+{% set component %}
+  <div class="space-y-6">
+    <div
+      data-accessible-slick-slider
+      {% if sliderAriaLabel %}
+        data-aria-label="{{ sliderAriaLabel }}"
+      {% endif %}
+      {#
+        Note: the JS sets up this element to get `user-select: none` so that the slider
+        can be "draggable" with the mouse. If it's important that the text in the slides
+        be selectable, then we can add the `select-auto` class to this element to override
+        that default behavior, but then we'd also want to set the carousel's `draggable`
+        option to `false`. (Buttons and links in slides work just fine as is, though.)
+      #}
+      class="[&:not(.slick-slider)]:space-y-10 [&.slick-slider]:mx-container"
+    >
+      {% for slide in slides %}
+        <div class="[.slick-slide_&]:space-y-4">
+          {#
+            Visual indicator of current slide.
+            We generate the "Slide X of Y" text in the JS.
+            Don't use `aria-hidden` b/c then the `aria-live` announcements would omit the slide-number.
+            Not using h-tag b/c "Slide X of Y" isn't good h-tag material, IMO.
+            Considered `figure`/`figcaption`, but that makes screen-reader announcements annoyingly redundant.
+          #}
+          <p
+            data-slide-caption
+            class="hidden [.slick-slide_&]:block text-xl text-center"
+          ></p>
+          <div class="max-w-max mx-auto">
+            {{ slide|inject_template }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+{% endset %}
+
+{% include '@components/GenericSlab/GenericSlab.twig' with {
+  verticalRhythm: verticalRhythm,
+  id: id,
+  theme: theme,
+  heading: heading,
+  editorial: editorial,
+  fancyLinkList: fancyLinkList,
+  component: component
+} only %}

@@ -1,0 +1,23 @@
+uuid: 3260b5f1-638e-473a-b88a-b9fa4971de80
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_flip
+    - paragraphs.paragraphs_type.50_50_panel
+id: paragraph.50_50_panel.field_flip
+field_name: field_flip
+entity_type: paragraph
+bundle: 50_50_panel
+label: Flip
+description: 'Place media first.'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

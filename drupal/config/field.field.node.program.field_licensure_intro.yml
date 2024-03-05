@@ -1,0 +1,29 @@
+uuid: c3d583ee-0dff-44a4-bfed-13da74a45bff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_licensure_intro
+    - node.type.program
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_licensure_intro
+id: node.program.field_licensure_intro
+field_name: field_licensure_intro
+entity_type: node
+bundle: program
+label: 'Licensure Intro'
+description: 'Shown on callout to describe licensure information for this program.'
+required: false
+translatable: false
+default_value:
+  -
+    value: "<p>Brief statement here about what a state licensure is and what it means specifically for this program.</p>\r\n"
+    format: basic_html
+default_value_callback: ''
+settings: {  }
+field_type: text_long

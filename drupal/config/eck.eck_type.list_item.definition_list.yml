@@ -1,0 +1,9 @@
+uuid: d09c96ec-616a-43e8-be8d-f3a6811dc0e0
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_entity_type.list_item
+name: 'Definition List'
+type: definition_list
+description: 'A list item with a title and description'

@@ -1,0 +1,26 @@
+uuid: 0f87c046-8c69-4943-8e0c-b2ce959386bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_heading
+    - paragraphs.paragraphs_type.custom_teaser_references
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_heading
+id: paragraph.custom_teaser_references.field_heading
+field_name: field_heading
+entity_type: paragraph
+bundle: custom_teaser_references
+label: Heading
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

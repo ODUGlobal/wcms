@@ -1,0 +1,149 @@
+{#
+/**
+ * @file
+ * Theme override to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *   - is_expanded: TRUE if the link has visible children within the current
+ *     menu tree.
+ *   - is_collapsed: TRUE if the link has children within the current menu tree
+ *     that are not currently visible.
+ *   - in_active_trail: TRUE if the link is in the active trail.
+ */
+#}
+{% import _self as menus %}
+
+{#
+  We call a macro which calls itself to render the full tree.
+  @see https://twig.symfony.com/doc/3.x/tags/macro.html
+#}
+
+{% set sectionNavContents %}
+  {{ menus.menu_links(items, attributes, 0) }}
+{% endset %}
+
+{% set sectionNavId = 'section-nav' %}
+{% set sectionNavTogglerId = 'section-nav-toggler' %}
+
+<nav aria-label="Section" class="hide-if-no-js hidden sidebar-up:block">
+  <div class="bg-theme-bg-color text-theme-text-color py-5">
+    <div class="container">
+
+      <div class="hide-if-no-js">
+        {% if open_secondary_nav() %}
+          {% set sectionNavIsOpen = true %}
+        {% endif %}
+        {# section-nav toggler #}
+        <button
+          id="{{ sectionNavTogglerId }}"
+          type="button"
+          aria-controls="{{ sectionNavId }}"
+          aria-expanded="{{ sectionNavIsOpen ? 'true' : 'false' }}"
+          {# aria-label="{{ sectionNavData.title }}" #}
+          aria-label="Section navigation"
+          class="
+            group/button
+            !outline-none focus-visible:ring-2 rounded-sm {# use `box-shadow` instead of `outline` on focus b/c Safari's focus-outline was strangely shaped here #}
+            relative
+            w-[calc(150rem/16)] h-8 {# note: delicate ("magic numbers" set to match the absolute-positioned contents) #}
+          "
+        >
+          {# tw #} {% set svgClasses = 'absolute left-1 top-1/2 -translate-y-1/2 w-6 h-6 fill-theme-fancy-link-color group-hocus/button:fill-theme-fancy-link-hocus-color transition-[fill,opacity,visibility,transform] motion-reduce:transition-colors' %}
+          {# tw #} {% set textClasses = 'absolute left-9 top-1/2 -translate-y-1/2 font-bold uppercase text-theme-fancy-link-color group-hocus/button:text-theme-fancy-link-hocus-color transition-[opacity,visibility,transform] motion-reduce:transition-none origin-left' %}
+          {# tw #} {% set openClasses = 'group-aria-expanded/button:invisible group-aria-expanded/button:opacity-0 group-aria-expanded/button:scale-0' %}
+          {# tw #} {% set closeClasses = 'opacity-0 invisible scale-0 group-aria-expanded/button:visible group-aria-expanded/button:opacity-100 group-aria-expanded/button:scale-100' %}
+          <svg aria-hidden="true" class="{{ svgClasses }} {{ openClasses }}" viewBox="0 0 16 16"><path d="M3.71 2.29L5.29.71C5.68.32 5.55 0 5 0H.5a.5.5 0 0 0-.5.5V5c0 .55.32.68.71.29l1.58-1.58 3.15 3.14c.19.2.51.2.71 0l.7-.7a.5.5 0 0 0 0-.71zM15.5 0H11c-.55 0-.68.32-.29.71l1.58 1.58-3.14 3.15a.5.5 0 0 0 0 .71l.7.7c.2.2.51.2.71 0l3.15-3.14 1.58 1.58c.39.39.71.26.71-.29V.5a.5.5 0 0 0-.5-.5zm-.21 10.71l-1.58 1.58-3.15-3.14a.5.5 0 0 0-.71 0l-.7.7a.5.5 0 0 0 0 .71l3.14 3.15-1.58 1.58c-.39.39-.26.71.29.71h4.5a.5.5 0 0 0 .5-.5V11c0-.55-.32-.68-.71-.29zM6.15 9.15a.5.5 0 0 0-.71 0l-3.15 3.14-1.58-1.58C.32 10.32 0 10.45 0 11v4.5c0 .28.22.5.5.5H5c.55 0 .68-.32.29-.71l-1.58-1.58 3.14-3.15a.5.5 0 0 0 0-.71z"></path></svg>
+          <span aria-hidden="true" class="{{ textClasses }} {{ openClasses }}">Open Menu</span>
+          <svg aria-hidden="true" class="{{ svgClasses }} {{ closeClasses }}" viewBox="0 0 16 16"><path d="M3.29 4.71L1.71 6.29c-.39.39-.26.71.29.71h4.5a.5.5 0 0 0 .5-.5V2c0-.55-.32-.68-.71-.29L4.71 3.29 1.56.15a.5.5 0 0 0-.71 0l-.7.7a.5.5 0 0 0 0 .71zM9.5 7H14c.55 0 .68-.32.29-.71l-1.58-1.58 3.14-3.15a.5.5 0 0 0 0-.71l-.7-.7a.5.5 0 0 0-.71 0l-3.15 3.14-1.58-1.58C9.32 1.32 9 1.45 9 2v4.5c0 .28.22.5.5.5zm.21 7.29l1.58-1.58 3.15 3.14c.19.2.51.2.71 0l.7-.7a.5.5 0 0 0 0-.71l-3.14-3.15 1.58-1.58c.39-.39.26-.71-.29-.71H9.5a.5.5 0 0 0-.5.5V14c0 .55.32.68.71.29zM.85 15.85c.2.2.52.2.71 0l3.15-3.14 1.58 1.58c.39.39.71.26.71-.29V9.5a.5.5 0 0 0-.5-.5H2c-.55 0-.68.32-.29.71l1.58 1.58-3.14 3.15a.5.5 0 0 0 0 .71z"></path></svg>
+          <span aria-hidden="true" class="{{ textClasses }} {{ closeClasses }}">Close Menu</span>
+        </button>
+
+        <div
+          id="{{ sectionNavId }}"
+          aria-hidden="{{ sectionNavIsOpen ? 'false' : 'true' }}"
+          class="
+            grid grid-rows-[1fr] aria-hidden:grid-rows-[0fr] aria-hidden:invisible
+            transition-[grid-template-rows,visibility] motion-reduce:transition-none
+          "
+        >
+          <div class="overflow-hidden px-2 -mx-2">
+            {{ sectionNavContents }}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</nav>
+
+<noscript>
+  <div class="bg-theme-bg-color text-theme-text-color py-5">
+    <div class="container">
+      <nav aria-label="Section">
+        <details>
+          <summary class="cursor-pointer max-w-max text-lg">Section navigation</summary>
+          <div>{{ sectionNavContents }}</div>
+        </details>
+      </nav>
+    </div>
+  </div>
+</noscript>
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+    {% if items %}
+      {% if menu_level == 0 %}
+        <ul
+          role="list"
+          style="--max-cols: 4"
+          class="
+            mt-8 mb-5
+
+            {# "flexible" grid, based on: https://css-tricks.com/an-auto-filling-css-grid-with-max-columns/ #}
+            [--item-min-w:10rem] [--gap-x:2.5rem]
+            [--fr:.5fr] {# so that if there is only 1 item it takes up only 1/2-width on desktop #}
+
+            [--max-gap-x-count:calc(var(--max-cols)-1)]
+            [--max-total-gap-x-width:calc(var(--max-gap-x-count)*var(--gap-x))]
+            [--item-max-w:calc((100%-var(--max-total-gap-x-width))/var(--max-cols))]
+
+            grid gap-[--gap-x]
+            grid-cols-[repeat(auto-fit,minmax(max(var(--item-max-w),var(--item-min-w)),var(--fr)))]
+          "
+        >
+      {% else %}
+        <ul role="list" class="space-y-3.5">
+      {% endif %}
+      {% for item in items %}
+        {% if menu_level == 0 %}
+          <li class="space-y-4">
+            <h3 class="pb-3.5 border-b-2 border-neutral-200 font-bold text-xl leading-tight">{{ item.title }}</h3>
+            {% if item.below %}
+              {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+            {% endif %}
+          </li>
+        {% else %}
+          <li class="leading-tight aria-current:[&_a]:underline aria-current:[&_a]:decoration-2 aria-current:[&_a]:decoration-yellow-500 aria-current:[&_a]:underline-offset-4">
+            {% include '@components/Atom/Link/FancyLink/FancyLink.twig' with {
+              link: {
+                url: item.url,
+                title: item.title
+              },
+              ariaCurrent: is_current_page(item.url) ? 'page' : (item.in_active_trail ? 'true' : false)
+            } only %}
+            {% if item.below %}
+              {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+            {% endif %}
+          </li>
+        {% endif %}
+      {% endfor %}
+      </ul>
+  {% endif %}
+{% endmacro %}

@@ -1,0 +1,10 @@
+uuid: d5ca70ad-0c47-4268-a46a-454a1c1fd96e
+langcode: en
+status: true
+dependencies: {  }
+id: external_link
+label: 'External Link'
+uid: false
+created: false
+changed: false
+title: true

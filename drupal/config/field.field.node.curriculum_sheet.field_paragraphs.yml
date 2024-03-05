@@ -1,0 +1,98 @@
+uuid: ce59ea1b-2347-44b5-9376-af63fc272422
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paragraphs
+    - node.type.curriculum_sheet
+    - paragraphs.paragraphs_type.body
+    - paragraphs.paragraphs_type.course_table
+  module:
+    - datalayer
+    - entity_reference_revisions
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_paragraphs
+id: node.curriculum_sheet.field_paragraphs
+field_name: field_paragraphs
+entity_type: node
+bundle: curriculum_sheet
+label: Paragraphs
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      course_table: course_table
+      body: body
+    negate: 0
+    target_bundles_drag_drop:
+      50_50_panel:
+        weight: 22
+        enabled: false
+      accordion:
+        weight: 23
+        enabled: false
+      body:
+        weight: 24
+        enabled: true
+      callouts:
+        weight: 25
+        enabled: false
+      course_table:
+        weight: 21
+        enabled: true
+      custom_teaser_references:
+        weight: 26
+        enabled: false
+      embed:
+        weight: 27
+        enabled: false
+      fast_facts:
+        weight: 28
+        enabled: false
+      featured_link_list:
+        weight: 29
+        enabled: false
+      featured_news:
+        weight: 30
+        enabled: false
+      gallery:
+        weight: 31
+        enabled: false
+      hero:
+        weight: 32
+        enabled: false
+      home:
+        weight: 33
+        enabled: false
+      link_groups:
+        weight: 34
+        enabled: false
+      listings:
+        weight: 35
+        enabled: false
+      media:
+        weight: 26
+        enabled: false
+      program_routing:
+        weight: 36
+        enabled: false
+      quote_collection:
+        weight: 37
+        enabled: false
+      simple:
+        weight: 38
+        enabled: false
+      social_media_callout:
+        weight: 39
+        enabled: false
+      spotlight:
+        weight: 40
+        enabled: false
+field_type: entity_reference_revisions

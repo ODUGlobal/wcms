@@ -1,0 +1,25 @@
+uuid: eae5587d-f8cf-4c0b-857d-bac4271dda80
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_superhead
+    - paragraphs.paragraphs_type.home
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_superhead
+id: paragraph.home.field_superhead
+field_name: field_superhead
+entity_type: paragraph
+bundle: home
+label: Superhead
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

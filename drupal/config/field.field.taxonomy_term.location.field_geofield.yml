@@ -1,0 +1,42 @@
+uuid: 37aa0251-10a7-4e91-8e8f-5d6658722aad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_geofield
+    - taxonomy.vocabulary.location
+  module:
+    - datalayer
+    - geocoder_field
+    - geofield
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_geofield
+  geocoder_field:
+    method: source
+    weight: 0
+    disabled: false
+    hidden: false
+    providers:
+      - openstreetmap
+    dumper: wkt
+    delta_handling: default
+    failure:
+      handling: preserve
+      status_message: true
+      log: true
+    geocode_field: field_address
+    reverse_geocode_field: ''
+id: taxonomy_term.location.field_geofield
+field_name: field_geofield
+entity_type: taxonomy_term
+bundle: location
+label: Geofield
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: geofield

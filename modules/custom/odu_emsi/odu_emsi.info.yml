@@ -1,0 +1,9 @@
+name: ODU EMSI
+description: 'Implementation of EMSI service for ODU Online website'
+type: module
+core: 8.x
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - migrate
+  - migrate_tools
+  - migrate_plus

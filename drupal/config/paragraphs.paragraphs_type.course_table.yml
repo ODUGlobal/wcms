@@ -1,0 +1,10 @@
+uuid: 96e080d0-0930-41be-bca4-3e9eec880193
+langcode: en
+status: true
+dependencies: {  }
+id: course_table
+label: 'Course table'
+icon_uuid: null
+icon_default: null
+description: 'A list of courses with supplementary content used on curriculum sheets'
+behavior_plugins: {  }

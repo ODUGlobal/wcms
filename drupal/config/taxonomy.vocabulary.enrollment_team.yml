@@ -1,0 +1,8 @@
+uuid: f7d39670-e7aa-4d39-b45b-8bf59ed57df5
+langcode: en
+status: true
+dependencies: {  }
+name: 'Enrollment Team'
+vid: enrollment_team
+description: 'A set of people related to programs for enrollment info purposes'
+weight: 0

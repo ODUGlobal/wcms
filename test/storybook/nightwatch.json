@@ -1,0 +1,12 @@
+{
+  "output_folder": "output",
+  "src_folders": ["specs"],
+  "selenium": {
+    "start_process": false
+  },
+  "test_settings": {
+    "default": {
+      "selenium_host": "chromedriver"
+    }
+  }
+}

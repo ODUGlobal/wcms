@@ -1,0 +1,33 @@
+name: d10starter
+type: theme
+'base theme': stable9
+starterkit: true
+version: VERSION
+core_version_requirement: ^10
+generator: 'blank_page:10.0.5'
+dependencies:
+  - 'drupal:components (^2.1)'
+libraries:
+  - d10starter/base
+  - d10starter/messages
+  - core/normalize
+  - d10starter/theme
+regions:
+  utility_nav: 'Utility Navigation'
+  branding: Branding
+  primary_nav: 'Primary Navigation'
+  main_nav_mobile: Main navigation (mobile)
+  secondary_nav: 'Secondary Navigation'
+  breadcrumb: Breadcrumb
+  content: 'Main content'
+  sidebar: Sidebar
+  footer_col_1: 'Footer column 1'
+  footer_col_2: 'Footer column 2'
+  footer_col_3: 'Footer column 3'
+  form_embed: Embedded form
+components:
+  namespaces:
+    components:
+      - components
+    overwrites:
+      - overwrites

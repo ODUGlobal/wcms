@@ -1,0 +1,8 @@
+uuid: bb6bbea7-4541-4fbf-82cb-8a165314c288
+langcode: en
+status: true
+dependencies: {  }
+name: 'Academic Unit'
+vid: academic_unit
+description: 'Hierarchical academic organization (colleges + departments)'
+weight: 0

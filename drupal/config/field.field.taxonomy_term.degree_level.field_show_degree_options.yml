@@ -1,0 +1,29 @@
+uuid: 48860afe-adeb-46e4-a4f7-4d4ac0ef40c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_show_degree_options
+    - taxonomy.vocabulary.degree_level
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_show_degree_options
+id: taxonomy_term.degree_level.field_show_degree_options
+field_name: field_show_degree_options
+entity_type: taxonomy_term
+bundle: degree_level
+label: 'Show degree options'
+description: 'Show degree completion / full degree yes/no options for programs of this level'
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

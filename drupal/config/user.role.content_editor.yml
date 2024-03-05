@@ -1,0 +1,283 @@
+uuid: c5f8a5ba-0438-4e3b-97ec-5925f7aaa8b1
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.restricted_html
+    - media.type.audio
+    - media.type.document
+    - media.type.file
+    - media.type.image
+    - media.type.logo
+    - media.type.remote_video
+    - media.type.video
+    - node.type.curriculum_sheet
+    - node.type.helpful_resource
+    - node.type.inquiry
+    - node.type.news
+    - node.type.page
+    - node.type.person
+    - node.type.program
+    - taxonomy.vocabulary.academic_unit
+    - taxonomy.vocabulary.application_type
+    - taxonomy.vocabulary.area_of_study
+    - taxonomy.vocabulary.course_semester
+    - taxonomy.vocabulary.degree_level
+    - taxonomy.vocabulary.enrollment_team
+    - taxonomy.vocabulary.helpful_resource_categories
+    - taxonomy.vocabulary.helpful_resources_tags
+    - taxonomy.vocabulary.icons
+    - taxonomy.vocabulary.licensing_body
+    - taxonomy.vocabulary.licensing_state
+    - taxonomy.vocabulary.location
+    - taxonomy.vocabulary.location_features
+    - taxonomy.vocabulary.news_tags
+    - taxonomy.vocabulary.partner_regions
+    - taxonomy.vocabulary.staff_importance
+    - taxonomy.vocabulary.tags
+    - taxonomy.vocabulary.theme_options
+    - taxonomy.vocabulary.topics
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - contextual
+    - eck
+    - embederator
+    - entity_browser
+    - file
+    - filter
+    - media
+    - node
+    - paragraphs
+    - path
+    - rebuild_cache_access
+    - redirect
+    - system
+    - taxonomy
+    - toolbar
+    - tour
+_core:
+  default_config_hash: Wur9kcEOwY1Jal81NssKnz3RhVJxAvBwyWQBGcA_1Go
+id: content_editor
+label: 'Content editor'
+weight: 2
+is_admin: false
+permissions:
+  - 'access administration pages'
+  - 'access callouts entity browser pages'
+  - 'access collection_item entity listing'
+  - 'access collection_items entity browser pages'
+  - 'access content overview'
+  - 'access contextual links'
+  - 'access curriculum_item entity listing'
+  - 'access external_link entity listing'
+  - 'access fast_facts entity browser pages'
+  - 'access files overview'
+  - 'access icons entity browser pages'
+  - 'access list_item entity listing'
+  - 'access logos entity browser pages'
+  - 'access media overview'
+  - 'access media_entity_browser_media_library entity browser pages'
+  - 'access relationship entity listing'
+  - 'access reusable_block entity listing'
+  - 'access toolbar'
+  - 'access tour'
+  - 'add embederator entity'
+  - 'administer menu'
+  - 'administer nodes'
+  - 'administer redirect settings'
+  - 'administer redirects'
+  - 'administer url aliases'
+  - 'create audio media'
+  - 'create collection_item entities'
+  - 'create curriculum_item entities'
+  - 'create curriculum_sheet content'
+  - 'create document media'
+  - 'create external_link entities'
+  - 'create file media'
+  - 'create helpful_resource content'
+  - 'create image media'
+  - 'create inquiry content'
+  - 'create list_item entities'
+  - 'create logo media'
+  - 'create media'
+  - 'create news content'
+  - 'create page content'
+  - 'create person content'
+  - 'create program content'
+  - 'create relationship entities'
+  - 'create remote_video media'
+  - 'create reusable_block entities'
+  - 'create terms in academic_unit'
+  - 'create terms in application_type'
+  - 'create terms in area_of_study'
+  - 'create terms in course_semester'
+  - 'create terms in degree_level'
+  - 'create terms in enrollment_team'
+  - 'create terms in helpful_resource_categories'
+  - 'create terms in helpful_resources_tags'
+  - 'create terms in icons'
+  - 'create terms in licensing_body'
+  - 'create terms in licensing_state'
+  - 'create terms in location'
+  - 'create terms in location_features'
+  - 'create terms in news_tags'
+  - 'create terms in partner_regions'
+  - 'create terms in staff_importance'
+  - 'create terms in tags'
+  - 'create terms in theme_options'
+  - 'create terms in topics'
+  - 'create url aliases'
+  - 'create video media'
+  - 'delete all revisions'
+  - 'delete any audio media'
+  - 'delete any collection_item entities'
+  - 'delete any curriculum_item entities'
+  - 'delete any curriculum_sheet content'
+  - 'delete any document media'
+  - 'delete any external_link entities'
+  - 'delete any file media'
+  - 'delete any helpful_resource content'
+  - 'delete any image media'
+  - 'delete any inquiry content'
+  - 'delete any list_item entities'
+  - 'delete any logo media'
+  - 'delete any media'
+  - 'delete any news content'
+  - 'delete any page content'
+  - 'delete any person content'
+  - 'delete any program content'
+  - 'delete any relationship entities'
+  - 'delete any remote_video media'
+  - 'delete any reusable_block entities'
+  - 'delete any video media'
+  - 'delete curriculum_sheet revisions'
+  - 'delete embederator entity'
+  - 'delete helpful_resource revisions'
+  - 'delete inquiry revisions'
+  - 'delete media'
+  - 'delete news revisions'
+  - 'delete own audio media'
+  - 'delete own curriculum_sheet content'
+  - 'delete own document media'
+  - 'delete own file media'
+  - 'delete own files'
+  - 'delete own helpful_resource content'
+  - 'delete own image media'
+  - 'delete own inquiry content'
+  - 'delete own logo media'
+  - 'delete own news content'
+  - 'delete own page content'
+  - 'delete own person content'
+  - 'delete own program content'
+  - 'delete own relationship entities'
+  - 'delete own remote_video media'
+  - 'delete own video media'
+  - 'delete page revisions'
+  - 'delete person revisions'
+  - 'delete program revisions'
+  - 'delete terms in academic_unit'
+  - 'delete terms in application_type'
+  - 'delete terms in area_of_study'
+  - 'delete terms in course_semester'
+  - 'delete terms in degree_level'
+  - 'delete terms in enrollment_team'
+  - 'delete terms in helpful_resource_categories'
+  - 'delete terms in helpful_resources_tags'
+  - 'delete terms in icons'
+  - 'delete terms in licensing_body'
+  - 'delete terms in licensing_state'
+  - 'delete terms in location'
+  - 'delete terms in location_features'
+  - 'delete terms in news_tags'
+  - 'delete terms in partner_regions'
+  - 'delete terms in staff_importance'
+  - 'delete terms in tags'
+  - 'delete terms in theme_options'
+  - 'delete terms in topics'
+  - 'edit any audio media'
+  - 'edit any collection_item entities'
+  - 'edit any curriculum_item entities'
+  - 'edit any curriculum_sheet content'
+  - 'edit any document media'
+  - 'edit any external_link entities'
+  - 'edit any file media'
+  - 'edit any helpful_resource content'
+  - 'edit any image media'
+  - 'edit any inquiry content'
+  - 'edit any list_item entities'
+  - 'edit any logo media'
+  - 'edit any news content'
+  - 'edit any page content'
+  - 'edit any person content'
+  - 'edit any program content'
+  - 'edit any relationship entities'
+  - 'edit any remote_video media'
+  - 'edit any reusable_block entities'
+  - 'edit any video media'
+  - 'edit embederator entity'
+  - 'edit own audio media'
+  - 'edit own curriculum_sheet content'
+  - 'edit own document media'
+  - 'edit own file media'
+  - 'edit own helpful_resource content'
+  - 'edit own image media'
+  - 'edit own inquiry content'
+  - 'edit own logo media'
+  - 'edit own news content'
+  - 'edit own page content'
+  - 'edit own person content'
+  - 'edit own program content'
+  - 'edit own relationship entities'
+  - 'edit own remote_video media'
+  - 'edit own video media'
+  - 'edit terms in academic_unit'
+  - 'edit terms in application_type'
+  - 'edit terms in area_of_study'
+  - 'edit terms in course_semester'
+  - 'edit terms in degree_level'
+  - 'edit terms in enrollment_team'
+  - 'edit terms in helpful_resource_categories'
+  - 'edit terms in helpful_resources_tags'
+  - 'edit terms in icons'
+  - 'edit terms in licensing_body'
+  - 'edit terms in licensing_state'
+  - 'edit terms in location'
+  - 'edit terms in location_features'
+  - 'edit terms in news_tags'
+  - 'edit terms in partner_regions'
+  - 'edit terms in staff_importance'
+  - 'edit terms in tags'
+  - 'edit terms in theme_options'
+  - 'edit terms in topics'
+  - 'rebuild cache access'
+  - 'revert all revisions'
+  - 'revert curriculum_sheet revisions'
+  - 'revert helpful_resource revisions'
+  - 'revert inquiry revisions'
+  - 'revert news revisions'
+  - 'revert page revisions'
+  - 'revert person revisions'
+  - 'revert program revisions'
+  - 'update any media'
+  - 'update media'
+  - 'use editorial transition archive'
+  - 'use editorial transition archived_draft'
+  - 'use editorial transition archived_published'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition publish'
+  - 'use text format restricted_html'
+  - 'view all revisions'
+  - 'view any unpublished content'
+  - 'view curriculum_sheet revisions'
+  - 'view helpful_resource revisions'
+  - 'view inquiry revisions'
+  - 'view latest version'
+  - 'view news revisions'
+  - 'view own unpublished content'
+  - 'view own unpublished media'
+  - 'view page revisions'
+  - 'view person revisions'
+  - 'view program revisions'
+  - 'view the administration theme'
+  - 'view unpublished paragraphs'

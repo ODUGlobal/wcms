@@ -1,0 +1,26 @@
+uuid: a3d4be77-f633-4e09-9e41-29ad633bbaf3
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.collection_item.custom_teaser
+    - field.storage.collection_item.field_body
+  module:
+    - datalayer
+    - text
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_body
+id: collection_item.custom_teaser.field_body
+field_name: field_body
+entity_type: collection_item
+bundle: custom_teaser
+label: Body
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

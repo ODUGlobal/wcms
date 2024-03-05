@@ -1,0 +1,32 @@
+uuid: 774ae93f-d460-44b4-82b9-857948316c13
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.featured_news.field_content_reference
+    - field.field.paragraph.featured_news.field_heading
+    - paragraphs.paragraphs_type.featured_news
+  module:
+    - text
+id: paragraph.featured_news.default
+targetEntityType: paragraph
+bundle: featured_news
+mode: default
+content:
+  field_content_reference:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: teaser_with_summary
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_heading:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

@@ -1,0 +1,177 @@
+{#
+  headline: string (text OR markup), the only required property
+  tagLevel?: number (defaults to 2)
+  styleLevel?: number (can be used to give an h3 the default h2 styles, e.g.)
+  slim?: boolean (if `true`, use `font-sans font-bold` instead of `font-display font-extrabold`)
+  overrideClasses?: string (if supplied, no default-styles are used)
+  extraClasses?: string (if supplied, used in ADDITION to default-styles)
+  sizeClasses?: string (if supplied, overrides default sizing styling classes)
+  colorClasses?: string -- for main headline color; prefer not to supply (instead let the theme do its thing)
+  id?: string (optional DOM id)
+  superhead?: string -- superhead text
+  subhead?: string -- subhead text
+  superheadClasses?: string -- to override default superhead styles
+  subheadClasses?: string -- to override default subhead styles
+  hgroupClasses?: string -- to override default hgroup styles (only applies if superhead or subhead is present)
+#}
+
+{% set tagLevel = tagLevel|default(2) %}
+
+{# tw #} {% set colorClasses = colorClasses|default('text-theme-heading-color [&_a]:underline [&_a]:text-theme-fancy-link-color hocus:[&_a]:text-theme-fancy-link-hocus-color') %}
+
+{# tw #} {% set baseClasses = colorClasses|trim ~ (slim ? ' font-bold font-sans leading-[1.15] ' : ' font-extrabold font-display leading-[1.15] ') %}
+
+{# tw #} {% set level1Defaults = baseClasses ~ sizeClasses|default('text-3xl sm:text-size-4xl md:text-size-5xl') %}
+{# tw #} {% set level2Defaults = baseClasses ~ sizeClasses|default('text-2xl sm:text-size-3xl md:text-size-4xl') %}
+{# tw #} {% set level3Defaults = baseClasses ~ sizeClasses|default('text-xl sm:text-size-2xl md:text-[calc(26rem/16)]') %}
+{# tw #} {% set otherDefaults = baseClasses ~ sizeClasses|default('text-lg sm:text-size-xl md:text-size-2xl') %}
+
+{# tw #} {% set level1Spacing = 'gap-y-2 md:gap-y-3' %}
+{# tw #} {% set level2Spacing = 'gap-y-1.5 md:gap-y-2' %}
+{# tw #} {% set level3Spacing = 'gap-y-1.5' %}
+{# tw #} {% set otherSpacing = 'gap-y-1.5' %}
+
+{# tw #} {% set level1SubSize = 'text-sm md:text-xl' %}
+{# tw #} {% set level2SubSize = 'text-xs md:text-base' %}
+{# tw #} {% set level3SubSize = 'text-xs md:text-base' %}
+{# tw #} {% set otherSubSize = 'text-xs md:text-sm' %}
+
+{# tw #} {% set level1SuperSize = 'text-sm md:text-xl' %}
+{# tw #} {% set level2SuperSize = 'text-xs md:text-base' %}
+{# tw #} {% set level3SuperSize = 'text-xs md:text-base' %}
+{# tw #} {% set otherSuperSize = 'text-xs md:text-sm' %}
+
+{% if overrideClasses is not empty %}
+  {% set classes = overrideClasses %}
+{% elseif styleLevel is not empty %}
+  {% if styleLevel == 1 %}
+    {% set classes = level1Defaults %}
+    {% set spacingClasses = level1Spacing %}
+    {% set subSize = level1SubSize %}
+    {% set superSize = level1SuperSize %}
+  {% elseif styleLevel == 2 %}
+    {% set classes = level2Defaults %}
+    {% set spacingClasses = level2Spacing %}
+    {% set subSize = level2SubSize %}
+    {% set superSize = level2SuperSize %}
+  {% elseif styleLevel == 3 %}
+    {% set classes = level3Defaults %}
+    {% set spacingClasses = level3Spacing %}
+    {% set subSize = level3SubSize %}
+    {% set superSize = level3SuperSize %}
+  {% else %}
+    {% set classes = otherDefaults %}
+    {% set spacingClasses = otherSpacing %}
+    {% set subSize = otherSubSize %}
+    {% set superSize = otherSuperSize %}
+  {% endif %}
+{% else %}
+  {% if tagLevel == 1 %}
+    {% set classes = level1Defaults %}
+    {% set spacingClasses = level1Spacing %}
+    {% set subSize = level1SubSize %}
+    {% set superSize = level1SuperSize %}
+  {% elseif tagLevel == 2 %}
+    {% set classes = level2Defaults %}
+    {% set spacingClasses = level2Spacing %}
+    {% set subSize = level2SubSize %}
+    {% set superSize = level2SuperSize %}
+  {% elseif tagLevel == 3 %}
+    {% set classes = level3Defaults %}
+    {% set spacingClasses = level3Spacing %}
+    {% set subSize = level3SubSize %}
+    {% set superSize = level3SuperSize %}
+  {% else %}
+    {% set classes = otherDefaults %}
+    {% set spacingClasses = otherSpacing %}
+    {% set subSize = otherSubSize %}
+    {% set superSize = otherSuperSize %}
+  {% endif %}
+{% endif %}
+
+{% set classes = classes|default('') ~ ' ' ~ extraClasses %}
+
+{# tw #} {% set defaultSuperheadClasses = superSize ~ ' font-super font-bold uppercase tracking-widest text-theme-subsup-color' %}
+{# tw #} {% set defaultSubheadClasses = subSize ~ ' font-sans font-normal text-theme-subsup-color' %}
+{# tw #} {% set defaultHgroupClasses = spacingClasses ~ ' grid grid-cols-1 ' ~ colorClasses %}
+
+{#
+  Note: The hgroup tag may ONLY contain p-tags and (a single required) h-tag. So it's invalid HTML to use,
+  say, div-wrappers inside the hgroup. See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/hgroup
+#}
+
+{% set id = id|default(null) %}
+{% if not id %}
+  {% if headline is iterable and headline['#text'] is defined %}
+    {% set id = headline['#text']|clean_id %}
+  {% elseif headline is not iterable and headline|clean_id is not empty %}
+    {% set id = headline|clean_id %}
+  {% endif %}
+{% endif %}
+
+{% if subhead is not empty or superhead is not empty %}
+  <hgroup
+    class="{{ hgroupClasses|default(defaultHgroupClasses) }}"
+    {% if id is not empty %}
+      id="{{ id }}"
+    {% endif %}
+  >
+    <h{{ tagLevel }} class="{{ classes|trim }}">{{ headline }}</h{{ tagLevel }}>
+
+    {% if subhead is not empty %}
+      <p class="{{ subheadClasses|default(defaultSubheadClasses) }}">{{ subhead }}</p>
+    {% endif %}
+
+    {#
+      Superhead comes first *visually*, but last in DOM for the benefit of screen-readers.
+      See explanation in long comment below at end of file.
+    #}
+    {% if superhead is not empty %}
+      <p class="order-first {{ superheadClasses|default(defaultSuperheadClasses) }}">{{ superhead }}</p>
+    {% endif %}
+  </hgroup>
+{% else %}
+  <h{{ tagLevel }}
+    class="{{ classes|trim }}"
+    {% if id is not empty %}
+      id="{{ id }}"
+    {% endif %}
+  >{{ headline }}</h{{ tagLevel }}>
+{% endif %}
+
+{#
+  Explanation for putting superhead *after* h-tag and subhead in DOM-order:
+
+    - The h-tag must come first if we want screen-readers to reliably announce
+      the superhead. This is because most screen-reader users navigate by h-tag,
+      and doing so would skip over the superhead entirely if it came before
+      the h-tag in the DOM.
+
+    - The superhead shouldn't be announced *between* the h-tag and the subhead,
+      because sometimes it's important that h-tag and subhead be announced
+      consecutively (think of a title and subtitle, for example).
+
+  By process of elimination, the superhead therefore comes last in the DOM-order.
+  It's not ideal -- generally it's best if announcement-order and visual order
+  are the same -- but I *think* it's better than the alternatives here.
+  Our scenario is similar to one described on MDN:
+
+  https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Ordering_Flex_Items#use_cases_for_order
+
+  That said, I could be persuaded otherwise. Perhaps the superhead should just
+  come before the h-tag, and it's not a big deal if screen-readers often skip it.
+  Or maybe my caution about "breaking up" h-tag and subhead is unwarranted,
+  and it would be best to announce in the order h-tag, superhead, subhead
+  (since that's at least *closer* to the visual order).
+
+  Moreover, we might want to rethink the ordering if both the superhead and
+  either the h-tag or the subhead contain a link. When that's the case,
+  the mismatch is not only between announcement-order and visual-order, but
+  also between FOCUS-order and visual-order, and that kind of mismatch is more
+  consequential. Still, it would be a "small" mismatch, and the question is whether
+  it's worse than the problem we're trying to fix (i.e., screen-readers skipping
+  over the superhead altogether when navigating by h-tag). My gut says that it isn't,
+  but I could be persuaded otherwise on this, too.
+
+  Anyway: for now, superhead comes last in DOM-order.
+#}

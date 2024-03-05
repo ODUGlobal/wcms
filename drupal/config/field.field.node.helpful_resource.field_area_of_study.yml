@@ -1,0 +1,35 @@
+uuid: c196ba5c-0a94-40aa-bd94-c9876eb441ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_area_of_study
+    - node.type.helpful_resource
+    - taxonomy.vocabulary.area_of_study
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_area_of_study
+id: node.helpful_resource.field_area_of_study
+field_name: field_area_of_study
+entity_type: node
+bundle: helpful_resource
+label: 'Area of Study'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      area_of_study: area_of_study
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

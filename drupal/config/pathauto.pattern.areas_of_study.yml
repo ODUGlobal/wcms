@@ -1,0 +1,23 @@
+uuid: 13ece148-679f-4a1c-aeba-e0c65aa96b73
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: areas_of_study
+label: 'Areas of Study'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/academics/area/[term:name]'
+selection_criteria:
+  175c2dde-4651-4693-bdb8-a20f23892f26:
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    uuid: 175c2dde-4651-4693-bdb8-a20f23892f26
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    bundles:
+      area_of_study: area_of_study
+selection_logic: and
+weight: -5
+relationships: {  }

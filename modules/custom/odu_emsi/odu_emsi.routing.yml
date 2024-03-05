@@ -1,0 +1,84 @@
+# Route name can be used in several places; e.g. links, redirects, and local
+# actions.
+entity.odu_emsi_emsi_cache.canonical:
+  path: '/admin/odu_emsi_emsi_cache/{odu_emsi_emsi_cache}'
+  defaults:
+  # Calls the view controller, defined in the annotation of the emsi cache entity
+    _entity_view: 'odu_emsi_emsi_cache'
+    _title: 'EMSI Cache'
+  requirements:
+  # Calls the access controller of the entity, $operation 'view'
+    _entity_access: 'odu_emsi_emsi_cache.view'
+
+entity.odu_emsi_emsi_cache.collection:
+  path: '/admin/odu_emsi_emsi_cache/list'
+  defaults:
+  # Calls the list controller, defined in the annotation of the emsi cache entity.
+    _entity_list: 'odu_emsi_emsi_cache'
+    _title: 'EMSI Cache List'
+  requirements:
+  # Checks for permission directly.
+    _permission: 'administer emsi cache'
+
+odu_emsi.emsi_cache_add:
+  path: '/admin/odu_emsi_emsi_cache/add'
+  defaults:
+  # Calls the form.add controller, defined in the emsi cache entity.
+    _entity_form: odu_emsi_emsi_cache.add
+    _title: 'Add EMSI Cache'
+  requirements:
+    _entity_create_access: 'odu_emsi_emsi_cache'
+
+entity.odu_emsi_emsi_cache.edit_form:
+  path: '/admin/odu_emsi_emsi_cache/{odu_emsi_emsi_cache}/edit'
+  defaults:
+  # Calls the form.edit controller, defined in the emsi cache entity.
+    _entity_form: odu_emsi_emsi_cache.edit
+    _title: 'Edit EMSI Cache'
+  requirements:
+    _entity_access: 'odu_emsi_emsi_cache.edit'
+
+entity.odu_emsi_emsi_cache.delete_form:
+  path: '/admin/odu_emsi_emsi_cache/{odu_emsi_emsi_cache}/delete'
+  defaults:
+    # Calls the form.delete controller, defined in the emsi cache entity.
+    _entity_form: odu_emsi_emsi_cache.delete
+    _title: 'Delete EMSI Cache'
+  requirements:
+    _entity_access: 'odu_emsi_emsi_cache.delete'
+
+odu_emsi.emsi_cache_settings:
+  path: '/admin/structure/odu_emsi_emsi_cache'
+  defaults:
+    _form: '\Drupal\odu_emsi\Form\EMSICacheSettingsForm'
+    _title: 'EMSI Cache Settings'
+  requirements:
+    _permission: 'administer emsi cache'
+
+odu_emsi.import:
+  path: '/admin/odu_emsi_emsi_cache/import'
+  defaults: 
+    _controller: '\Drupal\odu_emsi\Controller\EMSIController::import' 
+  requirements:
+    _permission: 'administer emsi cache'
+
+location.lookup:
+  path: '/emsi_cache/location/lookup/name/{name}' 
+  defaults: 
+    _controller: '\Drupal\odu_emsi\Controller\LocationController::lookup' 
+  requirements: 
+    _permission: 'access content' 
+
+career_data.lookup:
+  path: '/emsi_cache/career_data/id/{career_id}/{region_id}' 
+  defaults: 
+    _controller: '\Drupal\odu_emsi\Controller\EMSIController::getCareerDataById' 
+  requirements: 
+    _permission: 'access content' 
+
+career_data.program:
+  path: '/emsi_cache/career_data/program/{node_id}/{region_id}' 
+  defaults: 
+    _controller: '\Drupal\odu_emsi\Controller\EMSIController::getCareerDataByProgram' 
+  requirements: 
+    _permission: 'access content'

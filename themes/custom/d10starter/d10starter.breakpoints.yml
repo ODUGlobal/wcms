@@ -1,0 +1,35 @@
+d10starter.xs:
+  label: xs
+  mediaQuery: 'all and (min-width: 400px)'
+  weight: '1'
+  multipliers:
+    - 1x
+    - 2x
+d10starter.sm:
+  label: sm
+  mediaQuery: 'all and (min-width: 640px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+d10starter.md:
+  label: md
+  mediaQuery: 'all and (min-width: 768px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x
+d10starter.lg:
+  label: lg
+  mediaQuery: 'all and (min-width: 1024px)'
+  weight: '1'
+  multipliers:
+    - 1x
+    - 2x
+d10starter.xl:
+  label: xl
+  mediaQuery: 'all and (min-width: 1295px)'
+  weight: 1
+  multipliers:
+    - 1x
+    - 2x

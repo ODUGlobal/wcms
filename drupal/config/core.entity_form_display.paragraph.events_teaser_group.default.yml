@@ -1,0 +1,55 @@
+uuid: 98fac80a-adaf-46cc-815f-ed36a95673de
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.events_teaser_group.field_body
+    - field.field.paragraph.events_teaser_group.field_content_reference
+    - field.field.paragraph.events_teaser_group.field_fancy_links
+    - field.field.paragraph.events_teaser_group.field_headline
+    - paragraphs.paragraphs_type.events_teaser_group
+  module:
+    - link
+    - text
+id: paragraph.events_teaser_group.default
+targetEntityType: paragraph
+bundle: events_teaser_group
+mode: default
+content:
+  field_body:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_content_reference:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_fancy_links:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_headline:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

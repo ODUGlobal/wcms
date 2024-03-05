@@ -1,0 +1,21 @@
+uuid: 7141d290-b6bb-4e1a-8a7b-ebd8a07e70c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_component_theme
+    - paragraphs.paragraphs_type.50_50_panel
+  module:
+    - options
+id: paragraph.50_50_panel.field_component_theme
+field_name: field_component_theme
+entity_type: paragraph
+bundle: 50_50_panel
+label: Theme
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

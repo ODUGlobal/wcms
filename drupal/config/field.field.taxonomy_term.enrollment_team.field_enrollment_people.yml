@@ -1,0 +1,66 @@
+uuid: afe8b57d-b490-434d-b831-18916b5b929b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_enrollment_people
+    - taxonomy.vocabulary.enrollment_team
+    - views.view.enrollment_team
+  module:
+    - datalayer
+    - viewfield
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_enrollment_people
+id: taxonomy_term.enrollment_team.field_enrollment_people
+field_name: field_enrollment_people
+entity_type: taxonomy_term
+bundle: enrollment_team
+label: 'Enrollment People'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 4fdfe910-133d-402f-aebe-d095f86bcb40
+    display_id: block_1
+    arguments: '[term:tid]'
+    items_to_display: ''
+    token_help: ''
+default_value_callback: ''
+settings:
+  force_default: true
+  allowed_views:
+    content: '0'
+    block_content: '0'
+    enrollment_team: '0'
+    files: '0'
+    filtered_content: '0'
+    frontpage: '0'
+    media: '0'
+    media_entity_browser_media_library: '0'
+    media_library: '0'
+    moderated_content: '0'
+    news: '0'
+    user_admin_people: '0'
+    programs: '0'
+    programs_admin_list_: '0'
+    content_recent: '0'
+    redirect: '0'
+    redirect_404: '0'
+    reusable_collection_items: '0'
+    staff: '0'
+    taxonomy_term: '0'
+    watchdog: '0'
+    who_s_new: '0'
+    who_s_online: '0'
+  allowed_display_types:
+    block: block
+    entity_browser: '0'
+    feed: '0'
+    default: '0'
+    page: '0'
+  handler: 'default:view'
+  handler_settings: {  }
+field_type: viewfield

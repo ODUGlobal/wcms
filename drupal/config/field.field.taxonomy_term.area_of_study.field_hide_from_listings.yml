@@ -1,0 +1,29 @@
+uuid: b90bf5fa-e7eb-4bcd-a16e-d968ebc3efb0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_hide_from_listings
+    - taxonomy.vocabulary.area_of_study
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_hide_from_listings
+id: taxonomy_term.area_of_study.field_hide_from_listings
+field_name: field_hide_from_listings
+entity_type: taxonomy_term
+bundle: area_of_study
+label: 'Hide from listings'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

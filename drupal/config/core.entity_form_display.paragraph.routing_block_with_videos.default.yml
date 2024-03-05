@@ -1,0 +1,57 @@
+uuid: 1be3698d-582e-437a-bf7d-37e4bb1feee5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.routing_block_with_videos.field_body
+    - field.field.paragraph.routing_block_with_videos.field_heading
+    - field.field.paragraph.routing_block_with_videos.field_mobile_videos
+    - paragraphs.paragraphs_type.routing_block_with_videos
+  module:
+    - entity_browser_entity_form
+    - inline_entity_form
+    - text
+id: paragraph.routing_block_with_videos.default
+targetEntityType: paragraph
+bundle: routing_block_with_videos
+mode: default
+content:
+  field_body:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_heading:
+    type: text_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_mobile_videos:
+    type: inline_entity_form_complex
+    weight: 2
+    region: content
+    settings:
+      form_mode: default
+      override_labels: false
+      label_singular: ''
+      label_plural: ''
+      allow_new: true
+      allow_existing: true
+      match_operator: CONTAINS
+      allow_duplicate: false
+      collapsible: false
+      collapsed: false
+      revision: false
+      removed_reference: optional
+    third_party_settings:
+      entity_browser_entity_form:
+        entity_browser_id: image_card
+hidden:
+  created: true
+  status: true

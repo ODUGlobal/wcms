@@ -1,0 +1,23 @@
+uuid: 17fb383d-ef2c-430d-9d8a-4870c069038c
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - taxonomy
+id: licensure_states
+label: 'Licensure states'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/about-us/state-authorization-licensure/licensure/state/[term:name]'
+selection_criteria:
+  401959b4-67d0-4bb9-802c-537787ac1de6:
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    uuid: 401959b4-67d0-4bb9-802c-537787ac1de6
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    bundles:
+      licensing_state: licensing_state
+selection_logic: and
+weight: -5
+relationships: {  }

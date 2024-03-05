@@ -1,0 +1,5 @@
+name: 'ODU Administrative Utilities'
+type: module
+description: 'Admin customizations'
+core_version_requirement: ^10
+configure: odu_administrative.settings

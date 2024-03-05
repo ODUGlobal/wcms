@@ -1,0 +1,8 @@
+uuid: f29785df-b03e-4a53-8ddf-c3d210cdffad
+langcode: en
+status: true
+dependencies: {  }
+name: 'Helpful Resources Tags'
+vid: helpful_resources_tags
+description: 'Tags for grouping resources internally, may be used for filtering but otherwise invisible on front end'
+weight: 0

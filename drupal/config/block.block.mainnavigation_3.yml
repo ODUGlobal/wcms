@@ -1,0 +1,31 @@
+uuid: e5cf3367-ea99-451d-8540-37b203c18b37
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.main
+  module:
+    - menu_block
+  theme:
+    - d10starter
+id: mainnavigation_3
+theme: d10starter
+region: content
+weight: 11
+provider: null
+plugin: 'menu_block:main'
+settings:
+  id: 'menu_block:main'
+  label: 'Main navigation'
+  label_display: '0'
+  provider: menu_block
+  follow: true
+  follow_parent: child
+  label_link: false
+  label_type: block
+  level: 3
+  depth: 1
+  expand_all_items: true
+  parent: 'main:'
+  suggestion: main__sidebar
+visibility: {  }

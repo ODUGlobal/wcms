@@ -1,0 +1,65 @@
+uuid: 2da21349-d294-4ee4-8ce6-8999906ebc41
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.external_link.online_events
+    - field.field.external_link.online_events.field_dates
+    - field.field.external_link.online_events.field_instructor
+    - field.field.external_link.online_events.field_link
+    - field.field.external_link.online_events.field_time_text
+  module:
+    - datetime_range
+    - link
+id: external_link.online_events.default
+targetEntityType: external_link
+bundle: online_events
+mode: default
+content:
+  field_dates:
+    type: daterange_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+      separator: '-'
+    third_party_settings: {  }
+    weight: -4
+    region: content
+  field_instructor:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -2
+    region: content
+  field_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: -1
+    region: content
+  field_time_text:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -3
+    region: content
+  title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: -5
+    region: content
+hidden: {  }

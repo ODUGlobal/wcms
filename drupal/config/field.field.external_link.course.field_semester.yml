@@ -1,0 +1,35 @@
+uuid: 03d9206a-fde5-4bc7-8c80-e8aacc8c786a
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.external_link.course
+    - field.storage.external_link.field_semester
+    - taxonomy.vocabulary.course_semester
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_semester
+id: external_link.course.field_semester
+field_name: field_semester
+entity_type: external_link
+bundle: course
+label: Semester
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      course_semester: course_semester
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

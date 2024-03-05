@@ -1,0 +1,28 @@
+uuid: 1dd6a220-8a2c-4023-8178-a5d4bbd9b31f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_links
+    - paragraphs.paragraphs_type.accordion
+  module:
+    - datalayer
+    - link
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_links
+id: paragraph.accordion.field_links
+field_name: field_links
+entity_type: paragraph
+bundle: accordion
+label: Links
+description: 'Optional links shown in an aside, similar to callouts'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  title: 1
+  link_type: 17
+field_type: link

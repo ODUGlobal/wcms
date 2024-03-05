@@ -1,0 +1,25 @@
+uuid: d3386f25-cac4-4a6a-aa03-c84e38542c44
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_full_program_credit_hours
+    - node.type.program
+  module:
+    - datalayer
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_full_program_credit_hours
+id: node.program.field_full_program_credit_hours
+field_name: field_full_program_credit_hours
+entity_type: node
+bundle: program
+label: 'Full program credit hours'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

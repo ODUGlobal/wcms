@@ -1,0 +1,41 @@
+{#
+/**
+ * @file
+ * Theme override for a breadcrumb trail.
+ *
+ * Available variables:
+ * - breadcrumb: Breadcrumb trail items.
+ */
+#}
+{% if breadcrumb %}
+  <div class="container">
+    <ol role="list" class="max-w-4xl leading-none children:my-1 -my-1">{% apply spaceless %}
+          {% for item in breadcrumb %}
+            <li class="
+              hidden
+              [&:nth-last-child(2)]:inline-block
+              sm:inline-block
+              group/li
+              after:hidden sm:after:inline-block sm:after:last:hidden
+              after:w-1 after:h-1 after:mx-2.5 after:bg-neutral-500 after:rounded-full after:align-middle
+            ">
+              <a
+                href="{{ item.url }}"
+                class="
+                  aria-current:!text-black aria-current:no-underline
+                  text-sm leading-[1.1] underline font-bold
+                  text-theme-fancy-link-color hocus:text-theme-fancy-link-hocus-color
+                  relative pl-4 sm:pl-0 sm:group-first/li:pl-5
+                  before:inline-block before:absolute before:mask-arrow-fancy before:w-2.5 before:h-2.5 before:bg-current before:left-0 before:top-0.5 before:scale-x-[-1]
+                  sm:before:hidden
+                  sm:before:group-first/li:inline-block sm:before:mask-home sm:before:w-4 sm:before:h-4 sm:before:top-[calc(-1rem/16)] sm:before:scale-x-1
+                "
+                {% if loop.last %}
+                  aria-current="page"
+                {% endif %}
+              >{{ item.text }}</a>
+            </li>
+          {% endfor %}
+        {% endapply %}</ol>
+  </div>
+{% endif %}

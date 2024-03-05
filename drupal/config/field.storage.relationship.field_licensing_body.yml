@@ -1,0 +1,20 @@
+uuid: c5246c61-4244-442a-b4c1-db5b504d0e9f
+langcode: en
+status: true
+dependencies:
+  module:
+    - eck
+    - taxonomy
+id: relationship.field_licensing_body
+field_name: field_licensing_body
+entity_type: relationship
+type: entity_reference
+settings:
+  target_type: taxonomy_term
+module: core
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

@@ -1,0 +1,22 @@
+**/node_modules
+**/.DS_Store
+**/tsconfig.json
+
+# ignore all files
+*
+
+# include all folders
+!**/
+
+# include specific filetypes (matches settings for VS Code Prettier extension in `/.vscode/settings.json`)
+!*.js
+!*.json
+!*.ts
+!*.css
+!*.md
+
+# I've tried a more targeted approach (i.e., only include `themes/custom/**`), but that seems to
+# break VS Code's format-on-save functionality. Still, the format-on-save will only work in
+# directories that have Prettier installed as an npm package, and we're not using Prettier in
+# any other capacity (no formatting step in the pipeline, and no formatting npm script),
+# so the effect is the same.

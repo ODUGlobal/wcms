@@ -1,0 +1,16 @@
+{% set content %}
+    <p>
+        {% if fields.field_phone.content %}
+            {{ fields.field_phone.content }}<br/>
+        {% endif %}
+        {% if fields.field_email.content %}
+            {{ fields.field_email.content }}
+        {% endif %}
+    </p>
+{% endset %}
+{% include "@components/Molecule/Teaser/StackedTeaser/StackedTeaser.twig" with {
+  link: {'title' : fields.title.content},
+  subhead: fields.field_job_title.content,
+  picture: fields.field_media.content,
+  editorial : {wysiwyg: content}
+} %}

@@ -1,0 +1,38 @@
+uuid: d4e627b5-8bd7-41bb-ac15-7d091d5f7b18
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.basic_html
+  module:
+    - contact
+    - eck
+    - embederator
+    - file
+    - filter
+    - media
+    - shortcut
+    - system
+_core:
+  default_config_hash: I44QAB4es39lNzMQWiJLq2dfjX7VRSOzT_5KzAcUq_M
+id: authenticated
+label: 'Authenticated user'
+weight: 1
+is_admin: false
+permissions:
+  - 'access content'
+  - 'access shortcuts'
+  - 'access site-wide contact form'
+  - 'delete own files'
+  - 'use text format basic_html'
+  - 'view any alerts entities'
+  - 'view any collection_item entities'
+  - 'view any curriculum_item entities'
+  - 'view any external_link entities'
+  - 'view any list_item entities'
+  - 'view any relationship entities'
+  - 'view any reusable_block entities'
+  - 'view embederator entity'
+  - 'view media'
+  - 'view own relationship entities'
+  - 'view unpublished eck entities'

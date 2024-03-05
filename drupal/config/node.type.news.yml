@@ -1,0 +1,19 @@
+uuid: c804de5f-495f-42a4-8b99-8d47a3971ccb
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+_core:
+  default_config_hash: IQYhlpv-QKFmy_sV5wF8MLwgwH8q1MOOb9JhvrztbtI
+name: News
+type: news
+description: 'Timely news articles'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

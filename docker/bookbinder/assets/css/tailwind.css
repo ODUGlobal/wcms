@@ -1,0 +1,16 @@
+/* Base stylesheet for tailwind added at /app/assets/tailwind.css.
+ * Themes should probably override this file for customization.
+ */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}

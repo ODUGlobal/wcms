@@ -1,0 +1,42 @@
+uuid: 6979c709-d46c-4097-b1b9-42625ee38815
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.media_entity_browser_media_library
+  module:
+    - entity_browser_entity_form
+    - views
+name: logos
+label: Logos
+display: iframe
+display_configuration:
+  width: 100%
+  height: '500'
+  link_text: 'Select logo'
+  auto_open: true
+selection_display: no_display
+selection_display_configuration: {  }
+widget_selector: tabs
+widget_selector_configuration: {  }
+widgets:
+  a04df9e8-3262-48a3-8891-1d97f8933e56:
+    id: entity_form
+    uuid: a04df9e8-3262-48a3-8891-1d97f8933e56
+    label: 'Add logo'
+    weight: -10
+    settings:
+      submit_text: 'Save logo'
+      entity_type: collection_item
+      bundle: mobile_video_with_link
+      form_mode: default
+  02bc4b73-7733-4ff5-8362-61fc54cd4845:
+    id: view
+    uuid: 02bc4b73-7733-4ff5-8362-61fc54cd4845
+    label: 'Browse logos'
+    weight: -9
+    settings:
+      submit_text: 'Select logo'
+      auto_select: false
+      view: media_entity_browser_media_library
+      view_display: entity_browser_1

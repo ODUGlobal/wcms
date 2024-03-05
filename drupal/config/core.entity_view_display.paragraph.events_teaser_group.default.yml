@@ -1,0 +1,55 @@
+uuid: bf2e94e0-bdb3-46c0-a0bb-f4221719d741
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.events_teaser_group.field_body
+    - field.field.paragraph.events_teaser_group.field_content_reference
+    - field.field.paragraph.events_teaser_group.field_fancy_links
+    - field.field.paragraph.events_teaser_group.field_headline
+    - paragraphs.paragraphs_type.events_teaser_group
+  module:
+    - link
+    - text
+id: paragraph.events_teaser_group.default
+targetEntityType: paragraph
+bundle: events_teaser_group
+mode: default
+content:
+  field_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_content_reference:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: standard_teaser_with_summary
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_fancy_links:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_headline:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden: {  }

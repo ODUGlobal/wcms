@@ -1,0 +1,93 @@
+uuid: 851d72a3-e097-4330-90e7-3295df95a374
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_paragraphs
+    - node.type.inquiry
+    - paragraphs.paragraphs_type.featured_news
+    - paragraphs.paragraphs_type.hero
+    - paragraphs.paragraphs_type.home
+    - paragraphs.paragraphs_type.simple
+  module:
+    - datalayer
+    - entity_reference_revisions
+third_party_settings:
+  datalayer:
+    expose: 0
+    label: field_paragraphs
+id: node.inquiry.field_paragraphs
+field_name: field_paragraphs
+entity_type: node
+bundle: inquiry
+label: Paragraphs
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      featured_news: featured_news
+      hero: hero
+      home: home
+      simple: simple
+    negate: 1
+    target_bundles_drag_drop:
+      50_50_panel:
+        weight: 19
+        enabled: false
+      body:
+        weight: 20
+        enabled: false
+      callouts:
+        weight: 21
+        enabled: false
+      custom_teaser_references:
+        weight: 22
+        enabled: false
+      embed:
+        weight: 23
+        enabled: false
+      fast_facts:
+        weight: 24
+        enabled: false
+      featured_link_list:
+        weight: 25
+        enabled: false
+      featured_news:
+        weight: 26
+        enabled: true
+      gallery:
+        weight: 27
+        enabled: false
+      hero:
+        weight: 28
+        enabled: true
+      home:
+        weight: 29
+        enabled: true
+      link_groups:
+        weight: 30
+        enabled: false
+      listings:
+        weight: 31
+        enabled: false
+      program_routing:
+        weight: 32
+        enabled: false
+      quote_collection:
+        weight: 33
+        enabled: false
+      simple:
+        weight: 34
+        enabled: true
+      social_media_callout:
+        weight: 35
+        enabled: false
+      spotlight:
+        weight: 36
+        enabled: false
+field_type: entity_reference_revisions
